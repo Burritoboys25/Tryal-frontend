@@ -1,4 +1,9 @@
 import { Button } from '@/shared/components/ui/button'
+import Image from 'next/image';
+import imgOne from '../../public/landing_page_img_1.png';
+import imgTwo from '../../public/landing_page_img_2.png';
+import imgThree from '../../public/landing_page_img_3.png';
+import imgFour from '../../public/landing_page_img_4.png';
 
 export default function Home() {
   return (
@@ -35,7 +40,26 @@ export default function Home() {
             <div className="absolute top-1/2 left-1/2 z-[-1] h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-400 opacity-30 blur-[120px] md:h-[600px] md:w-[600px]" />
 
             {/* Image Placeholder */}
-            <div className="z-0 h-[280px] w-[280px] rounded-xl bg-gray-300 sm:h-[320px] sm:w-[320px] md:h-[400px] md:w-[400px]"></div>
+            <div className="z-0 flex gap-4">
+              {/* Left Images Container */}
+              <div className='flex flex-col gap-4 mt-[50px]'>
+                <div className='h-[285px] w-[285px]'>
+                  <Image src={imgOne} alt='top-left-image'/>
+                </div>
+                <div className='h-[285px] w-[285px]'>
+                  <Image src={imgTwo} alt='bottom-left-image'/>
+                </div>
+              </div>
+              {/* Right Images Container */}
+              <div className='flex flex-col gap-4 mt-[100px]'>
+                <div className='h-[285px] w-[285px]'>
+                  <Image src={imgThree} alt='top-right-image'/>
+                </div>
+                <div className='h-[285px] w-[285px]'>
+                  <Image src={imgFour} alt='bottom-right-image'/>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
