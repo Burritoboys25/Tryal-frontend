@@ -36,11 +36,11 @@ export default function Home() {
           </div>
 
           <div className="relative z-0 flex w-full justify-center md:w-1/2">
-            {/* Glow Background */}
-            <div className="absolute top-1/2 left-1/2 z-[-1] h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-400 opacity-30 blur-[120px] md:h-[600px] md:w-[600px]" />
+            {/* Glow Background bg-[#F4BCAB] bg-red-400*/}
+            <div className="absolute top-1/2 left-1/2 z-[-1] h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F4BCAB] blur-[120px] md:h-[600px] md:w-[600px]" />
 
             {/* Image Placeholder */}
-            <div className="z-0 flex gap-4">
+            <div className="z-0 flex gap-4 mt-[20px]">
               {/* Left Images Container */}
               <div className='flex flex-col gap-4 mt-[50px]'>
                 <div className='h-[285px] w-[285px]'>
@@ -51,7 +51,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Right Images Container */}
-              <div className='flex flex-col gap-4 mt-[100px]'>
+              <div className='flex flex-col gap-4 mt-[110px]'>
                 <div className='h-[285px] w-[285px]'>
                   <Image src={imgThree} alt='top-right-image'/>
                 </div>
