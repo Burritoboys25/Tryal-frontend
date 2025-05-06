@@ -150,7 +150,7 @@ export default function Home() {
       <section className="flex min-h-screen w-full items-center bg-white px-4 py-16 md:px-12 md:py-0">
         <div className="mx-auto w-full max-w-7xl rounded-3xl bg-[#E7EFEF] px-4 md:px-20 md:py-20">
           <div className="w-full text-center">
-            <h1 className="font-semibold md:text-[40px]">
+            <h1 className="font-semibold md:text-[36px]">
               Explore, connect, and book with
               <span className="text-orange-500"> confidence</span>.
             </h1>
@@ -170,7 +170,7 @@ export default function Home() {
       {/* Marque Section */}
       <section className="my-[2rem] flex w-full items-center bg-white px-4 py-16 md:px-12 md:py-0">
         <div className="mx-auto w-full max-w-7xl text-center">
-          <h1 className="text-h1 text-[#797979]">
+          <h1 className="text-h2 font-semibold text-[#797979]">
             Find your
             <span className="text-[#2E2E2E]"> next passion </span>
             from a wide variety of categories
@@ -190,7 +190,7 @@ export default function Home() {
             </Marquee>
           </div>
           {/* Join Waitlist */}
-          <h1 className="text-h1 mt-[8rem] text-[#797979]">
+          <h1 className="text-h2 font-semibold mt-[8rem] text-[#797979]">
             Fun&apos;s around the corner -
             <span className="text-[#2E2E2E]"> join the waitlist!</span>
           </h1>
