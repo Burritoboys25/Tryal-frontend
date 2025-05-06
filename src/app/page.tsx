@@ -168,7 +168,7 @@ export default function Home() {
         </div>
       </section>
       {/* Marque Section */}
-      <section className="my-[72px] flex w-full items-center bg-white px-4 py-16 md:px-12 md:py-0">
+      <section className="my-[2rem] flex w-full items-center bg-white px-4 py-16 md:px-12 md:py-0">
         <div className="mx-auto w-full max-w-7xl text-center">
           <h1 className="text-h1 text-[#797979]">
             Find your
