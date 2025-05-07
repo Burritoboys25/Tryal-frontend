@@ -24,8 +24,8 @@ export default function Founders() {
   return (
     <section className="py-24">
       <Container className="text-center">
-        <h2 className="text-h2 mb-4">Get to Know the Founders Behind The Mission</h2>
-        <p className="text-body2 mx-auto mb-12 max-w-2xl text-gray-600">
+        <h2 className="text-h2 mb-4 font-semibold">Get to Know the Founders Behind The Mission</h2>
+        <p className="text-body4 mx-auto mb-12 max-w-2xl text-gray-600">
           Our team is a passionate group of innovators, creators, and problem-solvers dedicated to
           making a difference. Each member brings unique skills and expertise, working together to
           drive our mission forward.
@@ -42,8 +42,8 @@ export default function Founders() {
 
               {/* Name + Quote */}
               <div>
-                <h4 className="text-sub2">{founder.name}</h4>
-                <p className="text-caption mt-1 text-gray-600 italic">
+                <h4 className="text-body1 font-bold">{founder.name}</h4>
+                <p className="text-body4 mt-1 text-gray-600 italic">
                   &quot;{founder.quote}&quot;
                 </p>
               </div>
