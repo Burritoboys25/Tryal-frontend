@@ -35,22 +35,27 @@ const Values = () => {
   return (
     <section className="bg-white">
       <Container className="text-center">
-        <h2 className="text-h2 mb-4">Our Values</h2>
-        <p className="text-body2 mx-auto mb-12 max-w-2xl text-gray-600">
+        <h2 className="text-h2 mb-4 font-semibold">Our Values</h2>
+        <p className="text-body4 mx-auto mb-12 max-w-2xl text-gray-600">
           Our values are the foundation of everything we do. They guide our decisions, shape our
           culture, and define how we work together and serve our community.
         </p>
 
-        <div className="grid grid-cols-1 gap-6 text-left sm:grid-cols-2 md:grid-cols-4">
-          {values.map(({ title, icon: Icon, description }) => (
-            <div key={title} className="flex flex-col gap-4 rounded-xl p-6 shadow-xl">
-              <div className="flex items-center gap-2">
-                <Icon className="h-12 w-12" arial-hidden="true" />
-                <h4 className="text-sub1">{title}</h4>
+        <div className='relative z-0'>
+          <div className="absolute top-1/2 left-1/2 z-[-1] h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 bg-[#F4BCAB] blur-[50px] md:h-[20px] md:w-[1300px]" />
+
+          <div className="grid grid-cols-1 gap-6 text-left sm:grid-cols-2 md:grid-cols-4">
+            {values.map(({ title, icon: Icon, description }) => (
+              <div key={title} className="flex flex-col gap-4 rounded-xl p-6 shadow-xl bg-white">
+                <div className="flex items-center gap-2">
+                  <Icon className="h-12 w-12" arial-hidden="true" />
+                  <h4 className="text-sub1">{title}</h4>
+                </div>
+                <div className="text-body4 text-gray-600">{description}</div>
               </div>
-              <div className="text-body3 text-gray-600">{description}</div>
-            </div>
-          ))}
+            ))}
+          </div>
+
         </div>
       </Container>
     </section>
