@@ -14,9 +14,9 @@ function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
 
         // Interaction states
         'transition-colors duration-300 ease-in-out outline-none',
-        'hover:border-primary-hover/50 aria-invalid:hover:border-destructive',
+        'hover:border-primary-hover/30 aria-invalid:hover:border-destructive',
         'hover:ring-1 hover:ring-[--ring]',
-        'focus:border-primary focus-visible:ring-1 focus-visible:ring-[--ring]',
+        'focus:border-primary/60 focus-visible:ring-1 focus-visible:ring-[--ring]',
 
         // Error
         'aria-invalid:border-destructive',

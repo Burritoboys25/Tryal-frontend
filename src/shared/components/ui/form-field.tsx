@@ -29,7 +29,6 @@ const FormField = ({
     <div className="space-y-1.5">
       <Label htmlFor={inputId} className="text-label">
         {label}
-        {required && <span className="text-destructive -ml-1">*</span>}
       </Label>
       <div className="relative">
         <Input
@@ -39,6 +38,7 @@ const FormField = ({
           placeholder={placeholder}
           aria-invalid={!!error}
           aria-describedby={error ? errorId : undefined}
+          required={required}
           className={cn(error && 'border-[--destructive]', className)}
         />
         <p
