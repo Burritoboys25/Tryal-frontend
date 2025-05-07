@@ -35,8 +35,8 @@ const Values = () => {
   return (
     <section className="bg-white">
       <Container className="text-center">
-        <h2 className="text-h2 mb-4">Our Values</h2>
-        <p className="text-body2 mx-auto mb-12 max-w-2xl text-gray-600">
+        <h2 className="text-h2 mb-4 font-semibold">Our Values</h2>
+        <p className="text-body4 mx-auto mb-12 max-w-2xl text-gray-600">
           Our values are the foundation of everything we do. They guide our decisions, shape our
           culture, and define how we work together and serve our community.
         </p>
@@ -48,7 +48,7 @@ const Values = () => {
                 <Icon className="h-12 w-12" arial-hidden="true" />
                 <h4 className="text-sub1">{title}</h4>
               </div>
-              <div className="text-body3 text-gray-600">{description}</div>
+              <div className="text-body4 text-gray-600">{description}</div>
             </div>
           ))}
         </div>
