@@ -35,7 +35,7 @@ export default function Founders() {
           {founders.map(founder => (
             <div
               key={founder.name}
-              className="flex flex-col items-center justify-between gap-4 rounded-xl border bg-white p-6 shadow-sm"
+              className="flex flex-col items-center justify-between gap-4 rounded-xl border bg-white p-6 shadow-md"
             >
               {/* Avatar Placeholder */}
               <div className="h-24 w-24 rounded-full bg-gray-300" />
