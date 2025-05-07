@@ -32,7 +32,7 @@ export default function Founders() {
         </p>
 
         <div className='relative z-0'>
-          <div className="absolute top-1/2 left-1/2 z-[-1] h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2  bg-[#F4BCAB] blur-[70px] md:h-[40px] md:w-[1300px]" />
+          <div className="absolute top-1/2 left-1/2 z-[-1] h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 bg-[#F4BCAB] blur-[70px] md:h-[40px] md:w-[1300px]" />
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
             {founders.map(founder => (
