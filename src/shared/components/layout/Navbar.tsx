@@ -22,7 +22,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Fixed Top Navbar */}
       <nav
         className={`fixed top-0 right-0 left-0 z-50 w-full bg-white transition-shadow duration-300 ${
           scrolled ? 'shadow-sm' : ''
@@ -43,7 +42,7 @@ const Navbar = () => {
           {/* Desktop CTA */}
           <div className="hidden md:flex">
             <Button variant="solid">
-              <Link href="/partner">Become a partner</Link>
+              <Link href="/partner-waitlist">Become a partner</Link>
             </Button>
           </div>
 
@@ -72,8 +71,8 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-            <Button onClick={handleClick} variant="solid" className="">
-              Become a partner
+            <Button onClick={handleClick} variant="solid">
+              <Link href="/partner-waitlist">Become a partner</Link>
             </Button>
           </div>
         </div>
