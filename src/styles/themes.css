@@ -22,7 +22,7 @@
   --error: #d32f2f;
   --info: #308be4;
 
-  --background: oklch(0.99 0 0);
+  --background: oklch(1 0 0);
   --foreground: oklch(0 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0 0 0);
@@ -54,7 +54,7 @@
   --sidebar-accent-foreground: oklch(0 0 0);
   --sidebar-border: oklch(0.94 0 0);
   --sidebar-ring: oklch(0 0 0);
-  --font-sans: Inter, sans-serif;
+  --font-sans: 'Manrope', Inter, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Geist Mono, monospace;
   --radius: 0.5rem;
