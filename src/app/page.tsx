@@ -1,4 +1,3 @@
-import { Button } from '@/shared/components/ui/button'
 import Image from 'next/image'
 import imgOne from '../../public/landing_page_img_1.png'
 import imgTwo from '../../public/landing_page_img_2.png'
@@ -19,6 +18,7 @@ import MountainIcon from '@/shared/assets/icons/mountain_flag.svg'
 import SelfImprovementIcon from '@/shared/assets/icons/self_improvement.svg'
 
 import { Marquee } from '@/shared/components/magicui/marquee'
+import InterestWaitlistForm from '@/modules/waitlist/components/InterestWaitlistForm'
 
 const cards = [
   {
@@ -107,14 +107,9 @@ export default function Home() {
               </span>
             </p>
 
-            <form className="flex max-w-md flex-col justify-end gap-4 sm:flex-row">
-              <input
-                type="email"
-                placeholder="Email address"
-                className="flex-grow rounded-md border border-gray-300 px-4 py-2 text-sm sm:w-auto"
-              />
-              <Button>Join Waitlist</Button>
-            </form>
+            <div className="w-full justify-end">
+              <InterestWaitlistForm />
+            </div>
           </div>
 
           <div className="relative z-0 flex w-full justify-center md:w-1/2">
@@ -194,14 +189,9 @@ export default function Home() {
             Fun&apos;s around the corner -
             <span className="text-[#2E2E2E]"> join the waitlist!</span>
           </h1>
-          <form className="mx-auto my-[3rem] flex max-w-lg flex-col justify-end gap-4 sm:flex-row">
-            <input
-              type="email"
-              placeholder="Email address"
-              className="flex-grow rounded-md border border-gray-300 px-4 py-2 text-sm sm:w-auto"
-            />
-            <Button>Join Waitlist</Button>
-          </form>
+          <div className="my-[3rem] flex w-full justify-center">
+            <InterestWaitlistForm />
+          </div>
         </div>
       </section>
     </>
