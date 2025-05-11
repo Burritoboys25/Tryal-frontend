@@ -21,6 +21,9 @@ const FormField = ({
   error,
   required,
   className,
+  value,
+  onChange,
+  ...props
 }: FormFieldProps) => {
   const inputId = React.useId()
   const errorId = `${inputId}-error`
@@ -40,6 +43,9 @@ const FormField = ({
           aria-describedby={error ? errorId : undefined}
           required={required}
           className={cn(error && 'border-[--destructive]', className)}
+          value={value}
+          onChange={onChange}
+          {...props}
         />
         <p
           id={errorId}
