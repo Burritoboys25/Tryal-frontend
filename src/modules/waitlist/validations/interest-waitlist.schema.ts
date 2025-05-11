@@ -7,6 +7,7 @@ export const interestWaitlistSchema = z.object({
     .min(1, 'Email is required')
     .max(100, 'Email must be less than 100 characters'),
   createdAt: z.date().optional(),
+  referral: z.string().optional(),
 })
 
 export type InterestWaitlistFormData = z.infer<typeof interestWaitlistSchema>

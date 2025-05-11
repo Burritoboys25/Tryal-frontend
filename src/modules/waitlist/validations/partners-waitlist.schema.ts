@@ -30,6 +30,8 @@ export const partnerWaitlistSchema = z.object({
     .min(1, 'Business category is required')
     .max(100, 'Business category must be less than 100 characters'),
   receiveNewsLetter: z.boolean().default(false),
+  createdAt: z.date().optional(),
+  referral: z.string().optional(),
 })
 
 export type PartnerWaitlistFormData = z.infer<typeof partnerWaitlistSchema>
