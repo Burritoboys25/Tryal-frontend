@@ -4,6 +4,7 @@ import CommunityIcon from '@/shared/assets/icons/community.svg'
 import ExplorationIcon from '@/shared/assets/icons/exploration.svg'
 import OpenMindedIcon from '@/shared/assets/icons/openminded.svg'
 import Container from '@/shared/components/layout/Container'
+
 const values = [
   {
     title: 'Exploration',
@@ -45,7 +46,7 @@ const Values = () => {
           {values.map(({ title, icon: Icon, description }) => (
             <div key={title} className="flex flex-col gap-4 rounded-xl p-6 shadow-xl">
               <div className="flex items-center gap-2">
-                <Icon className="h-12 w-12" arial-hidden="true" />
+                <Icon className="h-12 w-12" aria-hidden="true" />
                 <h4 className="text-sub1">{title}</h4>
               </div>
               <div className="text-body3 text-gray-600">{description}</div>
