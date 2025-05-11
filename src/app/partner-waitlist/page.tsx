@@ -1,11 +1,31 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import FormField from '@/shared/components/ui/form-field'
 import { Button } from '@/shared/components/ui/button'
+import {
+  partnerWaitlistSchema,
+  PartnerWaitlistFormData,
+} from '@/modules/waitlist/validations/partners-waitlist.schema'
+import Link from 'next/link'
+import { Checkbox } from '@/shared/components/ui/checkbox'
+import { FormSelect } from '@/shared/components/ui/form-select'
+
+const categories = [
+  'Arts & Crafts',
+  'Culinary Experiences',
+  'Music & Dance',
+  'Outdoor & Adventure',
+  'Cultural & Educational',
+  'DIY & Hands-on Skills',
+  'Social & Networking Events',
+  'Wellness & Mindfulness',
+  'Other',
+]
 
 const BecomePartnerForm = () => {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<PartnerWaitlistFormData>({
     firstName: '',
     lastName: '',
     businessName: '',
@@ -13,48 +33,104 @@ const BecomePartnerForm = () => {
     phone: '',
     city: '',
     state: '',
-    category: '',
-    agree: false,
+    businessCategory: '',
+    receiveNewsLetter: false,
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({})
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type, checked } = e.target
-    setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }))
+    const target = e.target as HTMLInputElement
+    const { name, type, value, checked } = target
+    setForm(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const router = useRouter()
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log(form)
+    setIsSubmitting(true)
+    setError(null)
+    setFieldErrors({})
+    const result = partnerWaitlistSchema.safeParse({
+      ...form,
+    })
+
+    if (!result.success) {
+      const errors = result.error.flatten().fieldErrors
+      setFieldErrors(errors)
+      setIsSubmitting(false)
+      return
+    }
+
+    try {
+      const res = await fetch('/api/waitlist/partners', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...result.data,
+        }),
+      })
+
+      if (res.ok) {
+        router.push(`/thank-you?email=${encodeURIComponent(form.email)}&type=partner`)
+      } else {
+        const data = await res.json()
+        setError(data.error || 'Something went wrong.')
+      }
+    } catch (err) {
+      console.error(err)
+      setError('Network error.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleSelectChange = (value: string) => {
+    setForm(prev => ({
+      ...prev,
+      businessCategory: value,
+    }))
   }
 
   return (
-    <section className="flex max-h-screen justify-center px-4 py-0 sm:py-16">
-      <form onSubmit={handleSubmit} className="w-full max-w-xl space-y-2">
-        <h2 className="text-2xl font-bold sm:text-3xl">
-          Get Discovered. Get Booked. Grow with Us!
-        </h2>
-        <p className="text-sm text-gray-600 sm:text-base">
-          Ready to join our growing network? By partnering with us, you’ll be exposed to more
-          customers looking to discover and book unique experiences.
-        </p>
-        <p className="text-sm text-gray-600 sm:text-base">
-          Fill out the form below to tell us about your business, and we’ll be in touch to help you
-          start connecting with new customers.
-        </p>
+    <section className="flex min-h-screen justify-center pt-0 pb-12 sm:pt-8 sm:pb-0">
+      <form onSubmit={handleSubmit} className="w-full max-w-[432px] space-y-4">
+        <div className="space-y-1.5">
+          <h2 className="text-[36px] font-semibold sm:text-3xl">
+            Get Discovered. Get <br />
+            Booked. Grow with Us!
+          </h2>
+          <p className="text-body3 text-gray-600">
+            Ready to join our growing network? By partnering with us, you&apos;ll be exposed to more
+            customers looking to discover and book unique experiences.
+          </p>
+          <p className="text-body3 text-gray-600">
+            Fill out the form below to tell us about your business, and we&apos;ll be in touch to
+            help you start connecting with new customers.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <FormField
             label="First name"
             name="firstName"
-            placeholder="First name"
             onChange={handleChange}
+            value={form.firstName}
+            error={fieldErrors.firstName?.[0]}
             required
           />
+
           <FormField
             label="Last name"
             name="lastName"
-            placeholder="Last name"
             onChange={handleChange}
+            value={form.lastName}
+            error={fieldErrors.lastName?.[0]}
             required
           />
         </div>
@@ -62,80 +138,95 @@ const BecomePartnerForm = () => {
         <FormField
           label="Business name"
           name="businessName"
-          placeholder="Business name"
           onChange={handleChange}
+          value={form.businessName}
           required
+          error={fieldErrors.businessName?.[0]}
         />
+
         <FormField
           label="Business email"
           name="email"
           type="email"
-          placeholder="Business email"
           onChange={handleChange}
+          value={form.email}
           required
+          error={fieldErrors.email?.[0]}
         />
+
         <FormField
           label="Business phone number"
           name="phone"
-          placeholder="Business phone number"
           onChange={handleChange}
+          value={form.phone}
           required
+          error={fieldErrors.phone?.[0]}
         />
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <FormField label="City" name="city" placeholder="City" onChange={handleChange} required />
+          <FormField
+            label="City"
+            name="city"
+            onChange={handleChange}
+            value={form.city}
+            required
+            error={fieldErrors.city?.[0]}
+          />
+
           <FormField
             label="State"
             name="state"
-            placeholder="State"
             onChange={handleChange}
+            value={form.state}
             required
+            error={fieldErrors.state?.[0]}
           />
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="category" className="text-label">
-            Business category
-          </label>
-          <select
-            name="category"
-            id="category"
-            value={form.category}
-            onChange={handleChange}
-            className="w-full rounded border p-2"
-          >
-            <option value="">Select</option>
-            <option value="food">Food</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="services">Services</option>
-          </select>
+          <FormSelect
+            label="Business category"
+            name="businessCategory"
+            value={form.businessCategory}
+            onChange={handleSelectChange}
+            options={categories}
+          />
         </div>
 
-        <div className="flex items-start gap-2">
-          <input type="checkbox" name="agree" onChange={handleChange} className="mt-1" />
-          <label className="text-sm text-gray-600">
+        <div className="flex items-start gap-2 text-center">
+          <Checkbox
+            id="receiveNewsLetter"
+            checked={form.receiveNewsLetter}
+            onCheckedChange={checked => {
+              setForm(prev => ({
+                ...prev,
+                receiveNewsLetter: checked === true,
+              }))
+            }}
+          />
+
+          <label className="text-caption text-muted-foreground">
             I agree to receive marketing and other communications from XPASS. *
           </label>
         </div>
 
-        <p className="text-xs text-gray-500">
+        <p className="text-caption text-muted-foreground">
           You can unsubscribe from these communications at any time. For more information, please
           review our{' '}
-          <a href="#" className="text-blue-600 underline">
+          <Link href="#" className="text-link">
             Terms and Conditions
-          </a>{' '}
-          and{' '}
-          <a href="#" className="text-blue-600 underline">
+          </Link>
+          {' and '}
+          <Link href="#" className="text-link">
             Privacy Policy
-          </a>
+          </Link>
           .
         </p>
 
-        <Button
-          type="submit"
-          className="w-full rounded-full bg-orange-600 py-3 font-semibold text-white hover:bg-orange-700"
-        >
-          Become a Partner
+        {error && <p className="text-destructive text-sm">{error}</p>}
+
+        <Button type="submit" variant="solid" className="mt-2 h-[40px] w-full">
+          {isSubmitting ? 'Submitting...' : 'Become a Partner'}
         </Button>
       </form>
     </section>
