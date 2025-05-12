@@ -3,20 +3,20 @@ import { Mail, Phone } from 'lucide-react'
 
 const founders = [
   {
-    name: 'Destiny Gosling',
-    quote: 'I use AI to whiten my teeth',
+    name: 'Henry Le',
+    quote: "",
   },
   {
-    name: '_Two',
-    quote: "I'm the one",
+    name: 'Henry Nguyen',
+    quote: "",
   },
   {
-    name: 'Mr. F',
-    quote: "I'm just a code monkey",
+    name: 'Calvin Nguyen',
+    quote: "",
   },
   {
-    name: 'Pledge_three',
-    quote: 'FAN-TASTIC!',
+    name: 'Anthony Nguyen',
+    quote: "",
   },
 ]
 

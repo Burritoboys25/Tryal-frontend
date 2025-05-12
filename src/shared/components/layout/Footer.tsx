@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto flex flex-col justify-between gap-12 md:flex-row">
         {/* Left: Branding */}
         <div>
-          <h3 className="mb-4 text-lg font-bold">XPASS</h3>
+          <h3 className="mb-4 text-lg font-bold">Tryal</h3>
         </div>
 
         {/* Center: Navigation Links */}

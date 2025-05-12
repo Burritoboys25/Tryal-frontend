@@ -4,6 +4,7 @@ import CommunityIcon from '@/shared/assets/icons/community.svg'
 import ExplorationIcon from '@/shared/assets/icons/exploration.svg'
 import OpenMindedIcon from '@/shared/assets/icons/openminded.svg'
 import Container from '@/shared/components/layout/Container'
+
 const values = [
   {
     title: 'Exploration',
@@ -41,21 +42,16 @@ const Values = () => {
           culture, and define how we work together and serve our community.
         </p>
 
-        <div className='relative z-0'>
-          <div className="absolute top-1/2 left-1/2 z-[-1] h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 bg-[#F4BCAB] blur-[50px] md:h-[20px] md:w-[1300px]" />
-
-          <div className="grid grid-cols-1 gap-6 text-left sm:grid-cols-2 md:grid-cols-4">
-            {values.map(({ title, icon: Icon, description }) => (
-              <div key={title} className="flex flex-col gap-4 rounded-xl p-6 shadow-xl bg-white">
-                <div className="flex items-center gap-2">
-                  <Icon className="h-12 w-12" arial-hidden="true" />
-                  <h4 className="text-sub1">{title}</h4>
-                </div>
-                <div className="text-body4 text-gray-600">{description}</div>
+        <div className="grid grid-cols-1 gap-6 text-left sm:grid-cols-2 md:grid-cols-4">
+          {values.map(({ title, icon: Icon, description }) => (
+            <div key={title} className="flex flex-col gap-4 rounded-xl p-6 shadow-xl">
+              <div className="flex items-center gap-2">
+                <Icon className="h-12 w-12" aria-hidden="true" />
+                <h4 className="text-sub1">{title}</h4>
               </div>
-            ))}
-          </div>
-
+              <div className="text-body4 text-gray-600">{description}</div>
+            </div>
+          ))}
         </div>
       </Container>
     </section>
