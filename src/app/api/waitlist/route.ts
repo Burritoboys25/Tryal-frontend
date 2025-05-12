@@ -3,10 +3,20 @@ import { NextResponse } from 'next/server'
 import { waitlistSchema } from '@/shared/lib/validation/waitlist.schema'
 
 const uri = process.env.MONGODB_URI!
-const client = new MongoClient(uri)
+let client: MongoClient | null = null
+
+if(!uri){
+  console.warn('Missing MONGODB_URI - skipping DB setup.')
+}else{
+  client = new MongoClient(uri)
+}
 
 export async function POST(request: Request) {
   try {
+    if (!client) {
+      return NextResponse.json({ error: 'Server misconfiguration - MongoDB' }, { status: 500 })
+    }
+
     const body = await request.json()
     const result = waitlistSchema.safeParse(body)
 
@@ -39,6 +49,8 @@ export async function POST(request: Request) {
     console.error('Error processing waitlist submission:', error)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   } finally {
-    await client.close()
+    if(client){
+      await client.close()
+    }
   }
 }
