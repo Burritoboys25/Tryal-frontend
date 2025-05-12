@@ -4,7 +4,7 @@ import Navbar from '@/shared/components/layout/Navbar'
 import Footer from '@/shared/components/layout/Footer'
 
 export const metadata: Metadata = {
-  title: 'XPASS',
+  title: 'Tryal',
   description: 'Sign up to enjoy life',
 }
 
