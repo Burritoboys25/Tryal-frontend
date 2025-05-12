@@ -19,7 +19,7 @@ import SelfImprovementIcon from '@/shared/assets/icons/self_improvement.svg'
 
 import { Marquee } from '@/shared/components/magicui/marquee'
 import InterestWaitlistForm from '@/modules/waitlist/components/InterestWaitlistForm'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/ui/base/button'
 
 const cards = [
   {

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/ui/base/button'
 import { useSearchParams } from 'next/navigation'
 import CheckboxField from '@/shared/components/ui/CheckboxField'
 import { useState } from 'react'

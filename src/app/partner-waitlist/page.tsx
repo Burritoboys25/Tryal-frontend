@@ -2,15 +2,15 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import FormField from '@/shared/components/ui/form-field'
-import { Button } from '@/shared/components/ui/button'
+import FormField from '@/shared/components/ui/forms/FormField'
+import { Button } from '@/shared/components/ui/base/button'
 import {
   partnerWaitlistSchema,
   PartnerWaitlistFormData,
 } from '@/modules/waitlist/validations/partners-waitlist.schema'
 import Link from 'next/link'
-import { Checkbox } from '@/shared/components/ui/checkbox'
-import { FormSelect } from '@/shared/components/ui/form-select'
+import { Checkbox } from '@/shared/components/ui/base/checkbox'
+import { FormSelect } from '@/shared/components/ui/forms/FormSelect'
 
 const categories = [
   'Arts & Crafts',

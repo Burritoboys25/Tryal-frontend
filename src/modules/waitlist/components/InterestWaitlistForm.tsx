@@ -1,8 +1,8 @@
 'use client'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/ui/base/button'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Input } from '@/shared/components/ui/input'
+import { Input } from '@/shared/components/ui/base/input'
 
 const InterestWaitlistForm = () => {
   const [email, setEmail] = useState('')

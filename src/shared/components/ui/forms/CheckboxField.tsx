@@ -1,5 +1,5 @@
-import { Checkbox } from './checkbox'
-import { Label } from './label'
+import { Checkbox } from './base/checkbox'
+import { Label } from './base/label'
 
 type CheckboxFieldProps = {
   label: string
