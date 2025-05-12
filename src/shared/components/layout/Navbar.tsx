@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between px-4 py-4 md:px-12">
         {/* Logo */}
         <Link href="/" className="text-xl font-bold">
-          XPASS
+          Tryal
         </Link>
 
         {/* Desktop Nav */}
