@@ -19,6 +19,7 @@ import MountainIcon from '@/shared/assets/icons/mountain_flag.svg'
 import SelfImprovementIcon from '@/shared/assets/icons/self_improvement.svg'
 
 import { Marquee } from '@/shared/components/magicui/marquee'
+import MainLayout from '@/shared/components/layout/MainLayout'
 
 const cards = [
   {
@@ -88,7 +89,7 @@ const marqueList = [
 
 export default function Home() {
   return (
-    <>
+    <MainLayout>
       {/* Hero Section */}
       <section className="-mt-[72px] flex min-h-screen w-full items-center bg-white px-4 py-16 md:px-12 md:py-0">
         <div className="mx-auto flex w-full max-w-7xl flex-col-reverse items-center justify-between gap-16 md:flex-row">
@@ -204,6 +205,6 @@ export default function Home() {
           </form>
         </div>
       </section>
-    </>
+    </MainLayout>
   )
 }
