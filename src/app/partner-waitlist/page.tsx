@@ -11,6 +11,7 @@ import {
 import Link from 'next/link'
 import { Checkbox } from '@/shared/components/ui/checkbox'
 import { FormSelect } from '@/shared/components/ui/form-select'
+import MainLayout from '@/shared/components/layout/MainLayout'
 
 const categories = [
   'Arts & Crafts',
@@ -98,138 +99,140 @@ const BecomePartnerForm = () => {
   }
 
   return (
-    <section className="flex min-h-screen justify-center pt-0 pb-12 sm:pt-8 sm:pb-0">
-      <form onSubmit={handleSubmit} className="w-full max-w-[432px] space-y-4">
-        <div className="space-y-1.5">
-          <h2 className="text-[36px] font-semibold sm:text-3xl">
-            Get Discovered. Get <br />
-            Booked. Grow with Us!
-          </h2>
-          <p className="text-body3 text-gray-600">
-            Ready to join our growing network? By partnering with us, you&apos;ll be exposed to more
-            customers looking to discover and book unique experiences.
+    <MainLayout>
+      <section className="flex min-h-screen justify-center pt-0 pb-12 sm:pt-8 sm:pb-0">
+        <form onSubmit={handleSubmit} className="w-full max-w-[432px] space-y-4">
+          <div className="space-y-1.5">
+            <h2 className="text-[36px] font-semibold sm:text-3xl">
+              Get Discovered. Get <br />
+              Booked. Grow with Us!
+            </h2>
+            <p className="text-body3 text-gray-600">
+              Ready to join our growing network? By partnering with us, you&apos;ll be exposed to
+              more customers looking to discover and book unique experiences.
+            </p>
+            <p className="text-body3 text-gray-600">
+              Fill out the form below to tell us about your business, and we&apos;ll be in touch to
+              help you start connecting with new customers.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <FormField
+              label="First name"
+              name="firstName"
+              onChange={handleChange}
+              value={form.firstName}
+              error={fieldErrors.firstName?.[0]}
+              required
+            />
+
+            <FormField
+              label="Last name"
+              name="lastName"
+              onChange={handleChange}
+              value={form.lastName}
+              error={fieldErrors.lastName?.[0]}
+              required
+            />
+          </div>
+
+          <FormField
+            label="Business name"
+            name="businessName"
+            onChange={handleChange}
+            value={form.businessName}
+            required
+            error={fieldErrors.businessName?.[0]}
+          />
+
+          <FormField
+            label="Business email"
+            name="email"
+            type="email"
+            onChange={handleChange}
+            value={form.email}
+            required
+            error={fieldErrors.email?.[0]}
+          />
+
+          <FormField
+            label="Business phone number"
+            name="phone"
+            onChange={handleChange}
+            value={form.phone}
+            required
+            error={fieldErrors.phone?.[0]}
+          />
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <FormField
+              label="City"
+              name="city"
+              onChange={handleChange}
+              value={form.city}
+              required
+              error={fieldErrors.city?.[0]}
+            />
+
+            <FormField
+              label="State"
+              name="state"
+              onChange={handleChange}
+              value={form.state}
+              required
+              error={fieldErrors.state?.[0]}
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <FormSelect
+              label="Business category"
+              name="businessCategory"
+              value={form.businessCategory}
+              onChange={handleSelectChange}
+              options={categories}
+            />
+          </div>
+
+          <div className="flex items-start gap-2 text-center">
+            <Checkbox
+              id="receiveNewsLetter"
+              checked={form.receiveNewsLetter}
+              onCheckedChange={checked => {
+                setForm(prev => ({
+                  ...prev,
+                  receiveNewsLetter: checked === true,
+                }))
+              }}
+            />
+
+            <label className="text-caption text-muted-foreground">
+              I agree to receive marketing and other communications from XPASS. *
+            </label>
+          </div>
+
+          <p className="text-caption text-muted-foreground">
+            You can unsubscribe from these communications at any time. For more information, please
+            review our{' '}
+            <Link href="#" className="text-link">
+              Terms and Conditions
+            </Link>
+            {' and '}
+            <Link href="#" className="text-link">
+              Privacy Policy
+            </Link>
+            .
           </p>
-          <p className="text-body3 text-gray-600">
-            Fill out the form below to tell us about your business, and we&apos;ll be in touch to
-            help you start connecting with new customers.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <FormField
-            label="First name"
-            name="firstName"
-            onChange={handleChange}
-            value={form.firstName}
-            error={fieldErrors.firstName?.[0]}
-            required
-          />
+          {error && <p className="text-destructive text-sm">{error}</p>}
 
-          <FormField
-            label="Last name"
-            name="lastName"
-            onChange={handleChange}
-            value={form.lastName}
-            error={fieldErrors.lastName?.[0]}
-            required
-          />
-        </div>
-
-        <FormField
-          label="Business name"
-          name="businessName"
-          onChange={handleChange}
-          value={form.businessName}
-          required
-          error={fieldErrors.businessName?.[0]}
-        />
-
-        <FormField
-          label="Business email"
-          name="email"
-          type="email"
-          onChange={handleChange}
-          value={form.email}
-          required
-          error={fieldErrors.email?.[0]}
-        />
-
-        <FormField
-          label="Business phone number"
-          name="phone"
-          onChange={handleChange}
-          value={form.phone}
-          required
-          error={fieldErrors.phone?.[0]}
-        />
-
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <FormField
-            label="City"
-            name="city"
-            onChange={handleChange}
-            value={form.city}
-            required
-            error={fieldErrors.city?.[0]}
-          />
-
-          <FormField
-            label="State"
-            name="state"
-            onChange={handleChange}
-            value={form.state}
-            required
-            error={fieldErrors.state?.[0]}
-          />
-        </div>
-
-        <div className="space-y-1.5">
-          <FormSelect
-            label="Business category"
-            name="businessCategory"
-            value={form.businessCategory}
-            onChange={handleSelectChange}
-            options={categories}
-          />
-        </div>
-
-        <div className="flex items-start gap-2 text-center">
-          <Checkbox
-            id="receiveNewsLetter"
-            checked={form.receiveNewsLetter}
-            onCheckedChange={checked => {
-              setForm(prev => ({
-                ...prev,
-                receiveNewsLetter: checked === true,
-              }))
-            }}
-          />
-
-          <label className="text-caption text-muted-foreground">
-            I agree to receive marketing and other communications from XPASS. *
-          </label>
-        </div>
-
-        <p className="text-caption text-muted-foreground">
-          You can unsubscribe from these communications at any time. For more information, please
-          review our{' '}
-          <Link href="#" className="text-link">
-            Terms and Conditions
-          </Link>
-          {' and '}
-          <Link href="#" className="text-link">
-            Privacy Policy
-          </Link>
-          .
-        </p>
-
-        {error && <p className="text-destructive text-sm">{error}</p>}
-
-        <Button type="submit" variant="solid" className="mt-2 h-[40px] w-full">
-          {isSubmitting ? 'Submitting...' : 'Become a Partner'}
-        </Button>
-      </form>
-    </section>
+          <Button type="submit" variant="solid" className="mt-2 h-[40px] w-full">
+            {isSubmitting ? 'Submitting...' : 'Become a Partner'}
+          </Button>
+        </form>
+      </section>
+    </MainLayout>
   )
 }
 

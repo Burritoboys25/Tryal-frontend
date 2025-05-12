@@ -19,6 +19,9 @@ import SelfImprovementIcon from '@/shared/assets/icons/self_improvement.svg'
 
 import { Marquee } from '@/shared/components/magicui/marquee'
 import InterestWaitlistForm from '@/modules/waitlist/components/InterestWaitlistForm'
+import MainLayout from '@/shared/components/layout/MainLayout'
+import { Button } from '@/shared/components/ui/button'
+
 
 const cards = [
   {
@@ -120,20 +123,20 @@ export default function Home() {
             <div className="z-0 flex gap-4">
               {/* Left Images Container */}
               <div className="mt-[10px] flex flex-col gap-4 sm:mt-[50px]">
-                <div className="h-[120px] w-[120px] sm:h-[285px] sm:w-[285px]">
-                  <Image src={imgOne} alt="top-left-image" />
+                <div className="h-[285px] w-[285px]">
+                  <Image src={imgOne} alt="top-left-image" className='rounded-lg object-cover h-full w-full' />
                 </div>
-                <div className="h-[120px] w-[120px] sm:h-[285px] sm:w-[285px]">
-                  <Image src={imgTwo} alt="bottom-left-image" />
+                <div className="h-[285px] w-[285px]">
+                  <Image src={imgTwo} alt="bottom-left-image" className='rounded-lg object-cover h-full w-full' />
                 </div>
               </div>
               {/* Right Images Container */}
               <div className="mt-[30px] flex flex-col gap-4 sm:mt-[110px]">
-                <div className="h-[120px] w-[120px] sm:h-[285px] sm:w-[285px]">
-                  <Image src={imgThree} alt="top-right-image" />
+                <div className="h-[285px] w-[285px]">
+                  <Image src={imgThree} alt="top-right-image" className='rounded-lg object-cover h-full w-full' />
                 </div>
-                <div className="h-[120px] w-[120px] sm:h-[285px] sm:w-[285px]">
-                  <Image src={imgFour} alt="bottom-right-image" />
+                <div className="h-[285px] w-[285px]">
+                  <Image src={imgFour} alt="bottom-right-image" className='rounded-lg object-cover h-full w-full' />
                 </div>
               </div>
             </div>
