@@ -126,19 +126,19 @@ export default function Home() {
               {/* Left Images Container */}
               <div className="mt-[50px] flex flex-col gap-4">
                 <div className="h-[285px] w-[285px]">
-                  <Image src={imgOne} alt="top-left-image" />
+                  <Image src={imgOne} alt="top-left-image" className='rounded-lg object-cover h-full w-full' />
                 </div>
                 <div className="h-[285px] w-[285px]">
-                  <Image src={imgTwo} alt="bottom-left-image" />
+                  <Image src={imgTwo} alt="bottom-left-image" className='rounded-lg object-cover h-full w-full' />
                 </div>
               </div>
               {/* Right Images Container */}
               <div className="mt-[110px] flex flex-col gap-4">
                 <div className="h-[285px] w-[285px]">
-                  <Image src={imgThree} alt="top-right-image" />
+                  <Image src={imgThree} alt="top-right-image" className='rounded-lg object-cover h-full w-full' />
                 </div>
                 <div className="h-[285px] w-[285px]">
-                  <Image src={imgFour} alt="bottom-right-image" />
+                  <Image src={imgFour} alt="bottom-right-image" className='rounded-lg object-cover h-full w-full' />
                 </div>
               </div>
             </div>
