@@ -19,6 +19,8 @@ import SelfImprovementIcon from '@/shared/assets/icons/self_improvement.svg'
 
 import { Marquee } from '@/shared/components/magicui/marquee'
 import InterestWaitlistForm from '@/modules/waitlist/components/InterestWaitlistForm'
+import MainLayout from '@/shared/components/layout/MainLayout'
+
 import Container from '@/shared/components/layout/Container'
 
 const cards = [
@@ -89,7 +91,7 @@ const marqueList = [
 
 export default function Home() {
   return (
-    <>
+    <MainLayout>
       {/* Hero Section */}
       <Container>
         <section className="mx-auto -mt-[72px] h-screen w-full">
@@ -118,16 +120,21 @@ export default function Home() {
               {/* Glow Background*/}
               <div className="absolute top-1/2 left-1/2 z-[-1] h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F4BCAB] blur-[120px] sm:h-[450px] sm:w-[450px] md:h-[600px] md:w-[600px]" />
 
-              {/* Image Placeholder */}
-              <div className="z-0 flex gap-4">
-                {/* Left Images Container */}
-                <div className="mt-[10px] flex flex-col gap-4 sm:mt-[50px]">
-                  <div className="h-[120px] w-[120px] sm:h-[285px] sm:w-[285px]">
-                    <Image src={imgOne} alt="top-left-image" />
-                  </div>
-                  <div className="h-[120px] w-[120px] sm:h-[285px] sm:w-[285px]">
-                    <Image src={imgTwo} alt="bottom-left-image" />
-                  </div>
+            {/* Image Placeholder */}
+            <div className="z-0 flex gap-4">
+              {/* Left Images Container */}
+              <div className="mt-[10px] flex flex-col gap-4 sm:mt-[50px]">
+                <div className="h-[285px] w-[285px]">
+                  <Image src={imgOne} alt="top-left-image" className='rounded-lg object-cover h-full w-full' />
+                </div>
+                <div className="h-[285px] w-[285px]">
+                  <Image src={imgTwo} alt="bottom-left-image" className='rounded-lg object-cover h-full w-full' />
+                </div>
+              </div>
+              {/* Right Images Container */}
+              <div className="mt-[30px] flex flex-col gap-4 sm:mt-[110px]">
+                <div className="h-[285px] w-[285px]">
+                  <Image src={imgThree} alt="top-right-image" className='rounded-lg object-cover h-full w-full' />
                 </div>
                 {/* Right Images Container */}
                 <div className="mt-[30px] flex flex-col gap-4 sm:mt-[110px]">
@@ -197,6 +204,6 @@ export default function Home() {
           </div>
         </section>
       </Container>
-    </>
+    </MainLayout>
   )
 }

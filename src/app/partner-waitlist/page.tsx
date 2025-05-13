@@ -11,7 +11,7 @@ import {
 import Link from 'next/link'
 import { Checkbox } from '@/shared/components/ui/base/checkbox'
 import { FormSelect } from '@/shared/components/ui/forms/FormSelect'
-import Container from '@/shared/components/layout/Container'
+import MainLayout from '@/shared/components/layout/MainLayout'
 
 const categories = [
   'Arts & Crafts',
@@ -99,7 +99,7 @@ const BecomePartnerForm = () => {
   }
 
   return (
-    <Container>
+    <MainLayout>
       <section className="flex min-h-screen justify-center pt-0 pb-12 sm:pt-8 sm:pb-0">
         <form onSubmit={handleSubmit} className="w-full max-w-[432px] space-y-4">
           <div className="space-y-1.5">
@@ -227,12 +227,12 @@ const BecomePartnerForm = () => {
 
           {error && <p className="text-destructive text-sm">{error}</p>}
 
-          <Button type="submit" variant="solid" className="mt-2 h-[40px] w-full">
+          <Button type="submit" variant="solid" className="mt-2 h-[40px] w-full cursor-pointer">
             {isSubmitting ? 'Submitting...' : 'Become a Partner'}
           </Button>
         </form>
       </section>
-    </Container>
+    </MainLayout>
   )
 }
 
