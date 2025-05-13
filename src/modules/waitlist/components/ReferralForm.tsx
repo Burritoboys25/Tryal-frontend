@@ -53,7 +53,9 @@ const ReferralForm = () => {
     }
   }
 
-  const handleReferralChange = (checked: boolean, value: string) => {
+  const handleReferralChange = (checked: boolean, value: string | boolean) => {
+    if(typeof value !== 'string') return;
+
     setSelectedReferrals(prev => {
       if (checked) {
         return [...prev, value]

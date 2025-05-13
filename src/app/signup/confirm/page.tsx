@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from '@/shared/components/layout/Container'
 import Link from 'next/link'
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/ui/base/button'
 
 const SignupConfirmPage = () => {
   return (
