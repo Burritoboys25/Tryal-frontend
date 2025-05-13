@@ -2,7 +2,6 @@ import React from 'react'
 import Container from '@/shared/components/layout/Container'
 import Link from 'next/link'
 import { Button } from '@/shared/components/ui/button'
-import { useState } from 'react'
 
 const SignupConfirmPage = () => {
   return (
@@ -30,7 +29,7 @@ const SignupConfirmPage = () => {
             </p>
           </div>
 
-          <Button type="submit" className="mt-8 w-[270px] h-[40px] rounded-full">
+          <Button type="submit" className="mt-8 w-[270px] h-[40px] rounded-full cursor-pointer">
             Start Exploring Now
           </Button>
         </Container>

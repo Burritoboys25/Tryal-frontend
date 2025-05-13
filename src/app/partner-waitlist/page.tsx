@@ -227,7 +227,7 @@ const BecomePartnerForm = () => {
 
           {error && <p className="text-destructive text-sm">{error}</p>}
 
-          <Button type="submit" variant="solid" className="mt-2 h-[40px] w-full">
+          <Button type="submit" variant="solid" className="mt-2 h-[40px] w-full cursor-pointer">
             {isSubmitting ? 'Submitting...' : 'Become a Partner'}
           </Button>
         </form>
