@@ -4,7 +4,7 @@ import BookIcon from '@/shared/assets/icons/book.svg'
 import ExploreIcon from '@/shared/assets/icons/explore.svg'
 import MainLayout from '@/shared/components/layout/MainLayout'
 
-export const howItWorksSteps = [
+const howItWorksSteps = [
   {
     step: 1,
     title: 'Sign up',
@@ -52,7 +52,8 @@ const HowItWorksPage = () => {
                   <h3 className="text-sub1">{title}</h3>
                   <p className="text-body4">{description}</p>
                 </div>
-              </div>
+                <span>{step}</span>
+            </div>
             ))}
           </div>
         </div>

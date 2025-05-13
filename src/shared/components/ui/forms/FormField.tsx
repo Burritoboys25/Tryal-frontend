@@ -1,6 +1,6 @@
 import React from 'react'
-import { Input } from './input'
-import { Label } from './label'
+import { Input } from '../base/input'
+import { Label } from '../base/label'
 import { cn } from '@/shared/lib/utils'
 
 interface FormFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {

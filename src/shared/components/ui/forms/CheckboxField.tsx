@@ -1,6 +1,6 @@
-import { Checkbox } from './checkbox'
-import { Label } from './label'
 import { cn } from '@/shared/lib/utils'
+import { Checkbox } from '../base/checkbox'
+import { Label } from '../base/label'
 
 type CheckboxFieldProps = {
   label: string | React.ReactNode

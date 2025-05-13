@@ -1,11 +1,11 @@
 'use client'
 
-import { Button } from '@/shared/components/ui/button'
+import { Button } from '@/shared/components/ui/base/button'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import HamburgerToggle from '../ui/hamburgerToggle'
+import HamburgerToggle from '@/shared/components/ui/mobile/HamburgerToggle'
 
-const Navbar = () => {
+function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -23,24 +23,24 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 right-0 left-0 z-50 w-full bg-white transition-shadow duration-300 ${
-          scrolled ? 'shadow-sm' : ''
-        }`}
+        className={`fixed top-0 right-0 left-0 z-50 min-h-[69px] w-full bg-white transition-shadow duration-300 ${scrolled ? 'shadow-sm' : ''}`}
       >
-        <div className="flex items-center justify-between px-4 py-4 md:px-12">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-4 md:px-12">
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold">
-            Tryal
-          </Link>
+          <div className="min-w-[150px]">
+            <Link href="/" className="font-logo text-[32px] font-medium">
+              Tryal
+            </Link>
+          </div>
 
           {/* Desktop Nav */}
-          <div className="hidden gap-8 text-sm text-gray-700 md:flex">
+          <div className="hidden gap-8 text-sm text-[16px] text-gray-700 md:flex">
             <Link href="/about">About us</Link>
             <Link href="/how-it-works">How it works</Link>
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex">
+          <div className="hidden min-w-[150px] md:flex">
             <Button variant="solid">
               <Link href="/partner-waitlist">Become a partner</Link>
             </Button>
@@ -53,9 +53,7 @@ const Navbar = () => {
 
       {/* Mobile Fullscreen Overlay */}
       <div
-        className={`fixed top-0 left-0 z-40 h-screen w-full bg-white transition-all duration-300 ease-in-out md:hidden ${
-          isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
-        }`}
+        className={`fixed top-0 left-0 z-40 h-screen w-full bg-white transition-all duration-300 ease-in-out md:hidden ${isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
       >
         <div className="flex h-full gap-4 px-6 pt-[72px] pb-8">
           <div className="flex w-full flex-col gap-10 px-6 py-16">

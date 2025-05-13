@@ -4,9 +4,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/shared/components/ui/select'
+} from '@/shared/components/ui/base/select'
 
-import { Label } from '@/shared/components/ui/label'
+import { Label } from '@/shared/components/ui/base/label'
 type FormSelectProps = {
   label: string
   name: string
