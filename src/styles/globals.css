@@ -128,4 +128,9 @@
   .text-label {
     @apply text-[14px] leading-[20px] font-semibold;
   }
+
+  .font-logo {
+    font-family: var(--font-rubik);
+    @apply tracking-widest;
+  }
 }

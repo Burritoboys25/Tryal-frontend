@@ -23,22 +23,24 @@ function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 right-0 left-0 z-50 w-full bg-white transition-shadow duration-300 ${scrolled ? 'shadow-sm' : ''}`}
+        className={`fixed top-0 right-0 left-0 z-50 mx-auto min-h-[69px] w-full max-w-[1440px] bg-white transition-shadow duration-300 md:px-12 ${scrolled ? 'shadow-sm' : ''}`}
       >
-        <div className="flex items-center justify-between px-4 py-4 md:px-12">
+        <div className="flex items-center justify-between px-4 py-4 md:px-2 lg:px-0">
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold">
-            Tryal
-          </Link>
+          <div className="min-w-[150px]">
+            <Link href="/" className="font-logo text-[32px] font-medium">
+              Tryal
+            </Link>
+          </div>
 
           {/* Desktop Nav */}
-          <div className="hidden gap-8 text-sm text-gray-700 md:flex">
+          <div className="hidden gap-8 text-sm text-[16px] text-gray-700 md:flex">
             <Link href="/about">About us</Link>
             <Link href="/how-it-works">How it works</Link>
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex">
+          <div className="hidden min-w-[150px] md:flex">
             <Button variant="solid">
               <Link href="/partner-waitlist">Become a partner</Link>
             </Button>
