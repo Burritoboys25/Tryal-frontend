@@ -3,11 +3,11 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { Button } from '@/shared/components/ui/button'
-import FormField from '@/shared/components/ui/form-field'
+import { Button } from '@/shared/components/ui/base/button'
+import FormField from '@/shared/components/ui/forms/FormField'
 import { useState } from 'react'
 import { SignupFormData, signupFormSchema } from '../validations/signup.schema'
-import CheckboxField from '@/shared/components/ui/CheckboxField'
+import CheckboxField from '@/shared/components/ui/forms/CheckboxField'
 
 const SignupForm = () => {
   const [form, setForm] = useState<SignupFormData>({

@@ -3,12 +3,11 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { Button } from '@/shared/components/ui/button'
-import FormField from '@/shared/components/ui/form-field'
-import CheckboxField from '@/shared/components/ui/CheckboxField'
+import { Button } from '@/shared/components/ui/base/button'
+import FormField from '@/shared/components/ui/forms/FormField'
+import CheckboxField from '@/shared/components/ui/forms/CheckboxField'
 import { useState } from 'react'
 import { LoginFormData, loginFormSchema } from '../validations/login.schema'
-import { NextResponse } from 'next/server'
 
 const LoginForm = () => {
   const [form, setForm] = useState<LoginFormData>({
