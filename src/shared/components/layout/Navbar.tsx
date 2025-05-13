@@ -23,9 +23,9 @@ function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 right-0 left-0 z-50 mx-auto min-h-[69px] w-full max-w-[1440px] bg-white transition-shadow duration-300 md:px-12 ${scrolled ? 'shadow-sm' : ''}`}
+        className={`fixed top-0 right-0 left-0 z-50 min-h-[69px] w-full bg-white transition-shadow duration-300 ${scrolled ? 'shadow-sm' : ''}`}
       >
-        <div className="flex items-center justify-between px-4 py-4 md:px-2 lg:px-0">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-4 md:px-12 lg:px-0">
           {/* Logo */}
           <div className="min-w-[150px]">
             <Link href="/" className="font-logo text-[32px] font-medium">
