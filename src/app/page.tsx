@@ -192,45 +192,13 @@ export default function Home() {
             Fun&apos;s around the corner -
             <span className="text-[#2E2E2E]"> join the waitlist!</span>
           </h1>
-          <div className="my-[3rem] flex w-full justify-center">
-            <InterestWaitlistForm />
-          </div>
-        </div>
-      </section>
-      {/* Marque Section */}
-      <section className="my-[2rem] flex w-full items-center bg-white px-4 py-16 md:px-12 md:py-0">
-        <div className="mx-auto w-full max-w-7xl text-center">
-          <h1 className="text-h2 font-semibold text-[#797979]">
-            Find your
-            <span className="text-[#2E2E2E]"> next passion </span>
-            from a wide variety of categories
-          </h1>
-          {/* Marque */}
-          <div className="mt-16 flex w-full overflow-hidden">
-            <Marquee pauseOnHover className="[--duration:25s]">
-              {marqueList.map(({ title, icon: Icon }) => (
-                <div
-                  key={title}
-                  className="flex items-center gap-2 rounded-xl p-4 shadow-md inset-shadow-xs"
-                >
-                  <Icon arial-hidden="true" />
-                  <h4 className="text-sub1">{title}</h4>
-                </div>
-              ))}
-            </Marquee>
-          </div>
-          {/* Join Waitlist */}
-          <h1 className="text-h2 mt-[8rem] font-semibold text-[#797979]">
-            Fun&apos;s around the corner -
-            <span className="text-[#2E2E2E]"> join the waitlist!</span>
-          </h1>
           <form className="mx-auto my-[3rem] flex max-w-lg flex-col justify-end gap-4 sm:flex-row">
             <input
               type="email"
               placeholder="Email address"
               className="flex-grow rounded-md border border-gray-300 px-4 py-2 text-sm sm:w-auto"
             />
-            <Button>Join Waitlist</Button>
+            <Button className='cursor-pointer'>Join Waitlist</Button>
           </form>
         </div>
       </section>
