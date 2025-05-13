@@ -3,6 +3,7 @@ import imgOne from '../../public/landing_page_img_1.png'
 import imgTwo from '../../public/landing_page_img_2.png'
 import imgThree from '../../public/landing_page_img_3.png'
 import imgFour from '../../public/landing_page_img_4.png'
+import LaptopGif from '../../public/Tryal_mockup.gif'
 import LocationIcon from '@/shared/assets/icons/where_to_vote.svg'
 import BookingIcon from '@/shared/assets/icons/booking.svg'
 import CalendarIcon from '@/shared/assets/icons/calendar_clock.svg'
@@ -120,34 +121,50 @@ export default function Home() {
               {/* Glow Background*/}
               <div className="absolute top-1/2 left-1/2 z-[-1] h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F4BCAB] blur-[120px] sm:h-[450px] sm:w-[450px] md:h-[600px] md:w-[600px]" />
 
-            {/* Image Placeholder */}
-            <div className="z-0 flex gap-4">
-              {/* Left Images Container */}
-              <div className="mt-[10px] flex flex-col gap-4 sm:mt-[50px]">
-                <div className="h-[285px] w-[285px]">
-                  <Image src={imgOne} alt="top-left-image" className='rounded-lg object-cover h-full w-full' />
+              {/* Image Placeholder */}
+              <div className="z-0 flex gap-4">
+                {/* Left Images Container */}
+                <div className="mt-[10px] flex flex-col gap-4 sm:mt-[50px]">
+                  <div className="h-[285px] w-[285px]">
+                    <Image
+                      src={imgOne}
+                      alt="top-left-image"
+                      className="h-full w-full rounded-lg object-cover"
+                    />
+                  </div>
+                  <div className="h-[285px] w-[285px]">
+                    <Image
+                      src={imgTwo}
+                      alt="bottom-left-image"
+                      className="h-full w-full rounded-lg object-cover"
+                    />
+                  </div>
                 </div>
-                <div className="h-[285px] w-[285px]">
-                  <Image src={imgTwo} alt="bottom-left-image" className='rounded-lg object-cover h-full w-full' />
-                </div>
-              </div>
-              {/* Right Images Container */}
-              <div className="mt-[30px] flex flex-col gap-4 sm:mt-[110px]">
-                <div className="h-[285px] w-[285px]">
-                  <Image src={imgThree} alt="top-right-image" className='rounded-lg object-cover h-full w-full' />
-                </div>
-                <div className="h-[285px] w-[285px]">
-                  <Image src={imgFour} alt="bottom-right-image" className='rounded-lg object-cover h-full w-full' />
+                {/* Right Images Container */}
+                <div className="mt-[30px] flex flex-col gap-4 sm:mt-[110px]">
+                  <div className="h-[285px] w-[285px]">
+                    <Image
+                      src={imgThree}
+                      alt="top-right-image"
+                      className="h-full w-full rounded-lg object-cover"
+                    />
+                  </div>
+                  <div className="h-[285px] w-[285px]">
+                    <Image
+                      src={imgFour}
+                      alt="bottom-right-image"
+                      className="h-full w-full rounded-lg object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
         {/* Explore, Connect, Book Section */}
-        <section className="flex min-h-screen w-full items-center">
-          <div className="mx-auto w-full max-w-7xl rounded-3xl bg-[#e7efef] px-4 py-16 md:px-20 md:py-20">
+        <section className="flex h-screen w-full items-center">
+          <div className="mx-auto w-full rounded-3xl bg-[#e7efef] px-4 py-16 md:px-20 md:py-20">
             <div className="w-full text-center">
               <h1 className="font-semibold md:text-[36px]">
                 Explore, connect, and book with
@@ -167,7 +184,7 @@ export default function Home() {
           </div>
         </section>
         {/* Marque Section */}
-        <section className="my-[2rem] flex w-full items-center bg-white">
+        <section className="mt-[10rem] flex w-full items-center">
           <div className="mx-auto w-full text-center">
             <h1 className="text-h2 font-semibold">
               Find your
@@ -188,12 +205,30 @@ export default function Home() {
                 ))}
               </Marquee>
             </div>
-            {/* Join Waitlist */}
-            <h1 className="text-h2 mt-[8rem] font-semibold">
-              Fun&apos;s around the corner -
+          </div>
+        </section>
+        {/* Gif Laptop Section*/}
+        <section className="mt-[14rem] flex w-full items-center">
+          <div className="mx-auto w-full text-center">
+            <h1 className="text-h2 font-semibold">
+              Booking unforgettable experiences has never been this
+              <span className="text-orange-500"> easy</span>.
+            </h1>
+            <div className="h-[401px] w-full mt-[14rem] relative rounded-3xl bg-[#E7EFEF]">
+              <div className="absolute  bottom-0.5 left-1/2 -translate-x-1/2 h-[600px] w-[1080px]">
+                <Image src={LaptopGif} alt="laptop gif" />
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* Join Waitlist Section */}
+        <section className="my-[9rem] flex w-full items-center">
+          <div className="mx-auto w-full text-center">
+            <h1 className="text-h2 font-semibold">
+              Fun&apos;s around the corner —
               <span className="text-primary"> Don&apos;t miss out!</span>
             </h1>
-            <div className="my-[3rem] flex w-full justify-center">
+            <div className="mt-[3rem] flex w-full justify-center">
               <InterestWaitlistForm />
             </div>
           </div>
