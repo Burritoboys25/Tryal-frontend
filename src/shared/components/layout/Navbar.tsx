@@ -3,7 +3,7 @@
 import { Button } from '@/shared/components/ui/base/button'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import HamburgerToggle from '@/shared/components/ui/mobile/hamburgerToggle'
+import HamburgerToggle from '@/shared/components/ui/mobile/HamburgerToggle'
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)

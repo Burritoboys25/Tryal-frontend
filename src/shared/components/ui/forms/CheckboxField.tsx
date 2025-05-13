@@ -1,5 +1,5 @@
-import { Checkbox } from './base/checkbox'
-import { Label } from './base/label'
+import { Checkbox } from '../base/checkbox'
+import { Label } from '../base/label'
 
 type CheckboxFieldProps = {
   label: string
@@ -17,7 +17,7 @@ const CheckboxField = ({
   value,
   checked,
   onChange,
-  required,
+  // required,
   disabled,
 }: CheckboxFieldProps) => {
   const id = `${name}-${value}`

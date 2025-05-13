@@ -3,7 +3,7 @@ import DiscoverIcon from '@/shared/assets/icons/discover.svg'
 import BookIcon from '@/shared/assets/icons/book.svg'
 import ExploreIcon from '@/shared/assets/icons/explore.svg'
 
-export const howItWorksSteps = [
+const howItWorksSteps = [
   {
     step: 1,
     title: 'Sign up',
@@ -50,6 +50,7 @@ const HowItWorksPage = () => {
                 <h3 className="text-sub1">{title}</h3>
                 <p className="text-body4">{description}</p>
               </div>
+              <span>{step}</span>
             </div>
           ))}
         </div>
