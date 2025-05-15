@@ -163,7 +163,7 @@ export default function Home() {
                 <br />
                 Repeat.
               </h1>
-              <p className="mb-8 max-w-md text-sm text-gray-600 sm:text-base md:text-lg">
+              <p className="text-muted-foreground mb-8 max-w-md text-sm sm:text-base md:text-lg">
                 From hidden gems to thrilling adventures—find and book unforgettable experiences{' '}
                 <span className="underline decoration-orange-500 underline-offset-4">
                   all in one place.
@@ -189,7 +189,7 @@ export default function Home() {
             <div className="w-full text-center">
               <h1 className="font-semibold md:text-[36px]">
                 Explore, connect, and book with
-                <span className="text-orange-500"> confidence</span>.
+                <span className="text-primary"> confidence</span>.
               </h1>
             </div>
             {/* Cards Container */}
@@ -198,7 +198,7 @@ export default function Home() {
                 <div key={title} className="rounded-xl bg-white p-5 shadow-lg">
                   <Icon className="h-12 w-12" aria-hidden="true" />
                   <h4 className="text-sub1">{title}</h4>
-                  <p className="text-body4 mt-3 text-gray-600">{description}</p>
+                  <p className="text-body4 text-muted-foreground mt-3">{description}</p>
                 </div>
               ))}
             </div>
