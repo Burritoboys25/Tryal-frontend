@@ -8,8 +8,13 @@ import FormField from '@/shared/components/ui/forms/FormField'
 import CheckboxField from '@/shared/components/ui/forms/CheckboxField'
 import { useState } from 'react'
 import { LoginFormData, loginFormSchema } from '../validations/login.schema'
+import { useSession, signIn, signOut } from 'next-auth/react'
+import { cn } from '@/shared/lib/utils'
+import LogoutButton from './LogoutButton'
 
 const LoginForm = () => {
+  const { data: session } = useSession()
+
   const [form, setForm] = useState<LoginFormData>({
     email: '',
     password: '',
@@ -40,6 +45,19 @@ const LoginForm = () => {
       const validData = {
         ...result.data,
         remember,
+      }
+
+      const authenticateLogin = await signIn('credentials', {
+        email: form.email,
+        password: form.password,
+        redirect: false,
+      })
+
+      if (authenticateLogin?.error) {
+        setFieldErrors({
+          authentication: ['Invalid email or password'],
+        })
+        return
       }
 
       console.log('Form Data:', validData)
@@ -96,11 +114,7 @@ const LoginForm = () => {
               />
               <div className="flex justify-between">
                 <CheckboxField
-                  label={
-                    <p className="text-caption2">
-                      Remember me
-                    </p>
-                  }
+                  label={<p className="text-caption2">Remember me</p>}
                   name={'remember'}
                   value={remember}
                   checked={remember}
@@ -112,17 +126,31 @@ const LoginForm = () => {
                   Forgot password?
                 </Link>
               </div>
-
-              <Button
-                type="submit"
-                className="mt-[22px] w-full cursor-pointer rounded-full"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Logging in...' : 'Log In'}
-              </Button>
+              {session ? (
+                <LogoutButton className="mt-[22px] w-full cursor-pointer rounded-full" />
+              ) : (
+                <Button
+                  type="submit"
+                  className="mt-[22px] w-full cursor-pointer rounded-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Logging in...' : 'Log In'}
+                </Button>
+              )}
+              {fieldErrors.authentication && (
+                <p
+                  className={cn(
+                    'text-destructive text-xs',
+                    'transition-opacity duration-300 ease-in-out',
+                    'opacity-100',
+                  )}
+                >
+                  {fieldErrors.authentication[0]}
+                </p>
+              )}
             </form>
             <div>
-              <p className="mt-3 text-caption2">
+              <p className="text-caption2 mt-3">
                 Don&apos;t have an account?{' '}
                 <Link href="/signup" className="text-info text-caption1">
                   Sign up
