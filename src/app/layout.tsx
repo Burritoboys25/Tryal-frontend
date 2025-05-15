@@ -26,11 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${manrope.variable} ${rubik.variable} `}>
-      <body className="min-h-screen">
-        <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-          <main className="flex-grow pt-[72px]">{children}</main>
-        </div>
-      </body>
+      <body className="min-h-screen w-full">{children}</body>
     </html>
   )
 }
