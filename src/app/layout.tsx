@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
 import { Manrope, Rubik } from 'next/font/google'
+import NextAuthSessionProvider from '@/shared/components/layout/NextAuthSessionProvider'
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -26,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${manrope.variable} ${rubik.variable} `}>
-      <body className="min-h-screen w-full">{children}</body>
+      <body className="min-h-screen w-full">
+        <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
+      </body>
     </html>
   )
 }
