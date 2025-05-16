@@ -27,20 +27,20 @@ function Navbar() {
       >
         <div className="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-4 md:px-12">
           {/* Logo */}
-          <div className="min-w-[150px]">
+          <div className="w-[150px]">
             <Link href="/" className="font-logo text-[32px] font-medium">
               Tryal
             </Link>
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden gap-8 text-sm text-[16px] text-gray-700 md:flex">
+          <div className="hidden flex-grow justify-center gap-8 text-sm text-[16px] text-gray-700 md:flex">
             <Link href="/about">About us</Link>
             <Link href="/how-it-works">How it works</Link>
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden min-w-[150px] md:flex">
+          <div className="hidden w-[150px] md:flex">
             <Button variant="solid">
               <Link href="/partner-waitlist">Become a partner</Link>
             </Button>
@@ -55,7 +55,7 @@ function Navbar() {
       <div
         className={`fixed top-0 left-0 z-40 h-screen w-full bg-white transition-all duration-300 ease-in-out md:hidden ${isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
       >
-        <div className="flex h-full gap-4 px-6 pt-[72px] pb-8">
+        <div className="flex h-full gap-4 px-6 pt-[69px] pb-8">
           <div className="flex w-full flex-col gap-10 px-6 py-16">
             <ul className="space-y-4">
               <li>

@@ -100,7 +100,7 @@ const BecomePartnerForm = () => {
 
   return (
     <MainLayout>
-      <section className="flex min-h-screen justify-center pt-0 pb-12 sm:pt-8 sm:pb-0">
+      <section className="screen-minus-navbar flex justify-center pt-0 pb-12 sm:pt-8 sm:pb-0">
         <form onSubmit={handleSubmit} className="w-full max-w-[432px] space-y-4">
           <div className="space-y-1.5">
             <h2 className="text-[36px] font-semibold sm:text-3xl">
@@ -207,12 +207,12 @@ const BecomePartnerForm = () => {
               }}
             />
 
-            <label className="text-caption text-muted-foreground">
+            <label className="text-caption2 text-muted-foreground">
               I agree to receive marketing and other communications from XPASS. *
             </label>
           </div>
 
-          <p className="text-caption text-muted-foreground">
+          <p className="text-caption2 text-muted-foreground">
             You can unsubscribe from these communications at any time. For more information, please
             review our{' '}
             <Link href="#" className="text-link">

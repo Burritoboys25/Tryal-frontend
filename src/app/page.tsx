@@ -90,13 +90,71 @@ const marqueList = [
   },
 ]
 
+function ImageGrid() {
+  return (
+    <div className="relative h-[30dvh] w-[90%] max-w-[600px] md:h-[70dvh] md:w-[70vh]">
+      <div className="absolute inset-0 flex items-stretch justify-between gap-2 sm:gap-4">
+        <div className="flex h-full w-1/2 flex-col gap-2">
+          <div className="flex h-[95%] flex-col gap-2 sm:gap-4">
+            <div className="relative min-h-0 flex-1">
+              <Image
+                src={imgOne}
+                alt="Person enjoying a local experience"
+                className="h-full w-full rounded-lg object-cover"
+                sizes="(max-width: 768px) 45vw, 35vw"
+                quality={90}
+                priority
+                fill
+              />
+            </div>
+            <div className="relative min-h-0 flex-1">
+              <Image
+                src={imgTwo}
+                alt="Engaging local activity"
+                className="h-full w-full rounded-lg object-cover"
+                sizes="(max-width: 768px) 45vw, 35vw"
+                quality={90}
+                fill
+              />
+            </div>
+          </div>
+        </div>
+        <div className="flex h-full w-1/2 flex-col justify-end gap-2">
+          <div className="flex h-[95%] flex-col gap-2 sm:gap-4">
+            <div className="relative min-h-0 flex-1">
+              <Image
+                src={imgThree}
+                alt="Community gathering moment"
+                className="h-full w-full rounded-lg object-cover"
+                sizes="(max-width: 768px) 45vw, 35vw"
+                quality={100}
+                fill
+              />
+            </div>
+            <div className="relative min-h-0 flex-1">
+              <Image
+                src={imgFour}
+                alt="Local experience highlight"
+                className="h-full w-full rounded-lg object-cover"
+                sizes="(max-width: 768px) 45vw, 35vw"
+                quality={100}
+                fill
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <MainLayout>
       {/* Hero Section */}
       <Container>
-        <section className="mx-auto -mt-[72px] h-screen w-full">
-          <div className="flex h-full flex-col-reverse items-center justify-center sm:flex-row">
+        <section className="mx-auto -mt-[69px] h-[100dvh] w-full">
+          <div className="flex h-full flex-col-reverse items-center justify-center gap-8 sm:gap-16 md:flex-row">
             <div className="w-full">
               <h1 className="mb-6 text-[32px] leading-tight font-bold text-balance sm:text-[40px] md:text-[64px]">
                 Discover.
@@ -105,7 +163,7 @@ export default function Home() {
                 <br />
                 Repeat.
               </h1>
-              <p className="mb-8 max-w-md text-sm text-gray-600 sm:text-base md:text-lg">
+              <p className="text-muted-foreground mb-8 max-w-md text-sm sm:text-base md:text-lg">
                 From hidden gems to thrilling adventures—find and book unforgettable experiences{' '}
                 <span className="underline decoration-orange-500 underline-offset-4">
                   all in one place.
@@ -120,55 +178,18 @@ export default function Home() {
             <div className="relative z-0 flex w-full justify-center md:w-1/2">
               {/* Glow Background*/}
               <div className="absolute top-1/2 left-1/2 z-[-1] h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F4BCAB] blur-[120px] sm:h-[450px] sm:w-[450px] md:h-[600px] md:w-[600px]" />
-
-              {/* Image Placeholder */}
-              <div className="z-0 flex gap-4">
-                {/* Left Images Container */}
-                <div className="mt-[10px] flex flex-col gap-4 sm:mt-[50px]">
-                  <div className="h-[285px] w-[285px]">
-                    <Image
-                      src={imgOne}
-                      alt="top-left-image"
-                      className="h-full w-full rounded-lg object-cover"
-                    />
-                  </div>
-                  <div className="h-[285px] w-[285px]">
-                    <Image
-                      src={imgTwo}
-                      alt="bottom-left-image"
-                      className="h-full w-full rounded-lg object-cover"
-                    />
-                  </div>
-                </div>
-                {/* Right Images Container */}
-                <div className="mt-[30px] flex flex-col gap-4 sm:mt-[110px]">
-                  <div className="h-[285px] w-[285px]">
-                    <Image
-                      src={imgThree}
-                      alt="top-right-image"
-                      className="h-full w-full rounded-lg object-cover"
-                    />
-                  </div>
-                  <div className="h-[285px] w-[285px]">
-                    <Image
-                      src={imgFour}
-                      alt="bottom-right-image"
-                      className="h-full w-full rounded-lg object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
+              <ImageGrid />
             </div>
           </div>
         </section>
 
         {/* Explore, Connect, Book Section */}
-        <section className="flex h-screen w-full items-center">
+        <section className="flex w-full items-center">
           <div className="mx-auto w-full rounded-3xl bg-[#e7efef] px-4 py-16 md:px-20 md:py-20">
             <div className="w-full text-center">
               <h1 className="font-semibold md:text-[36px]">
                 Explore, connect, and book with
-                <span className="text-orange-500"> confidence</span>.
+                <span className="text-primary"> confidence</span>.
               </h1>
             </div>
             {/* Cards Container */}
@@ -177,7 +198,7 @@ export default function Home() {
                 <div key={title} className="rounded-xl bg-white p-5 shadow-lg">
                   <Icon className="h-12 w-12" aria-hidden="true" />
                   <h4 className="text-sub1">{title}</h4>
-                  <p className="text-body4 mt-3 text-gray-600">{description}</p>
+                  <p className="text-body4 text-muted-foreground mt-3">{description}</p>
                 </div>
               ))}
             </div>
@@ -212,10 +233,10 @@ export default function Home() {
           <div className="mx-auto w-full text-center">
             <h1 className="text-h2 font-semibold">
               Booking unforgettable experiences has never been this
-              <span className="text-orange-500"> easy</span>.
+              <span className="text-primary"> easy</span>.
             </h1>
-            <div className="h-[401px] w-full mt-[14rem] relative rounded-3xl bg-[#E7EFEF]">
-              <div className="absolute  bottom-0.5 left-1/2 -translate-x-1/2 h-[600px] w-[1080px]">
+            <div className="relative mt-[14rem] h-[401px] w-full rounded-3xl bg-[#E7EFEF]">
+              <div className="absolute bottom-0.5 left-1/2 h-[600px] w-[1080px] -translate-x-1/2">
                 <Image src={LaptopGif} alt="laptop gif" />
               </div>
             </div>
