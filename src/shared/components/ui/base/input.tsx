@@ -8,9 +8,9 @@ function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
       type={type}
       data-slot="input"
       className={cn(
-        'text-body2',
-        'h-10 w-full rounded-sm border-2 px-3 py-2 shadow-xs',
-        'bg-background text-foreground placeholder:text-muted-foreground',
+        // 'text-body2',
+        'h-10 w-full rounded-sm border-1 px-3 py-2 shadow-xs',
+        'bg-background text-foreground placeholder:text-muted-foreground border-input',
 
         // Interaction states
         'transition-colors duration-300 ease-in-out outline-none',

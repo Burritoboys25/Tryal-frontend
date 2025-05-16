@@ -1,7 +1,19 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
-import Navbar from '@/shared/components/layout/Navbar'
-import Footer from '@/shared/components/layout/Footer'
+import { Manrope, Rubik } from 'next/font/google'
+import NextAuthSessionProvider from '@/shared/components/layout/NextAuthSessionProvider'
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
+})
+
+const rubik = Rubik({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-rubik',
+})
 
 export const metadata: Metadata = {
   title: 'Tryal',
@@ -14,13 +26,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="min-h-screen">
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-grow pt-[72px]">{children}</main>
-          <Footer />
-        </div>
+    <html lang="en" className={`${manrope.variable} ${rubik.variable} `}>
+      <body className="min-h-screen w-full">
+        <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
       </body>
     </html>
   )

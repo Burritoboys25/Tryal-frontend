@@ -49,7 +49,7 @@ const Values = () => {
                 <Icon className="h-12 w-12" aria-hidden="true" />
                 <h4 className="text-sub1">{title}</h4>
               </div>
-              <div className="text-body3 text-gray-600">{description}</div>
+              <div className="text-body4 text-gray-600">{description}</div>
             </div>
           ))}
         </div>
