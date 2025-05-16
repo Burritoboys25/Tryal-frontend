@@ -34,7 +34,7 @@ const CheckboxField = ({
         required={required}
         onCheckedChange={checked => onChange(!!checked, value)}
         disabled={disabled}
-        className='border-2 border-border'
+        className="border-border border-2"
       />
       <Label>{label}</Label>
       <p
