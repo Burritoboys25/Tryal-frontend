@@ -44,7 +44,7 @@ const Values = () => {
 
         <div className="grid grid-cols-1 gap-6 text-left sm:grid-cols-2 md:grid-cols-4">
           {values.map(({ title, icon: Icon, description }) => (
-            <div key={title} className="flex flex-col gap-4 rounded-xl p-6 shadow-xl">
+            <div key={title} className="flex flex-col gap-4 rounded-xl p-6 shadow-xl bg-white">
               <div className="flex items-center gap-2">
                 <Icon className="h-12 w-12" aria-hidden="true" />
                 <h4 className="text-sub1">{title}</h4>
