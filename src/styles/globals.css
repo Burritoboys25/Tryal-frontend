@@ -15,6 +15,7 @@
   --color-warning: var(--warning);
   --color-error: var(--error);
   --color-info: var(--info);
+  --color-icon-input: var(--icon-input);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -130,7 +131,7 @@
   }
 
   .text-label {
-    @apply text-[0.875rem] leading-[1.25rem] font-semibold tracking-wide uppercase;
+    @apply text-[0.875rem] leading-[1.25rem] font-semibold tracking-wide;
   }
 
   .font-logo {
