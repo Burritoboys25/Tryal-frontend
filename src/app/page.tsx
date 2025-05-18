@@ -156,7 +156,7 @@ export default function Home() {
         <section className="mx-auto -mt-[69px] h-[100dvh] w-full">
           <div className="flex h-full flex-col-reverse items-center justify-center gap-8 sm:gap-16 md:flex-row">
             <div className="w-full">
-              <h1 className="mb-6 text-[32px] leading-tight font-bold text-balance sm:text-[40px] md:text-[64px]">
+              <h1 className="text-h1 mb-6 leading-tight font-bold text-balance sm:text-[40px] md:text-[64px]">
                 Discover.
                 <br />
                 Experience.
@@ -193,7 +193,7 @@ export default function Home() {
               </h1>
             </div>
             {/* Cards Container */}
-            <div className="mt-[40px] grid w-full grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-[40px] grid w-full grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2 2xl:grid-cols-3">
               {cards.map(({ title, icon: Icon, description }) => (
                 <div key={title} className="rounded-xl bg-white p-5 shadow-lg">
                   <Icon className="h-12 w-12" aria-hidden="true" />
@@ -231,13 +231,17 @@ export default function Home() {
         {/* Gif Laptop Section*/}
         <section className="mt-[14rem] flex w-full items-center">
           <div className="mx-auto w-full text-center">
-            <h1 className="text-h2 font-semibold">
+            <h1 className="text-h3 mb-2 font-semibold">
               Booking unforgettable experiences has never been this
               <span className="text-primary"> easy</span>.
             </h1>
-            <div className="relative mt-[14rem] h-[401px] w-full rounded-3xl bg-[#E7EFEF]">
-              <div className="absolute bottom-0.5 left-1/2 h-[600px] w-[1080px] -translate-x-1/2">
-                <Image src={LaptopGif} alt="laptop gif" />
+
+            <div className="relative flex min-h-[190px] flex-col md:min-h-[401px] 2xl:min-h-[600px]">
+              <div className="flex-1"></div>
+              <div className="mt-auto min-h-[127px] w-full rounded-xl bg-[#E7EFEF] md:min-h-[214px] 2xl:min-h-[401px]">
+                <div className="absolute bottom-8 left-1/2 w-[318px] max-w-full -translate-x-1/2 md:w-[720px] 2xl:w-[1080px]">
+                  <Image src={LaptopGif} alt="laptop gif" unoptimized className="h-auto w-full" />
+                </div>
               </div>
             </div>
           </div>
