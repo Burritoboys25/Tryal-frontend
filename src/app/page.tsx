@@ -156,21 +156,21 @@ export default function Home() {
         <section className="mx-auto -mt-[69px] h-[100dvh] w-full">
           <div className="flex h-full flex-col-reverse items-center justify-center gap-8 sm:gap-16 md:flex-row">
             <div className="w-full">
-              <h1 className="mb-6 text-[32px] leading-tight font-bold text-balance sm:text-[40px] md:text-[64px]">
+              <h1 className="text-h1 mb-6 leading-tight font-bold text-balance sm:text-[40px] md:text-[64px]">
                 Discover.
                 <br />
                 Experience.
                 <br />
                 Repeat.
               </h1>
-              <p className="text-muted-foreground mb-8 max-w-md text-sm sm:text-base md:text-lg">
+              <p className="text-sub2 mb-8 max-w-md">
                 From hidden gems to thrilling adventures—find and book unforgettable experiences{' '}
                 <span className="underline decoration-orange-500 underline-offset-4">
                   all in one place.
                 </span>
               </p>
 
-              <div className="w-full justify-end">
+              <div className="justify-end md:max-w-md">
                 <InterestWaitlistForm />
               </div>
             </div>
@@ -187,18 +187,18 @@ export default function Home() {
         <section className="flex w-full items-center">
           <div className="mx-auto w-full rounded-3xl bg-[#e7efef] px-4 py-16 md:px-20 md:py-20">
             <div className="w-full text-center">
-              <h1 className="font-semibold md:text-[36px]">
+              <h1 className="text-h2">
                 Explore, connect, and book with
                 <span className="text-primary"> confidence</span>.
               </h1>
             </div>
             {/* Cards Container */}
-            <div className="mt-[40px] grid w-full grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-[40px] grid w-full grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2 2xl:grid-cols-3">
               {cards.map(({ title, icon: Icon, description }) => (
                 <div key={title} className="rounded-xl bg-white p-5 shadow-lg">
                   <Icon className="h-12 w-12" aria-hidden="true" />
                   <h4 className="text-sub1">{title}</h4>
-                  <p className="text-body4 text-muted-foreground mt-3">{description}</p>
+                  <p className="text-body2 mt-3">{description}</p>
                 </div>
               ))}
             </div>
@@ -207,7 +207,7 @@ export default function Home() {
         {/* Marque Section */}
         <section className="mt-[10rem] flex w-full items-center">
           <div className="mx-auto w-full text-center">
-            <h1 className="text-h2 font-semibold">
+            <h1 className="text-h2">
               Find your
               <span className="text-primary"> next passion </span>
               from a wide variety of categories
@@ -231,13 +231,17 @@ export default function Home() {
         {/* Gif Laptop Section*/}
         <section className="mt-[14rem] flex w-full items-center">
           <div className="mx-auto w-full text-center">
-            <h1 className="text-h2 font-semibold">
+            <h1 className="text-h2 mb-2">
               Booking unforgettable experiences has never been this
               <span className="text-primary"> easy</span>.
             </h1>
-            <div className="relative mt-[14rem] h-[401px] w-full rounded-3xl bg-[#E7EFEF]">
-              <div className="absolute bottom-0.5 left-1/2 h-[600px] w-[1080px] -translate-x-1/2">
-                <Image src={LaptopGif} alt="laptop gif" />
+
+            <div className="relative flex min-h-[190px] flex-col md:min-h-[401px] 2xl:min-h-[600px]">
+              <div className="flex-1"></div>
+              <div className="mt-auto min-h-[127px] w-full rounded-xl bg-[#E7EFEF] md:min-h-[214px] 2xl:min-h-[401px]">
+                <div className="absolute bottom-8 left-1/2 w-[318px] max-w-full -translate-x-1/2 md:w-[720px] 2xl:w-[1080px]">
+                  <Image src={LaptopGif} alt="laptop gif" unoptimized className="h-auto w-full" />
+                </div>
               </div>
             </div>
           </div>
@@ -245,11 +249,11 @@ export default function Home() {
         {/* Join Waitlist Section */}
         <section className="my-[9rem] flex w-full items-center">
           <div className="mx-auto w-full text-center">
-            <h1 className="text-h2 font-semibold">
+            <h1 className="text-h2">
               Fun&apos;s around the corner —
               <span className="text-primary"> Don&apos;t miss out!</span>
             </h1>
-            <div className="mt-[3rem] flex w-full justify-center">
+            <div className="mx-auto mt-[3rem] flex w-full justify-center md:max-w-md">
               <InterestWaitlistForm />
             </div>
           </div>
