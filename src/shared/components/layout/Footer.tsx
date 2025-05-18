@@ -14,12 +14,12 @@ export default function Footer() {
           <h4 className="mb-2 font-semibold">Company</h4>
           <ul className="space-y-1 text-gray-300">
             <li>
-              <a href="#" className="hover:underline">
+              <a href="about" className="hover:underline">
                 About us
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a href="how-it-works" className="hover:underline">
                 How it works
               </a>
             </li>
@@ -51,7 +51,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="mt-12 flex flex-col items-center justify-between gap-2 border-t border-white/20 pt-6 text-xs text-gray-400 md:flex-row">
-        <p>©2025 BananaBros – All rights reserved</p>
+        <p>©2025 Tryal – All rights reserved</p>
         <div className="flex gap-4">
           <a href="#" className="hover:underline">
             Privacy Policy
