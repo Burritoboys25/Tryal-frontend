@@ -54,7 +54,7 @@ const ReferralForm = () => {
   }
 
   const handleReferralChange = (checked: boolean, value: string | boolean) => {
-    if(typeof value !== 'string') return;
+    if (typeof value !== 'string') return
 
     setSelectedReferrals(prev => {
       if (checked) {
@@ -69,7 +69,7 @@ const ReferralForm = () => {
     <section className="-mt-[72px] flex min-h-screen items-center justify-center px-4">
       <form className="max-w-md space-y-6" onSubmit={handleSubmit}>
         <h1 className="text-h3">Thank you for your interest!</h1>
-        <div className="text-body4 text-muted-foreground space-y-4">
+        <div className="text-body2 space-y-4">
           <p className="">
             We&apos;re excited to have you on board. We&apos;ll be sending you updates via email as
             we get closer to launch, so keep an eye on your inbox!{' '}
@@ -88,7 +88,7 @@ const ReferralForm = () => {
             onChange={handleReferralChange}
           />
         ))}
-        <Button type="submit" variant="solid" className="mt-2 h-[40px] w-full">
+        <Button type="submit" variant="solid" className="mt-2 w-full">
           {isSubmitting ? 'Submitting...' : 'Submit'}
         </Button>
       </form>

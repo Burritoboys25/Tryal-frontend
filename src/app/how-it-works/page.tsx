@@ -41,7 +41,7 @@ const HowItWorksPage = () => {
       <Container>
         <section className="flex min-h-[calc(100vh-600px)] items-center justify-center py-8 sm:py-12 lg:py-24">
           <div className="flex h-full flex-col items-center justify-center text-center">
-            <h2 className="text-h3 mb-10 w-full">How it works</h2>
+            <h2 className="text-h2 mb-10 w-full">How it works</h2>
             {/* Card Container */}
             <div className="grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
               {howItWorksSteps.map(({ step, title, description, icon: Icon }) => (
@@ -52,7 +52,7 @@ const HowItWorksPage = () => {
                   <Icon />
                   <div className="mt-4 space-y-3 text-center">
                     <h3 className="text-sub1">{title}</h3>
-                    <p className="text-body4">{description}</p>
+                    <p className="text-body2">{description}</p>
                   </div>
                   <span className="bg-primary text-primary-foreground absolute -top-6 flex size-12 items-center justify-center rounded-full">
                     {step}
