@@ -163,14 +163,14 @@ export default function Home() {
                 <br />
                 Repeat.
               </h1>
-              <p className="text-muted-foreground mb-8 max-w-md text-sm sm:text-base md:text-lg">
+              <p className="text-sub2 mb-8 max-w-md">
                 From hidden gems to thrilling adventures—find and book unforgettable experiences{' '}
                 <span className="underline decoration-orange-500 underline-offset-4">
                   all in one place.
                 </span>
               </p>
 
-              <div className="w-full justify-end">
+              <div className="justify-end md:max-w-md">
                 <InterestWaitlistForm />
               </div>
             </div>
@@ -187,7 +187,7 @@ export default function Home() {
         <section className="flex w-full items-center">
           <div className="mx-auto w-full rounded-3xl bg-[#e7efef] px-4 py-16 md:px-20 md:py-20">
             <div className="w-full text-center">
-              <h1 className="font-semibold md:text-[36px]">
+              <h1 className="text-h2">
                 Explore, connect, and book with
                 <span className="text-primary"> confidence</span>.
               </h1>
@@ -198,7 +198,7 @@ export default function Home() {
                 <div key={title} className="rounded-xl bg-white p-5 shadow-lg">
                   <Icon className="h-12 w-12" aria-hidden="true" />
                   <h4 className="text-sub1">{title}</h4>
-                  <p className="text-body4 text-muted-foreground mt-3">{description}</p>
+                  <p className="text-body2 mt-3">{description}</p>
                 </div>
               ))}
             </div>
@@ -207,7 +207,7 @@ export default function Home() {
         {/* Marque Section */}
         <section className="mt-[10rem] flex w-full items-center">
           <div className="mx-auto w-full text-center">
-            <h1 className="text-h2 font-semibold">
+            <h1 className="text-h2">
               Find your
               <span className="text-primary"> next passion </span>
               from a wide variety of categories
@@ -231,7 +231,7 @@ export default function Home() {
         {/* Gif Laptop Section*/}
         <section className="mt-[14rem] flex w-full items-center">
           <div className="mx-auto w-full text-center">
-            <h1 className="text-h3 mb-2 font-semibold">
+            <h1 className="text-h2 mb-2">
               Booking unforgettable experiences has never been this
               <span className="text-primary"> easy</span>.
             </h1>
@@ -249,11 +249,11 @@ export default function Home() {
         {/* Join Waitlist Section */}
         <section className="my-[9rem] flex w-full items-center">
           <div className="mx-auto w-full text-center">
-            <h1 className="text-h2 font-semibold">
+            <h1 className="text-h2">
               Fun&apos;s around the corner —
               <span className="text-primary"> Don&apos;t miss out!</span>
             </h1>
-            <div className="mt-[3rem] flex w-full justify-center">
+            <div className="mx-auto mt-[3rem] flex w-full justify-center md:max-w-md">
               <InterestWaitlistForm />
             </div>
           </div>
