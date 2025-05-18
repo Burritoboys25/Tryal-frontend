@@ -9,7 +9,7 @@ export default function AboutPage() {
   return (
     <MainLayout>
       <Container>
-        <div className="space-y-24">
+        <div className="space-y-8 md:space-y-12 2xl:space-y-24">
           <OurStory />
           <MissionVision />
           <Values />
