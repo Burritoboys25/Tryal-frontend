@@ -39,11 +39,11 @@ const HowItWorksPage = () => {
   return (
     <MainLayout>
       <Container>
-        <section className="flex min-h-[calc(100vh-600px)] items-center justify-center py-8 sm:py-12 lg:py-24">
+        <section className="flex min-h-[calc(100vh-600px)] items-center justify-center py-8 md:py-12 2xl:py-24">
           <div className="flex h-full flex-col items-center justify-center text-center">
             <h2 className="text-h2 mb-10 w-full">How it works</h2>
             {/* Card Container */}
-            <div className="grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-8 sm:gap-4 md:grid-cols-2 2xl:grid-cols-4">
               {howItWorksSteps.map(({ step, title, description, icon: Icon }) => (
                 <div
                   key={step}
