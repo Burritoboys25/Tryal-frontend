@@ -3,7 +3,7 @@ import ExploreLayout from '@/modules/explore/components/layout/ExploreLayout'
 import Container from '@/shared/components/layout/Container'
 import { ScrollArea } from '@/shared/components/ui/base/scroll-area'
 import React from 'react'
-import BusinessList from '@/modules/explore/components/ExploreCard'
+import BusinessCards from '@/modules/explore/components/BusinessCards'
 
 const ExplorePage = () => {
   return (
@@ -15,7 +15,7 @@ const ExplorePage = () => {
             {/* Left: Scrollable business list */}
             <div className="flex min-h-0 w-[665px] flex-1 flex-col">
               <ScrollArea className="bg-background h-full min-h-0 flex-1 rounded-xl">
-                <BusinessList />
+                <BusinessCards />
               </ScrollArea>
             </div>
             {/* Right: Mapbox placeholder */}

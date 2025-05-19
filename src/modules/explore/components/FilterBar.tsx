@@ -4,8 +4,7 @@ import React from 'react'
 import FilterDropdown from './FilterDropdown'
 import { Button } from '@/shared/components/ui/base/button'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
-
-const filterTypes = ['Type', 'Skill level', 'Group type', 'Duration', 'Distance', 'Credit Range']
+import { filterTypes } from '../../../shared/lib/constants'
 
 const FilterBar = ({ credits = 30 }: { credits?: number }) => {
   return (

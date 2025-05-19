@@ -3,35 +3,13 @@
 import React from 'react'
 import Image from 'next/image'
 import businesses from 'src/shared/mock/business.json'
-import experiences from 'src/shared/mock/experiences.json'
-import categories from 'src/shared/mock/categories.json'
-import experienceCategories from 'src/shared/mock/experience_categories.json'
-import { Business, Experience, Category, ExperienceCategory } from 'src/shared/mock/MockTypes'
+import { Business } from 'src/shared/mock/MockTypes'
+import { getCategoriesForBusiness } from '../libs/CategoryMapper'
 import { Button } from '@/shared/components/ui/base/button'
 import BookmarkedIcon from '@/shared/assets/icons/bookmarked.svg'
-import UnbookMarkedIcon from '@/shared/assets/icons/unbookmarked.svg'
-import BcreditIcon from '@/shared/assets/icons/bcredit.svg'
+import UnBookMarkedIcon from '@/shared/assets/icons/unbookmarked.svg'
+import CreditIcon from '@/shared/assets/icons/credit.svg'
 import { Badge } from '@/shared/components/ui/base/badge'
-
-// Helper to get categories for an experience
-const getCategoriesForExp = (exp_id: string) => {
-  const catIds = (experienceCategories as ExperienceCategory[])
-    .filter(ec => ec.exp_id === exp_id)
-    .map(ec => ec.cat_id)
-  return (categories as Category[]).filter(cat => catIds.includes(cat.cat_id)).map(cat => cat.name)
-}
-
-// Helper to get categories for a business (aggregate all categories from its experiences)
-const getCategoriesForBusiness = (business_id: string) => {
-  // Find all experiences for this business
-  const bizExps = (experiences as Experience[]).filter(exp => exp.business_id === business_id)
-  // Collect all category names from those experiences
-  const catNames = new Set<string>()
-  bizExps.forEach(exp => {
-    getCategoriesForExp(exp.exp_id).forEach(name => catNames.add(name))
-  })
-  return Array.from(catNames)
-}
 
 // Mock: join experiences with business and categories
 const exploreData = (businesses as Business[]).map(business => {
@@ -90,19 +68,21 @@ const ExploreCard = ({
           {bookmarked ? (
             <BookmarkedIcon className="h-6 w-6" />
           ) : (
-            <UnbookMarkedIcon className="h-6 w-6" />
+            <UnBookMarkedIcon className="h-6 w-6" />
           )}
         </Button>
-        <Badge className="bg-badge-color flex h-[36px] w-[67px] items-center justify-start">
-          <BcreditIcon className="!h-6 !w-6" />
-          <span className="text-sub4 text-foreground ml-1">{credits ?? 0}</span>
+        <Badge className="bg-accent flex h-[36px] w-[67px] items-center justify-start">
+          <span className="text-sub4 text-foreground ml-1 flex items-center gap-1.5">
+            <CreditIcon className="!h-6 !w-6" />
+            {credits ?? 0}
+          </span>
         </Badge>
       </div>
     </div>
   )
 }
 
-const BusinessList: React.FC = () => (
+const BusinessCards: React.FC = () => (
   <div className="px-2">
     {exploreData.map((biz, idx) => (
       <ExploreCard key={idx} {...biz} />
@@ -110,4 +90,4 @@ const BusinessList: React.FC = () => (
   </div>
 )
 
-export default BusinessList
+export default BusinessCards
