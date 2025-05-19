@@ -1,0 +1,91 @@
+[
+  {
+    "business_id": "b1f03e1e-9427-43b0-94f6-d2e95dffdb44",
+    "name": "Clay & Sip Studio",
+    "email": "contact@claysip.com",
+    "website": "https://claysip.com",
+    "address": "123 Main St, Austin, TX",
+    "phone_number": "+1-512-555-7890",
+    "stripe_account_id": "acct_1O9ExAMPLEstrpAccnt",
+    "rating": 4.3,
+    "credits": 15
+  },
+  {
+    "business_id": "c5a4e728-93f0-4a6d-b1e5-9e0e9abfc4e0",
+    "name": "The Painted Giraffe",
+    "email": "info@paintedgiraffe.com",
+    "website": "https://paintedgiraffe.com",
+    "address": "456 Color Ave, Austin, TX",
+    "phone_number": "+1-512-444-3210",
+    "stripe_account_id": "acct_2G8PaintStripe",
+    "rating": 3.2,
+    "credits": 70
+  },
+  {
+    "business_id": "e7b4f276-19b2-46f3-91a3-4d6bfc04c6e9",
+    "name": "Austin Drumming Circle",
+    "email": "hello@drumcircleatx.com",
+    "website": "https://drumcircleatx.com",
+    "address": "789 Rhythm Rd, Austin, TX",
+    "phone_number": "+1-512-333-8822",
+    "stripe_account_id": "acct_3DRUMzStripeAcc",
+    "rating": 4.7
+    ,
+    "credits": 43
+  },
+  {
+    "business_id": "d8e1f2a3-4b5c-4e6f-8a7b-9c0d1e2f3a4b",
+    "name": "Thread & Needle",
+    "email": "info@threadneedle.com",
+    "website": "https://threadneedle.com",
+    "address": "321 Stitch St, Austin, TX",
+    "phone_number": "+1-512-222-3344",
+    "stripe_account_id": "acct_4THREADStripeAcc",
+    "rating": 1.3,
+    "credits": 82
+  },
+  {
+    "business_id": "f1a2b3c4-d5e6-7f8a-9b0c-1d2e3f4a5b6c",
+    "name": "Urban Gardeners Co.",
+    "email": "hello@urbangardeners.com",
+    "website": "https://urbangardeners.com",
+    "address": "101 Greenway Blvd, Austin, TX",
+    "phone_number": "+1-512-555-1010",
+    "stripe_account_id": "acct_5URBGARDStripeAcc",
+    "rating": 4.9,
+    "credits": 36
+  },
+  {
+    "business_id": "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+    "name": "Baker's Dozen Studio",
+    "email": "info@bakersdozen.com",
+    "website": "https://bakersdozen.com",
+    "address": "202 Pastry Ln, Austin, TX",
+    "phone_number": "+1-512-555-2020",
+    "stripe_account_id": "acct_6BAKEDOZStripeAcc",
+    "rating": 3.3,
+    "credits": 40
+  },
+  {
+    "business_id": "c1d2e3f4-a5b6-7c8d-9e0f-1a2b3c4d5e6f",
+    "name": "Mindful Movement",
+    "email": "contact@mindfulmove.com",
+    "website": "https://mindfulmove.com",
+    "address": "303 Zen St, Austin, TX",
+    "phone_number": "+1-512-555-3030",
+    "stripe_account_id": "acct_7MINDFULStripeAcc",
+    "rating": 2.3,
+    "credits": 23
+  },
+  {
+    "business_id": "d1e2f3a4-b5c6-7d8e-9f0a-1b2c3d4e5f6a",
+    "name": "Tech Explorers Lab",
+    "email": "info@techexplorers.com",
+    "website": "https://techexplorers.com",
+    "address": "404 Code Ave, Austin, TX",
+    "phone_number": "+1-512-555-4040",
+    "stripe_account_id": "acct_8TECHLABStripeAcc",
+    "rating": 1.3,
+    "credits": 45
+  }
+]
