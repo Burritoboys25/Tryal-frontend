@@ -206,14 +206,14 @@ export default function Home() {
         </section>
         {/* Marque Section */}
         <section className="mt-[10rem] flex w-full items-center">
-          <div className="mx-auto w-full text-center">
+          <div className="mx-auto mb-16 w-full text-center">
             <h1 className="text-h2">
               Find your
               <span className="text-primary"> next passion </span>
               from a wide variety of categories
             </h1>
             {/* Marque */}
-            <div className="mt-16 flex w-full overflow-hidden">
+            <div className="absolute left-0 mt-16 flex w-full overflow-hidden">
               <Marquee pauseOnHover className="[--duration:25s]">
                 {marqueList.map(({ title, icon: Icon }) => (
                   <div
