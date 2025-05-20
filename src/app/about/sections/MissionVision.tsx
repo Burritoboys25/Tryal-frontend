@@ -4,10 +4,6 @@ export default function MissionVision() {
       <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
         {/* Left: Image */}
         <div className="h-[303px] w-[294px] rounded-lg bg-gray-200" />
-    <section className="space-y-8">
-      <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
-        {/* Left: Image */}
-        <div className="h-[303px] w-[294px] rounded-lg bg-gray-200" />
 
         {/* Right: Mission Text */}
         <div>
@@ -32,9 +28,6 @@ export default function MissionVision() {
           </p>
         </div>
 
-        {/* Right: Image */}
-        <div className="h-[303px] w-[294px] rounded-lg bg-gray-200" />
-      </div>
         {/* Right: Image */}
         <div className="h-[303px] w-[294px] rounded-lg bg-gray-200" />
       </div>
