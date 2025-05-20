@@ -92,8 +92,8 @@ const marqueList = [
 
 function ImageGrid() {
   return (
-    <div className="relative h-[30dvh] w-[90%] max-w-[600px] md:h-[70dvh] md:w-[70vh]">
-      <div className="absolute inset-0 flex items-stretch justify-between gap-2 sm:gap-4">
+    <div className="relative h-[30dvh] w-[90%] max-w-[600px] md:h-[40dvh] md:w-[40vw] 2xl:h-[70dvh] 2xl:w-[70vh]">
+      <div className="absolute inset-0 flex translate-y-0 items-stretch justify-between gap-2 md:-translate-y-3 md:gap-4 2xl:translate-y-0">
         <div className="flex h-full w-1/2 flex-col gap-2">
           <div className="flex h-[95%] flex-col gap-2 sm:gap-4">
             <div className="relative min-h-0 flex-1">
@@ -154,7 +154,7 @@ export default function Home() {
       {/* Hero Section */}
       <Container>
         <section className="mx-auto -mt-[69px] h-[100dvh] w-full">
-          <div className="flex h-full flex-col-reverse items-center justify-center gap-8 sm:gap-16 md:flex-row">
+          <div className="flex h-full flex-col-reverse items-center justify-center gap-8 md:flex-row md:gap-8 2xl:gap-16">
             <div className="w-full">
               <h1 className="text-h1 mb-6 leading-tight font-bold text-balance sm:text-[40px] md:text-[64px]">
                 Discover.
@@ -170,14 +170,14 @@ export default function Home() {
                 </span>
               </p>
 
-              <div className="justify-end md:max-w-md">
+              <div className="relative justify-end md:absolute md:w-[500px] 2xl:relative 2xl:max-w-md">
                 <InterestWaitlistForm />
               </div>
             </div>
 
             <div className="relative z-0 flex w-full justify-center md:w-1/2">
               {/* Glow Background*/}
-              <div className="absolute top-1/2 left-1/2 z-[-1] h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F4BCAB] blur-[120px] sm:h-[450px] sm:w-[450px] md:h-[600px] md:w-[600px]" />
+              <div className="absolute top-1/2 left-1/2 z-[-1] h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F4BCAB] blur-[120px] md:h-[400px] md:w-[400px] 2xl:h-[600px] 2xl:w-[600px]" />
               <ImageGrid />
             </div>
           </div>
@@ -206,14 +206,14 @@ export default function Home() {
         </section>
         {/* Marque Section */}
         <section className="mt-[10rem] flex w-full items-center">
-          <div className="mx-auto w-full text-center">
+          <div className="mx-auto mb-16 w-full text-center">
             <h1 className="text-h2">
               Find your
               <span className="text-primary"> next passion </span>
               from a wide variety of categories
             </h1>
             {/* Marque */}
-            <div className="mt-16 flex w-full overflow-hidden">
+            <div className="absolute left-0 mt-16 flex w-full overflow-hidden">
               <Marquee pauseOnHover className="[--duration:25s]">
                 {marqueList.map(({ title, icon: Icon }) => (
                   <div

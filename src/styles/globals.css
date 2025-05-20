@@ -87,6 +87,10 @@
     @apply text-[3.5rem] font-extrabold;
   }
 
+  .text-display {
+    @apply text-[3.5rem] font-extrabold;
+  }
+
   .text-h1 {
     @apply text-[2.5rem] leading-[3.5rem] font-bold tracking-tight;
   }
@@ -105,6 +109,14 @@
 
   .text-sub2 {
     @apply text-muted-foreground text-[1.25rem] leading-[1.875rem] font-medium;
+  }
+
+  .text-sub3 {
+    @apply text-[1rem] leading-[2rem] font-bold;
+  }
+
+  .text-sub4 {
+    @apply text-[1rem] leading-[1.875rem] font-normal;
   }
 
   .text-sub3 {
@@ -152,9 +164,5 @@
   .screen-minus-navbar-explore {
     min-height: calc(100vh - 90px);
     height: calc(100vh - 90px);
-  }
-
-  .explore-card-shadow {
-    box-shadow: var(--shadow-xs), var(--shadow-bottom-sm);
   }
 }
