@@ -12,6 +12,14 @@ export default async function middleware(req: NextRequest) {
   return NextResponse.next()
 }
 
+let matcher: string[]
+
+if (process.env.ENVIRONMENT === 'dev') {
+  matcher = []
+} else {
+  matcher = ['/explore', '/login', '/signup']
+}
+
 export const config = {
-  matcher: ['/dashboard/:path*', '/settings'],
+  matcher
 }
