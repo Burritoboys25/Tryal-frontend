@@ -9,7 +9,7 @@ import NotificationsIcon from '@/shared/assets/icons/notifications.svg'
 import { Avatar, AvatarFallback, AvatarImage } from '@/shared/components/ui/base/avatar'
 import { Input } from '@/shared/components/ui/base/input'
 
-function Navbar() {
+function ExploreHeader() {
   return (
     <>
       <nav className="fixed top-0 right-0 left-0 z-50 min-h-[69px] w-full bg-white">
@@ -48,4 +48,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default ExploreHeader

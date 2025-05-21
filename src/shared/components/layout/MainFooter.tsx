@@ -1,6 +1,6 @@
 import { Mail } from 'lucide-react'
 
-export default function Footer() {
+export default function MainFooter() {
   return (
     <footer className="bg-neutral-900 px-4 py-12 text-sm text-white md:px-12">
       <div className="mx-auto flex flex-col gap-12 md:flex-row md:items-start md:justify-between">

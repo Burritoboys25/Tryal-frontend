@@ -11,7 +11,7 @@ import {
 import Link from 'next/link'
 import { Checkbox } from '@/shared/components/ui/base/checkbox'
 import { FormSelect } from '@/shared/components/ui/forms/FormSelect'
-import MainLayout from '@/shared/components/layout/MainLayout'
+import ViewLayout from '@/shared/components/layout/ViewLayout'
 import Container from '@/shared/components/layout/Container'
 import { showToast } from '@/shared/components/ui/notifications/Toast'
 
@@ -104,7 +104,7 @@ const BecomePartnerForm = () => {
   }
 
   return (
-    <MainLayout>
+    <ViewLayout type={"partner"}>
       <Container>
         <section className="screen-minus-navbar flex justify-center">
           <form onSubmit={handleSubmit} className="w-full max-w-[432px] space-y-2">
@@ -239,7 +239,7 @@ const BecomePartnerForm = () => {
           </form>
         </section>
       </Container>
-    </MainLayout>
+    </ViewLayout>
   )
 }
 

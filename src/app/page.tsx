@@ -20,7 +20,7 @@ import SelfImprovementIcon from '@/shared/assets/icons/self_improvement.svg'
 
 import { Marquee } from '@/shared/components/magicui/marquee'
 import InterestWaitlistForm from '@/modules/waitlist/components/InterestWaitlistForm'
-import MainLayout from '@/shared/components/layout/MainLayout'
+import ViewLayout from '@/shared/components/layout/ViewLayout'
 
 import Container from '@/shared/components/layout/Container'
 
@@ -150,7 +150,7 @@ function ImageGrid() {
 
 export default function Home() {
   return (
-    <MainLayout>
+    <ViewLayout type={"main"}>
       {/* Hero Section */}
       <Container>
         <section className="mx-auto -mt-[69px] h-[100dvh] w-full">
@@ -259,6 +259,6 @@ export default function Home() {
           </div>
         </section>
       </Container>
-    </MainLayout>
+    </ViewLayout>
   )
 }
