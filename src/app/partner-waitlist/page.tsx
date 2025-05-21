@@ -13,6 +13,7 @@ import { Checkbox } from '@/shared/components/ui/base/checkbox'
 import { FormSelect } from '@/shared/components/ui/forms/FormSelect'
 import MainLayout from '@/shared/components/layout/MainLayout'
 import Container from '@/shared/components/layout/Container'
+import { showToast } from '@/shared/components/ui/notifications/Toast'
 
 const categories = [
   'Arts & Crafts',
@@ -79,12 +80,15 @@ const BecomePartnerForm = () => {
       })
 
       if (res.ok) {
+        showToast({ type: 'waitlist', description: "We’ll be in touch soon!" })
         router.push(`/thank-you?email=${encodeURIComponent(form.email)}&type=partner`)
       } else {
+        showToast({ type: 'error' })
         const data = await res.json()
         setError(data.error || 'Something went wrong.')
       }
     } catch (err) {
+      showToast({ type: 'error' })
       console.error(err)
       setError('Network error.')
     } finally {

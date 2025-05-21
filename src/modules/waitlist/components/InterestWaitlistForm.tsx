@@ -3,6 +3,7 @@ import { Button } from '@/shared/components/ui/base/button'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Input } from '@/shared/components/ui/base/input'
+import { showToast } from '@/shared/components/ui/notifications/Toast'
 
 const InterestWaitlistForm = () => {
   const [email, setEmail] = useState('')
@@ -22,13 +23,16 @@ const InterestWaitlistForm = () => {
       })
 
       if (!response.ok) {
+        showToast({ type: 'error' })
         throw new Error('Failed to join waitlist')
       }
-
+      
+      showToast({ type: 'waitlist', description: "You're in! We'll keep you posted." })
       setIsSubmitting(false)
       setEmail('')
       router.push(`/thank-you?email=${encodeURIComponent(email)}&type=interest`)
     } catch (error) {
+      showToast({ type: 'error' })
       console.error(error)
       setIsSubmitting(false)
     }
