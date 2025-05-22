@@ -44,13 +44,11 @@ function MainNavbar({ disablePartner = false }: MainNavbarProps) {
           </div>
 
           {/* Desktop CTA */}
-          {!disablePartner && (
-            <div className="hidden w-[150px] md:flex">
-              <Button variant="solid">
-                <Link href="/partner-waitlist">Become a partner</Link>
-              </Button>
-            </div>
-          )}
+          <div className="hidden w-[150px] md:flex">
+            <Button variant="solid" className={disablePartner ? 'invisible' : ''}>
+              <Link href="/partner-waitlist">Become a partner</Link>
+            </Button>
+          </div>
 
           {/* Mobile Menu Toggle */}
           <HamburgerToggle isOpen={isOpen} onClick={handleClick} />
@@ -75,11 +73,13 @@ function MainNavbar({ disablePartner = false }: MainNavbarProps) {
                 </Link>
               </li>
             </ul>
-            {!disablePartner && (
-              <Button onClick={handleClick} variant="solid">
-                <Link href="/partner-waitlist">Become a partner</Link>
-              </Button>
-            )}
+            <Button
+              onClick={handleClick}
+              variant="solid"
+              className={disablePartner ? 'invisible' : ''}
+            >
+              <Link href="/partner-waitlist">Become a partner</Link>
+            </Button>
           </div>
         </div>
       </div>

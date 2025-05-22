@@ -106,7 +106,7 @@ const BecomePartnerForm = () => {
   return (
     <ViewLayout type={"partner"}>
       <Container>
-        <section className="screen-minus-navbar flex justify-center">
+        <section className="flex justify-center pb-[120px] pt-[81px]">
           <form onSubmit={handleSubmit} className="w-full max-w-[432px] space-y-2">
             <div className="space-y-1.5">
               <h2 className="text-h2">
