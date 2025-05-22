@@ -82,34 +82,36 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
           <ArrowDropDownIcon className="text-foreground h-4 w-4" />
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto px-4 py-3">
-        <div>
-          {isMulti && (
-            <MultiSelectDropdownBody
-              options={options as string[]}
-              selected={localValue as string[]}
-              onToggle={toggleMulti}
-            />
-          )}
+      <PopoverContent className="w-auto px-0 pt-1">
+        <div className="flex flex-col">
+          <div className="px-3 pt-0 pb-4">
+            {isMulti && (
+              <MultiSelectDropdownBody
+                options={options as string[]}
+                selected={localValue as string[]}
+                onToggle={toggleMulti}
+              />
+            )}
 
-          {isSingle && (
-            <SingleSelectDropdownBody
-              options={options as string[]}
-              selected={localValue as string}
-              onSelect={val => setLocalValue(val)}
-            />
-          )}
+            {isSingle && (
+              <SingleSelectDropdownBody
+                options={options as string[]}
+                selected={localValue as string}
+                onSelect={val => setLocalValue(val)}
+              />
+            )}
 
-          {isRange && (
-            <RangedSliderDropdownBody
-              min={options[0] as number}
-              max={options[1] as number}
-              value={localValue as [number, number]}
-              onChange={val => setLocalValue(val)}
-            />
-          )}
+            {isRange && (
+              <RangedSliderDropdownBody
+                min={options[0] as number}
+                max={options[1] as number}
+                value={localValue as [number, number]}
+                onChange={val => setLocalValue(val)}
+              />
+            )}
+          </div>
 
-          <div className="flex justify-end gap-2 border-t pt-3">
+          <div className="border-border/50 flex justify-end gap-2 border-t px-3 pt-3">
             <Button variant="outline" className="px-6 py-2" onClick={handleClear}>
               Clear
             </Button>

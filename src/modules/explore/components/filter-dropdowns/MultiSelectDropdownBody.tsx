@@ -9,10 +9,17 @@ type Props = {
 
 const MultiSelectDropdownBody: React.FC<Props> = ({ options, selected, onToggle }) => {
   return (
-    <div className="grid grid-cols-2 gap-x-12 gap-y-2">
+    <div className="grid grid-cols-2 gap-x-3">
       {options.map(option => (
-        <label key={option} className="flex cursor-pointer items-center gap-2 text-sm">
-          <Checkbox checked={selected.includes(option)} onCheckedChange={() => onToggle(option)} />
+        <label
+          key={option}
+          className="text-foreground text-body1 flex cursor-pointer items-center gap-2 px-3 py-1.5"
+        >
+          <Checkbox
+            checked={selected.includes(option)}
+            onCheckedChange={() => onToggle(option)}
+            className="text-foreground border-icon-input size-4 border-2"
+          />
           <span>{option}</span>
         </label>
       ))}
