@@ -35,6 +35,6 @@ export const filterOptions: Record<FilterKey, string[] | [number, number]> = {
     'Group & Team-Building',
   ],
   duration: ['Any', '30 mins', '45 mins', '1 hour', '1.5 hours', '2+ hours'],
-  credits: [2, 15],
+  credits: [0, 50],
   distance: ['Auto', '1/2 mile', '1 mile', '5 miles', '10 miles', '25+ miles'],
 }
