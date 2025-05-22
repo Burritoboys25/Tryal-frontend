@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
 import { Manrope, Rubik } from 'next/font/google'
+import { Toaster } from 'react-hot-toast'
 import NextAuthSessionProvider from '@/shared/components/layout/NextAuthSessionProvider'
 
 const manrope = Manrope({
@@ -28,7 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${rubik.variable} `}>
       <body className="min-h-screen w-full">
-        <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
+        <NextAuthSessionProvider>
+          <Toaster />
+          {children}
+        </NextAuthSessionProvider>
       </body>
     </html>
   )

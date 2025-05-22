@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import CheckboxField from '@/shared/components/ui/forms/CheckboxField'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { showToast } from '@/shared/components/ui/notifications/Toast'
 
 const referralOptions = [
   'Network / Friend',
@@ -44,9 +45,11 @@ const ReferralForm = () => {
       })
 
       if (res.ok) {
+        showToast({ type: 'waitlist', description: "You're awesome – thanks for sharing!" })
         router.push('/')
       }
     } catch (error) {
+      showToast({ type: 'error' })
       console.error(error)
     } finally {
       setIsSubmitting(false)
@@ -68,7 +71,7 @@ const ReferralForm = () => {
   return (
     <section className="-mt-[72px] flex min-h-screen items-center justify-center px-4">
       <form className="max-w-md space-y-6" onSubmit={handleSubmit}>
-        <h1 className="text-h3">Thank you for your interest!</h1>
+        <h1 className="text-h2">Thank you for your interest!</h1>
         <div className="text-body2 space-y-4">
           <p className="">
             We&apos;re excited to have you on board. We&apos;ll be sending you updates via email as

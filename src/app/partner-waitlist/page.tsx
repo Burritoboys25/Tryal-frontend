@@ -11,8 +11,9 @@ import {
 import Link from 'next/link'
 import { Checkbox } from '@/shared/components/ui/base/checkbox'
 import { FormSelect } from '@/shared/components/ui/forms/FormSelect'
-import MainLayout from '@/shared/components/layout/MainLayout'
+import ViewLayout from '@/shared/components/layout/ViewLayout'
 import Container from '@/shared/components/layout/Container'
+import { showToast } from '@/shared/components/ui/notifications/Toast'
 
 const categories = [
   'Arts & Crafts',
@@ -79,12 +80,15 @@ const BecomePartnerForm = () => {
       })
 
       if (res.ok) {
+        showToast({ type: 'waitlist', description: "We’ll be in touch soon!" })
         router.push(`/thank-you?email=${encodeURIComponent(form.email)}&type=partner`)
       } else {
+        showToast({ type: 'error' })
         const data = await res.json()
         setError(data.error || 'Something went wrong.')
       }
     } catch (err) {
+      showToast({ type: 'error' })
       console.error(err)
       setError('Network error.')
     } finally {
@@ -100,9 +104,9 @@ const BecomePartnerForm = () => {
   }
 
   return (
-    <MainLayout>
+    <ViewLayout type={"partner"}>
       <Container>
-        <section className="screen-minus-navbar flex justify-center">
+        <section className="flex justify-center pb-[120px] pt-[81px]">
           <form onSubmit={handleSubmit} className="w-full max-w-[432px] space-y-2">
             <div className="space-y-1.5">
               <h2 className="text-h2">
@@ -235,7 +239,7 @@ const BecomePartnerForm = () => {
           </form>
         </section>
       </Container>
-    </MainLayout>
+    </ViewLayout>
   )
 }
 
