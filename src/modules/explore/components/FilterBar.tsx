@@ -7,8 +7,8 @@ import CreditIcon from '@/shared/assets/icons/credit.svg'
 import { filterConfig, FilterKey, filterOptions } from '../libs/FilterConstants'
 
 type FilterBarProps = {
-  filters: Record<FilterKey, string[] | string>
-  onChange: (key: FilterKey, value: string[] | string) => void
+  filters: Record<FilterKey, string[] | string | [number, number]>
+  onChange: (key: FilterKey, value: string[] | string | [number, number]) => void
   onReset: () => void
   credits?: number
 }
@@ -18,18 +18,20 @@ const FilterBar = ({ filters, onChange, onReset, credits = 30 }: FilterBarProps)
     <div className="flex w-full gap-3 py-2">
       {Object.entries(filterConfig).map(([key, config]) => {
         const k = key as FilterKey
-        // Skip range filters for now
-        if (config.type === 'range') return null
 
         return (
           <FilterDropdown
             key={k}
             label={config.label}
             type={config.type}
-            options={filterOptions[k] as string[]}
+            options={filterOptions[k] as string[] | [number, number]}
             value={filters[k]}
             onApply={val => onChange(k, val)}
-            onClear={() => onChange(k, config.type === 'multi' ? [] : '')}
+            onClear={() => {
+              if (config.type === 'multi') return onChange(k, []) // reset to empty array
+              if (config.type === 'range') return onChange(k, filterOptions[k]) // reset to [min, max]
+              if (config.type === 'single') return onChange(k, '') // reset to empty string
+            }}
           />
         )
       })}

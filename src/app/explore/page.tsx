@@ -22,7 +22,7 @@ const defaultFilters: Filters = {
   skillLevel: [],
   groupType: '',
   duration: '',
-  credits: [1, 15],
+  credits: [0, 50],
   distance: '',
 }
 

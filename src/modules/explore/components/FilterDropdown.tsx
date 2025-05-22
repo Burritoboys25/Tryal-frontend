@@ -5,13 +5,14 @@ import ArrowDropDownIcon from '@/shared/assets/icons/arrow_drop_down.svg'
 import MultiSelectDropdownBody from './filter-dropdowns/MultiSelectDropdownBody'
 import SingleSelectDropdownBody from './filter-dropdowns/SingleSelectDropdownBody'
 import { Button } from '@/shared/components/ui/base/button'
+import RangedSliderDropdownBody from './filter-dropdowns/RangedSliderDropdownBody'
 
 interface FilterDropdownProps {
   label: string
-  type: 'multi' | 'single'
-  options: string[]
-  value: string[] | string
-  onApply: (val: string[] | string) => void
+  type: 'multi' | 'single' | 'range'
+  options: string[] | [number, number] // [min, max]
+  value: string[] | string | [number, number]
+  onApply: (val: string[] | string | [number, number]) => void
   onClear: () => void
 }
 
@@ -23,34 +24,48 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   onApply,
   onClear,
 }) => {
+  // Flags for dropdowns.
   const isMulti = type === 'multi'
+  const isRange = type === 'range'
+  const isSingle = type === 'single'
+
   const [open, setOpen] = useState(false)
-  const [localValue, setLocalValue] = useState<string[] | string>(value)
+  const [localValue, setLocalValue] = useState<string[] | string | [number, number]>(value)
 
   useEffect(() => {
     setLocalValue(value)
   }, [value])
 
+  // Filter options for local value for multi select dropdowns.
   const toggleMulti = (option: string) => {
     if (!Array.isArray(localValue)) return
-    setLocalValue(prev =>
-      prev.includes(option)
-        ? (prev as string[]).filter(o => o !== option)
-        : [...(prev as string[]), option],
-    )
+
+    setLocalValue(prev => {
+      const arr = prev as string[]
+      return arr.includes(option) ? arr.filter(o => o !== option) : [...arr, option]
+    })
   }
 
+  // Takes local value and updates the top level form
   const handleApply = () => {
     onApply(localValue)
     setOpen(false)
   }
 
+  // Reset local values to empty
   const handleClear = () => {
-    setLocalValue(isMulti ? [] : '')
+    if (isMulti) {
+      setLocalValue([])
+    } else if (isSingle) {
+      setLocalValue('')
+    } else if (isRange) {
+      setLocalValue(options)
+    }
     onClear()
     setOpen(false)
   }
 
+  // Returns local state back to back to the original form value if applied or clear is not pressed.
   const handleOpenChange = (open: boolean) => {
     setOpen(open)
     if (!open) {
@@ -67,27 +82,41 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
           <ArrowDropDownIcon className="text-foreground h-4 w-4" />
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto">
-        {isMulti ? (
-          <MultiSelectDropdownBody
-            options={options}
-            selected={localValue as string[]}
-            onToggle={toggleMulti}
-          />
-        ) : (
-          <SingleSelectDropdownBody
-            options={options}
-            selected={localValue as string}
-            onSelect={val => setLocalValue(val)}
-          />
-        )}
-        <div className="mt-4 flex justify-end gap-2 border-t pt-3">
-          <Button variant="outline" className="px-6 py-2" onClick={handleClear}>
-            Clear
-          </Button>
-          <Button className="px-6 py-2" onClick={handleApply}>
-            Apply
-          </Button>
+      <PopoverContent className="w-auto px-4 py-3">
+        <div>
+          {isMulti && (
+            <MultiSelectDropdownBody
+              options={options as string[]}
+              selected={localValue as string[]}
+              onToggle={toggleMulti}
+            />
+          )}
+
+          {isSingle && (
+            <SingleSelectDropdownBody
+              options={options as string[]}
+              selected={localValue as string}
+              onSelect={val => setLocalValue(val)}
+            />
+          )}
+
+          {isRange && (
+            <RangedSliderDropdownBody
+              min={options[0] as number}
+              max={options[1] as number}
+              value={localValue as [number, number]}
+              onChange={val => setLocalValue(val)}
+            />
+          )}
+
+          <div className="flex justify-end gap-2 border-t pt-3">
+            <Button variant="outline" className="px-6 py-2" onClick={handleClear}>
+              Clear
+            </Button>
+            <Button className="px-6 py-2" onClick={handleApply}>
+              Apply
+            </Button>
+          </div>
         </div>
       </PopoverContent>
     </Popover>
