@@ -20,7 +20,7 @@ import SelfImprovementIcon from '@/shared/assets/icons/self_improvement.svg'
 
 import { Marquee } from '@/shared/components/magicui/marquee'
 import InterestWaitlistForm from '@/modules/waitlist/components/InterestWaitlistForm'
-import MainLayout from '@/shared/components/layout/MainLayout'
+import ViewLayout from '@/shared/components/layout/ViewLayout'
 
 import Container from '@/shared/components/layout/Container'
 
@@ -150,7 +150,7 @@ function ImageGrid() {
 
 export default function Home() {
   return (
-    <MainLayout>
+    <ViewLayout type={'main'}>
       {/* Hero Section */}
       <Container>
         <section className="mx-auto -mt-[69px] h-[100dvh] w-full">
@@ -163,14 +163,14 @@ export default function Home() {
                 <br />
                 Repeat.
               </h1>
-              <p className="text-sub2 mb-8 max-w-md">
+              <p className="text-sub2 mb-8 max-w-lg">
                 From hidden gems to thrilling adventures—find and book unforgettable experiences{' '}
                 <span className="underline decoration-orange-500 underline-offset-4">
                   all in one place.
                 </span>
               </p>
 
-              <div className="relative justify-end md:absolute md:w-[500px] 2xl:relative 2xl:max-w-md">
+              <div className="relative justify-end md:absolute md:w-[506px] 2xl:relative 2xl:max-w-md">
                 <InterestWaitlistForm />
               </div>
             </div>
@@ -213,7 +213,7 @@ export default function Home() {
               from a wide variety of categories
             </h1>
             {/* Marque */}
-            <div className="absolute left-0 mt-16 flex w-full overflow-hidden">
+            <div className="mt-16 flex w-full overflow-hidden">
               <Marquee pauseOnHover className="[--duration:25s]">
                 {marqueList.map(({ title, icon: Icon }) => (
                   <div
@@ -259,6 +259,6 @@ export default function Home() {
           </div>
         </section>
       </Container>
-    </MainLayout>
+    </ViewLayout>
   )
 }

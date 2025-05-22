@@ -1,5 +1,6 @@
 import FilterBar from '@/modules/explore/components/FilterBar'
-import ExploreLayout from '@/modules/explore/components/layout/ExploreLayout'
+import ViewLayout from '@/shared/components/layout/ViewLayout'
+import ExploreHeader from '@/modules/explore/components/layout/ExploreHeader'
 import Container from '@/shared/components/layout/Container'
 import { ScrollArea } from '@/shared/components/ui/base/scroll-area'
 import React from 'react'
@@ -7,9 +8,9 @@ import BusinessCards from '@/modules/explore/components/BusinessCards'
 
 const ExplorePage = () => {
   return (
-    <ExploreLayout>
+    <ViewLayout header={<ExploreHeader />}>
       <Container>
-        <div className="screen-minus-navbar-explore flex flex-col space-y-8">
+        <div className="screen-minus-navbar-explore flex flex-col space-y-8 mt-[21px]">
           <FilterBar />
           <div className="mb-24 flex min-h-0 flex-1 gap-8">
             {/* Left: Scrollable business list */}
@@ -25,7 +26,7 @@ const ExplorePage = () => {
           </div>
         </div>
       </Container>
-    </ExploreLayout>
+    </ViewLayout>
   )
 }
 

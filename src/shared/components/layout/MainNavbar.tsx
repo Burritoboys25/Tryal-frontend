@@ -5,7 +5,11 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import HamburgerToggle from '@/shared/components/ui/mobile/HamburgerToggle'
 
-function Navbar() {
+interface MainNavbarProps {
+  disablePartner?: boolean
+}
+
+function MainNavbar({ disablePartner = false }: MainNavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -41,7 +45,7 @@ function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden w-[150px] md:flex">
-            <Button variant="solid">
+            <Button variant="solid" className={disablePartner ? 'invisible' : ''}>
               <Link href="/partner-waitlist">Become a partner</Link>
             </Button>
           </div>
@@ -69,7 +73,11 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-            <Button onClick={handleClick} variant="solid">
+            <Button
+              onClick={handleClick}
+              variant="solid"
+              className={disablePartner ? 'invisible' : ''}
+            >
               <Link href="/partner-waitlist">Become a partner</Link>
             </Button>
           </div>
@@ -79,4 +87,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default MainNavbar

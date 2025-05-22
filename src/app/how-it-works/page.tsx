@@ -2,7 +2,7 @@ import SignupIcon from '@/shared/assets/icons/signup.svg'
 import DiscoverIcon from '@/shared/assets/icons/discover.svg'
 import BookIcon from '@/shared/assets/icons/book.svg'
 import ExploreIcon from '@/shared/assets/icons/explore.svg'
-import MainLayout from '@/shared/components/layout/MainLayout'
+import ViewLayout from '@/shared/components/layout/ViewLayout'
 import Container from '@/shared/components/layout/Container'
 
 const howItWorksSteps = [
@@ -37,7 +37,7 @@ const howItWorksSteps = [
 
 const HowItWorksPage = () => {
   return (
-    <MainLayout>
+    <ViewLayout type={"main"}>
       <Container>
         <section className="flex min-h-[calc(100vh-600px)] items-center justify-center py-8 md:py-12 2xl:py-24">
           <div className="flex h-full flex-col items-center justify-center text-center">
@@ -63,7 +63,7 @@ const HowItWorksPage = () => {
           </div>
         </section>
       </Container>
-    </MainLayout>
+    </ViewLayout>
   )
 }
 
