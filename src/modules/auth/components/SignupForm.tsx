@@ -8,8 +8,13 @@ import FormField from '@/shared/components/ui/forms/FormField'
 import { useState } from 'react'
 import { SignupFormData, signupFormSchema } from '../validations/signup.schema'
 import CheckboxField from '@/shared/components/ui/forms/CheckboxField'
+import { signupUser } from '../services/auth'
+import { signIn } from 'next-auth/react'
+import { APIFieldError } from '../lib/errors'
+import { useRouter } from 'next/router'
 
 const SignupForm = () => {
+  const router = useRouter()
   const [form, setForm] = useState<SignupFormData>({
     firstName: '',
     lastName: '',
@@ -36,10 +41,28 @@ const SignupForm = () => {
         return
       }
 
-      console.log('Form Data:', result.data)
+      await signupUser(result.data)
+
+      await signIn('credentials', {
+        email: result.data.email,
+        password: result.data.password,
+        redirect: false,
+      })
+
       setSuccess(true)
-    } catch (error) {
-      console.error(error)
+
+      if (!result?.error) {
+        router.push('/explore')
+      }
+      
+    } catch (error: unknown) {
+      if (error instanceof APIFieldError) {
+        setFieldErrors(error.fieldErrors)
+      } else if (error instanceof Error) {
+        setFieldErrors({ backend: [error.message] })
+      } else {
+        setFieldErrors({ backend: ['An unexpected error occurred'] })
+      }
     } finally {
       setIsSubmitting(false)
     }

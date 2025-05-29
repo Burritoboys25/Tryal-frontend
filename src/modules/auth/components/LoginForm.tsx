@@ -11,9 +11,12 @@ import { LoginFormData, loginFormSchema } from '../validations/login.schema'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { cn } from '@/shared/lib/utils'
 import LogoutButton from './LogoutButton'
+import { getCurrentUser, updateUser } from '@/shared/services/user'
+import { useRouter } from 'next/router'
 
 const LoginForm = () => {
-  const { data: session } = useSession()
+  const router = useRouter()
+  const { data: session, status } = useSession()
 
   const [form, setForm] = useState<LoginFormData>({
     email: '',
@@ -42,11 +45,6 @@ const LoginForm = () => {
         return
       }
 
-      const validData = {
-        ...result.data,
-        remember,
-      }
-
       const authenticateLogin = await signIn('credentials', {
         email: form.email,
         password: form.password,
@@ -60,8 +58,19 @@ const LoginForm = () => {
         return
       }
 
-      console.log('Form Data:', validData)
-      setSuccess(true)
+      if (session?.user?.id) {
+        const user = await getCurrentUser(session.user.id)
+        
+        if (user.remember !== remember) {
+          await updateUser(session.user.id, { remember })
+        }
+
+        setSuccess(true)
+        router.push('/explore')
+
+      } else {
+        setFieldErrors({ authentication: ['Unable to find user'] })
+      }
     } catch (error) {
       console.error(error)
     } finally {
