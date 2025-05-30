@@ -4,15 +4,39 @@ import React from 'react'
 import FilterDropdown from './FilterDropdown'
 import { Button } from '@/shared/components/ui/base/button'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
-import { filterTypes } from '../../../shared/lib/constants'
+import { filterConfig, FilterKey, filterOptions } from '../libs/FilterConstants'
 
-const FilterBar = ({ credits = 30 }: { credits?: number }) => {
+type FilterBarProps = {
+  filters: Record<FilterKey, string[] | string | [number, number]>
+  onChange: (key: FilterKey, value: string[] | string | [number, number]) => void
+  onReset: () => void
+  credits?: number
+}
+
+const FilterBar = ({ filters, onChange, onReset, credits = 30 }: FilterBarProps) => {
   return (
     <div className="flex w-full gap-3 py-2">
-      {filterTypes.map(type => (
-        <FilterDropdown key={type} label={type} />
-      ))}
-      <Button variant="text" className="cursor-pointer">
+      {Object.entries(filterConfig).map(([key, config]) => {
+        const k = key as FilterKey
+
+        return (
+          <FilterDropdown
+            key={k}
+            label={config.label}
+            type={config.type}
+            options={filterOptions[k] as string[] | [number, number]}
+            value={filters[k]}
+            onApply={val => onChange(k, val)}
+            onClear={() => {
+              if (config.type === 'multi') return onChange(k, []) // reset to empty array
+              if (config.type === 'range') return onChange(k, filterOptions[k]) // reset to [min, max]
+              if (config.type === 'single') return onChange(k, '') // reset to empty string
+            }}
+          />
+        )
+      })}
+
+      <Button variant="text" className="cursor-pointer" onClick={onReset}>
         <span className="text-button">Reset All Filters</span>
       </Button>
       <Button variant="outline" className="ml-auto cursor-pointer">
