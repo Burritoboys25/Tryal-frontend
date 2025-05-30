@@ -9,6 +9,9 @@ import React, { useEffect, useState } from 'react'
 import BusinessCards from '@/modules/explore/components/BusinessCards'
 import { FilterKey } from '@/modules/explore/libs/FilterConstants'
 
+import Map from '@/modules/explore/components/mapbox/Map'
+import businesses from '@/shared/mock/business.json'
+
 type Filters = {
   type: string[]
   skillLevel: string[]
@@ -55,9 +58,11 @@ const ExplorePage = () => {
               </ScrollArea>
             </div>
             {/* Right: Mapbox placeholder */}
-            <div className="border-border flex flex-1 items-center justify-center rounded-xl border bg-[var(--muted)] text-2xl font-semibold text-[var(--muted-foreground)]">
-              Mapbox
+            {/* <div className="border-border flex flex-1 items-center justify-center rounded-xl border bg-[var(--muted)] text-2xl font-semibold text-[var(--muted-foreground)]"> */}
+            <div className="border-border flex-1 overflow-hidden rounded-xl border">
+              <Map experiences={businesses} />
             </div>
+            {/* </div> */}
           </div>
         </div>
       </Container>
