@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
 import React from 'react'
@@ -11,7 +10,8 @@ import CheckboxField from '@/shared/components/ui/forms/CheckboxField'
 import { signupUser } from '../services/auth'
 import { signIn } from 'next-auth/react'
 import { APIFieldError } from '../lib/errors'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
+import { SignupPayload } from '../types/authTypes'
 
 const SignupForm = () => {
   const router = useRouter()
@@ -25,6 +25,7 @@ const SignupForm = () => {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [success, setSuccess] = useState(false)
   const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({})
 
@@ -41,7 +42,14 @@ const SignupForm = () => {
         return
       }
 
-      await signupUser(result.data)
+      const signupPayload: SignupPayload = {
+        firstName: result.data.firstName,
+        lastName: result.data.lastName,
+        email: result.data.email,
+        passwordHash: result.data.password,
+      }
+
+      await signupUser(signupPayload)
 
       await signIn('credentials', {
         email: result.data.email,
@@ -50,10 +58,7 @@ const SignupForm = () => {
       })
 
       setSuccess(true)
-
-      if (!result?.error) {
-        router.push('/explore')
-      }
+      router.push('/explore')
       
     } catch (error: unknown) {
       if (error instanceof APIFieldError) {

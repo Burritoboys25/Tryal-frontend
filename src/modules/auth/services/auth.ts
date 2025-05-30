@@ -1,22 +1,10 @@
 import { APIFieldError } from "../lib/errors"
-
-interface LoginPayload {
-  email: string
-  password: string
-}
-
-interface SignupPayload {
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  confirmPassword: string
-}
+import { LoginPayload, SignupPayload } from "../types/authTypes"
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
 
 export const loginUser = async ({ email, password }: LoginPayload) => {
-  const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
+  const res = await fetch(`${API_BASE_URL}/api/auth/user`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +22,7 @@ export const loginUser = async ({ email, password }: LoginPayload) => {
 }
 
 export const signupUser = async (payload: SignupPayload) => {
-  const res = await fetch(`${API_BASE_URL}/api/auth/signup`, {
+  const res = await fetch(`${API_BASE_URL}/api/auth/user`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

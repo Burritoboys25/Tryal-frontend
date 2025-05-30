@@ -12,7 +12,7 @@ import { useSession, signIn, signOut } from 'next-auth/react'
 import { cn } from '@/shared/lib/utils'
 import LogoutButton from './LogoutButton'
 import { getCurrentUser, updateUser } from '@/shared/services/user'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 const LoginForm = () => {
   const router = useRouter()
