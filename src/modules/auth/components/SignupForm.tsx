@@ -46,7 +46,7 @@ const SignupForm = () => {
         firstName: result.data.firstName,
         lastName: result.data.lastName,
         email: result.data.email,
-        passwordHash: result.data.password,
+        password: result.data.password,
       }
 
       await signupUser(signupPayload)
