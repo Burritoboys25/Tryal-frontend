@@ -10,6 +10,7 @@ import BusinessCards from '@/modules/explore/components/BusinessCards'
 import { FilterKey } from '@/modules/explore/libs/FilterConstants'
 
 import Map from '@/modules/explore/components/mapbox/Map'
+
 import businesses from '@/shared/mock/business.json'
 
 type Filters = {
@@ -32,6 +33,7 @@ const defaultFilters: Filters = {
 
 const ExplorePage = () => {
   const [filters, setFilters] = useState<Filters>(defaultFilters)
+  const [selectedId, setSelectedId] = useState<string | undefined>(undefined)
 
   useEffect(() => {
     console.log(filters)
@@ -54,15 +56,17 @@ const ExplorePage = () => {
             {/* Left: Scrollable business list */}
             <div className="flex min-h-0 w-[665px] flex-1 flex-col">
               <ScrollArea className="bg-background h-full min-h-0 flex-1 rounded-xl">
-                <BusinessCards />
+                <BusinessCards
+                  items={businesses}
+                  onSelect={setSelectedId}
+                  selectedId={selectedId ?? ''}
+                />
               </ScrollArea>
             </div>
             {/* Right: Mapbox placeholder */}
-            {/* <div className="border-border flex flex-1 items-center justify-center rounded-xl border bg-[var(--muted)] text-2xl font-semibold text-[var(--muted-foreground)]"> */}
             <div className="border-border flex-1 overflow-hidden rounded-xl border">
-              <Map experiences={businesses} />
+              <Map items={businesses} selectedId={selectedId} />
             </div>
-            {/* </div> */}
           </div>
         </div>
       </Container>
