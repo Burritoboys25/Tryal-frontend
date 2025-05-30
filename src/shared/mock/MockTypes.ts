@@ -10,6 +10,8 @@ export interface Business {
   rating: number
   image_url: string
   credits: number
+  lat: number
+  lng: number
 }
 
 // Experience type
