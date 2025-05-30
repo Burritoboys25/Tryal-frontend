@@ -14,6 +14,7 @@ import { Badge } from '@/shared/components/ui/base/badge'
 // Mock: join experiences with business and categories
 const exploreData = (businesses as Business[]).map(business => {
   return {
+    business_id: business.business_id,
     name: business.name,
     type: getCategoriesForBusiness(business.business_id),
     address: business.address,
@@ -32,6 +33,8 @@ const ExploreCard = ({
   rating,
   imageUrl,
   credits,
+  bookmarked,
+  onToggleBookmark,
 }: {
   name: string
   type: string[]
@@ -39,8 +42,9 @@ const ExploreCard = ({
   rating: number
   imageUrl?: string
   credits: number
+  bookmarked: boolean
+  onToggleBookmark: () => void
 }) => {
-  const [bookmarked, setBookmarked] = React.useState(false)
   return (
     <div className="mb-4 flex h-[135px] w-full items-center rounded-xl bg-white p-4 shadow-md">
       {/* Business image, full height on the left */}
@@ -63,7 +67,7 @@ const ExploreCard = ({
           variant="link"
           size="icon"
           className="ml-auto cursor-pointer p-0"
-          onClick={() => setBookmarked(b => !b)}
+          onClick={onToggleBookmark}
         >
           {bookmarked ? (
             <BookmarkedIcon className="h-6 w-6" />
@@ -82,12 +86,25 @@ const ExploreCard = ({
   )
 }
 
-const BusinessCards: React.FC = () => (
-  <div className="px-2">
-    {exploreData.map((biz, idx) => (
-      <ExploreCard key={idx} {...biz} />
-    ))}
-  </div>
-)
+// BusinessCards manages bookmark state for all businesses
+interface BusinessCardsProps {
+  bookmarkedIds: string[]
+  onToggleBookmark: (business_id: string) => void
+}
+
+const BusinessCards: React.FC<BusinessCardsProps> = ({ bookmarkedIds, onToggleBookmark }) => {
+  return (
+    <div className="px-2">
+      {exploreData.map(biz => (
+        <ExploreCard
+          key={biz.business_id}
+          {...biz}
+          bookmarked={bookmarkedIds.includes(biz.business_id)}
+          onToggleBookmark={() => onToggleBookmark(biz.business_id)}
+        />
+      ))}
+    </div>
+  )
+}
 
 export default BusinessCards
