@@ -20,6 +20,8 @@ const ExploreCard = ({
   business_id,
   selected,
   onSelect,
+  onHover,
+  onHoverEnd,
 }: {
   name: string
   type: string[]
@@ -28,8 +30,11 @@ const ExploreCard = ({
   imageUrl?: string
   credits: number
   business_id: string
+  hovered: boolean
   onSelect: (id: string) => void
   selected: boolean
+  onHover: () => void
+  onHoverEnd: () => void
 }) => {
   const [bookmarked, setBookmarked] = React.useState(false)
   return (
@@ -38,6 +43,8 @@ const ExploreCard = ({
         selected ? 'bg-accent hover:bg-accent/80 font-bold' : 'hover:bg-muted/50 bg-white'
       } `}
       onClick={() => onSelect(business_id)} // when clicked sends up the business_id to the parent
+      onMouseEnter={onHover}
+      onMouseLeave={onHoverEnd}
     >
       {/* Business image, full height on the left */}
       <Image
@@ -82,7 +89,9 @@ const BusinessCards: React.FC<{
   items: Business[]
   onSelect: (id: string) => void
   selectedId: string
-}> = ({ items, onSelect, selectedId }) => (
+  hoveredId: string | null
+  onHover: (id: string | null) => void
+}> = ({ items, onSelect, selectedId, hoveredId, onHover }) => (
   <div className="px-2">
     {items.map(item => (
       <ExploreCard
@@ -92,6 +101,9 @@ const BusinessCards: React.FC<{
         type={getCategoriesForBusiness(item.business_id)}
         selected={selectedId === item.business_id}
         onSelect={onSelect}
+        hovered={hoveredId === item.business_id}
+        onHover={() => onHover(item.business_id)}
+        onHoverEnd={() => onHover(null)}
       />
     ))}
   </div>

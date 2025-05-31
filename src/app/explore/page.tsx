@@ -34,6 +34,7 @@ const defaultFilters: Filters = {
 const ExplorePage = () => {
   const [filters, setFilters] = useState<Filters>(defaultFilters)
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined)
+  const [hoveredId, setHoveredId] = useState<string | null>(null)
 
   useEffect(() => {
     console.log(filters)
@@ -60,12 +61,14 @@ const ExplorePage = () => {
                   items={businesses}
                   onSelect={setSelectedId}
                   selectedId={selectedId ?? ''}
+                  hoveredId={hoveredId}
+                  onHover={setHoveredId}
                 />
               </ScrollArea>
             </div>
             {/* Right: Mapbox placeholder */}
             <div className="border-border flex-1 overflow-hidden rounded-xl border">
-              <Map items={businesses} selectedId={selectedId} />
+              <Map items={businesses} selectedId={selectedId} hoveredId={hoveredId} />
             </div>
           </div>
         </div>

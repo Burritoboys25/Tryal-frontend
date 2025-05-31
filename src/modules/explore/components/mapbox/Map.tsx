@@ -2,7 +2,11 @@
 
 import { Business } from '@/shared/mock/MockTypes'
 import mapboxgl from 'mapbox-gl'
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect } from 'react'
+
+import DefaultPin from '@/shared/assets/icons/default-pin.svg'
+import SelectedPin from '@/shared/assets/icons/selected-pin.svg'
+import ReactDOMServer from 'react-dom/server'
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
 
@@ -16,15 +20,16 @@ const DEFAULT_ZOOM = 11
 type MapProps = {
   items: Business[]
   selectedId?: string
+  hoveredId?: string | null
 }
 
 // export default function Map() {
-export default function Map({ items, selectedId }: MapProps) {
+export default function Map({ items, selectedId, hoveredId }: MapProps) {
   const mapContainer = useRef<HTMLDivElement>(null)
   const mapRef = useRef<mapboxgl.Map | null>(null)
   const markersRef = useRef<mapboxgl.Marker[] | null>([]) // Reference for all the markers present
 
-  const [zoom, setZoom] = useState(DEFAULT_ZOOM)
+  // const [zoom, setZoom] = useState(DEFAULT_ZOOM)
 
   // Mount the map on first render and prevent duplicate mounts
   useEffect(() => {
@@ -46,11 +51,26 @@ export default function Map({ items, selectedId }: MapProps) {
     markersRef.current = []
 
     items.forEach(item => {
-      const marker = new mapboxgl.Marker().setLngLat([item.lng, item.lat]).addTo(mapRef.current!)
+      const el = document.createElement('div')
+      el.className = 'marker'
 
+      const isHovered = item.business_id === hoveredId
+      const hoverStyle = `${isHovered ? 'marker-icon-hover' : ''}`
+
+      el.innerHTML = ReactDOMServer.renderToString(
+        <div className={hoverStyle}>
+          {item.business_id === selectedId ? <SelectedPin /> : <DefaultPin />}
+        </div>,
+      )
+
+      el.style.transform = 'translate(-50%, -100%)'
+      el.style.position = 'absolute'
+      el.style.cursor = 'pointer'
+
+      const marker = new mapboxgl.Marker(el).setLngLat([item.lng, item.lat]).addTo(mapRef.current!)
       markersRef.current?.push(marker)
     })
-  }, [items, selectedId])
+  }, [items, selectedId, hoveredId])
 
   useEffect(() => {
     if (!mapRef.current || !selectedId) return
@@ -60,7 +80,7 @@ export default function Map({ items, selectedId }: MapProps) {
     if (selected) {
       mapRef.current.flyTo({
         center: [selected.lng, selected.lat],
-        zoom: 15,
+        zoom: 11,
         essential: true,
       })
     }
