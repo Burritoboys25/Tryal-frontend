@@ -165,4 +165,17 @@
     min-height: calc(100vh - 90px);
     height: calc(100vh - 90px);
   }
+
+  .mapboxgl-ctrl-bottom-right {
+    visibility: hidden !important;
+  }
+
+  a.mapboxgl-ctrl-logo {
+    display: none !important;
+  }
+
+  .marker-icon-hover svg {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
 }
