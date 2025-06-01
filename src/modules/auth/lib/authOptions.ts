@@ -1,5 +1,6 @@
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import { loginUser } from '../services/auth'
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -15,25 +16,14 @@ export const authOptions: NextAuthOptions = {
             throw new Error('Email and password are required.')
           }
 
-          const response = await fetch("http://localhost:8080/api/auth/login", {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              email: credentials.email,
-              password: credentials.password,
-            }),
+          const user = await loginUser({
+            email: credentials.email,
+            password: credentials.password,
           })
 
-          if (!response.ok) {
-            throw new Error('Invalid credentials or internal error.')
-          }
-
-          const user = await response.json()
           return user
         } catch (error) {
-          console.error(error)
+          console.error('Login error: ' + error)
           return null
         }
       },
@@ -49,20 +39,20 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id
-        token.email = user.email
-        token.firstName = user.firstName
-        token.lastName = user.lastName
+        token.id = user.id || ''
+        token.email = user.email || ''
+        token.firstName = user.firstName || ''
+        token.lastName = user.lastName || ''
       }
       return token
     },
     async session({ session, token }) {
       if (token) {
         session.user = {
-          id: token.id,
-          email: token.email,
-          firstName: token.firstName,
-          lastName: token.lastName,
+          id: token.id ?? '',
+          email: token.email ?? '',
+          firstName: token.firstName ?? '',
+          lastName: token.lastName ?? '',
         }
       }
       return session
