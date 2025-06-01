@@ -33,6 +33,11 @@ const ExploreCard = ({
   rating,
   imageUrl,
   credits,
+  business_id,
+  selected,
+  onSelect,
+  onHover,
+  onHoverEnd,
   bookmarked,
   onToggleBookmark,
 }: {
@@ -42,11 +47,24 @@ const ExploreCard = ({
   rating: number
   imageUrl?: string
   credits: number
+  business_id: string
+  hovered: boolean
+  onSelect: (id: string) => void
+  selected: boolean
+  onHover: () => void
+  onHoverEnd: () => void
   bookmarked: boolean
   onToggleBookmark: () => void
 }) => {
   return (
-    <div className="mb-4 flex h-[135px] w-full items-center rounded-xl bg-white p-4 shadow-md">
+    <div
+      className={`mb-4 flex h-[135px] w-full items-center rounded-xl p-4 shadow-md transition-colors duration-300 hover:cursor-pointer ${
+        selected ? 'bg-accent hover:bg-accent/80 font-bold' : 'hover:bg-muted/50 bg-white'
+      } `}
+      onClick={() => onSelect(business_id)} // when clicked sends up the business_id to the parent
+      onMouseEnter={onHover}
+      onMouseLeave={onHoverEnd}
+    >
       {/* Business image, full height on the left */}
       <Image
         src={imageUrl || '/default-business.png'}
@@ -86,25 +104,28 @@ const ExploreCard = ({
   )
 }
 
-// BusinessCards manages bookmark state for all businesses
-interface BusinessCardsProps {
-  bookmarkedIds: string[]
-  onToggleBookmark: (business_id: string) => void
-}
-
-const BusinessCards: React.FC<BusinessCardsProps> = ({ bookmarkedIds, onToggleBookmark }) => {
-  return (
-    <div className="px-2">
-      {exploreData.map(biz => (
-        <ExploreCard
-          key={biz.business_id}
-          {...biz}
-          bookmarked={bookmarkedIds.includes(biz.business_id)}
-          onToggleBookmark={() => onToggleBookmark(biz.business_id)}
-        />
-      ))}
-    </div>
-  )
-}
+const BusinessCards: React.FC<{
+  items: Business[]
+  onSelect: (id: string) => void
+  selectedId: string
+  hoveredId: string | null
+  onHover: (id: string | null) => void
+}> = ({ items, onSelect, selectedId, hoveredId, onHover }) => (
+  <div className="px-2">
+    {items.map(item => (
+      <ExploreCard
+        key={item.business_id}
+        {...item}
+        imageUrl={item.image_url}
+        type={getCategoriesForBusiness(item.business_id)}
+        selected={selectedId === item.business_id}
+        onSelect={onSelect}
+        hovered={hoveredId === item.business_id}
+        onHover={() => onHover(item.business_id)}
+        onHoverEnd={() => onHover(null)}
+      />
+    ))}
+  </div>
+)
 
 export default BusinessCards
