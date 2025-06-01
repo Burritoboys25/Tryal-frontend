@@ -2,8 +2,8 @@
 
 import React from 'react'
 import Image from 'next/image'
-import businesses from 'src/shared/mock/business.json'
-import { Business } from 'src/shared/mock/MockTypes'
+import businesses from 'src/shared/mock/business/business.json'
+import { Business } from '@/shared/types/businessTypes'
 import { getCategoriesForBusiness } from '../libs/CategoryMapper'
 import { Button } from '@/shared/components/ui/base/button'
 import BookmarkedIcon from '@/shared/assets/icons/bookmarked.svg'

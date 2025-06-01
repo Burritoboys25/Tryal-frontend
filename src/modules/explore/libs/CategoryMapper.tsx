@@ -1,7 +1,7 @@
 import experiences from 'src/shared/mock/experiences.json'
 import categories from 'src/shared/mock/categories.json'
 import experienceCategories from 'src/shared/mock/experience_categories.json'
-import { Experience, Category, ExperienceCategory } from 'src/shared/mock/MockTypes'
+import { Experience, Category, ExperienceCategory } from '@/shared/types/businessTypes'
 
 // Helper to get categories for an experience
 export const getCategoriesForExp = (exp_id: string) => {
