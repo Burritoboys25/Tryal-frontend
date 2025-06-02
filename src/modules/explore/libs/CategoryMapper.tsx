@@ -1,6 +1,6 @@
-import experiences from 'src/shared/mock/experiences.json'
-import categories from 'src/shared/mock/categories.json'
-import experienceCategories from 'src/shared/mock/experience_categories.json'
+import experiences from 'src/shared/mock/business/experiences.json'
+import categories from 'src/shared/mock/business/categories.json'
+import experienceCategories from 'src/shared/mock/business/experience_categories.json'
 import { Experience, Category, ExperienceCategory } from '@/shared/types/businessTypes'
 
 // Helper to get categories for an experience

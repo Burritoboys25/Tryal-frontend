@@ -11,7 +11,7 @@ import { FilterKey } from '@/modules/explore/libs/FilterConstants'
 
 import Map from '@/modules/explore/components/mapbox/Map'
 
-import businesses from '@/shared/mock/business.json'
+import businesses from '@/shared/mock/business/business.json'
 import { useSession } from 'next-auth/react'
 import {
   getUserBookmarks,

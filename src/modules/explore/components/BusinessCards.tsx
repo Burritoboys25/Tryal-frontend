@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Image from 'next/image'
-import businesses from 'src/shared/mock/business/business.json'
 import { Business } from '@/shared/types/businessTypes'
 import { getCategoriesForBusiness } from '../libs/CategoryMapper'
 import { Button } from '@/shared/components/ui/base/button'
@@ -10,21 +9,6 @@ import BookmarkedIcon from '@/shared/assets/icons/bookmarked.svg'
 import UnBookMarkedIcon from '@/shared/assets/icons/unbookmarked.svg'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
 import { Badge } from '@/shared/components/ui/base/badge'
-
-// Mock: join experiences with business and categories
-const exploreData = (businesses as Business[]).map(business => {
-  return {
-    business_id: business.business_id,
-    name: business.name,
-    type: getCategoriesForBusiness(business.business_id),
-    address: business.address,
-    //This rating will be replaced with google api rating. We are not storing ratings.
-    rating: business.rating,
-    //Just hardcoding image right now.
-    imageUrl: '/landing_page_img_1.png',
-    credits: business.credits,
-  }
-})
 
 const ExploreCard = ({
   name,
@@ -85,7 +69,11 @@ const ExploreCard = ({
           variant="link"
           size="icon"
           className="ml-auto cursor-pointer p-0"
-          onClick={onToggleBookmark}
+          onClick={e => {
+            console.log('Bookmark clicked for business:', business_id)
+            e.stopPropagation() // Prevents card click event
+            onToggleBookmark()
+          }}
         >
           {bookmarked ? (
             <BookmarkedIcon className="h-6 w-6" />
@@ -110,7 +98,9 @@ const BusinessCards: React.FC<{
   selectedId: string
   hoveredId: string | null
   onHover: (id: string | null) => void
-}> = ({ items, onSelect, selectedId, hoveredId, onHover }) => (
+  bookmarkedIds: string[]
+  onToggleBookmark: (business_id: string) => void
+}> = ({ items, onSelect, selectedId, hoveredId, onHover, bookmarkedIds, onToggleBookmark }) => (
   <div className="px-2">
     {items.map(item => (
       <ExploreCard
@@ -123,6 +113,8 @@ const BusinessCards: React.FC<{
         hovered={hoveredId === item.business_id}
         onHover={() => onHover(item.business_id)}
         onHoverEnd={() => onHover(null)}
+        bookmarked={bookmarkedIds.includes(item.business_id)}
+        onToggleBookmark={() => onToggleBookmark(item.business_id)}
       />
     ))}
   </div>
