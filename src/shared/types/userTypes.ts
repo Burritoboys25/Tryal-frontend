@@ -5,3 +5,7 @@ export interface User {
   lastName: string
   remember?: boolean
 }
+export interface UserBookmarks {
+  userId: string
+  businessIds: string[]
+}

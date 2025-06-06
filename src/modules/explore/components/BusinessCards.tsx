@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { Business } from 'src/shared/mock/MockTypes'
+import { Business } from '@/shared/types/businessTypes'
 import { getCategoriesForBusiness } from '../libs/CategoryMapper'
 import { Button } from '@/shared/components/ui/base/button'
 import BookmarkedIcon from '@/shared/assets/icons/bookmarked.svg'
@@ -22,6 +22,8 @@ const ExploreCard = ({
   onSelect,
   onHover,
   onHoverEnd,
+  bookmarked,
+  onToggleBookmark,
 }: {
   name: string
   type: string[]
@@ -35,8 +37,9 @@ const ExploreCard = ({
   selected: boolean
   onHover: () => void
   onHoverEnd: () => void
+  bookmarked: boolean
+  onToggleBookmark: () => void
 }) => {
-  const [bookmarked, setBookmarked] = React.useState(false)
   return (
     <div
       className={`mb-4 flex h-[135px] w-full items-center rounded-xl p-4 shadow-md transition-colors duration-300 hover:cursor-pointer ${
@@ -66,7 +69,11 @@ const ExploreCard = ({
           variant="link"
           size="icon"
           className="ml-auto cursor-pointer p-0"
-          onClick={() => setBookmarked(b => !b)}
+          onClick={e => {
+            console.log('Bookmark clicked for business:', business_id)
+            e.stopPropagation() // Prevents card click event
+            onToggleBookmark()
+          }}
         >
           {bookmarked ? (
             <BookmarkedIcon className="h-6 w-6" />
@@ -91,7 +98,9 @@ const BusinessCards: React.FC<{
   selectedId: string
   hoveredId: string | null
   onHover: (id: string | null) => void
-}> = ({ items, onSelect, selectedId, hoveredId, onHover }) => (
+  bookmarkedIds: string[]
+  onToggleBookmark: (business_id: string) => void
+}> = ({ items, onSelect, selectedId, hoveredId, onHover, bookmarkedIds, onToggleBookmark }) => (
   <div className="px-2">
     {items.map(item => (
       <ExploreCard
@@ -104,6 +113,8 @@ const BusinessCards: React.FC<{
         hovered={hoveredId === item.business_id}
         onHover={() => onHover(item.business_id)}
         onHoverEnd={() => onHover(null)}
+        bookmarked={bookmarkedIds.includes(item.business_id)}
+        onToggleBookmark={() => onToggleBookmark(item.business_id)}
       />
     ))}
   </div>

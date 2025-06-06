@@ -1,6 +1,6 @@
 'use client'
 
-import { Business } from '@/shared/mock/MockTypes'
+import { Business } from '@/shared/types/businessTypes'
 import mapboxgl from 'mapbox-gl'
 import { useRef, useEffect } from 'react'
 

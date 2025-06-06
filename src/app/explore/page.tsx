@@ -5,13 +5,25 @@ import ViewLayout from '@/shared/components/layout/ViewLayout'
 import ExploreHeader from '@/modules/explore/components/layout/ExploreHeader'
 import Container from '@/shared/components/layout/Container'
 import { ScrollArea } from '@/shared/components/ui/base/scroll-area'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import BusinessCards from '@/modules/explore/components/BusinessCards'
 import { FilterKey } from '@/modules/explore/libs/FilterConstants'
 
 import Map from '@/modules/explore/components/mapbox/Map'
 
-import businesses from '@/shared/mock/business.json'
+import businesses from '@/shared/mock/business/business.json'
+import mockUserBookmarks from '@/shared/mock/user/userBookmarks.json'
+// import { useSession } from 'next-auth/react'
+// import {
+//   getUserBookmarks,
+//   addUserBookmark,
+//   removeUserBookmark,
+// } from '@/modules/explore/services/bookmark'
+
+interface MockUserBookmark {
+  userId: string
+  businessIds: string[]
+}
 
 type Filters = {
   type: string[]
@@ -35,10 +47,40 @@ const ExplorePage = () => {
   const [filters, setFilters] = useState<Filters>(defaultFilters)
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
+  // Find the mock user's bookmarked business IDs
+  const mockUserId = 'user1'
+  const initialBookmarkedIds =
+    (mockUserBookmarks as MockUserBookmark[]).find(u => u.userId === mockUserId)?.businessIds || []
+  const [bookmarkedIds, setBookmarkedIds] = useState<string[]>(initialBookmarkedIds)
 
-  useEffect(() => {
-    console.log(filters)
-  }, [filters])
+  // Uncomment when backend integration is ready
+  // const { data: session } = useSession()
+  // const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([])
+  // useEffect(() => {
+  //   if (!session?.user?.id) return
+  //   getUserBookmarks(session.user.id)
+  //     .then(ids => setBookmarkedIds(ids))
+  //     .catch(() => setBookmarkedIds([]))
+  // }, [session?.user?.id])
+
+  // Update bookmarks in local state only
+  const handleToggleBookmark = (business_id: string) => {
+    // if (!session?.user?.id) return
+    setBookmarkedIds(prev => {
+      const isBookmarked = prev.includes(business_id)
+      if (isBookmarked) {
+        // removeUserBookmark(session.user.id, business_id)
+        const updated = prev.filter(id => id !== business_id)
+        console.log('Unbookmarked:', business_id, 'Current bookmarks:', updated)
+        return updated
+      } else {
+        // addUserBookmark(session.user.id, business_id)
+        const updated = [...prev, business_id]
+        console.log('Bookmarked:', business_id, 'Current bookmarks:', updated)
+        return updated
+      }
+    })
+  }
 
   const handleFilterChange = <K extends FilterKey>(key: K, value: Filters[K]) => {
     setFilters(prev => ({ ...prev, [key]: value }))
@@ -63,6 +105,8 @@ const ExplorePage = () => {
                   selectedId={selectedId ?? ''}
                   hoveredId={hoveredId}
                   onHover={setHoveredId}
+                  bookmarkedIds={bookmarkedIds}
+                  onToggleBookmark={handleToggleBookmark}
                 />
               </ScrollArea>
             </div>
