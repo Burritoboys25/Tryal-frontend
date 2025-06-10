@@ -1,0 +1,4 @@
+[
+  { "userId": "user1", "businessIds": ["b1f03e1e-9427-43b0-94f6-d2e95dffdb44", "e7b4f276-19b2-46f3-91a3-4d6bfc04c6e9"] },
+  { "userId": "user2", "businessIds": ["c5a4e728-93f0-4a6d-b1e5-9e0e9abfc4e0"] }
+]

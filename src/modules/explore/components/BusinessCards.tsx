@@ -2,28 +2,13 @@
 
 import React from 'react'
 import Image from 'next/image'
-import businesses from 'src/shared/mock/business.json'
-import { Business } from 'src/shared/mock/MockTypes'
+import { Business } from '@/shared/types/businessTypes'
 import { getCategoriesForBusiness } from '../libs/CategoryMapper'
 import { Button } from '@/shared/components/ui/base/button'
 import BookmarkedIcon from '@/shared/assets/icons/bookmarked.svg'
 import UnBookMarkedIcon from '@/shared/assets/icons/unbookmarked.svg'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
 import { Badge } from '@/shared/components/ui/base/badge'
-
-// Mock: join experiences with business and categories
-const exploreData = (businesses as Business[]).map(business => {
-  return {
-    name: business.name,
-    type: getCategoriesForBusiness(business.business_id),
-    address: business.address,
-    //This rating will be replaced with google api rating. We are not storing ratings.
-    rating: business.rating,
-    //Just hardcoding image right now.
-    imageUrl: '/landing_page_img_1.png',
-    credits: business.credits,
-  }
-})
 
 const ExploreCard = ({
   name,
@@ -32,6 +17,13 @@ const ExploreCard = ({
   rating,
   imageUrl,
   credits,
+  business_id,
+  selected,
+  onSelect,
+  onHover,
+  onHoverEnd,
+  bookmarked,
+  onToggleBookmark,
 }: {
   name: string
   type: string[]
@@ -39,10 +31,24 @@ const ExploreCard = ({
   rating: number
   imageUrl?: string
   credits: number
+  business_id: string
+  hovered: boolean
+  onSelect: (id: string) => void
+  selected: boolean
+  onHover: () => void
+  onHoverEnd: () => void
+  bookmarked: boolean
+  onToggleBookmark: () => void
 }) => {
-  const [bookmarked, setBookmarked] = React.useState(false)
   return (
-    <div className="mb-4 flex h-[135px] w-full items-center rounded-xl bg-white p-4 shadow-md">
+    <div
+      className={`mb-4 flex h-[135px] w-full items-center rounded-xl p-4 shadow-md transition-colors duration-300 hover:cursor-pointer ${
+        selected ? 'bg-accent hover:bg-accent/80 font-bold' : 'hover:bg-muted/50 bg-white'
+      } `}
+      onClick={() => onSelect(business_id)} // when clicked sends up the business_id to the parent
+      onMouseEnter={onHover}
+      onMouseLeave={onHoverEnd}
+    >
       {/* Business image, full height on the left */}
       <Image
         src={imageUrl || '/default-business.png'}
@@ -63,7 +69,11 @@ const ExploreCard = ({
           variant="link"
           size="icon"
           className="ml-auto cursor-pointer p-0"
-          onClick={() => setBookmarked(b => !b)}
+          onClick={e => {
+            console.log('Bookmark clicked for business:', business_id)
+            e.stopPropagation() // Prevents card click event
+            onToggleBookmark()
+          }}
         >
           {bookmarked ? (
             <BookmarkedIcon className="h-6 w-6" />
@@ -82,10 +92,30 @@ const ExploreCard = ({
   )
 }
 
-const BusinessCards: React.FC = () => (
+const BusinessCards: React.FC<{
+  items: Business[]
+  onSelect: (id: string) => void
+  selectedId: string
+  hoveredId: string | null
+  onHover: (id: string | null) => void
+  bookmarkedIds: string[]
+  onToggleBookmark: (business_id: string) => void
+}> = ({ items, onSelect, selectedId, hoveredId, onHover, bookmarkedIds, onToggleBookmark }) => (
   <div className="px-2">
-    {exploreData.map((biz, idx) => (
-      <ExploreCard key={idx} {...biz} />
+    {items.map(item => (
+      <ExploreCard
+        key={item.business_id}
+        {...item}
+        imageUrl={item.image_url}
+        type={getCategoriesForBusiness(item.business_id)}
+        selected={selectedId === item.business_id}
+        onSelect={onSelect}
+        hovered={hoveredId === item.business_id}
+        onHover={() => onHover(item.business_id)}
+        onHoverEnd={() => onHover(null)}
+        bookmarked={bookmarkedIds.includes(item.business_id)}
+        onToggleBookmark={() => onToggleBookmark(item.business_id)}
+      />
     ))}
   </div>
 )

@@ -4,6 +4,8 @@ import { Manrope, Rubik } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import NextAuthSessionProvider from '@/shared/components/layout/NextAuthSessionProvider'
 
+import 'mapbox-gl/dist/mapbox-gl.css'
+
 const manrope = Manrope({
   subsets: ['latin'],
   display: 'swap',
