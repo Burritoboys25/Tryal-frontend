@@ -21,6 +21,7 @@ import SelfImprovementIcon from '@/shared/assets/icons/self_improvement.svg'
 import { Marquee } from '@/shared/components/magicui/marquee'
 import InterestWaitlistForm from '@/modules/waitlist/components/InterestWaitlistForm'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
+import BlurBackground from '@/shared/components/ui/base/BlurBackground'
 
 import Container from '@/shared/components/layout/Container'
 
@@ -177,7 +178,13 @@ export default function Home() {
 
             <div className="relative z-0 flex w-full justify-center md:w-1/2">
               {/* Glow Background*/}
-              <div className="absolute top-1/2 left-1/2 z-[-1] h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F4BCAB] blur-[120px] md:h-[400px] md:w-[400px] 2xl:h-[600px] 2xl:w-[600px]" />
+              <BlurBackground
+                className="absolute top-1/2 left-1/2 z-[-1] -translate-x-1/2 -translate-y-1/2 rounded-full"
+                width={600}
+                height={600}
+                blur="120px"
+                color="#F4BCAB"
+              />
               <ImageGrid />
             </div>
           </div>

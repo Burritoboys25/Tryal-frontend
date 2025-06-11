@@ -2,6 +2,7 @@ import Container from '@/shared/components/layout/Container'
 import Image from 'next/image'
 import { Mail } from 'lucide-react'
 import Linkedin from '@/shared/assets/icons/linkedin.svg'
+import BlurBackground from '@/shared/components/ui/base/BlurBackground'
 
 const founders = [
   {
@@ -46,8 +47,13 @@ export default function Founders() {
         </p>
 
         <div className="relative z-0">
-          <div className="absolute top-1/2 left-1/2 z-[-1] h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 bg-[#F4BCAB] blur-[70px] md:h-[40px] md:w-[1300px]" />
-
+          <BlurBackground
+            className="absolute top-1/2 left-1/2 z-[-1] -translate-x-1/2 -translate-y-1/2"
+            width={1300}
+            height={40}
+            blur="70px"
+            color="#F4BCAB"
+          />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 2xl:grid-cols-4">
             {founders.map(founder => (
               <div
@@ -71,7 +77,7 @@ export default function Founders() {
 
                 {/* Lucide Icons */}
                 <div className="mt-2 flex gap-4">
-                  <a href={`mailto:${founder.email}`}>
+                  <a href={`mailto:${founder.email}`} target="_blank" rel="noopener noreferrer">
                     <Mail className="h-6 w-6" aria-label="Email" />
                   </a>
                   <a href={founder.linkedin} target="_blank" rel="noopener noreferrer">
