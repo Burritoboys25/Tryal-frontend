@@ -25,7 +25,7 @@ const BlurBackground: React.FC<BlurBackgroundProps> = ({
 }) => {
   return (
     <div
-      className={clsx('pointer-events-none', className)}
+      className={clsx('pointer-events-none -z-1', className)}
       style={{
         background: color,
         width: typeof width === 'number' ? `${width}px` : width,

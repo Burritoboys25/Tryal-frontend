@@ -7,7 +7,7 @@ export default function MissionVision() {
       <div className="relative flex flex-col items-stretch justify-between gap-8 md:flex-row md:gap-12">
         {/* Left: Images */}
         <div className="relative flex items-center justify-center">
-          <BlurBackground className="absolute top-1/2 left-1/2 z-0 -translate-x-1/2 -translate-y-1/2" />
+          <BlurBackground className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
           <Image
             src="/about_us/antho_and_henry.png"
             alt="Anthony and Henry"
@@ -43,7 +43,7 @@ export default function MissionVision() {
 
         {/* Right: Images */}
         <div className="relative flex items-center justify-center">
-          <BlurBackground className="absolute top-1/2 left-1/2 z-0 -translate-x-1/2 -translate-y-1/2" />
+          <BlurBackground className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
           <Image
             src="/about_us/cal_and_rie.png"
             alt="Calvin and Henry Nguyen"

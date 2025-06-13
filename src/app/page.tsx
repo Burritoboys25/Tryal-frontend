@@ -176,14 +176,18 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative z-0 flex w-full justify-center md:w-1/2">
+            <div className="relative flex w-full justify-center md:w-1/2">
               {/* Glow Background*/}
               <BlurBackground
-                className="absolute top-1/2 left-1/2 z-[-1] -translate-x-1/2 -translate-y-1/2 rounded-full"
-                width={600}
-                height={600}
-                blur="120px"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+                width={400}
+                height={500}
+                blur="140px"
                 color="#F4BCAB"
+                style={{
+                  width: 'clamp(300px, 70vw, 600px)',
+                  height: 'clamp(400px, 60vh, 600px)',
+                }}
               />
               <ImageGrid />
             </div>

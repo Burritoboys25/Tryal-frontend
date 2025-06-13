@@ -33,7 +33,7 @@ const values = [
 
 const Values = () => {
   return (
-    <section className="flex flex-col items-center bg-white text-center">
+    <section className="flex flex-col items-center text-center">
       <h2 className="text-h2 mb-4">Our Values</h2>
       <p className="text-body2 mx-auto mb-12 max-w-lg">
         Our values are the foundation of everything we do. They guide our decisions, shape our

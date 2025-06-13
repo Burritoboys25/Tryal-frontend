@@ -44,15 +44,18 @@ export default function Founders() {
           Our team is a passionate group of innovators, creators, and problem-solvers dedicated to
           making a difference. Each member brings unique skills and expertise, working together to
           drive our mission forward.
-        </p>
-
+        </p>{' '}
         <div className="relative z-0">
           <BlurBackground
-            className="absolute top-1/2 left-1/2 z-[-1] -translate-x-1/2 -translate-y-1/2"
-            width={1300}
-            height={40}
-            blur="70px"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:rotate-90"
+            width={40}
+            height={800}
+            blur="60px"
             color="#F4BCAB"
+            style={{
+              width: 'clamp(40px, 5vw, 1300px)',
+              height: 'clamp(800px, 100vh, 40px)',
+            }}
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 2xl:grid-cols-4">
             {founders.map(founder => (
