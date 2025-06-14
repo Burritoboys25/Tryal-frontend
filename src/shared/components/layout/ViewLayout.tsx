@@ -1,31 +1,39 @@
-import React from 'react';
-import MainNavbar from '@/shared/components/layout/MainNavbar';
-import MainFooter from '@/shared/components/layout/MainFooter';
+import React from 'react'
+import LandingNavbar from '@/shared/components/layout/LandingNavbar'
+import MainFooter from '@/shared/components/layout/MainFooter'
+import MainHeader from './MainHeader'
 
-type LayoutType = 'main' | 'partner';
+type LayoutType = 'landing' | 'partner' | 'explore' | 'profile'
 
 type ViewLayoutProps = {
-  type?: LayoutType | null;
-  children: React.ReactNode;
-  header?: React.ReactNode;
-  footer?: React.ReactNode;
-};
+  type?: LayoutType | null
+  children: React.ReactNode
+  header?: React.ReactNode
+  footer?: React.ReactNode
+}
 
 const ViewLayout = ({ type, children, header, footer }: ViewLayoutProps) => {
-  let defaultNavbar: React.ReactNode = null;
-  let defaultFooter: React.ReactNode = null;
-
+  let defaultNavbar: React.ReactNode = null
+  let defaultFooter: React.ReactNode = null
   switch (type) {
-    case 'main':
-      defaultNavbar = <MainNavbar />;
-      defaultFooter = <MainFooter />;
-      break;
+    case 'landing':
+      defaultNavbar = <LandingNavbar />
+      defaultFooter = <MainFooter />
+      break
     case 'partner':
-      defaultNavbar = <MainNavbar disablePartner={true}/>;
-      defaultFooter = <MainFooter />;
-      break;
+      defaultNavbar = <LandingNavbar disablePartner={true} />
+      defaultFooter = <MainFooter />
+      break
+    case 'explore':
+      defaultNavbar = <MainHeader showSearch={true} />
+      defaultFooter = null
+      break
+    case 'profile':
+      defaultNavbar = <MainHeader showSearch={false} />
+      defaultFooter = <MainFooter />
+      break
     default:
-      break;
+      break
   }
 
   return (
@@ -34,7 +42,7 @@ const ViewLayout = ({ type, children, header, footer }: ViewLayoutProps) => {
       <main className="mt-[69px] flex-grow">{children}</main>
       {footer ?? defaultFooter}
     </div>
-  );
-};
+  )
+}
 
-export default ViewLayout;
+export default ViewLayout
