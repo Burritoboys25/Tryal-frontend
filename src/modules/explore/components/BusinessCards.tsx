@@ -2,13 +2,14 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { Business } from '@/shared/types/businessTypes'
+import { Business, CreditRange } from '@/shared/types/businessTypes'
 import { getCategoriesForBusiness } from '../libs/CategoryMapper'
 import { Button } from '@/shared/components/ui/base/button'
 import BookmarkedIcon from '@/shared/assets/icons/bookmarked.svg'
 import UnBookMarkedIcon from '@/shared/assets/icons/unbookmarked.svg'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
 import { Badge } from '@/shared/components/ui/base/badge'
+import { StarDisplay } from '@/shared/components/ui/base/rating'
 
 const ExploreCard = ({
   name,
@@ -16,7 +17,7 @@ const ExploreCard = ({
   address,
   rating,
   imageUrl,
-  credits,
+  credit_range,
   business_id,
   selected,
   onSelect,
@@ -30,7 +31,7 @@ const ExploreCard = ({
   address: string
   rating: number
   imageUrl?: string
-  credits: number
+  credit_range: CreditRange
   business_id: string
   hovered: boolean
   onSelect: (id: string) => void
@@ -42,8 +43,8 @@ const ExploreCard = ({
 }) => {
   return (
     <div
-      className={`mb-4 flex h-[135px] w-full items-center rounded-xl p-4 shadow-md transition-colors duration-300 hover:cursor-pointer ${
-        selected ? 'bg-accent hover:bg-accent/80 font-bold' : 'hover:bg-muted/50 bg-white'
+      className={`mb-4 flex h-[135px] w-full items-center rounded-xl border-2 p-4 shadow-md transition-all duration-300 hover:cursor-pointer ${
+        selected ? 'border-primary font-bold' : 'hover:bg-muted/50 border-transparent bg-white'
       } `}
       onClick={() => onSelect(business_id)} // when clicked sends up the business_id to the parent
       onMouseEnter={onHover}
@@ -56,13 +57,15 @@ const ExploreCard = ({
         width={130}
         height={135}
         className="mr-5 h-full flex-shrink-0 rounded-lg bg-gray-200 object-cover"
-      />
+      />{' '}
       {/* Business info stacked vertically */}
       <div className="flex min-w-0 flex-1 flex-col justify-center">
-        <h3 className="text-sub3 mb-1 truncate">{name}</h3>
-        <div className="text-caption1 mb-1 truncate">{type.join(' | ')}</div>
-        <div className="text-body2 mb-1 truncate">{address}</div>
-        <div className="text-sm font-semibold text-yellow-600">Rating: {rating.toFixed(1)}</div>
+        <h3 className="text-sub3 mb-0.5 truncate">{name}</h3>
+        <div className="text-caption2 mb-0.5 truncate">{type.join(' | ')}</div>
+        <div className="text-body2 mb-0.5 truncate">{address}</div>
+        <div className="flex items-center gap-2">
+          <StarDisplay rating={rating} size={16} />
+        </div>
       </div>
       <div className="ml-auto flex h-full flex-col items-center justify-between p-0">
         <Button
@@ -81,10 +84,10 @@ const ExploreCard = ({
             <UnBookMarkedIcon className="h-6 w-6" />
           )}
         </Button>
-        <Badge className="bg-accent flex h-[36px] w-[67px] items-center justify-start">
-          <span className="text-sub4 text-foreground ml-1 flex items-center gap-1.5">
+        <Badge className="bg-accent flex h-[36px] w-[93px] items-center">
+          <span className="text-sub4 text-foreground flex items-center gap-1.5">
             <CreditIcon className="!h-6 !w-6" />
-            {credits ?? 0}
+            {credit_range ? `${credit_range.min}-${credit_range.max}` : '0'}
           </span>
         </Badge>
       </div>

@@ -164,10 +164,10 @@ export default function Home() {
                 <br />
                 Repeat.
               </h1>
-              <p className="text-sub2 mb-8 max-w-lg">
+              <p className="text-sub2 text-muted-foreground mb-8 max-w-lg">
                 From hidden gems to thrilling adventures—find and book unforgettable experiences{' '}
-                <span className="underline decoration-orange-500 underline-offset-4">
-                  all in one place.
+                <span className="paintbrush-underline">
+                  <span>all in one place.</span>
                 </span>
               </p>
 
