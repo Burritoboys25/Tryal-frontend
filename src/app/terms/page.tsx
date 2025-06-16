@@ -14,7 +14,7 @@ const TermsPage = () => {
             <div className="pt-10">
               <p>Welcome to Tryal!</p>
               <p className="pt-10">
-                Please read these Terms of Service (“Terms”) carefully before using our platform.
+                Please read these Terms of Use (“Terms”) carefully before using our platform.
                 These Terms govern your access to and use of Tryal&apos;s website, mobile
                 application, and related services (collectively, the “Platform”). By accessing or
                 using the Platform, you agree to be bound by these Terms.
