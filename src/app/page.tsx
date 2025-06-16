@@ -179,15 +179,9 @@ export default function Home() {
             <div className="relative flex w-full justify-center md:w-1/2">
               {/* Glow Background*/}
               <BlurBackground
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
-                width={400}
-                height={500}
+                className="absolute top-1/2 left-1/2 h-[400px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full md:h-[500px] md:w-[400px] 2xl:h-[600px] 2xl:w-[600px]"
                 blur="140px"
                 color="#F4BCAB"
-                style={{
-                  width: 'clamp(300px, 70vw, 600px)',
-                  height: 'clamp(400px, 60vh, 600px)',
-                }}
               />
               <ImageGrid />
             </div>

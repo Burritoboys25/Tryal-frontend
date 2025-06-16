@@ -26,7 +26,7 @@ const InterestWaitlistForm = () => {
         showToast({ type: 'error' })
         throw new Error('Failed to join waitlist')
       }
-      
+
       showToast({ type: 'waitlist', description: "You're in! We'll keep you posted." })
       setIsSubmitting(false)
       setEmail('')
@@ -48,7 +48,7 @@ const InterestWaitlistForm = () => {
         placeholder="Email address"
         value={email}
         onChange={e => setEmail(e.target.value)}
-        className="flex-grow sm:w-auto"
+        className="flex-grow-0 sm:w-auto sm:flex-grow md:flex-grow-0 2xl:flex-grow"
         required
       />
       <Button type="submit" disabled={isSubmitting} className="min-w-[112px] cursor-pointer">
