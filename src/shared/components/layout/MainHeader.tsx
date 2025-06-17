@@ -3,7 +3,7 @@
 import { Button } from '@/shared/components/ui/base/button'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useSession } from 'next-auth/react'
+// import { useSession } from 'next-auth/react'
 import SearchIcon from '@/shared/assets/icons/search.svg'
 import LocationOnIcon from '@/shared/assets/icons/location_on.svg'
 import CalendarIcon from '@/shared/assets/icons/calendar.svg'
@@ -16,7 +16,7 @@ interface MainHeader {
 }
 
 function MainHeader({ showSearch = false }: MainHeader) {
-  const { data: session } = useSession()
+  // const { data: session } = useSession()
   const router = useRouter()
 
   const handleAvatarClick = () => {
@@ -30,9 +30,9 @@ function MainHeader({ showSearch = false }: MainHeader) {
 
   // Generate user initials and profile image URL
   // For now using mock data, but this will be replaced with session data when backend is ready
-  const userFirstName = session?.user?.firstName || 'User'
-  const userLastName = session?.user?.lastName || ''
-  const userInitials = `${userFirstName.charAt(0)}${userLastName.charAt(0)}`.toUpperCase()
+  // const userFirstName = session?.user?.firstName || 'User'
+  // const userLastName = session?.user?.lastName || ''
+  // const userInitials = `${userFirstName.charAt(0)}${userLastName.charAt(0)}`.toUpperCase()
   const profileImageUrl = `"https://github.com/shadcn.png"`
 
   return (
@@ -69,8 +69,8 @@ function MainHeader({ showSearch = false }: MainHeader) {
             className="hover:ring-border/20 cursor-pointer transition-all duration-200 hover:ring-2"
             onClick={handleAvatarClick}
           >
-            <AvatarImage src={profileImageUrl} alt={`${userFirstName} ${userLastName}`} />
-            <AvatarFallback className="bg-border text-background">{userInitials}</AvatarFallback>
+            <AvatarImage src={profileImageUrl} />
+            <AvatarFallback className="bg-border text-background">{}</AvatarFallback>
           </Avatar>
         </div>
       </div>

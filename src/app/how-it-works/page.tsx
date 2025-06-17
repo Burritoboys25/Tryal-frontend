@@ -38,7 +38,7 @@ const howItWorksSteps = [
 
 const HowItWorksPage = () => {
   return (
-    <ViewLayout type={'main'}>
+    <ViewLayout type={'landing'}>
       <Container>
         <section className="flex min-h-[calc(100vh-600px)] items-center justify-center py-8 md:py-12 2xl:py-24">
           <div className="flex h-full flex-col items-center justify-center text-center">

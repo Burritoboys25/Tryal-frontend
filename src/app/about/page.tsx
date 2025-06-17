@@ -7,7 +7,7 @@ import Container from '@/shared/components/layout/Container'
 
 export default function AboutPage() {
   return (
-    <ViewLayout type={"main"}>
+    <ViewLayout type={'landing'}>
       <Container>
         <div className="space-y-8 md:space-y-12 2xl:space-y-24">
           <OurStory />

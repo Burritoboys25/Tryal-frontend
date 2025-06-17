@@ -5,7 +5,7 @@ import { terms, TermsSection, termsUpdatedAt } from './data/terms'
 
 const TermsPage = () => {
   return (
-    <ViewLayout type={'main'}>
+    <ViewLayout type={'landing'}>
       <Container>
         <div className="space-y-8 md:space-y-12 2xl:space-y-24">
           <section className="pt-10">
