@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { Button } from '@/shared/components/ui/base/button'
 import FormField from '@/shared/components/ui/forms/FormField'
@@ -11,12 +11,11 @@ import { LoginFormData, loginFormSchema } from '../validations/login.schema'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { cn } from '@/shared/lib/utils'
 import LogoutButton from './LogoutButton'
-import { getCurrentUser, updateUser } from '@/shared/services/user'
 import { useRouter } from 'next/navigation'
 
 const LoginForm = () => {
   const router = useRouter()
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
 
   const [form, setForm] = useState<LoginFormData>({
     email: '',
@@ -28,10 +27,20 @@ const LoginForm = () => {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({})
   const [remember, setRemember] = useState(false)
 
-  const handleChange = () => {
-    setRemember(!remember)
-  }
+  useEffect(() => {
+    const remembered = localStorage.getItem('rememberMe')
+    if (remembered === 'true') {
+      setRemember(true)
+    }
+  }, [])
 
+  const handleRememberChange = () => {
+    setRemember(prev => {
+      const newVal = !prev
+      localStorage.setItem('rememberMe', newVal.toString())
+      return newVal
+    })
+  }
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -49,6 +58,7 @@ const LoginForm = () => {
         email: form.email,
         password: form.password,
         redirect: false,
+        remember,
       })
 
       if (authenticateLogin?.error) {
@@ -58,19 +68,8 @@ const LoginForm = () => {
         return
       }
 
-      if (session?.user?.id) {
-        const user = await getCurrentUser(session.user.id)
-        
-        if (user.remember !== remember) {
-          await updateUser(session.user.id, { remember })
-        }
-
-        setSuccess(true)
-        router.push('/explore')
-
-      } else {
-        setFieldErrors({ authentication: ['Unable to find user'] })
-      }
+      setSuccess(true)
+      router.push('/explore')
     } catch (error) {
       console.error(error)
     } finally {
@@ -118,7 +117,7 @@ const LoginForm = () => {
                 value={remember}
                 checked={remember}
                 onChange={() => {
-                  handleChange()
+                  handleRememberChange()
                 }}
               />
               <Link href="/" className="text-info text-caption1">

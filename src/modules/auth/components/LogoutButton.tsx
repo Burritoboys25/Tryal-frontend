@@ -10,7 +10,7 @@ type LogoutButtonProps = {
 }
 
 const LogoutButton = ({
-  redirectUrl = '/thank-you',
+  redirectUrl = '/',
   className = '',
   label = 'Log Out',
 }: LogoutButtonProps) => {

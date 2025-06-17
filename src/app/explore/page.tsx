@@ -12,7 +12,7 @@ import Map from '@/modules/explore/components/mapbox/Map'
 
 import businesses from '@/shared/mock/business/business.json'
 import mockUserBookmarks from '@/shared/mock/user/userBookmarks.json'
-// import { useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 // import {
 //   getUserBookmarks,
 //   addUserBookmark,
@@ -53,7 +53,10 @@ const ExplorePage = () => {
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>(initialBookmarkedIds)
 
   // Uncomment when backend integration is ready
-  // const { data: session } = useSession()
+  const { data: session } = useSession()
+  console.log("Session info:");
+  console.log(session);
+
   // const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([])
   // useEffect(() => {
   //   if (!session?.user?.id) return

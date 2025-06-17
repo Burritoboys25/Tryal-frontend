@@ -1,3 +1,9 @@
+// Credit range type
+export interface CreditRange {
+  min: number
+  max: number
+}
+
 // Business type
 export interface Business {
   business_id: string
@@ -9,7 +15,7 @@ export interface Business {
   stripe_account_id: string
   rating: number
   image_url: string
-  credits: number
+  credit_range: CreditRange
   lat: number
   lng: number
 }
