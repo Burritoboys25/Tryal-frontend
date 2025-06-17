@@ -22,7 +22,7 @@ const founders = [
 
 export default function Founders() {
   return (
-    <section className="py-24">
+    <section id="contact" className="py-24">
       <Container className="text-center">
         <h2 className="text-h2 mb-4">Get to Know the Founders Behind The Mission</h2>
         <p className="text-body2 mx-auto mb-12 max-w-2xl">

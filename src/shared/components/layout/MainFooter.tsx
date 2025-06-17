@@ -21,7 +21,7 @@ export default function MainFooter() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <a href="/about#contact" className="hover:underline">
                   Contact
                 </a>
               </li>
@@ -31,13 +31,13 @@ export default function MainFooter() {
             <h4 className="text-body1 mb-4 !font-extrabold">Legal</h4>
             <ul className="text-body2 space-y-4">
               <li>
-                <a href="#" className="hover:underline">
+                <a href="/privacy" className="hover:underline">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
-                  Terms & Conditions
+                <a href="/terms" className="hover:underline">
+                  Terms of Use
                 </a>
               </li>
             </ul>

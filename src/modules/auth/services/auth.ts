@@ -3,13 +3,13 @@ import { LoginPayload, SignupPayload } from "../types/authTypes"
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
 
-export const loginUser = async ({ email, password }: LoginPayload) => {
-  const res = await fetch(`${API_BASE_URL}/api/auth/user`, {
+export const loginUser = async ({ email, password, remember }: LoginPayload) => {
+  const res = await fetch(`${API_BASE_URL}/api/auth/user/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, password, remember }),
   })
 
   const data = await res.json()
@@ -22,7 +22,7 @@ export const loginUser = async ({ email, password }: LoginPayload) => {
 }
 
 export const signupUser = async (payload: SignupPayload) => {
-  const res = await fetch(`${API_BASE_URL}/api/auth/user`, {
+  const res = await fetch(`${API_BASE_URL}/api/auth/user/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

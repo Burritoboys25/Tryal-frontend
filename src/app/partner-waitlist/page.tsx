@@ -221,11 +221,11 @@ const BecomePartnerForm = () => {
             <p className="text-caption2 text-muted-foreground">
               You can unsubscribe from these communications at any time. For more information,
               please review our{' '}
-              <Link href="#" className="text-link">
-                Terms and Conditions
+              <Link href="/terms" className="text-link">
+                Terms of Use
               </Link>
               {' and '}
-              <Link href="#" className="text-link">
+              <Link href="/privacy" className="text-link">
                 Privacy Policy
               </Link>
               .

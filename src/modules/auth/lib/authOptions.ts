@@ -1,6 +1,8 @@
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { loginUser } from '../services/auth'
+import { jwtDecode } from 'jwt-decode'
+import { JwtUser } from '../types/authTypes'
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -9,6 +11,7 @@ export const authOptions: NextAuthOptions = {
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
+        remember: { label: 'Remember me', type: 'checkbox'}
       },
       async authorize(credentials) {
         try {
@@ -16,12 +19,21 @@ export const authOptions: NextAuthOptions = {
             throw new Error('Email and password are required.')
           }
 
-          const user = await loginUser({
+          const remember = credentials?.remember === 'true';
+
+          const { accessToken, refreshToken } = await loginUser({
             email: credentials.email,
             password: credentials.password,
+            remember,
           })
 
-          return user
+          const decodedToken = jwtDecode<{ sub: string }>(accessToken)
+
+          return {
+            id: decodedToken.sub,
+            accessToken,
+            refreshToken
+          } as JwtUser
         } catch (error) {
           console.error('Login error: ' + error)
           return null
@@ -39,10 +51,12 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id || ''
-        token.email = user.email || ''
-        token.firstName = user.firstName || ''
-        token.lastName = user.lastName || ''
+        const u = user as JwtUser
+        token.id = u.id || ''
+        token.accessToken = u.accessToken || ''
+        token.refreshToken = u.refreshToken || ''
+        // TODO: 
+        //token.accessTokenExpiry = u.accessTokenExpiry || ''
       }
       return token
     },
@@ -50,10 +64,11 @@ export const authOptions: NextAuthOptions = {
       if (token) {
         session.user = {
           id: token.id ?? '',
-          email: token.email ?? '',
-          firstName: token.firstName ?? '',
-          lastName: token.lastName ?? '',
         }
+        session.accessToken = token.accessToken
+        session.refreshToken = token.refreshToken
+        // TODO:
+        //session.accessTokenExpiry = token.accessTokenExpiry
       }
       return session
     },
