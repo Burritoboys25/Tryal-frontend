@@ -1,12 +1,24 @@
+import Image from 'next/image'
+import BlurBackground from '@/shared/components/ui/base/BlurBackground'
+
 export default function MissionVision() {
   return (
     <section className="space-y-8">
-      <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
-        {/* Left: Image */}
-        <div className="h-[303px] w-[294px] rounded-lg bg-gray-200" />
+      <div className="relative flex flex-col items-stretch justify-between gap-8 md:flex-row md:gap-12">
+        {/* Left: Images */}
+        <div className="relative flex items-center justify-center">
+          <BlurBackground className="absolute top-1/2 left-1/2 h-[350px] w-[350px] -translate-x-1/2 -translate-y-1/2" />
+          <Image
+            src="/about_us/antho_and_henry.png"
+            alt="Anthony and Henry"
+            width={294}
+            height={303}
+            className="relative z-10 h-[303px] w-[294px] rounded-lg object-cover"
+          />
+        </div>
 
         {/* Right: Mission Text */}
-        <div>
+        <div className="flex flex-col justify-center">
           <h3 className="text-h3 mb-3">The Mission</h3>
           <p className="text-body2 md:max-w-md 2xl:max-w-md">
             Our mission is to empower individuals to explore, experiment, and experience life beyond
@@ -17,8 +29,9 @@ export default function MissionVision() {
         </div>
       </div>
 
-      <div className="flex flex-col-reverse items-center justify-between gap-8 md:flex-row">
-        <div>
+      <div className="relative flex flex-col-reverse items-stretch justify-between gap-8 md:flex-row md:gap-12">
+        {/* Left: Vision Text */}
+        <div className="flex flex-col justify-center">
           <h3 className="text-h3 mb-3">The Vision</h3>
           <p className="text-body2 md:max-w-md 2xl:max-w-md">
             We strive to create a world where exploring new experiences is effortless, enriching,
@@ -28,8 +41,17 @@ export default function MissionVision() {
           </p>
         </div>
 
-        {/* Right: Image */}
-        <div className="h-[303px] w-[294px] rounded-lg bg-gray-200" />
+        {/* Right: Images */}
+        <div className="relative flex items-center justify-center">
+          <BlurBackground className="absolute top-1/2 left-1/2 h-[350px] w-[350px] -translate-x-1/2 -translate-y-1/2" />
+          <Image
+            src="/about_us/cal_and_rie.png"
+            alt="Calvin and Henry Nguyen"
+            width={294}
+            height={303}
+            className="relative z-10 h-[303px] w-[294px] rounded-lg object-cover"
+          />
+        </div>
       </div>
     </section>
   )
