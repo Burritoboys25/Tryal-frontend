@@ -151,7 +151,7 @@ function ImageGrid() {
 
 export default function Home() {
   return (
-    <ViewLayout type={'main'}>
+    <ViewLayout type={'landing'}>
       {/* Hero Section */}
       <Container>
         <section className="mx-auto -mt-[69px] h-[100dvh] w-full">

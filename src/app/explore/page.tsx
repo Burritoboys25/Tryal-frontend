@@ -2,7 +2,6 @@
 
 import FilterBar from '@/modules/explore/components/FilterBar'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
-import ExploreHeader from '@/modules/explore/components/layout/ExploreHeader'
 import Container from '@/shared/components/layout/Container'
 import { ScrollArea } from '@/shared/components/ui/base/scroll-area'
 import React, { useState } from 'react'
@@ -88,13 +87,11 @@ const ExplorePage = () => {
   const handleFilterChange = <K extends FilterKey>(key: K, value: Filters[K]) => {
     setFilters(prev => ({ ...prev, [key]: value }))
   }
-
   const resetFilters = () => {
     setFilters(defaultFilters)
   }
-
   return (
-    <ViewLayout header={<ExploreHeader />}>
+    <ViewLayout type="explore">
       <Container>
         <div className="screen-minus-navbar-explore mt-[21px] flex flex-col space-y-8">
           <FilterBar filters={filters} onChange={handleFilterChange} onReset={resetFilters} />

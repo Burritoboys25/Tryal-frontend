@@ -5,11 +5,11 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import HamburgerToggle from '@/shared/components/ui/mobile/HamburgerToggle'
 
-interface MainNavbarProps {
+interface LandingNavbarProps {
   disablePartner?: boolean
 }
 
-function MainNavbar({ disablePartner = false }: MainNavbarProps) {
+function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -87,4 +87,4 @@ function MainNavbar({ disablePartner = false }: MainNavbarProps) {
   )
 }
 
-export default MainNavbar
+export default LandingNavbar
