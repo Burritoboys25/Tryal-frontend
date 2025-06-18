@@ -27,11 +27,9 @@ type MapProps = {
 export default function Map({ items, selectedId, hoveredId }: MapProps) {
   const mapContainer = useRef<HTMLDivElement>(null)
   const mapRef = useRef<mapboxgl.Map | null>(null)
-  const markersRef = useRef<mapboxgl.Marker[] | null>([]) // Reference for all the markers present
+  const markersRef = useRef<mapboxgl.Marker[]>([])
 
-  // const [zoom, setZoom] = useState(DEFAULT_ZOOM)
-
-  // Mount the map on first render and prevent duplicate mounts
+  // Initialize map
   useEffect(() => {
     if (!mapContainer.current || mapRef.current) return
     mapRef.current = new mapboxgl.Map({
@@ -40,20 +38,23 @@ export default function Map({ items, selectedId, hoveredId }: MapProps) {
       center: [DEFAULT_CENTER.lng, DEFAULT_CENTER.lat],
       zoom: DEFAULT_ZOOM,
     })
-    return () => mapRef.current?.remove()
+    return () => {
+      mapRef.current?.remove()
+      mapRef.current = null
+    }
   }, [])
 
-  // Add markers to the Map
+  // Add markers
   useEffect(() => {
     if (!mapRef.current) return
 
-    markersRef.current?.forEach(marker => marker.remove())
+    // Remove old markers
+    markersRef.current.forEach(marker => marker.remove())
     markersRef.current = []
 
     items.forEach(item => {
       const el = document.createElement('div')
       el.className = 'marker'
-
       const isHovered = item.business_id === hoveredId
       const hoverStyle = `${isHovered ? 'marker-icon-hover' : ''}`
 
@@ -68,15 +69,14 @@ export default function Map({ items, selectedId, hoveredId }: MapProps) {
       el.style.cursor = 'pointer'
 
       const marker = new mapboxgl.Marker(el).setLngLat([item.lng, item.lat]).addTo(mapRef.current!)
-      markersRef.current?.push(marker)
+      markersRef.current.push(marker)
     })
   }, [items, selectedId, hoveredId])
 
+  // Fly to selected
   useEffect(() => {
     if (!mapRef.current || !selectedId) return
-
     const selected = items.find(item => item.business_id === selectedId)
-
     if (selected) {
       mapRef.current.flyTo({
         center: [selected.lng, selected.lat],
