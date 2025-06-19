@@ -6,13 +6,14 @@ import MultiSelectDropdownBody from './filter-dropdowns/MultiSelectDropdownBody'
 import SingleSelectDropdownBody from './filter-dropdowns/SingleSelectDropdownBody'
 import { Button } from '@/shared/components/ui/base/button'
 import RangedSliderDropdownBody from './filter-dropdowns/RangedSliderDropdownBody'
+import { FilterKey, FilterOption, Filters } from '../types/filterTypes'
 
 interface FilterDropdownProps {
   label: string
   type: 'multi' | 'single' | 'range'
-  options: string[] | [number, number] // [min, max]
-  value: string[] | string | [number, number]
-  onApply: (val: string[] | string | [number, number]) => void
+  options: FilterOption[] | [number, number]
+  value: Filters[FilterKey]
+  onApply: (val: Filters[FilterKey]) => void
   onClear: () => void
 }
 
@@ -30,7 +31,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   const isSingle = type === 'single'
 
   const [open, setOpen] = useState(false)
-  const [localValue, setLocalValue] = useState<string[] | string | [number, number]>(value)
+  const [localValue, setLocalValue] = useState<Filters[FilterKey]>(value)
 
   useEffect(() => {
     setLocalValue(value)
@@ -59,7 +60,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
     } else if (isSingle) {
       setLocalValue('')
     } else if (isRange) {
-      setLocalValue(options)
+      setLocalValue(options as [number, number])
     }
     onClear()
     setOpen(false)
@@ -87,7 +88,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
           <div className="px-3 pt-0 pb-4">
             {isMulti && (
               <MultiSelectDropdownBody
-                options={options as string[]}
+                options={options as FilterOption[]}
                 selected={localValue as string[]}
                 onToggle={toggleMulti}
               />
@@ -95,20 +96,22 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
 
             {isSingle && (
               <SingleSelectDropdownBody
-                options={options as string[]}
+                options={options as FilterOption[]}
                 selected={localValue as string}
                 onSelect={val => setLocalValue(val)}
               />
             )}
-
-            {isRange && (
-              <RangedSliderDropdownBody
-                min={options[0] as number}
-                max={options[1] as number}
-                value={localValue as [number, number]}
-                onChange={val => setLocalValue(val)}
-              />
-            )}
+            {isRange &&
+              Array.isArray(options) &&
+              typeof options[0] === 'number' &&
+              typeof options[1] === 'number' && (
+                <RangedSliderDropdownBody
+                  min={options[0]}
+                  max={options[1]}
+                  value={localValue as [number, number]}
+                  onChange={val => setLocalValue(val)}
+                />
+              )}
           </div>
 
           <div className="border-border/50 flex justify-end gap-2 border-t px-3 pt-3">
