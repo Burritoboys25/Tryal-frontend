@@ -2,8 +2,8 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { Business } from '@/shared/types/businessTypes'
-import { getCategoriesForBusiness } from '../libs/CategoryMapper'
+import { Business } from '@/modules/explore/types/businessTypes'
+// import { getCategoriesForBusiness } from '../libs/CategoryMapper'
 import { Button } from '@/shared/components/ui/base/button'
 import BookmarkedIcon from '@/shared/assets/icons/bookmarked.svg'
 import UnBookMarkedIcon from '@/shared/assets/icons/unbookmarked.svg'
@@ -14,10 +14,10 @@ const ExploreCard = ({
   name,
   type,
   address,
-  rating,
-  imageUrl,
-  credits,
-  business_id,
+  rating = 0,
+  imageUrl = '/landing_page_img_1.png',
+  credits = 0,
+  businessId,
   selected,
   onSelect,
   onHover,
@@ -28,10 +28,10 @@ const ExploreCard = ({
   name: string
   type: string[]
   address: string
-  rating: number
+  rating?: number
   imageUrl?: string
-  credits: number
-  business_id: string
+  credits?: number
+  businessId: string
   hovered: boolean
   onSelect: (id: string) => void
   selected: boolean
@@ -45,7 +45,7 @@ const ExploreCard = ({
       className={`mb-4 flex h-[135px] w-full items-center rounded-xl p-4 shadow-md transition-colors duration-300 hover:cursor-pointer ${
         selected ? 'bg-accent hover:bg-accent/80 font-bold' : 'hover:bg-muted/50 bg-white'
       } `}
-      onClick={() => onSelect(business_id)} // when clicked sends up the business_id to the parent
+      onClick={() => onSelect(businessId)} // when clicked sends up the business_id to the parent
       onMouseEnter={onHover}
       onMouseLeave={onHoverEnd}
     >
@@ -70,7 +70,7 @@ const ExploreCard = ({
           size="icon"
           className="ml-auto cursor-pointer p-0"
           onClick={e => {
-            console.log('Bookmark clicked for business:', business_id)
+            console.log('Bookmark clicked for business:', businessId)
             e.stopPropagation() // Prevents card click event
             onToggleBookmark()
           }}
@@ -104,17 +104,24 @@ const BusinessCards: React.FC<{
   <div className="px-2">
     {items.map(item => (
       <ExploreCard
-        key={item.business_id}
+        key={item.businessId}
         {...item}
-        imageUrl={item.image_url}
-        type={getCategoriesForBusiness(item.business_id)}
-        selected={selectedId === item.business_id}
+        imageUrl={'/landing_page_img_1.png'}
+        // flatten and remove display unique types that a business might have
+        type={[
+          ...new Set(
+            item.filteredExperiences
+              .map(exp => exp.categories.map(c => c.name.split('&')[0]))
+              .flat(),
+          ),
+        ]}
+        selected={selectedId === item.businessId}
         onSelect={onSelect}
-        hovered={hoveredId === item.business_id}
-        onHover={() => onHover(item.business_id)}
+        hovered={hoveredId === item.businessId}
+        onHover={() => onHover(item.businessId)}
         onHoverEnd={() => onHover(null)}
-        bookmarked={bookmarkedIds.includes(item.business_id)}
-        onToggleBookmark={() => onToggleBookmark(item.business_id)}
+        bookmarked={bookmarkedIds.includes(item.businessId)}
+        onToggleBookmark={() => onToggleBookmark(item.businessId)}
       />
     ))}
   </div>
