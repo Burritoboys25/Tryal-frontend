@@ -1,6 +1,6 @@
 'use client'
 
-import { Business } from '@/shared/types/businessTypes'
+import { Business } from '@/modules/explore/types/businessTypes'
 import mapboxgl from 'mapbox-gl'
 import { useRef, useEffect } from 'react'
 
@@ -54,12 +54,12 @@ export default function Map({ items, selectedId, hoveredId }: MapProps) {
       const el = document.createElement('div')
       el.className = 'marker'
 
-      const isHovered = item.business_id === hoveredId
+      const isHovered = item.businessId === hoveredId
       const hoverStyle = `${isHovered ? 'marker-icon-hover' : ''}`
 
       el.innerHTML = ReactDOMServer.renderToString(
         <div className={hoverStyle}>
-          {item.business_id === selectedId ? <SelectedPin /> : <DefaultPin />}
+          {item.businessId === selectedId ? <SelectedPin /> : <DefaultPin />}
         </div>,
       )
 
@@ -67,7 +67,9 @@ export default function Map({ items, selectedId, hoveredId }: MapProps) {
       el.style.position = 'absolute'
       el.style.cursor = 'pointer'
 
-      const marker = new mapboxgl.Marker(el).setLngLat([item.lng, item.lat]).addTo(mapRef.current!)
+      const marker = new mapboxgl.Marker(el)
+        .setLngLat([item.longitude, item.latitude])
+        .addTo(mapRef.current!)
       markersRef.current?.push(marker)
     })
   }, [items, selectedId, hoveredId])
@@ -75,11 +77,11 @@ export default function Map({ items, selectedId, hoveredId }: MapProps) {
   useEffect(() => {
     if (!mapRef.current || !selectedId) return
 
-    const selected = items.find(item => item.business_id === selectedId)
+    const selected = items.find(item => item.businessId === selectedId)
 
     if (selected) {
       mapRef.current.flyTo({
-        center: [selected.lng, selected.lat],
+        center: [selected.longitude, selected.latitude],
         zoom: 11,
         essential: true,
       })
