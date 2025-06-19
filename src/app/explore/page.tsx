@@ -2,7 +2,6 @@
 
 import FilterBar from '@/modules/explore/components/FilterBar'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
-import ExploreHeader from '@/modules/explore/components/layout/ExploreHeader'
 import Container from '@/shared/components/layout/Container'
 import { ScrollArea } from '@/shared/components/ui/base/scroll-area'
 import React, { useEffect, useState } from 'react'
@@ -57,6 +56,9 @@ const ExplorePage = () => {
 
   // Uncomment when backend integration is ready
   // const { data: session } = useSession()
+  // console.log('Session info:')
+  // console.log(session)
+
   // const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([])
   // useEffect(() => {
   //   if (!session?.user?.id) return
@@ -87,7 +89,6 @@ const ExplorePage = () => {
   const handleFilterChange = <K extends FilterKey>(key: K, value: Filters[K]) => {
     setFilters(prev => ({ ...prev, [key]: value }))
   }
-
   const resetFilters = () => {
     setFilters(defaultFilters)
   }
@@ -97,7 +98,7 @@ const ExplorePage = () => {
   }, [filters])
 
   return (
-    <ViewLayout header={<ExploreHeader />}>
+    <ViewLayout type="explore">
       <Container>
         <div className="screen-minus-navbar-explore mt-[21px] flex flex-col space-y-8">
           <FilterBar

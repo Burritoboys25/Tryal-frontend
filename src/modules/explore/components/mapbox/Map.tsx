@@ -27,11 +27,9 @@ type MapProps = {
 export default function Map({ items, selectedId, hoveredId }: MapProps) {
   const mapContainer = useRef<HTMLDivElement>(null)
   const mapRef = useRef<mapboxgl.Map | null>(null)
-  const markersRef = useRef<mapboxgl.Marker[] | null>([]) // Reference for all the markers present
+  const markersRef = useRef<mapboxgl.Marker[]>([])
 
-  // const [zoom, setZoom] = useState(DEFAULT_ZOOM)
-
-  // Mount the map on first render and prevent duplicate mounts
+  // Initialize map
   useEffect(() => {
     if (!mapContainer.current || mapRef.current) return
     mapRef.current = new mapboxgl.Map({
@@ -40,14 +38,18 @@ export default function Map({ items, selectedId, hoveredId }: MapProps) {
       center: [DEFAULT_CENTER.lng, DEFAULT_CENTER.lat],
       zoom: DEFAULT_ZOOM,
     })
-    return () => mapRef.current?.remove()
+    return () => {
+      mapRef.current?.remove()
+      mapRef.current = null
+    }
   }, [])
 
-  // Add markers to the Map
+  // Add markers
   useEffect(() => {
     if (!mapRef.current) return
 
-    markersRef.current?.forEach(marker => marker.remove())
+    // Remove old markers
+    markersRef.current.forEach(marker => marker.remove())
     markersRef.current = []
 
     items.forEach(item => {
@@ -74,6 +76,7 @@ export default function Map({ items, selectedId, hoveredId }: MapProps) {
     })
   }, [items, selectedId, hoveredId])
 
+  // Fly to selected
   useEffect(() => {
     if (!mapRef.current || !selectedId) return
 
