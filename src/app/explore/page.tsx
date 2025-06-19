@@ -5,14 +5,17 @@ import ViewLayout from '@/shared/components/layout/ViewLayout'
 import ExploreHeader from '@/modules/explore/components/layout/ExploreHeader'
 import Container from '@/shared/components/layout/Container'
 import { ScrollArea } from '@/shared/components/ui/base/scroll-area'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BusinessCards from '@/modules/explore/components/BusinessCards'
 import { FilterKey } from '@/modules/explore/libs/FilterConstants'
 
 import Map from '@/modules/explore/components/mapbox/Map'
-
-import businesses from '@/shared/mock/business/business.json'
+import { Business } from '@/modules/explore/types/businessTypes'
 import mockUserBookmarks from '@/shared/mock/user/userBookmarks.json'
+import { useFilters } from '@/modules/explore/hooks/useFilters'
+import { Filters } from '@/modules/explore/types/filterTypes'
+import { fetchFilteredBusinesses } from '@/modules/explore/services/filterBusinesses'
+
 // import { useSession } from 'next-auth/react'
 // import {
 //   getUserBookmarks,
@@ -25,22 +28,13 @@ interface MockUserBookmark {
   businessIds: string[]
 }
 
-type Filters = {
-  type: string[]
-  skillLevel: string[]
-  groupType: string
-  duration: string
-  credits: [number, number]
-  distance: string
-}
-
 const defaultFilters: Filters = {
   type: [],
   skillLevel: [],
   groupType: '',
-  duration: '',
+  duration: Infinity,
   credits: [0, 50],
-  distance: '',
+  distance: Infinity,
 }
 
 const ExplorePage = () => {
@@ -52,6 +46,14 @@ const ExplorePage = () => {
   const initialBookmarkedIds =
     (mockUserBookmarks as MockUserBookmark[]).find(u => u.userId === mockUserId)?.businessIds || []
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>(initialBookmarkedIds)
+  const [businesses, setBusinesses] = useState<Business[]>([])
+
+  // Hook to get necessary filter options
+  const { filterOptions } = useFilters()
+
+  useEffect(() => {
+    fetchFilteredBusinesses(filters).then(setBusinesses)
+  }, [filters])
 
   // Uncomment when backend integration is ready
   // const { data: session } = useSession()
@@ -90,11 +92,20 @@ const ExplorePage = () => {
     setFilters(defaultFilters)
   }
 
+  useEffect(() => {
+    console.log('Filter State', filters)
+  }, [filters])
+
   return (
     <ViewLayout header={<ExploreHeader />}>
       <Container>
         <div className="screen-minus-navbar-explore mt-[21px] flex flex-col space-y-8">
-          <FilterBar filters={filters} onChange={handleFilterChange} onReset={resetFilters} />
+          <FilterBar
+            filters={filters}
+            onChange={handleFilterChange}
+            onReset={resetFilters}
+            filterOptions={filterOptions}
+          />
           <div className="mb-24 flex min-h-0 flex-1 gap-8">
             {/* Left: Scrollable business list */}
             <div className="flex min-h-0 w-[665px] flex-1 flex-col">
