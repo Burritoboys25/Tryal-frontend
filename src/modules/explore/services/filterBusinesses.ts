@@ -1,22 +1,30 @@
 import { Business } from '../types/businessTypes'
 import { Filters } from '../types/filterTypes'
+import { buildQueryParams } from '../libs/buildQueryParams'
 
-// Input filter state and gets businesses from the backend
-export async function fetchFilteredBusinesses(filters: Filters): Promise<Business[]> {
+// Takes filters and builds the query params, then fetches the businesses from the backend
+export async function fetchFilteredBusinesses(filters: Filters): Promise<{
+  businesses: Business[]
+}> {
   try {
-    const res = await fetch('api/explore/businesses', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(filters),
-    })
-
+    const query = buildQueryParams(filters)
+    const res = await fetch(`/api/explore/businesses?${query}`)
     const data = await res.json()
-
-    return data.businesses as Business[]
+    return { businesses: data.businesses as Business[] }
   } catch (error) {
     console.error('Error fetching businesses:', error)
-    return []
+    return { businesses: [] }
+  }
+}
+
+// Takes the search params and returns the filter object for state. Sets default values if not present.
+export function getFiltersFromSearchParams(searchParams: URLSearchParams): Filters {
+  return {
+    type: searchParams.get('categoryIds')?.split(',') || [],
+    skillLevel: searchParams.get('skillLevel')?.split(',') || [],
+    duration: searchParams.get('duration') ? Number(searchParams.get('duration')) : Infinity,
+    distance: searchParams.get('distance') ? Number(searchParams.get('distance')) : Infinity,
+    groupType: searchParams.get('groupType') || '',
+    credits: searchParams.get('credits') ? [Number(searchParams.get('credits'))] : [0, 50],
   }
 }
