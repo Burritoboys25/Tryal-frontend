@@ -5,6 +5,7 @@ import ViewLayout from '@/shared/components/layout/ViewLayout'
 import Container from '@/shared/components/layout/Container'
 import { ScrollArea } from '@/shared/components/ui/base/scroll-area'
 import React, { useEffect, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import BusinessCards from '@/modules/explore/components/BusinessCards'
 import { FilterKey } from '@/modules/explore/libs/FilterConstants'
 
@@ -13,7 +14,11 @@ import { Business } from '@/modules/explore/types/businessTypes'
 import mockUserBookmarks from '@/shared/mock/user/userBookmarks.json'
 import { useFilters } from '@/modules/explore/hooks/useFilters'
 import { Filters } from '@/modules/explore/types/filterTypes'
-import { fetchFilteredBusinesses } from '@/modules/explore/services/filterBusinesses'
+import {
+  fetchFilteredBusinesses,
+  getFiltersFromSearchParams,
+} from '@/modules/explore/services/filterBusinesses'
+import { buildQueryParams } from '@/modules/explore/libs/buildQueryParams'
 
 // import { useSession } from 'next-auth/react'
 // import {
@@ -27,17 +32,7 @@ interface MockUserBookmark {
   businessIds: string[]
 }
 
-const defaultFilters: Filters = {
-  type: [],
-  skillLevel: [],
-  groupType: '',
-  duration: Infinity,
-  credits: [0, 50],
-  distance: Infinity,
-}
-
 const ExplorePage = () => {
-  const [filters, setFilters] = useState<Filters>(defaultFilters)
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   // Find the mock user's bookmarked business IDs
@@ -47,12 +42,21 @@ const ExplorePage = () => {
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>(initialBookmarkedIds)
   const [businesses, setBusinesses] = useState<Business[]>([])
 
+  // Filter state generated from search params.
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const filters = getFiltersFromSearchParams(searchParams)
+
   // Hook to get necessary filter options
   const { filterOptions } = useFilters()
 
+  // Changes in search params trigger a fetch of businesses.
   useEffect(() => {
-    fetchFilteredBusinesses(filters).then(setBusinesses)
-  }, [filters])
+    const filters = getFiltersFromSearchParams(searchParams)
+    fetchFilteredBusinesses(filters).then(({ businesses }) => {
+      setBusinesses(businesses)
+    })
+  }, [searchParams])
 
   // Uncomment when backend integration is ready
   // const { data: session } = useSession()
@@ -86,16 +90,17 @@ const ExplorePage = () => {
     })
   }
 
+  // Update the filter state and push the new search params to the url.
   const handleFilterChange = <K extends FilterKey>(key: K, value: Filters[K]) => {
-    setFilters(prev => ({ ...prev, [key]: value }))
-  }
-  const resetFilters = () => {
-    setFilters(defaultFilters)
+    const nextFilters = { ...filters, [key]: value }
+    const query = buildQueryParams(nextFilters)
+    router.push(query ? `/explore?${query}` : '/explore')
   }
 
-  useEffect(() => {
-    console.log('Filter State', filters)
-  }, [filters])
+  // Reset the filters and push the new search params to the url.
+  const resetFilters = () => {
+    router.push('/explore')
+  }
 
   return (
     <ViewLayout type="explore">
