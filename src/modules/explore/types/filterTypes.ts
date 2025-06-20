@@ -35,7 +35,7 @@ export type FilterConfigItem = {
 export type Filters = {
   type: string[]
   skillLevel: string[]
-  groupType: string
+  groupType: number | null
   duration: number
   credits: [number, number]
   distance: number

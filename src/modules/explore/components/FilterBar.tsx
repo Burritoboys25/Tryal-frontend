@@ -34,7 +34,7 @@ const FilterBar = ({ filters, filterOptions, onChange, onReset, credits = 30 }: 
             onClear={() => {
               if (type === 'multi') return onChange(key, []) // reset to empty array
               if (type === 'range') return onChange(key, options as [number, number]) // reset to [min, max]
-              if (type === 'single') return onChange(key, '') // reset to empty string
+              if (type === 'single') return onChange(key, null) // reset to null
             }}
           />
         )

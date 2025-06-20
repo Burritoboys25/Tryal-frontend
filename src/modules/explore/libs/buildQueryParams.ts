@@ -22,5 +22,9 @@ export function buildQueryParams(filters: Filters): string {
     params.append('duration', String(filters.duration))
   }
 
+  if (filters.groupType !== null) {
+    params.append('groupTypeIds', String(filters.groupType))
+  }
+
   return params.toString()
 }
