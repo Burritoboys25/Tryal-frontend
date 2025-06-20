@@ -3,6 +3,11 @@ export type Categories = {
   name: string
 }
 
+export type GroupTypes = {
+  groupTypeId: number
+  name: string
+}
+
 export type FilterOption = {
   label: string
   value: string | number

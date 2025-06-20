@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { FilterOptionMap, FilterOption, Categories } from '../types/filterTypes'
+import { FilterOptionMap, FilterOption, Categories, GroupTypes } from '../types/filterTypes'
 
 // Grab filter options from the backend. Sets up the filter options for the filter bar
 export const useFilters = () => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isCategoryLoading, setIsCategoryLoading] = useState(true)
+  const [isGroupTypeLoading, setIsGroupTypeLoading] = useState(true)
   const [filterOptions, setFilterOptions] = useState<FilterOptionMap>({
     type: [],
     // skillLevel enum: BEGINNER, INTERMEDIATE, ADVANCED, EXPERT
@@ -13,14 +14,7 @@ export const useFilters = () => {
       { label: 'Advanced', value: 'ADVANCED' },
       { label: 'Expert', value: 'EXPERT' },
     ],
-    // TODO: add groupType enum: SOLO, COUPLES, FAMILY, GROUP
-    groupType: [
-      { label: 'Any', value: 'ANY' },
-      { label: 'Solo Friendly', value: 'SOLO' },
-      { label: 'Couples & Date Night', value: 'COUPLES' },
-      { label: 'Family-Friendly', value: 'FAMILY' },
-      { label: 'Group & Team-Building', value: 'GROUP' },
-    ],
+    groupType: [],
     duration: [
       { label: 'Any', value: Infinity },
       { label: '30 mins', value: 30 },
@@ -61,12 +55,38 @@ export const useFilters = () => {
       } catch (err) {
         console.error('Failed to fetch categories:', err)
       } finally {
-        setIsLoading(false)
+        setIsCategoryLoading(false)
+      }
+    }
+
+    const fetchGroupTypes = async () => {
+      try {
+        const res = await fetch('/api/explore/groupTypes')
+        const groupTypes = await res.json()
+
+        // Map the GroupTypes response to label and value for front end
+        const groupTypeOptions: FilterOption[] = groupTypes.map((groupType: GroupTypes) => ({
+          label: groupType.name,
+          value: groupType.groupTypeId,
+        }))
+
+        setFilterOptions(prev => ({
+          ...prev,
+          groupType: groupTypeOptions,
+        }))
+      } catch (err) {
+        console.error('Failed to fetch group types:', err)
+      } finally {
+        setIsGroupTypeLoading(false)
       }
     }
 
     fetchCategories()
+    fetchGroupTypes()
   }, [])
+
+  // Set loading state to true if either category or group type is loading
+  const isLoading = isCategoryLoading || isGroupTypeLoading
 
   return { filterOptions, isLoading }
 }
