@@ -1,8 +1,7 @@
 // app/api/categories/route.ts
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function GET(request: NextRequest) {
-  console.log('request', request)
+export async function GET() {
   try {
     const res = await fetch(`${process.env.BACKEND_URL}/api/categories`, {
       method: 'GET',
@@ -16,7 +15,6 @@ export async function GET(request: NextRequest) {
     }
 
     const data = await res.json()
-    console.log('data', data)
     return NextResponse.json(data)
   } catch (err) {
     console.error('Failed to fetch categories from backend:', err)

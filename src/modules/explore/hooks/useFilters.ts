@@ -39,7 +39,7 @@ export const useFilters = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch('/api/categories')
+        const res = await fetch('/api/explore/categories')
         const categories = await res.json()
 
         // Map the Categories response to lavel and value for front end
