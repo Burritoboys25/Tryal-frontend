@@ -23,7 +23,7 @@ export const useFilters = () => {
       { label: '1.5 hours', value: 90 },
       { label: '2+ hours', value: 120 },
     ],
-    credits: [0, 50],
+    credits: [0, 100],
     distance: [
       { label: 'Auto', value: Infinity },
       { label: '1/2 mile', value: 0.5 },

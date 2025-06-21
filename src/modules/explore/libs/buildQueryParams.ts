@@ -26,5 +26,10 @@ export function buildQueryParams(filters: Filters): string {
     params.append('groupTypeIds', String(filters.groupType))
   }
 
+  if (filters.credits[0] !== 0 || filters.credits[1] !== 100) {
+    params.append('creditsMin', String(filters.credits[0]))
+    params.append('creditsMax', String(filters.credits[1]))
+  }
+
   return params.toString()
 }

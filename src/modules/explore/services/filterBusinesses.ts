@@ -25,6 +25,9 @@ export function getFiltersFromSearchParams(searchParams: URLSearchParams): Filte
     duration: searchParams.get('duration') ? Number(searchParams.get('duration')) : Infinity,
     distance: searchParams.get('distance') ? Number(searchParams.get('distance')) : Infinity,
     groupType: searchParams.get('groupTypeIds') ? Number(searchParams.get('groupTypeIds')) : null,
-    credits: searchParams.get('credits') ? [Number(searchParams.get('credits'))] : [0, 50],
+    credits: [
+      Number(searchParams.get('creditsMin')) || 0,
+      Number(searchParams.get('creditsMax')) || 100,
+    ],
   }
 }
