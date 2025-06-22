@@ -12,7 +12,7 @@ const TermsPage = () => {
             <h1 className="mb-16 text-center">Terms of Use</h1>
             <p>Last Updated: {termsUpdatedAt}</p>
             <div className="header1 pt-10">
-              <p className="text-h1">Welcome to Tryal!</p>
+              <p className="text-h1 border-t pt-10">Welcome to Tryal!</p>
               <p className="pt-10">
                 Please read these Terms of Use (“Terms”) carefully before using our platform. These
                 Terms govern your access to and use of Tryal&apos;s website, mobile application, and
