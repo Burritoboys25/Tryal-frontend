@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { CreditRange } from '@/shared/types/businessTypes'
 import { Business } from '@/modules/explore/types/businessTypes'
 import { Button } from '@/shared/components/ui/base/button'
 import BookmarkedIcon from '@/shared/assets/icons/bookmarked.svg'
@@ -17,8 +16,8 @@ const ExploreCard = ({
   address,
   rating = 0,
   imageUrl = '/landing_page_img_1.png',
-  credits = 0,
-  credit_range,
+  minCredits,
+  maxCredits,
   businessId,
   selected,
   onSelect,
@@ -32,8 +31,8 @@ const ExploreCard = ({
   address: string
   rating?: number
   imageUrl?: string
-  credits?: number
-  credit_range?: CreditRange
+  minCredits?: number
+  maxCredits?: number
   businessId: string
   hovered: boolean
   onSelect: (id: string) => void
@@ -89,7 +88,7 @@ const ExploreCard = ({
         <Badge className="bg-accent flex h-[36px] w-[93px] items-center">
           <span className="text-sub4 text-foreground flex items-center gap-1.5">
             <CreditIcon className="!h-6 !w-6" />
-            {credit_range ? `${credit_range.min}-${credit_range.max}` : '0'}
+            {minCredits === maxCredits ? `${minCredits}` : `${minCredits}-${maxCredits}`}
           </span>
         </Badge>
       </div>
@@ -113,13 +112,7 @@ const BusinessCards: React.FC<{
         {...item}
         imageUrl={'/landing_page_img_1.png'}
         // flatten and remove display unique types that a business might have
-        type={[
-          ...new Set(
-            item.filteredExperiences
-              .map(exp => exp.categories.map(c => c.name.split('&')[0]))
-              .flat(),
-          ),
-        ]}
+        type={[...new Set(item.categories.map(c => c.split('&')[0]))]}
         selected={selectedId === item.businessId}
         onSelect={onSelect}
         hovered={hoveredId === item.businessId}

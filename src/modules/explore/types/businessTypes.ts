@@ -15,5 +15,13 @@ export type Business = {
   address: string
   latitude: number
   longitude: number
-  filteredExperiences: BusinessExperience[]
+  categories: string[]
+  skillLevels: string[]
+  minCredits: number
+  maxCredits: number
+}
+
+export type CreditRange = {
+  min: number
+  max: number
 }
