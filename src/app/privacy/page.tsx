@@ -7,27 +7,25 @@ const PrivacyPage = () => {
   return (
     <ViewLayout type={'landing'}>
       <Container>
-        <div className="space-y-8 md:space-y-12 2xl:space-y-24">
-          <section className="pt-10">
-            <h1 className="mb-16 text-center">Privacy Policy</h1>
-            <p>Effective Date: {policyEffectiveAt}</p>
-            <div className="header1 pt-10">
-              <p className="pt-10 border-t">
-                Tryal, LLC (“Tryal”, “we”, “our”, or “us”) respects your privacy and is committed to
-                protecting your personal information. This Privacy Policy explains how we collect,
-                use, share, and protect information from users of our platform, including our
-                website and mobile application (collectively, the “Platform”).
-              </p>
-            </div>
+        <div className="pt-[2.75rem] pb-[5rem]">
+          <section className="py-[2.5rem]">
+            <h1 className="text-h2 mb-[1rem] text-center">Privacy Policy</h1>
+            <p className="text-body2 text-chart-3">Effective Date: {policyEffectiveAt}</p>
+            <p className="text-body2 pt-[1.5rem]">
+              Tryal, LLC (“Tryal”, “we”, “our”, or “us”) respects your privacy and is committed to
+              protecting your personal information. This Privacy Policy explains how we collect,
+              use, share, and protect information from users of our platform, including our website
+              and mobile application (collectively, the “Platform”).
+            </p>
           </section>
           {policies.map((section: PolicySection) => (
-            <section key={section.number} className="mb-16">
-              <h2 className="mb-2 text-xl font-semibold">
+            <section key={section.number} className="mb-[2.5rem]">
+              <h2 className="text-sub1 mb-[1rem]">
                 {section.number}. {section.title}
               </h2>
               <p>{section.description}</p>
               {section.bullets.length > 0 && (
-                <ul className="list-inside list-disc space-y-1">
+                <ul className="text-body2 list-inside list-disc space-y-[0.25rem]">
                   {section.bullets.map((value, index) => (
                     <li key={index}>{value}</li>
                   ))}
@@ -35,12 +33,12 @@ const PrivacyPage = () => {
               )}
               {section.sections &&
                 section.sections.map(sub => (
-                  <div key={sub.number} className="mt-6 ml-4 border-l pl-4">
-                    <h3 className="text-lg font-semibold">
+                  <div key={sub.number} className="mt-[1.5rem] ml-[1rem] border-l pl-[1rem]">
+                    <h3 className="text-sub1">
                       {sub.number}. {sub.title}
                     </h3>
                     {sub.description && <p>{sub.description}</p>}
-                    <ul className="list-inside list-disc space-y-1 pt-2">
+                    <ul className="text-body2 list-inside list-disc space-y-[0.25rem] pt-[0.5rem]">
                       {sub.bullets.map((value, idx) => (
                         <li key={idx}>{value}</li>
                       ))}
@@ -49,7 +47,7 @@ const PrivacyPage = () => {
                 ))}
             </section>
           ))}
-          <p className="pt-10 pb-10 border-t">
+          <p className="py-[2.5rem]">
             This Privacy Policy is governed by the laws of the State of Texas.
           </p>
         </div>
