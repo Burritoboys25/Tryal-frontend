@@ -83,7 +83,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
           <ArrowDropDownIcon className="text-foreground h-4 w-4" />
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto px-0 pt-1">
+      <PopoverContent className="w-auto px-0 pt-1" align="start">
         <div className="flex flex-col">
           <div className="px-3 pt-0 pb-4">
             {isMulti && (
