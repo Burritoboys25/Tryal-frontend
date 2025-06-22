@@ -43,7 +43,7 @@ const ExploreCard = ({
 }) => {
   return (
     <div
-      className={`mb-4 flex h-[135px] w-full items-center rounded-xl border-2 p-4 shadow-md transition-all duration-300 hover:cursor-pointer ${
+      className={`mb-[1rem] flex h-[8.4375rem] w-full items-center rounded-xl border-2 p-[1rem] shadow-md transition-all duration-300 hover:cursor-pointer ${
         selected ? 'border-primary font-bold' : 'hover:bg-muted/50 border-transparent bg-white'
       } `}
       onClick={() => onSelect(business_id)} // when clicked sends up the business_id to the parent
@@ -56,14 +56,14 @@ const ExploreCard = ({
         alt={name + ' business'}
         width={130}
         height={135}
-        className="mr-5 h-full flex-shrink-0 rounded-lg bg-gray-200 object-cover"
+        className="mr-[1.25rem] h-full flex-shrink-0 rounded-lg bg-gray-200 object-cover"
       />{' '}
       {/* Business info stacked vertically */}
       <div className="flex min-w-0 flex-1 flex-col justify-center">
-        <h3 className="text-sub3 mb-0.5 truncate">{name}</h3>
-        <div className="text-caption2 mb-0.5 truncate">{type.join(' | ')}</div>
-        <div className="text-body2 mb-0.5 truncate">{address}</div>
-        <div className="flex items-center gap-2">
+        <h3 className="text-sub3 mb-[0.125rem] truncate">{name}</h3>
+        <div className="text-caption2 mb-[0.125rem] truncate">{type.join(' | ')}</div>
+        <div className="text-body2 mb-[0.125rem] truncate">{address}</div>
+        <div className="flex items-center gap-[0.5rem]">
           <StarDisplay rating={rating} size={16} />
         </div>
       </div>
@@ -79,14 +79,14 @@ const ExploreCard = ({
           }}
         >
           {bookmarked ? (
-            <BookmarkedIcon className="h-6 w-6" />
+            <BookmarkedIcon className="h-[1.5rem] w-[1.5rem]" />
           ) : (
-            <UnBookMarkedIcon className="h-6 w-6" />
+            <UnBookMarkedIcon className="h-[1.5rem] w-[1.5rem]" />
           )}
         </Button>
-        <Badge className="bg-accent flex h-[36px] w-[93px] items-center">
-          <span className="text-sub4 text-foreground flex items-center gap-1.5">
-            <CreditIcon className="!h-6 !w-6" />
+        <Badge className="bg-accent flex h-[2.25rem] w-[5.8125rem] items-center">
+          <span className="text-sub4 text-foreground flex items-center gap-[0.375rem]">
+            <CreditIcon className="!h-[1.5rem] !w-[1.5rem]" />
             {credit_range ? `${credit_range.min}-${credit_range.max}` : '0'}
           </span>
         </Badge>

@@ -54,8 +54,8 @@ const ExplorePage = () => {
 
   // Uncomment when backend integration is ready
   const { data: session } = useSession()
-  console.log("Session info:");
-  console.log(session);
+  console.log('Session info:')
+  console.log(session)
 
   // const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([])
   // useEffect(() => {
@@ -93,11 +93,11 @@ const ExplorePage = () => {
   return (
     <ViewLayout type="explore">
       <Container>
-        <div className="screen-minus-navbar-explore mt-[21px] flex flex-col space-y-8">
+        <div className="screen-minus-navbar-explore mt-[1.3125rem] flex flex-col space-y-[2rem]">
           <FilterBar filters={filters} onChange={handleFilterChange} onReset={resetFilters} />
-          <div className="mb-24 flex min-h-0 flex-1 gap-8">
+          <div className="mb-[6rem] flex min-h-0 flex-1 gap-[2rem]">
             {/* Left: Scrollable business list */}
-            <div className="flex min-h-0 w-[665px] flex-1 flex-col">
+            <div className="flex min-h-0 w-[41.5625rem] flex-1 flex-col">
               <ScrollArea className="bg-background h-full min-h-0 flex-1 rounded-xl">
                 <BusinessCards
                   items={businesses}
