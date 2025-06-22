@@ -8,7 +8,8 @@ export async function fetchFilteredBusinesses(filters: Filters): Promise<{
 }> {
   try {
     const query = buildQueryParams(filters)
-    const res = await fetch(`/api/explore/businesses?${query}`)
+    const url = query ? `/api/explore/businesses?${query}` : '/api/explore/businesses'
+    const res = await fetch(url)
     const data = await res.json()
     return { businesses: data.businesses as Business[] }
   } catch (error) {
