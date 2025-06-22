@@ -7,7 +7,7 @@ import { ScrollArea } from '@/shared/components/ui/base/scroll-area'
 import React, { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import BusinessCards from '@/modules/explore/components/BusinessCards'
-import { FilterKey } from '@/modules/explore/libs/FilterConstants'
+import { FilterKey } from '@/modules/explore/types/filterTypes'
 
 import Map from '@/modules/explore/components/mapbox/Map'
 import { Business } from '@/modules/explore/types/businessTypes'
