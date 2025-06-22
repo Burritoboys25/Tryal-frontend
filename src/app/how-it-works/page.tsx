@@ -47,10 +47,9 @@ const HowItWorksPage = () => {
             <div className="relative z-0 flex items-center justify-center">
               {/* Blur background */}
               <BlurBackground
-                className="absolute top-1/2 left-1/2 -z-10 h-full max-h-[25rem] w-[4rem] max-w-full -translate-x-1/2 -translate-y-1/2 overflow-hidden md:h-[12.5rem] md:w-[12.5rem] 2xl:h-[3.75rem] 2xl:w-full"
-                blur="7.5rem"
+                className="absolute top-1/2 left-1/2 -z-10 h-full max-h-[25rem] w-[4rem] max-w-full -translate-x-1/2 -translate-y-1/2 overflow-hidden md:h-[12.5rem] md:w-[12.5rem] 2xl:h-[3.125rem] 2xl:w-full"
+                blur="5rem"
                 color="#F4BCAB"
-                style={{ borderRadius: '4rem' }}
               />
               <div className="relative grid grid-cols-1 gap-[2rem] sm:gap-[1rem] md:grid-cols-2 2xl:grid-cols-4">
                 {howItWorksSteps.map(({ step, title, description, icon: Icon }) => (
