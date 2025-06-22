@@ -14,7 +14,7 @@ const MultiSelectDropdownBody: React.FC<Props> = ({ options, selected, onToggle 
       {options.map(option => (
         <label
           key={option.value}
-          className="text-foreground text-body1 flex cursor-pointer items-center gap-2 px-3 py-1.5"
+          className="text-foreground text-body1 hover:bg-accent flex cursor-pointer items-center gap-2 rounded-md px-3 py-1.5"
         >
           <Checkbox
             checked={selected.includes(option.value.toString())}
