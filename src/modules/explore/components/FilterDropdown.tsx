@@ -56,11 +56,11 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   // Reset local values to empty
   const handleClear = () => {
     if (isMulti) {
-      setLocalValue([])
+      setLocalValue([] as Filters[FilterKey])
     } else if (isSingle) {
-      setLocalValue('')
+      setLocalValue(null as Filters[FilterKey])
     } else if (isRange) {
-      setLocalValue(options as [number, number])
+      setLocalValue(options as Filters[FilterKey])
     }
     onClear()
     setOpen(false)
@@ -97,8 +97,8 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
             {isSingle && (
               <SingleSelectDropdownBody
                 options={options as FilterOption[]}
-                selected={localValue as string}
-                onSelect={val => setLocalValue(val)}
+                selected={localValue as unknown as string}
+                onSelect={val => setLocalValue(val as unknown as Filters[FilterKey])}
               />
             )}
             {isRange &&
@@ -109,7 +109,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
                   min={options[0]}
                   max={options[1]}
                   value={localValue as [number, number]}
-                  onChange={val => setLocalValue(val)}
+                  onChange={val => setLocalValue(val as Filters[FilterKey])}
                 />
               )}
           </div>
