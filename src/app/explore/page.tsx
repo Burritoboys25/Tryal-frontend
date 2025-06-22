@@ -4,7 +4,7 @@ import FilterBar from '@/modules/explore/components/FilterBar'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
 import Container from '@/shared/components/layout/Container'
 import { ScrollArea } from '@/shared/components/ui/base/scroll-area'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BusinessCards from '@/modules/explore/components/BusinessCards'
 import { FilterKey } from '@/modules/explore/libs/FilterConstants'
 
@@ -13,11 +13,7 @@ import Map from '@/modules/explore/components/mapbox/Map'
 import businesses from '@/shared/mock/business/business.json'
 import mockUserBookmarks from '@/shared/mock/user/userBookmarks.json'
 import { useSession } from 'next-auth/react'
-// import {
-//   getUserBookmarks,
-//   addUserBookmark,
-//   removeUserBookmark,
-// } from '@/modules/explore/services/bookmark'
+import { getCurrentUser } from '@/shared/services/user'
 
 interface MockUserBookmark {
   userId: string
@@ -54,8 +50,20 @@ const ExplorePage = () => {
 
   // Uncomment when backend integration is ready
   const { data: session } = useSession()
-  console.log("Session info:");
-  console.log(session);
+  console.log('Session info:')
+  console.log(session)
+
+  useEffect(() => {
+    if (session?.user?.id) {
+      getCurrentUser(session.user.id)
+        .then(userData => {
+          localStorage.setItem('userData', JSON.stringify(userData))
+        })
+        .catch(err => {
+          console.error('Failed to fetch user data:', err)
+        })
+    }
+  }, [session?.user?.id])
 
   // const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([])
   // useEffect(() => {
