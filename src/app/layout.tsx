@@ -3,6 +3,7 @@ import '@/styles/globals.css'
 import { Manrope, Rubik } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import NextAuthSessionProvider from '@/shared/components/layout/NextAuthSessionProvider'
+import UserProvider from '@/shared/components/layout/UserProvider'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
 
@@ -32,8 +33,10 @@ export default function RootLayout({
     <html lang="en" className={`${manrope.variable} ${rubik.variable} `}>
       <body className="min-h-screen w-full">
         <NextAuthSessionProvider>
-          <Toaster />
-          {children}
+          <UserProvider>
+            <Toaster />
+            {children}
+          </UserProvider>
         </NextAuthSessionProvider>
       </body>
     </html>
