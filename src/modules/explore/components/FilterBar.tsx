@@ -18,7 +18,7 @@ type FilterBarProps = {
 
 const FilterBar = ({ filters, filterOptions, onChange, onReset, credits = 30 }: FilterBarProps) => {
   return (
-    <div className="flex w-full gap-3 py-2">
+    <div className="flex w-full gap-3 py-[0.5rem]">
       {filterConfig.map(({ key, label, type }) => {
         const options = filterOptions[key]
         const value = filters[key]

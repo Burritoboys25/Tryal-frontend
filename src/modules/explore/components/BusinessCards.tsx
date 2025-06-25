@@ -105,7 +105,7 @@ const BusinessCards: React.FC<{
   bookmarkedIds: string[]
   onToggleBookmark: (business_id: string) => void
 }> = ({ items, onSelect, selectedId, hoveredId, onHover, bookmarkedIds, onToggleBookmark }) => (
-  <div className="px-2">
+  <div className="px-[0.5rem]">
     {items.map(item => (
       <ExploreCard
         key={item.businessId}

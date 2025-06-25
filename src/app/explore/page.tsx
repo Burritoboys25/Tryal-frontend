@@ -7,7 +7,7 @@ export default function ExplorePage() {
   return (
     <ViewLayout type="explore">
       <Container>
-        <Suspense fallback={<p className="py-20 text-center">Loading...</p>}>
+        <Suspense fallback={<p className="py-[5rem] text-center">Loading...</p>}>
           <ExploreMain />
         </Suspense>
       </Container>
