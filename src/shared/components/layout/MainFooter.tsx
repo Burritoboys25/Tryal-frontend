@@ -1,10 +1,10 @@
 export default function MainFooter() {
   return (
-    <footer className="bg-neutral-900 px-[1rem] py-[3rem] text-sm text-white md:px-[3rem]">
+    <footer className="w-full bg-neutral-900 px-[1rem] py-[3rem] text-sm text-white md:px-[3rem]">
       <div className="mx-auto w-full px-[1rem] md:max-w-[62.5rem] md:px-[1rem] 2xl:max-w-[90rem] 2xl:px-0">
         <div className="flex flex-col gap-[3rem] md:flex-row md:items-start md:justify-between">
           {/* Left: Branding + Navigation Links */}
-          <div className="flex flex-col gap-[2rem] md:flex-row md:gap-[20rem]">
+          <div className="flex flex-col gap-[2rem] md:flex-row md:gap-[12rem] 2xl:gap-[20rem]">
             <div>
               <h3 className="font-logo mb-[1rem] text-[1.5rem] font-medium">Tryal</h3>
             </div>
