@@ -13,7 +13,6 @@ const page = () => {
 
       <div className="">
         <h2 className="text-sub1">Credits balance</h2>
-        {/* w-[5.375rem] h-[2.688rem] justify-center w-fit */}
         <div className="mt-2 flex w-fit items-center gap-2 rounded-[.5rem] bg-[#FADDD5] px-4 py-2">
           <CreditIcon className="h-6 w-6" aria-hidden="true" />{' '}
           <p className="text-sub2">30</p>
