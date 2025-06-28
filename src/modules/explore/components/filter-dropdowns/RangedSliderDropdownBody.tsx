@@ -15,7 +15,7 @@ const RangedSliderDropdownBody = ({ min, max, value, onChange }: RangedSliderDro
 
   return (
     <div className="min-w-xs">
-      <div className="flex items-center gap-1 py-3 font-semibold">
+      <div className="flex items-center gap-1 py-[0.75rem] font-semibold">
         <span>{value[0]}</span>
         <span> - </span>
         <span>{value[1]}</span>

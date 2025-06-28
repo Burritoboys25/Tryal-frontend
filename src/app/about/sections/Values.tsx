@@ -43,19 +43,19 @@ const Values = () => {
 
       <div className="relative z-0 flex items-center justify-center">
         <BlurBackground
-          className="absolute top-1/2 left-1/2 -z-10 h-full max-h-[400px] w-[64px] max-w-full -translate-x-1/2 -translate-y-1/2 overflow-hidden md:h-[200px] md:w-[200px] 2xl:h-[50px] 2xl:w-full"
-          blur="80px"
+          className="absolute top-1/2 left-1/2 -z-10 h-full max-h-[25rem] w-[4rem] max-w-full -translate-x-1/2 -translate-y-1/2 overflow-hidden md:h-[12.5rem] md:w-[12.5rem] 2xl:h-[3.125rem] 2xl:w-full"
+          blur="5rem"
           color="#F4BCAB"
-          style={{ borderRadius: '64px' }}
+          style={{ borderRadius: '4rem' }}
         />
-        <div className="grid grid-cols-1 gap-5 text-left md:grid-cols-2 2xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-[1.25rem] text-left md:grid-cols-2 2xl:grid-cols-4">
           {values.map(({ title, icon: Icon, description }) => (
             <div
               key={title}
-              className="flex max-w-[284px] flex-col gap-4 rounded-xl bg-white p-6 shadow-xl"
+              className="flex max-w-[17.75rem] flex-col gap-[1rem] rounded-xl bg-white p-[1.5rem] shadow-xl"
             >
-              <div className="flex items-center gap-4">
-                <Icon className="h-12 w-12" aria-hidden="true" />
+              <div className="flex items-center gap-[1rem]">
+                <Icon className="h-[3rem] w-[3rem]" aria-hidden="true" />
                 <h4 className="text-sub1">{title}</h4>
               </div>
               <div className="text-body2 text-muted-foreground">{description}</div>

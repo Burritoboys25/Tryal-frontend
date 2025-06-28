@@ -78,14 +78,14 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   return (
     <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
-        <button className="focus:ring-primary data-[state=open]:ring-primary text-foreground border-input bg-background hover:border-primary-hover/30 flex items-center gap-1 rounded-full border px-4 py-2 text-sm font-medium transition-colors focus:ring-2 focus:outline-none data-[state=open]:ring-2">
+        <button className="focus:ring-primary data-[state=open]:ring-primary text-foreground border-input bg-background hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-2 focus:outline-none data-[state=open]:ring-2">
           <span>{label}</span>
-          <ArrowDropDownIcon className="text-foreground h-4 w-4" />
+          <ArrowDropDownIcon className="text-foreground h-[1rem] w-[1rem]" />
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto px-0 pt-1" align="start">
+      <PopoverContent className="w-auto px-0 pt-[0.25rem]" align="start">
         <div className="flex flex-col">
-          <div className="px-3 pt-0 pb-4">
+          <div className="px-[0.75rem] pt-0 pb-[1rem]">
             {isMulti && (
               <MultiSelectDropdownBody
                 options={options as FilterOption[]}
@@ -114,11 +114,11 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
               )}
           </div>
 
-          <div className="border-border/50 flex justify-end gap-2 border-t px-3 pt-3">
-            <Button variant="outline" className="px-6 py-2" onClick={handleClear}>
+          <div className="border-border/50 flex justify-end gap-[0.5rem] border-t px-[0.75rem] pt-[0.75rem]">
+            <Button variant="outline" className="px-[1.5rem] py-[0.5rem]" onClick={handleClear}>
               Clear
             </Button>
-            <Button className="px-6 py-2" onClick={handleApply}>
+            <Button className="px-[1.5rem] py-[0.5rem]" onClick={handleApply}>
               Apply
             </Button>
           </div>

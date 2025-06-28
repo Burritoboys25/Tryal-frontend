@@ -11,11 +11,15 @@ type Props = {
 
 const SingleSelectDropdownBody: React.FC<Props> = ({ options, selected, onSelect }) => {
   return (
-    <RadioGroup value={selected} onValueChange={onSelect} className="grid grid-cols-2 gap-x-4 px-3">
+    <RadioGroup
+      value={selected}
+      onValueChange={onSelect}
+      className="grid grid-cols-2 gap-x-[1rem] px-[0.75rem]"
+    >
       {options.map(option => (
         <div
           key={option.value}
-          className="hover:bg-accent flex items-center gap-2 rounded-md px-3 py-2"
+          className="hover:bg-accent flex items-center gap-[0.5rem] rounded-md px-[0.75rem] py-[0.5rem]"
         >
           <RadioGroupItem
             value={option.value.toString()}

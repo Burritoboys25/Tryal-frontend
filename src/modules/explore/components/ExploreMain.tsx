@@ -101,7 +101,7 @@ const ExploreMain = () => {
   }
 
   return (
-    <div className="screen-minus-navbar-explore mt-[21px] flex flex-col space-y-8">
+    <div className="screen-minus-navbar-explore mt-[1.3125rem] flex flex-col space-y-8">
       <FilterBar
         filters={filters}
         onChange={handleFilterChange}
@@ -110,7 +110,7 @@ const ExploreMain = () => {
       />
       <div className="mb-24 flex min-h-0 flex-1 gap-8">
         {/* Left: Scrollable business list */}
-        <div className="flex min-h-0 w-[665px] flex-1 flex-col">
+        <div className="flex min-h-0 w-[41.5625rem] flex-1 flex-col">
           <ScrollArea className="bg-background h-full min-h-0 flex-1 rounded-xl">
             <BusinessCards
               items={businesses}

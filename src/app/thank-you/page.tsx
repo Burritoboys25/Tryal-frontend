@@ -4,8 +4,8 @@ import { Suspense } from 'react'
 
 export default function ThankYouPage() {
   return (
-    <ViewLayout type={"partner"}>
-      <Suspense fallback={<p className="py-20 text-center">Loading...</p>}>
+    <ViewLayout type={'partner'}>
+      <Suspense fallback={<p className="py-[5rem] text-center">Loading...</p>}>
         <ReferralForm />
       </Suspense>
     </ViewLayout>

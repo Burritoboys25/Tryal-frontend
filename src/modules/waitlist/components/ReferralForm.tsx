@@ -69,10 +69,10 @@ const ReferralForm = () => {
   }
 
   return (
-    <section className="-mt-[72px] flex min-h-screen items-center justify-center px-4">
-      <form className="max-w-md space-y-6" onSubmit={handleSubmit}>
+    <section className="-mt-[4.5rem] flex min-h-screen items-center justify-center px-[1rem]">
+      <form className="max-w-md space-y-[1.5rem]" onSubmit={handleSubmit}>
         <h1 className="text-h2">Thank you for your interest!</h1>
-        <div className="text-body2 space-y-4">
+        <div className="text-body2 space-y-[1rem]">
           <p className="">
             We&apos;re excited to have you on board. We&apos;ll be sending you updates via email as
             we get closer to launch, so keep an eye on your inbox!{' '}
@@ -91,7 +91,7 @@ const ReferralForm = () => {
             onChange={handleReferralChange}
           />
         ))}
-        <Button type="submit" variant="solid" className="mt-2 w-full">
+        <Button type="submit" variant="solid" className="mt-[0.5rem] w-full">
           {isSubmitting ? 'Submitting...' : 'Submit'}
         </Button>
       </form>

@@ -80,7 +80,7 @@ const BecomePartnerForm = () => {
       })
 
       if (res.ok) {
-        showToast({ type: 'waitlist', description: "We’ll be in touch soon!" })
+        showToast({ type: 'waitlist', description: 'We’ll be in touch soon!' })
         router.push(`/thank-you?email=${encodeURIComponent(form.email)}&type=partner`)
       } else {
         showToast({ type: 'error' })
@@ -104,11 +104,11 @@ const BecomePartnerForm = () => {
   }
 
   return (
-    <ViewLayout type={"partner"}>
+    <ViewLayout type={'partner'}>
       <Container>
-        <section className="flex justify-center pb-[120px] pt-[81px]">
-          <form onSubmit={handleSubmit} className="w-full max-w-[432px] space-y-2">
-            <div className="space-y-1.5">
+        <section className="flex justify-center pt-[5.0625rem] pb-[7.5rem]">
+          <form onSubmit={handleSubmit} className="w-full max-w-[27rem] space-y-[0.5rem]">
+            <div className="space-y-[0.375rem]">
               <h2 className="text-h2">
                 Get Discovered. Get <br />
                 Booked. Grow with Us!

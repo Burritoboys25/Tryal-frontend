@@ -14,12 +14,12 @@ const MultiSelectDropdownBody: React.FC<Props> = ({ options, selected, onToggle 
       {options.map(option => (
         <label
           key={option.value}
-          className="text-foreground text-body1 hover:bg-accent flex cursor-pointer items-center gap-2 rounded-md px-3 py-1.5"
+          className="text-foreground text-body1 hover:bg-accent flex cursor-pointer items-center gap-[0.5rem] rounded-md px-[0.75rem] py-[0.375rem]"
         >
           <Checkbox
             checked={selected.includes(option.value.toString())}
             onCheckedChange={() => onToggle(option.value.toString())}
-            className="text-foreground border-icon-input size-4 border-2"
+            className="text-foreground border-icon-input size-[1rem] border-2"
           />
           <span>{option.label}</span>
         </label>
