@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React, { useState } from 'react'
 import FormField from '@/shared/components/ui/forms/FormField'
@@ -22,10 +22,10 @@ const ProfilePage = () => {
   }
 
   const handleSubmitForm = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
-      console.log(formData);
+      console.log(formData)
     } catch (error) {
       console.error('Error updating profile:', error)
     }
@@ -82,7 +82,7 @@ const ProfilePage = () => {
           <Button
             type="submit"
             variant="outline"
-            className='cursor-pointer hover:bg-[#FADDD5]'
+            className="cursor-pointer hover:bg-[#FADDD5]"
             // onClick={handleEditToggle}
           >
             Save Changes
