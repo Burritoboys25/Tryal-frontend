@@ -78,10 +78,10 @@ const LoginForm = () => {
   }
 
   return (
-    <section className="-mt-[72px] flex min-h-screen w-full items-center bg-white px-4 py-16 md:px-12 md:py-0">
-      <div className="mx-auto flex w-full max-w-7xl flex-col-reverse items-center justify-between gap-16 md:flex-row">
+    <section className="-mt-[4.5rem] flex min-h-screen w-full items-center bg-white px-[1rem] py-[4rem] md:px-[3rem] md:py-0">
+      <div className="mx-auto flex w-full max-w-7xl flex-col-reverse items-center justify-between gap-[4rem] md:flex-row">
         <div className="max-w-lg">
-          <div className="mb-8 space-y-3">
+          <div className="mb-[2rem] space-y-[0.75rem]">
             <h1 className="text-h1">Welcome Back!</h1>
             <p className="text-muted-foreground text-body2">
               Enter your email and password to log into your account.
@@ -90,7 +90,7 @@ const LoginForm = () => {
 
           <form
             onSubmit={handleSubmit}
-            className="max-w-[365px] space-y-[10px] text-left"
+            className="max-w-[22.8125rem] space-y-[0.625rem] text-left"
             noValidate
           >
             <FormField
@@ -125,11 +125,11 @@ const LoginForm = () => {
               </Link>
             </div>
             {session ? (
-              <LogoutButton className="mt-[22px] w-full cursor-pointer rounded-full" />
+              <LogoutButton className="mt-[1.375rem] w-full cursor-pointer rounded-full" />
             ) : (
               <Button
                 type="submit"
-                className="mt-[22px] w-full cursor-pointer rounded-full"
+                className="mt-[1.375rem] w-full cursor-pointer rounded-full"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Logging in...' : 'Log In'}
@@ -148,7 +148,7 @@ const LoginForm = () => {
             )}
           </form>
           <div>
-            <p className="text-caption2 mt-3">
+            <p className="text-caption2 mt-[0.75rem]">
               Don&apos;t have an account?{' '}
               <Link href="/signup" className="text-info text-caption1">
                 Sign up
@@ -158,7 +158,7 @@ const LoginForm = () => {
         </div>
 
         {/* Right image */}
-        <div className="relative z-0 flex h-[450px] w-full justify-center bg-gray-200 md:w-1/2"></div>
+        <div className="relative z-0 flex h-[28.125rem] w-full justify-center bg-gray-200 md:w-1/2"></div>
       </div>
     </section>
   )

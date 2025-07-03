@@ -6,27 +6,30 @@ import AuthHeader from '@/modules/auth/components/AuthHeader'
 
 const SignupConfirmPage = () => {
   return (
-      <ViewLayout header={<AuthHeader />}>
-        <section className="-mt-[72px] flex min-h-screen items-center justify-center">
-          {/* Signup form */}
-          <Container className="flex max-w-[680px] flex-col items-center justify-center text-center">
-            <div className="mb-4 h-[250px] w-full rounded-lg bg-gray-200" />
+    <ViewLayout header={<AuthHeader />}>
+      <section className="-mt-[4.5rem] flex min-h-screen items-center justify-center">
+        {/* Signup form */}
+        <Container className="flex max-w-[42.5rem] flex-col items-center justify-center text-center">
+          <div className="mb-[1rem] h-[15.625rem] w-full rounded-lg bg-gray-200" />
 
-            <div className="w-full space-y-4">
-              <h1 className="text-h3">Welcome to Tryal! Let the adventure begin!</h1>
-              <p className="text-muted-foreground text-body2">
-                Get ready to discover and book unique activities that match your interests. Whether
-                you&apos;re seeking thrilling adventures or hidden gems, we&apos; got something
-                special for you!
-              </p>
-            </div>
+          <div className="w-full space-y-[1rem]">
+            <h1 className="text-h3">Welcome to Tryal! Let the adventure begin!</h1>
+            <p className="text-muted-foreground text-body2">
+              Get ready to discover and book unique activities that match your interests. Whether
+              you&apos;re seeking thrilling adventures or hidden gems, we&apos; got something
+              special for you!
+            </p>
+          </div>
 
-            <Button type="submit" className="mt-8 h-[40px] w-[270px] cursor-pointer rounded-full">
-              Start Exploring Now
-            </Button>
-          </Container>
-        </section>
-      </ViewLayout>
+          <Button
+            type="submit"
+            className="mt-[2rem] h-[2.5rem] w-[16.875rem] cursor-pointer rounded-full"
+          >
+            Start Exploring Now
+          </Button>
+        </Container>
+      </section>
+    </ViewLayout>
   )
 }
 

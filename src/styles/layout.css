@@ -1,11 +1,11 @@
 /* All global css classes that deal with layout for pages*/
 
 .screen-minus-navbar {
-  min-height: calc(100vh - 80px);
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 5rem);
+  height: calc(100vh - 5rem);
 }
 
 .screen-minus-navbar-explore {
-  min-height: calc(100vh - 90px);
-  height: calc(100vh - 90px);
+  min-height: calc(100vh - 5.625rem);
+  height: calc(100vh - 5.625rem);
 }

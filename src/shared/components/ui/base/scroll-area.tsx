@@ -19,11 +19,11 @@ function ScrollArea({
     >
       <ScrollAreaPrimitive.Viewport
         data-slot="scroll-area-viewport"
-        className="focus-visible:ring-ring/50 size-full rounded-[inherit] pr-2 transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
+        className="focus-visible:ring-ring/50 size-full rounded-[inherit] pr-[0.5rem] transition-[color,box-shadow] outline-none focus-visible:ring-[0.1875rem] focus-visible:outline-1"
       >
         {children}
       </ScrollAreaPrimitive.Viewport>
-      <ScrollBar className="-mr-2" />
+      <ScrollBar className="-mr-[0.5rem]" />
       <ScrollAreaPrimitive.Corner />
     </ScrollAreaPrimitive.Root>
   )
@@ -41,8 +41,8 @@ function ScrollBar({
       orientation={orientation}
       className={cn(
         'flex touch-none p-px transition-colors select-none',
-        orientation === 'vertical' && 'h-full w-2.5 border-l border-l-transparent',
-        orientation === 'horizontal' && 'h-2.5 flex-col border-t border-t-transparent',
+        orientation === 'vertical' && 'h-full w-[0.625rem] border-l border-l-transparent',
+        orientation === 'horizontal' && 'h-[0.625rem] flex-col border-t border-t-transparent',
         'bg-muted', // light gray background for the track
         className,
       )}

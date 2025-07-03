@@ -4,33 +4,37 @@ import React from 'react'
 import FilterDropdown from './FilterDropdown'
 import { Button } from '@/shared/components/ui/base/button'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
-import { filterConfig, FilterKey, filterOptions } from '../libs/FilterConstants'
+
+import { filterConfig } from '../config/filterConfig'
+import { FilterKey, Filters, FilterOptionMap } from '../types/filterTypes'
 
 type FilterBarProps = {
-  filters: Record<FilterKey, string[] | string | [number, number]>
-  onChange: (key: FilterKey, value: string[] | string | [number, number]) => void
+  filters: Filters
+  filterOptions: FilterOptionMap
+  onChange: (key: FilterKey, value: Filters[FilterKey]) => void
   onReset: () => void
   credits?: number
 }
 
-const FilterBar = ({ filters, onChange, onReset, credits = 30 }: FilterBarProps) => {
+const FilterBar = ({ filters, filterOptions, onChange, onReset, credits = 30 }: FilterBarProps) => {
   return (
-    <div className="flex w-full gap-3 py-2">
-      {Object.entries(filterConfig).map(([key, config]) => {
-        const k = key as FilterKey
+    <div className="flex w-full gap-3 py-[0.5rem]">
+      {filterConfig.map(({ key, label, type }) => {
+        const options = filterOptions[key]
+        const value = filters[key]
 
         return (
           <FilterDropdown
-            key={k}
-            label={config.label}
-            type={config.type}
-            options={filterOptions[k] as string[] | [number, number]}
-            value={filters[k]}
-            onApply={val => onChange(k, val)}
+            key={key}
+            label={label}
+            type={type}
+            options={options}
+            value={value}
+            onApply={val => onChange(key, val as Filters[FilterKey])}
             onClear={() => {
-              if (config.type === 'multi') return onChange(k, []) // reset to empty array
-              if (config.type === 'range') return onChange(k, filterOptions[k]) // reset to [min, max]
-              if (config.type === 'single') return onChange(k, '') // reset to empty string
+              if (type === 'multi') return onChange(key, []) // reset to empty array
+              if (type === 'range') return onChange(key, options as [number, number]) // reset to [min, max]
+              if (type === 'single') return onChange(key, null) // reset to null
             }}
           />
         )

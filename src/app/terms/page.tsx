@@ -7,13 +7,13 @@ const TermsPage = () => {
   return (
     <ViewLayout type={'landing'}>
       <Container>
-        <div className="space-y-8 md:space-y-12 2xl:space-y-24">
-          <section className="pt-10">
-            <h1 className="mb-16 text-center">Terms of Use</h1>
-            <p>Last Updated: {termsUpdatedAt}</p>
-            <div className="header1 pt-10">
-              <p className="text-h1">Welcome to Tryal!</p>
-              <p className="pt-10">
+        <div className="pt-[2.75rem] pb-[5rem]">
+          <section className="pt-[2.5rem]">
+            <h1 className="text-h2 mb-[1rem] text-center">Terms of Use</h1>
+            <p className="text-body2 text-chart-3">Last Updated: {termsUpdatedAt}</p>
+            <div className="pt-[1.25rem] pb-[2.5rem]">
+              <p className="text-h3">Welcome to Tryal!</p>
+              <p className="text-body2 pt-[0.875rem]">
                 Please read these Terms of Use (“Terms”) carefully before using our platform. These
                 Terms govern your access to and use of Tryal&apos;s website, mobile application, and
                 related services (collectively, the “Platform”). By accessing or using the Platform,
@@ -22,12 +22,12 @@ const TermsPage = () => {
             </div>
           </section>
           {terms.map((section: TermsSection) => (
-            <section key={section.number} className="mb-16">
-              <h2 className="mb-2 text-xl font-semibold">
+            <section key={section.number} className="mb-[2.5rem]">
+              <h2 className="text-sub1 mb-[1rem]">
                 {section.number}. {section.title}
               </h2>
               <p>{section.description}</p>
-              <ul className="list-inside list-disc space-y-1">
+              <ul className="text-body2 list-inside list-disc space-y-[0.25rem]">
                 {section.bullets.map((value, index) => (
                   <li key={index}>{value}</li>
                 ))}

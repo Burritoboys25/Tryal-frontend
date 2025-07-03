@@ -4,7 +4,7 @@ import clsx from 'clsx'
 interface BlurBackgroundProps {
   className?: string
   color?: string
-  blur?: string // e.g. '70px'
+  blur?: string // e.g. '4.375rem'
   style?: React.CSSProperties
 }
 
@@ -16,7 +16,7 @@ interface BlurBackgroundProps {
 const BlurBackground: React.FC<BlurBackgroundProps> = ({
   className = '',
   color = '#F4BCAB',
-  blur = '70px',
+  blur = '4.375rem',
   style = {},
 }) => {
   return (

@@ -6,13 +6,14 @@ import MultiSelectDropdownBody from './filter-dropdowns/MultiSelectDropdownBody'
 import SingleSelectDropdownBody from './filter-dropdowns/SingleSelectDropdownBody'
 import { Button } from '@/shared/components/ui/base/button'
 import RangedSliderDropdownBody from './filter-dropdowns/RangedSliderDropdownBody'
+import { FilterKey, FilterOption, Filters } from '../types/filterTypes'
 
 interface FilterDropdownProps {
   label: string
   type: 'multi' | 'single' | 'range'
-  options: string[] | [number, number] // [min, max]
-  value: string[] | string | [number, number]
-  onApply: (val: string[] | string | [number, number]) => void
+  options: FilterOption[] | [number, number]
+  value: Filters[FilterKey]
+  onApply: (val: Filters[FilterKey]) => void
   onClear: () => void
 }
 
@@ -30,7 +31,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   const isSingle = type === 'single'
 
   const [open, setOpen] = useState(false)
-  const [localValue, setLocalValue] = useState<string[] | string | [number, number]>(value)
+  const [localValue, setLocalValue] = useState<Filters[FilterKey]>(value)
 
   useEffect(() => {
     setLocalValue(value)
@@ -55,11 +56,11 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   // Reset local values to empty
   const handleClear = () => {
     if (isMulti) {
-      setLocalValue([])
+      setLocalValue([] as Filters[FilterKey])
     } else if (isSingle) {
-      setLocalValue('')
+      setLocalValue(null as Filters[FilterKey])
     } else if (isRange) {
-      setLocalValue(options)
+      setLocalValue(options as Filters[FilterKey])
     }
     onClear()
     setOpen(false)
@@ -77,17 +78,17 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   return (
     <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
-        <button className="focus:ring-primary data-[state=open]:ring-primary text-foreground border-input bg-background hover:border-primary-hover/30 flex items-center gap-1 rounded-full border px-4 py-2 text-sm font-medium transition-colors focus:ring-2 focus:outline-none data-[state=open]:ring-2">
+        <button className="focus:ring-primary data-[state=open]:ring-primary text-foreground border-input bg-background hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-2 focus:outline-none data-[state=open]:ring-2">
           <span>{label}</span>
-          <ArrowDropDownIcon className="text-foreground h-4 w-4" />
+          <ArrowDropDownIcon className="text-foreground h-[1rem] w-[1rem]" />
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto px-0 pt-1">
+      <PopoverContent className="w-auto px-0 pt-[0.25rem]" align="start">
         <div className="flex flex-col">
-          <div className="px-3 pt-0 pb-4">
+          <div className="px-[0.75rem] pt-0 pb-[1rem]">
             {isMulti && (
               <MultiSelectDropdownBody
-                options={options as string[]}
+                options={options as FilterOption[]}
                 selected={localValue as string[]}
                 onToggle={toggleMulti}
               />
@@ -95,27 +96,29 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
 
             {isSingle && (
               <SingleSelectDropdownBody
-                options={options as string[]}
-                selected={localValue as string}
-                onSelect={val => setLocalValue(val)}
+                options={options as FilterOption[]}
+                selected={localValue as unknown as string}
+                onSelect={val => setLocalValue(val as unknown as Filters[FilterKey])}
               />
             )}
-
-            {isRange && (
-              <RangedSliderDropdownBody
-                min={options[0] as number}
-                max={options[1] as number}
-                value={localValue as [number, number]}
-                onChange={val => setLocalValue(val)}
-              />
-            )}
+            {isRange &&
+              Array.isArray(options) &&
+              typeof options[0] === 'number' &&
+              typeof options[1] === 'number' && (
+                <RangedSliderDropdownBody
+                  min={options[0]}
+                  max={options[1]}
+                  value={localValue as [number, number]}
+                  onChange={val => setLocalValue(val as Filters[FilterKey])}
+                />
+              )}
           </div>
 
-          <div className="border-border/50 flex justify-end gap-2 border-t px-3 pt-3">
-            <Button variant="outline" className="px-6 py-2" onClick={handleClear}>
+          <div className="border-border/50 flex justify-end gap-[0.5rem] border-t px-[0.75rem] pt-[0.75rem]">
+            <Button variant="outline" className="px-[1.5rem] py-[0.5rem]" onClick={handleClear}>
               Clear
             </Button>
-            <Button className="px-6 py-2" onClick={handleApply}>
+            <Button className="px-[1.5rem] py-[0.5rem]" onClick={handleApply}>
               Apply
             </Button>
           </div>

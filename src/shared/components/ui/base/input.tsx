@@ -18,7 +18,7 @@ function Input({ className, type, icon, ...props }: InputProps) {
         type={type}
         data-slot="input"
         className={cn(
-          'h-10 w-full rounded-sm border-1 px-3 py-2 shadow-xs',
+          'h-[2.5rem] w-full rounded-sm border-1 px-[0.75rem] py-[0.5rem] shadow-xs',
           'bg-background text-foreground placeholder:text-muted-foreground border-input',
 
           // Interaction states
@@ -32,7 +32,7 @@ function Input({ className, type, icon, ...props }: InputProps) {
 
           // Disabled
           'disabled:bg-muted disabled:text-muted-foreground disabled:border-border disabled:pointer-events-none disabled:opacity-100',
-          icon ? 'pl-10' : '',
+          icon ? 'pl-[2.5rem]' : '',
         )}
         {...props}
       />

@@ -36,19 +36,19 @@ function MainHeader({ showSearch = false }: MainHeader) {
   const profileImageUrl = `"https://github.com/shadcn.png"`
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 min-h-[69px] w-full bg-white">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-4 md:px-12">
+    <header className="fixed top-0 right-0 left-0 z-50 min-h-[4.3125rem] w-full bg-white">
+      <div className="mx-auto flex max-w-[90rem] items-center justify-between px-[1rem] py-[1rem] md:px-[3rem]">
         {/* Logo */}
-        <div className="w-[150px]">
-          <Link href="/" className="font-logo text-[32px] font-medium">
+        <div className="w-[9.375rem]">
+          <Link href="/" className="font-logo text-[2rem] font-medium">
             Tryal
           </Link>
         </div>
 
         {/* Conditional Search Section - Only show on explore pages */}
         {showSearch && (
-          <div className="hidden flex-grow justify-center gap-4 text-sm text-[16px] text-gray-700 md:flex">
-            <div className="text-body1 flex w-full max-w-lg gap-4">
+          <div className="hidden flex-grow justify-center gap-[1rem] text-sm text-[1rem] text-gray-700 md:flex">
+            <div className="text-body1 flex w-full max-w-lg gap-[1rem]">
               <Input icon={<SearchIcon />} placeholder="Search Experiences" />
               <Input icon={<LocationOnIcon />} placeholder="Location" />
             </div>
@@ -56,12 +56,12 @@ function MainHeader({ showSearch = false }: MainHeader) {
         )}
 
         {/* Right Side - Icons and Avatar */}
-        <div className="flex w-[150px] items-center justify-end gap-2">
+        <div className="flex w-[9.375rem] items-center justify-end gap-[0.5rem]">
           <Button variant="link" size="icon">
-            <CalendarIcon className="h-5 w-5" />
+            <CalendarIcon className="h-[1.25rem] w-[1.25rem]" />
           </Button>
           <Button variant="link" size="icon">
-            <NotificationsIcon className="h-5 w-5" />
+            <NotificationsIcon className="h-[1.25rem] w-[1.25rem]" />
           </Button>
 
           {/* Avatar */}
