@@ -33,11 +33,6 @@ const ProfilePage = () => {
 
   return (
     <>
-      <h1 className="text-h3">Profile</h1>
-      <p className="text-body2">
-        Your information here will be shared with the business when you make a booking.
-      </p>
-
       <form onSubmit={handleSubmitForm} className="mt-6 w-[85%]">
         <div className="grid grid-cols-1 gap-x-6 gap-y-4 md:grid-cols-2">
           <FormField
