@@ -1,75 +1,72 @@
 'use client'
 
 import React, { useState } from 'react'
+import ExperienceTabs from './ExperienceTabs'
 import UpcomingExperiences from './UpcomingExperiences'
 import SavedExperiences from './SavedExperiences'
 import PastExperiences from './PastExperiences'
-import { Button } from '@/shared/components/ui/base/button'
+
+const upcomingExperiences = [
+  {
+    bookingId: '',
+    userId: '',
+    exp_schedule_id: '',
+    // upcoming experiences will have a 'booked' status
+    booking_status: '', 
+    exp_id: '',
+    name: '',
+    image_url: '',
+    address: '',
+    price_credits: '',
+    party: '',
+    start_time: '',
+  },
+]
+
+const savedExperiences = [
+  {
+    userId: '',
+    businessId: '',
+    name: '',
+    image_url: '',
+    price_credits: '',
+    rating: '',
+  }
+]
+
+const pastExperiences = [
+  {
+    bookingId: '',
+    userId: '',
+    exp_schedule_id: '',
+    // past experiences will have a 'attended / cancelled / no-show' status
+    booking_status: '', 
+    exp_id: '',
+    name: '',
+    image_url: '',
+    address: '',
+    price_credits: '',
+    party: '',
+    start_time: '',
+  }
+]
+
+const tabComponents: Record<string, React.ReactNode> = {
+  upcoming: <UpcomingExperiences />,
+  saved: <SavedExperiences />,
+  past: <PastExperiences />,
+};
 
 const ExperiencePage = () => {
   const [tab, setTab] = useState('upcoming')
 
-  const renderActiveTab = () => {
-    switch (tab) {
-      case 'upcoming':
-        return <UpcomingExperiences />
-      case 'saved':
-        return <SavedExperiences />
-      case 'past':
-        return <PastExperiences />
-      default:
-        return <UpcomingExperiences />
-    }
-  }
-
   return (
     <div>
       {/* Experience Tabs */}
-      <div className="mt-2 flex gap-2.5">
-        <Button
-          type="button"
-          variant={'text'}
-          name="upcoming"
-          onClick={e => setTab(e.currentTarget.name)}
-          className={`cursor-pointer rounded-none px-3 ${tab == 'upcoming' ? 'border-b-2 border-black' : 'hover:border-muted-foreground hover:border-b-2'}`}
-        >
-          {/* text-muted-foreground */}
-          <span
-            className={`text-button hover:text-foreground ${tab == 'upcoming' ? 'text-foreground' : 'text-muted-foreground'}`}
-          >
-            Upcoming
-          </span>
-        </Button>
-        <Button
-          type="button"
-          variant={'text'}
-          name="saved"
-          onClick={e => setTab(e.currentTarget.name)}
-          className={`cursor-pointer rounded-none px-3 ${tab == 'saved' ? 'border-b-2 border-black' : 'hover:border-muted-foreground hover:border-b-2'}`}
-        >
-          <span
-            className={`text-button hover:text-foreground ${tab == 'saved' ? 'text-foreground' : 'text-muted-foreground'}`}
-          >
-            Saved
-          </span>
-        </Button>
-        <Button
-          type="button"
-          variant={'text'}
-          name="past"
-          onClick={e => setTab(e.currentTarget.name)}
-          className={`cursor-pointer rounded-none px-3 ${tab == 'past' ? 'border-b-2 border-black' : 'hover:border-muted-foreground hover:border-b-2'}`}
-        >
-          <span
-            className={`text-button hover:text-foreground ${tab == 'past' ? 'text-foreground' : 'text-muted-foreground'}`}
-          >
-            Past
-          </span>
-        </Button>
-      </div>
+      <ExperienceTabs tab={tab} setTab={setTab} />
 
       {/* Experience List Container */}
-      <div className="flex flex-col gap-3">{renderActiveTab()}</div>
+      <div className="flex flex-col gap-3">{tabComponents[tab] ?? tabComponents['upcoming']}</div>
     </div>
   )
 }
