@@ -23,7 +23,7 @@ const LoadingSpinner = () => (
   </div>
 )
 
-const ProfilePage = () => {
+const OldProfilePage = () => {
   // TODO: Enable when backend authentication is ready
   // const { data: session, status } = useSession()
   const router = useRouter()
@@ -309,4 +309,4 @@ const ProfilePage = () => {
   )
 }
 
-export default ProfilePage
+export default OldProfilePage
