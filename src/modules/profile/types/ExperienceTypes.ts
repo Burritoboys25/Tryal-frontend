@@ -12,3 +12,12 @@ export type ExperienceType = {
   exp_date: string
   start_time: string
 }
+
+export type SavedExperienceType = {
+  user_bookmarks_id: string
+  user_id: string
+  name: string
+  image_url: string
+  price_credits: number
+  rating: number
+}

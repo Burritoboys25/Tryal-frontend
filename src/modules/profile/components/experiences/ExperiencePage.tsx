@@ -7,18 +7,7 @@ import SavedExperiences from './SavedExperiences'
 import PastExperiences from './PastExperiences'
 
 import UpcomingExperiencesData from '../../mock/upcomingExperiences.json';
-
-const savedExperiences = [
-  {
-    user_id: '',
-    business_id: '',
-    user_bookmarks_id: '',
-    name: '',
-    image_url: '',
-    price_credits: '',
-    rating: '',
-  },
-]
+import SavedExperiencesData from '../../mock/SavedExperiences.json'
 
 const pastExperiences = [
   {
@@ -56,7 +45,7 @@ const ExperiencePage = () => {
       <div className="mt-2 flex flex-col gap-3">
         {/* {tabComponents[tab] ?? tabComponents['upcoming']} */}
         {tab === 'upcoming' && <UpcomingExperiences data={UpcomingExperiencesData} />}
-        {tab === 'saved' && <SavedExperiences />}
+        {tab === 'saved' && <SavedExperiences data={SavedExperiencesData} />}
         {tab === 'past' && <PastExperiences />}
       </div>
     </div>

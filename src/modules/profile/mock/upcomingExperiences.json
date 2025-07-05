@@ -15,10 +15,10 @@
   },
   {
     "user_id": "1",
-    "booking_id": "1",
-    "exp_schedule_id": "1",
+    "booking_id": "2",
+    "exp_schedule_id": "2",
     "booking_status": "booked",
-    "exp_id": "1",
+    "exp_id": "2",
     "name": "Terra Studio",
     "image_url": "",
     "address": "501 E Ben White Blvd, Austin, TX 78704",
