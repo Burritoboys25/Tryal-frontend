@@ -20,4 +20,5 @@ export type SavedExperienceType = {
   image_url: string
   price_credits: number
   rating: number
+  isBookmarked: boolean
 }
