@@ -95,6 +95,17 @@ const ExploreMain = () => {
     router.push(query ? `/explore?${query}` : '/explore')
   }
 
+  // Navigate to business detail page when a card is selected
+  // Now uses businessName instead of businessId
+  const handleSelectBusiness = (business: Business) => {
+    // Use a slugified business name for the URL
+    const slug = business.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '')
+    router.push(`/business/${slug}`)
+  }
+
   // Reset the filters and push the new search params to the url.
   const resetFilters = () => {
     router.push('/explore')
@@ -114,7 +125,11 @@ const ExploreMain = () => {
           <ScrollArea className="bg-background h-full min-h-0 flex-1 rounded-xl">
             <BusinessCards
               items={businesses}
-              onSelect={setSelectedId}
+              onSelect={setSelectedId} // single click just selects
+              onDoubleClick={id => {
+                const business = businesses.find(b => b.businessId === id)
+                if (business) handleSelectBusiness(business)
+              }} // double click navigates using businessName
               selectedId={selectedId ?? ''}
               hoveredId={hoveredId}
               onHover={setHoveredId}
