@@ -5,27 +5,9 @@ import ExperienceTabs from './ExperienceTabs'
 import UpcomingExperiences from './UpcomingExperiences'
 import SavedExperiences from './SavedExperiences'
 import PastExperiences from './PastExperiences'
-
 import UpcomingExperiencesData from '../../mock/upcomingExperiences.json';
-import SavedExperiencesData from '../../mock/SavedExperiences.json'
-
-const pastExperiences = [
-  {
-    user_id: '',
-    booking_id: '',
-    exp_schedule_id: '',
-    // past experiences will have a 'attended / cancelled / no-show' status
-    booking_status: '',
-    exp_id: '',
-    name: '',
-    image_url: '',
-    address: '',
-    price_credits: '',
-    party: '',
-    exp_date: '',
-    start_time: '',
-  },
-]
+import SavedExperiencesData from '../../mock/savedExperiences.json'
+import PastExperiencesData from '../../mock/pastExperiences.json'
 
 // const tabComponents: Record<string, React.ReactNode> = {
 //   upcoming: <UpcomingExperiences />,
@@ -46,7 +28,7 @@ const ExperiencePage = () => {
         {/* {tabComponents[tab] ?? tabComponents['upcoming']} */}
         {tab === 'upcoming' && <UpcomingExperiences data={UpcomingExperiencesData} />}
         {tab === 'saved' && <SavedExperiences data={SavedExperiencesData} />}
-        {tab === 'past' && <PastExperiences />}
+        {tab === 'past' && <PastExperiences data={PastExperiencesData} />}
       </div>
     </div>
   )
