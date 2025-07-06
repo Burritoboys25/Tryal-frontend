@@ -5,6 +5,7 @@ import ClockIcon from '@/shared/assets/icons/clock.svg'
 import PersonIcon from '@/shared/assets/icons/person.svg'
 import { ExperienceType } from '../../types/ExperienceTypes'
 import { formatDate, formatTime } from '../../utils/TimeFormatter'
+import Image from 'next/image'
 
 type Props = {
   data: ExperienceType[]
@@ -13,7 +14,16 @@ type Props = {
 const ExperienceCard = (data: ExperienceType) => {
   return (
     <div className="flex h-[8.625rem] cursor-pointer gap-7 rounded-md border border-[#CBCBCB] px-5 py-3">
-      <div className="h-[6.875rem] w-[8.313rem] rounded-md bg-gray-300"></div>
+      <div>
+        <Image
+          src={data.image_url || '/default-business.png'}
+          alt="Business Photo"
+          width={133}
+          height={110}
+          // remove background color when we have a default pic --> currently using as placeholder
+          className="rounded-md bg-gray-300"
+        />
+      </div>
 
       <div className="flex flex-1 flex-col justify-between">
         <h3 className="text-[1rem] leading-5 font-bold">{data.name}</h3>

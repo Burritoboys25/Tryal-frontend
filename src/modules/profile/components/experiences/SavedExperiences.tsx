@@ -4,6 +4,7 @@ import { StarDisplay } from '@/shared/components/ui/base/rating'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
 import { SavedExperienceType } from '../../types/ExperienceTypes'
 import { Bookmark } from 'lucide-react'
+import Image from 'next/image'
 
 type Props = {
   data: SavedExperienceType[]
@@ -11,19 +12,33 @@ type Props = {
 }
 
 type CardProps = {
-  item: SavedExperienceType,
+  item: SavedExperienceType
   handleBookmarkClick: (id: string) => void
 }
 
-const ExperienceCard = ({item, handleBookmarkClick }: CardProps) => {
+const ExperienceCard = ({ item, handleBookmarkClick }: CardProps) => {
   return (
     <div className="flex h-[8.625rem] gap-7 rounded-md border border-[#CBCBCB] px-5 py-3">
-      <div className="h-[6.875rem] w-[8.313rem] rounded-md bg-gray-300"></div>
+      <div>
+        <Image
+          src={item.image_url || '/default-business.png'}
+          alt="Business Photo"
+          width={133}
+          height={110}
+          // remove background color when we have a default pic --> currently using as placeholder
+          className="rounded-md bg-gray-300"
+        />
+      </div>
 
       <div className="flex flex-1 flex-col justify-between">
         <div className="flex items-center gap-2">
-          <h3 className="text-[1rem] leading-5 font-bold">{item.name}</h3>
-          <Bookmark color="#e4572e" fill={item.isBookmarked ? '#e4572e' : '#ffffff'} className="cursor-pointer" onClick={() => handleBookmarkClick(item.user_bookmarks_id)} />
+          <h3 className="text-[1rem] leading-5 font-bold mb-1">{item.name}</h3>
+          <Bookmark
+            color="#e4572e"
+            fill={item.isBookmarked ? '#e4572e' : '#ffffff'}
+            className="cursor-pointer"
+            onClick={() => handleBookmarkClick(item.user_bookmarks_id)}
+          />
         </div>
         {/*  */}
         <div className="mb-2 flex w-fit items-center gap-2 rounded-[.5rem] bg-[#FADDD5] px-3 py-1">
@@ -43,11 +58,14 @@ const ExperienceCard = ({item, handleBookmarkClick }: CardProps) => {
 }
 
 const SavedExperiences = ({ data, handleBookmarkClick }: Props) => {
-
   return (
     <>
       {data.map(card => (
-        <ExperienceCard key={card.user_bookmarks_id} item={card} handleBookmarkClick={handleBookmarkClick} />
+        <ExperienceCard
+          key={card.user_bookmarks_id}
+          item={card}
+          handleBookmarkClick={handleBookmarkClick}
+        />
       ))}
     </>
   )
