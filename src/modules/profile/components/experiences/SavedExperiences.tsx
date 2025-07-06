@@ -25,11 +25,12 @@ const ExperienceCard = ({item, handleBookmarkClick }: CardProps) => {
           <h3 className="text-[1rem] leading-5 font-bold">{item.name}</h3>
           <Bookmark color="#e4572e" fill={item.isBookmarked ? '#e4572e' : '#ffffff'} className="cursor-pointer" onClick={() => handleBookmarkClick(item.user_bookmarks_id)} />
         </div>
-        <div className="flex w-fit items-center gap-2 rounded-[.5rem] bg-[#FADDD5] px-3 py-1">
+        {/*  */}
+        <div className="mb-2 flex w-fit items-center gap-2 rounded-[.5rem] bg-[#FADDD5] px-3 py-1">
           <CreditIcon />
           <p className="text-body1">{item.price_credits} credits</p>
         </div>
-        <div className="mb-1">
+        <div className="mb-2">
           <StarDisplay rating={item.rating} size={16} />
         </div>
       </div>
