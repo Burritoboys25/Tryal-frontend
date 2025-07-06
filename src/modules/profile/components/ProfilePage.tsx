@@ -27,9 +27,9 @@ const ProfilePage = () => {
     },
   )
 
-  // const [isSubmitting, setIsSubmitting] = useState(false)
-  // const [error, setError] = useState<string | null>(null)
-  // const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({})
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -42,7 +42,23 @@ const ProfilePage = () => {
   const handleSubmitForm = async (e: React.FormEvent) => {
     e.preventDefault()
 
+    setIsSubmitting(true)
+    setError(null)
+    setFieldErrors({})
+
+    const result = profileFormSchema.safeParse({
+      ...formData
+    })
+
+    if (!result.success) {
+      const errors = result.error.flatten().fieldErrors
+      setFieldErrors(errors)
+      setIsSubmitting(false)
+      return
+    }
+
     try {
+      // call post api 
       console.log(formData)
     } catch (error) {
       console.error('Error updating profile:', error)
@@ -57,6 +73,7 @@ const ProfilePage = () => {
             label="First name"
             name="firstName"
             value={formData.firstName}
+            error={fieldErrors.firstName?.[0]}
             onChange={handleFormChange}
             required
           />
@@ -64,6 +81,7 @@ const ProfilePage = () => {
             label="Last name"
             name="lastName"
             value={formData.lastName}
+            error={fieldErrors.lastName?.[0]}
             onChange={handleFormChange}
             required
           />
@@ -72,6 +90,7 @@ const ProfilePage = () => {
             name="email"
             type="email"
             value={formData.email}
+            error={fieldErrors.email?.[0]}
             onChange={handleFormChange}
             required
           />
@@ -79,11 +98,14 @@ const ProfilePage = () => {
             label="Phone number"
             name="phoneNumber"
             value={formData.phoneNumber}
+            error={fieldErrors.phoneNumber?.[0]}
             onChange={handleFormChange}
             required
           />
           {/* Date of birth field (read-only) */}
-          <FormField label="Date of birth" name="dateOfBirth" value="09/16/1990" disabled={true} />
+          <FormField label="Date of birth" name="dateOfBirth" value={formData.dateOfBirth} disabled={true} />
+
+          {error && <p className="text-destructive text-sm">{error}</p>}
         </div>
 
         {/* Save Button */}
