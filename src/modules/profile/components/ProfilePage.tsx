@@ -3,15 +3,33 @@
 import React, { useState } from 'react'
 import FormField from '@/shared/components/ui/forms/FormField'
 import { Button } from '@/shared/components/ui/base/button'
+import {
+  profileFormSchema,
+  ProfileFormData,
+} from '@/modules/profile/validations/profile-form.schema'
+
+const dummyData: ProfileFormData = {
+  firstName: 'Katherine',
+  lastName: 'Payton',
+  email: 'kpayton@gmail.com',
+  phoneNumber: '2226595555',
+  dateOfBirth: '2000-01-01',
+}
 
 const ProfilePage = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    dataOfBirth: '',
-  })
+  const [formData, setFormData] = useState<ProfileFormData>(
+    dummyData || {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phoneNumber: '',
+      dataOfBirth: '',
+    },
+  )
+
+  // const [isSubmitting, setIsSubmitting] = useState(false)
+  // const [error, setError] = useState<string | null>(null)
+  // const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({})
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -40,7 +58,6 @@ const ProfilePage = () => {
             name="firstName"
             value={formData.firstName}
             onChange={handleFormChange}
-            // disabled={!isEditing}
             required
           />
           <FormField
@@ -48,7 +65,6 @@ const ProfilePage = () => {
             name="lastName"
             value={formData.lastName}
             onChange={handleFormChange}
-            // disabled={!isEditing}
             required
           />
           <FormField
@@ -57,7 +73,6 @@ const ProfilePage = () => {
             type="email"
             value={formData.email}
             onChange={handleFormChange}
-            // disabled={!isEditing}
             required
           />
           <FormField
@@ -65,7 +80,6 @@ const ProfilePage = () => {
             name="phoneNumber"
             value={formData.phoneNumber}
             onChange={handleFormChange}
-            // disabled={!isEditing}
             required
           />
           {/* Date of birth field (read-only) */}
@@ -78,7 +92,7 @@ const ProfilePage = () => {
             type="submit"
             variant="outline"
             className="cursor-pointer hover:bg-[#FADDD5]"
-            // onClick={handleEditToggle}
+            // onClick={handleSubmitForm}
           >
             Save Changes
           </Button>
