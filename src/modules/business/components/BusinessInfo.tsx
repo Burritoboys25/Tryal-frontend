@@ -7,16 +7,12 @@ type BusinessInfoProps = {
 }
 
 const BusinessInfo = ({ business }: BusinessInfoProps) => {
+  console.log('BusinessInfo received:', business)
+
   return (
     <div className="mr-auto">
-      <h1 className="mb-4 text-4xl font-bold">{business.name}</h1>
-      <p className="text-lg">{business.address}</p>
-      <div className="mt-2 text-base">Categories: {business.categories.join(', ')}</div>
-      <div className="mt-2 text-base">Skill Levels: {business.skillLevels.join(', ')}</div>
-      <div className="mt-2 text-base">
-        Credits: {business.minCredits} - {business.maxCredits}
-      </div>
-      {/* Add more content or components as needed */}
+      <div className="text-h2">{business.name}</div>
+      <div className="text-h3 text-gray-500">{business.maxCredits} credits</div>
     </div>
   )
 }

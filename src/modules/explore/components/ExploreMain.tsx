@@ -96,14 +96,9 @@ const ExploreMain = () => {
   }
 
   // Navigate to business detail page when a card is selected
-  // Now uses businessName instead of businessId
+  // Now uses businessId for the URL
   const handleSelectBusiness = (business: Business) => {
-    // Use a slugified business name for the URL
-    const slug = business.name
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '')
-    router.push(`/business/${slug}`)
+    router.push(`/business/${business.businessId}`)
   }
 
   // Reset the filters and push the new search params to the url.
@@ -129,7 +124,7 @@ const ExploreMain = () => {
               onDoubleClick={id => {
                 const business = businesses.find(b => b.businessId === id)
                 if (business) handleSelectBusiness(business)
-              }} // double click navigates using businessName
+              }} // double click navigates using businessId
               selectedId={selectedId ?? ''}
               hoveredId={hoveredId}
               onHover={setHoveredId}
