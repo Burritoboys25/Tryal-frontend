@@ -9,12 +9,6 @@ import UpcomingExperiencesData from '../../mock/upcomingExperiences.json'
 import SavedExperiencesData from '../../mock/savedExperiences.json'
 import PastExperiencesData from '../../mock/pastExperiences.json'
 
-// const tabComponents: Record<string, React.ReactNode> = {
-//   upcoming: <UpcomingExperiences />,
-//   saved: <SavedExperiences />,
-//   past: <PastExperiences />,
-// }
-
 const ExperiencePage = () => {
   const [tab, setTab] = useState('upcoming')
   const [savedExperiences, setSavedExperiences] = useState(
@@ -23,13 +17,6 @@ const ExperiencePage = () => {
       isBookmarked: true,
     })),
   )
-
-  // const test = savedExperiences.map((experience) => ({
-  //   ...experience,
-  //   isBookmarked: true,
-  // }))
-
-  // console.log(test)
 
   const handleBookmarkClick = (user_bookmarks_id: string) => {
     setSavedExperiences(prevItems =>
@@ -50,7 +37,9 @@ const ExperiencePage = () => {
       <div className="mt-2 flex flex-col gap-3">
         {/* {tabComponents[tab] ?? tabComponents['upcoming']} */}
         {tab === 'upcoming' && <UpcomingExperiences data={UpcomingExperiencesData} />}
-        {tab === 'saved' && <SavedExperiences data={savedExperiences} handleBookmarkClick={handleBookmarkClick} />}
+        {tab === 'saved' && (
+          <SavedExperiences data={savedExperiences} handleBookmarkClick={handleBookmarkClick} />
+        )}
         {tab === 'past' && <PastExperiences data={PastExperiencesData} />}
       </div>
     </div>

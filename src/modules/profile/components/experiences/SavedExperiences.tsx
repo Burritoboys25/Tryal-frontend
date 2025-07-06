@@ -32,7 +32,7 @@ const ExperienceCard = ({ item, handleBookmarkClick }: CardProps) => {
 
       <div className="flex flex-1 flex-col justify-between">
         <div className="flex items-center gap-2">
-          <h3 className="text-[1rem] leading-5 font-bold mb-1">{item.name}</h3>
+          <h3 className="mb-1 text-[1rem] leading-5 font-bold">{item.name}</h3>
           <Bookmark
             color="#e4572e"
             fill={item.isBookmarked ? '#e4572e' : '#ffffff'}
