@@ -4,7 +4,8 @@ import Container from '@/shared/components/layout/Container'
 import BusinessInfo from '@/modules/business/components/BusinessInfo'
 import { getBusinessById } from '@/modules/business/services/business'
 
-export default async function BusinessListingPage({ params }: { params: { businessId: string } }) {
+export default async function BusinessListingPage(props: { params: Promise<{ businessId: string }> }) {
+  const params = await props.params;
   const { businessId } = params
   const business = await getBusinessById(businessId)
 
