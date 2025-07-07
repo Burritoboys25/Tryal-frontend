@@ -214,7 +214,7 @@ const BecomePartnerForm = () => {
               />
 
               <label className="text-caption2 text-muted-foreground">
-                I agree to receive marketing and other communications from XPASS. *
+                I agree to receive marketing and other communications from Tryal. *
               </label>
             </div>
 
