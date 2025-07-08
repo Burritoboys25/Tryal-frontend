@@ -45,7 +45,7 @@ export default function MissionVision() {
         <div className="relative flex items-center justify-center">
           <BlurBackground className="absolute top-1/2 left-1/2 h-[21.875rem] w-[21.875rem] -translate-x-1/2 -translate-y-1/2" />
           <Image
-            src="/about_us/cal_and_rie.png"
+            src="/about_us/cizurp-henry.png"
             alt="Calvin and Henry Nguyen"
             width={294}
             height={303}
