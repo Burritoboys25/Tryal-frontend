@@ -69,10 +69,9 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   // Returns local state back to back to the original form value if applied or clear is not pressed.
   const handleOpenChange = (open: boolean) => {
     setOpen(open)
-    if (!open) {
-      setLocalValue(value)
+    if (open) {
+      setLocalValue(value) // ← sync from applied filters when opening
     }
-    setOpen(open)
   }
 
   return (
@@ -97,8 +96,8 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
             {isSingle && (
               <SingleSelectDropdownBody
                 options={options as FilterOption[]}
-                selected={localValue as unknown as string}
-                onSelect={val => setLocalValue(val as unknown as Filters[FilterKey])}
+                selected={localValue as string | number | null}
+                onSelect={val => setLocalValue(val as Filters[FilterKey])}
               />
             )}
             {isRange &&
