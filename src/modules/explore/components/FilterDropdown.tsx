@@ -37,6 +37,23 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
     setLocalValue(value)
   }, [value])
 
+  const isFilterApplied = (): boolean => {
+    if (isMulti) {
+      return Array.isArray(value) && value.length > 0
+    } else if (isSingle) {
+      return value !== null && value !== Infinity
+    } else if (isRange) {
+      return (
+        Array.isArray(value) &&
+        Array.isArray(options) &&
+        typeof options[0] === 'number' &&
+        typeof options[1] === 'number' &&
+        (value[0] !== options[0] || value[1] !== options[1])
+      )
+    }
+    return false
+  }
+
   // Filter options for local value for multi select dropdowns.
   const toggleMulti = (option: string) => {
     if (!Array.isArray(localValue)) return
@@ -74,10 +91,16 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
     }
   }
 
+  const isApplied = isFilterApplied()
+
   return (
     <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
-        <button className="focus:ring-primary data-[state=open]:ring-primary text-foreground border-input bg-background hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-2 focus:outline-none data-[state=open]:ring-2">
+        <button
+          className={`focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-2 focus:outline-none data-[state=open]:ring-2 ${
+            isApplied ? 'border-primary' : 'border-input'
+          }`}
+        >
           <span>{label}</span>
           <ArrowDropDownIcon className="text-foreground h-[1rem] w-[1rem]" />
         </button>
