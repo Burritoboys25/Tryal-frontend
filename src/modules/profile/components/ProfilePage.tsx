@@ -9,7 +9,6 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/shared/components/ui/base
 import { Button } from '@/shared/components/ui/base/button'
 import FormField from '@/shared/components/ui/forms/FormField'
 // TODO: Enable when backend API is ready
-// import { getCurrentUser, updateUser } from '@/shared/services/user'
 import { User } from '@/shared/types/userTypes'
 import { showToast } from '@/shared/components/ui/notifications/Toast'
 import LogoutButton from '@/modules/auth/components/LogoutButton'

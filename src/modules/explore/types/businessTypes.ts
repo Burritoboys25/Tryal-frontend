@@ -19,6 +19,8 @@ export type Business = {
   skillLevels: string[]
   minCredits: number
   maxCredits: number
+  phoneNumber: string
+  website: string
 }
 
 export type CreditRange = {
