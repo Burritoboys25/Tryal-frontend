@@ -7,23 +7,29 @@ import {
   profileFormSchema,
   ProfileFormData,
 } from '@/modules/profile/validations/profile-form.schema'
+import { showToast } from '@/shared/components/ui/notifications/Toast'
 
-const dummyData: ProfileFormData = {
-  firstName: 'Katherine',
-  lastName: 'Payton',
-  email: 'kpayton@gmail.com',
-  phoneNumber: '2226595555',
-  dateOfBirth: '2000-01-01',
+type ProfileProp = {
+  userId: string
+  firstName: string
+  lastName: string
+  email: string
+  phoneNumber: string
+  dateOfBirth: string
+  gender: string
+  profileImageUrl: string
+  creditBalance: number
+  stripeCustomerId: string
 }
 
-const ProfilePage = () => {
+const ProfilePage = ({...UserData} : ProfileProp) => {
   const [formData, setFormData] = useState<ProfileFormData>(
-    dummyData || {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phoneNumber: '',
-      dataOfBirth: '',
+    {
+      firstName: UserData.firstName || '',
+      lastName: UserData.lastName || '',
+      email: UserData.email || '',
+      phoneNumber: UserData.phoneNumber || '',
+      dateOfBirth: UserData.dateOfBirth || '',
     },
   )
 
@@ -47,7 +53,7 @@ const ProfilePage = () => {
     setFieldErrors({})
 
     const result = profileFormSchema.safeParse({
-      ...formData
+      ...formData,
     })
 
     if (!result.success) {
@@ -58,10 +64,27 @@ const ProfilePage = () => {
     }
 
     try {
-      // call post api 
-      console.log(formData)
-    } catch (error) {
-      console.error('Error updating profile:', error)
+      const res = await fetch(`/api/profile/${UserData.userId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...result.data,
+        }),
+      })
+
+      if (res.ok) {
+        showToast({ type: 'success', description: 'Profile updated successfully!'})
+      } else {
+        showToast({ type: 'error' })
+        const data = await res.json()
+        setError(data.error || 'Something went wrong.')
+      }
+    } catch (err) {
+      showToast({ type: 'error' })
+      console.error(err)
+      setError('Network error.')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -102,8 +125,13 @@ const ProfilePage = () => {
             onChange={handleFormChange}
             required
           />
-          {/* Date of birth field (read-only) */}
-          <FormField label="Date of birth" name="dateOfBirth" value={formData.dateOfBirth} disabled={true} />
+          {/* TODO: Need to decide on how users will update their DOB */}
+          <FormField
+            label="Date of birth"
+            name="dateOfBirth"
+            value={formData.dateOfBirth}
+            disabled={true}
+          />
 
           {error && <p className="text-destructive text-sm">{error}</p>}
         </div>
@@ -115,6 +143,7 @@ const ProfilePage = () => {
             variant="outline"
             className="cursor-pointer hover:bg-[#FADDD5]"
             // onClick={handleSubmitForm}
+            disabled={isSubmitting}
           >
             Save Changes
           </Button>
