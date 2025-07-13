@@ -7,8 +7,6 @@ const Profile = async () => {
   const data = await fetch(`${process.env.BACKEND_URL}/api/users/${userId}`)
   const profileData = await data.json()
 
-  console.log(profileData.userDTO)
-
   return (
     <div>
       <h1 className="text-h3">Profile</h1>
