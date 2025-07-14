@@ -21,18 +21,20 @@ const BusinessInfo = ({ business }: { business: Business }) => {
     '/landing_page_img_2.png',
     '/landing_page_img_3.png',
   ]
-  // Dummy categories for badges
-  const dummyCategories = ['Arts & Crafts', 'DIY & Hands-on']
   const address = business.address ?? ''
   const phone = business.phoneNumber ?? ''
   const website = business.website ?? ''
   const rating = 4.5
   const [bookmarked, setBookmarked] = useState(false)
+  const categories = business.categories ?? []
 
   const handleToggleBookmark = () => {
     setBookmarked(prev => !prev)
     // TODO: Implement Bookmark per user similar to explore page
   }
+
+  console.log('Business categories:', business.categories)
+  console.log('Business info:', business)
 
   return (
     <div className="flex flex-col gap-4">
@@ -83,7 +85,7 @@ const BusinessInfo = ({ business }: { business: Business }) => {
       </div>
       {/* Categories Tags (dummy) Need to discuss how to hit category API */}
       <div className="flex gap-4">
-        {dummyCategories.map((category, idx) => (
+        {categories.map((category, idx) => (
           <Badge
             key={idx}
             className="bg-accent flex h-[38px] min-w-[126px] items-center gap-1 px-4"

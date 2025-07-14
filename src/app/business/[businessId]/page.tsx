@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
 import Container from '@/shared/components/layout/Container'
 import BusinessInfo from '@/modules/business/components/BusinessInfo'
-import { getBusinessById } from '@/modules/business/services/business'
+import { getBusinessWithCategoriesFromApi } from '@/modules/business/services/business'
 
 export default async function BusinessListingPage(props: {
   params: Promise<{ businessId: string }>
@@ -10,7 +10,7 @@ export default async function BusinessListingPage(props: {
   const params = await props.params
   const { businessId } = params
 
-  const business = await getBusinessById(businessId)
+  const business = await getBusinessWithCategoriesFromApi(businessId)
 
   return (
     <ViewLayout type="default">
