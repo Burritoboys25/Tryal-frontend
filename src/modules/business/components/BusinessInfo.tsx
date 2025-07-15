@@ -9,6 +9,9 @@ import Image from 'next/image'
 import BookmarkedIcon from '@/shared/assets/icons/bookmarked.svg'
 import UnBookMarkedIcon from '@/shared/assets/icons/unbookmarked.svg'
 import { StarDisplay } from '@/shared/components/ui/base/rating'
+import LocationOnIcon from '@/shared/assets/icons/location_on.svg'
+import PhoneIcon from '@/shared/assets/icons/phone.svg'
+import WebsiteIcon from '@/shared/assets/icons/website.svg'
 
 const BusinessInfo = ({ business }: { business: Business }) => {
   const minCredits = business.minCredits
@@ -21,19 +24,18 @@ const BusinessInfo = ({ business }: { business: Business }) => {
     '/landing_page_img_2.png',
     '/landing_page_img_3.png',
   ]
-  const address = business.address ?? ''
-  const phone = business.phoneNumber ?? ''
-  const website = business.website ?? ''
+  const categories = business.categories ?? []
+  // const address = business.address ?? ''
+  // const phone = business.phoneNumber ?? ''
+  // const website = business.website ?? ''
   const rating = 4.5
   const [bookmarked, setBookmarked] = useState(false)
-  const categories = business.categories ?? []
 
   const handleToggleBookmark = () => {
     setBookmarked(prev => !prev)
     // TODO: Implement Bookmark per user similar to explore page
   }
 
-  console.log('Business categories:', business.categories)
   console.log('Business info:', business)
 
   return (
@@ -83,7 +85,7 @@ const BusinessInfo = ({ business }: { business: Business }) => {
           ))}
         </div>
       </div>
-      {/* Categories Tags (dummy) Need to discuss how to hit category API */}
+      {/* Categories Tags */}
       <div className="flex gap-4">
         {categories.map((category, idx) => (
           <Badge
@@ -96,52 +98,53 @@ const BusinessInfo = ({ business }: { business: Business }) => {
       </div>
 
       {/* Right: Business Info */}
-      <div className="flex flex-col gap-4">
-        <div className="mb-2 flex flex-row justify-between space-x-20">
+      <div className="flex w-full flex-col gap-3.5">
+        {/* Top row: Star and Business Info title aligned horizontally */}
+        <div className="flex w-full flex-row items-center justify-between">
           <StarDisplay rating={rating} size={16} />
-          <p className="text-sub2 text-foreground">
+          <div className="w-[257px] text-left text-lg font-semibold">Business Info</div>
+        </div>
+        {/* Bottom row: Description and info rows aligned horizontally */}
+        <div className="flex w-full flex-row items-start justify-between gap-x-8">
+          <p className="text-sub4 text-foreground flex-1 pr-8">
             Discover the joy of pottery in a warm, welcoming studio where creativity meets clay. Our
             hands-on classes are perfect for beginners and experienced artists alike, offering
             guided instruction in wheel throwing and hand-building techniques. Whether you&apos;re
             looking to unwind, learn a new skill, or make something meaningful, our studio provides
             the perfect space to create.
           </p>
-          <div className="bg-background flex flex-col gap-4">
-            <div className="mb-2 font-semibold">Business Info</div>
-            <div className="flex items-start gap-2">
-              {/* Replace with your LocationIcon */}
-              <span className="material-icons text-base">location_on</span>
-              <span>{address}</span>
+          <div className="text-body2 flex w-[257px] flex-shrink-0 flex-col gap-3.5">
+            <div className="flex items-center gap-2">
+              <LocationOnIcon />
+              <span>{business.address ?? ''}</span>
             </div>
             <div className="flex items-center gap-2">
-              {/* Replace with your PhoneIcon */}
-              <span className="material-icons text-base">phone</span>
-              <span>{phone}</span>
+              <PhoneIcon />
+              <span>{business.phoneNumber ?? ''}</span>
             </div>
             <div className="flex items-center gap-2">
-              {/* Replace with your WebsiteIcon */}
-              <span className="material-icons text-base">language</span>
+              <WebsiteIcon />
               <a
-                href={website}
+                href={business.website ?? ''}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline"
               >
-                {website}
+                {business.website ?? ''}
               </a>
             </div>
-            <div className="flex items-center gap-2">
-              {/* Replace with your InstagramIcon */}
-              {/* <span className="material-icons text-base">photo_camera</span>
-            <a
-              href={instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary underline"
-            >
-              @{instagram?.replace('https://instagram.com/', '')}
-            </a> */}
-            </div>
+            {/* Instagram row placeholder */}
+            {/* <div className="flex items-center gap-2">
+              <span className="material-icons text-base">photo_camera</span>
+              <a
+                href={instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline"
+              >
+                @{instagram?.replace('https://instagram.com/', '')}
+              </a>
+            </div> */}
           </div>
         </div>
       </div>
