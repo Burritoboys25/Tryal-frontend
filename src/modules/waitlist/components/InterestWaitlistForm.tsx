@@ -23,7 +23,6 @@ const InterestWaitlistForm = () => {
       })
 
       if (!response.ok) {
-        showToast({ type: 'error' })
         throw new Error('Failed to join waitlist')
       }
 
