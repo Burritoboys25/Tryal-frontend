@@ -21,7 +21,7 @@ const ExperienceCard = ({ item, handleBookmarkClick }: CardProps) => {
     <div className="flex h-[8.625rem] gap-7 rounded-md border border-[#CBCBCB] px-5 py-3">
       <div>
         <Image
-          src={item.image_url || '/default-business.png'}
+          src={'/default-business.png'}
           alt="Business Photo"
           width={133}
           height={110}
@@ -32,7 +32,7 @@ const ExperienceCard = ({ item, handleBookmarkClick }: CardProps) => {
 
       <div className="flex flex-1 flex-col justify-between">
         <div className="flex items-center gap-2">
-          <h3 className="mb-1 text-[1rem] leading-5 font-bold">{item.name}</h3>
+          <h3 className="mb-1 text-[1rem] leading-5 font-bold">{item.business_name}</h3>
           <Bookmark
             color="#e4572e"
             fill={item.isBookmarked ? '#e4572e' : '#ffffff'}
@@ -43,7 +43,7 @@ const ExperienceCard = ({ item, handleBookmarkClick }: CardProps) => {
         {/*  */}
         <div className="mb-2 flex w-fit items-center gap-2 rounded-[.5rem] bg-[#FADDD5] px-3 py-1">
           <CreditIcon />
-          <p className="text-body1">{item.price_credits} credits</p>
+          <p className="text-body1">{item.credit_price} credits</p>
         </div>
         <div className="mb-2">
           <StarDisplay rating={item.rating} size={16} />

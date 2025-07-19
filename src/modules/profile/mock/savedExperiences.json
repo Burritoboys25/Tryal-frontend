@@ -2,17 +2,15 @@
   {
     "user_bookmarks_id": "1",
     "user_id": "1",
-    "name": "SoulScape Wellness",
-    "image_url": "",
-    "price_credits": 35,
+    "business_name": "SoulScape Wellness",
+    "credit_price": 35,
     "rating": 4
   },
   {
     "user_bookmarks_id": "2",
     "user_id": "1",
-    "name": "SoulScape Wellness",
-    "image_url": "",
-    "price_credits": 35,
+    "business_name": "SoulScape Wellness",
+    "credit_price": 35,
     "rating": 4
   }
 ]

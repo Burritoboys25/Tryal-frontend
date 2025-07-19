@@ -1,24 +1,22 @@
 export type ExperienceType = {
   user_id: string
   booking_id: string
-  exp_schedule_id: string
+  timeslot_id: string
   booking_status: string
-  exp_id: string
-  name: string
-  image_url: string | null
+  experience_id: string
+  business_name: string
   address: string
-  price_credits: number
+  credit_price: number
   party: number
-  exp_date: string
+  timeslot_date: string
   start_time: string
 }
 
 export type SavedExperienceType = {
   user_bookmarks_id: string
   user_id: string
-  name: string
-  image_url: string
-  price_credits: number
+  business_name: string
+  credit_price: number
   rating: number
   isBookmarked: boolean
 }

@@ -17,7 +17,7 @@ const ExperienceCard = (data: ExperienceType) => {
     <div className="flex h-[8.625rem] cursor-pointer gap-7 rounded-md border border-[#CBCBCB] px-5 py-3">
       <div>
         <Image
-          src={data.image_url || '/default-business.png'}
+          src={'/default-business.png'}
           alt="Business Photo"
           width={133}
           height={110}
@@ -27,10 +27,10 @@ const ExperienceCard = (data: ExperienceType) => {
       </div>
 
       <div className="flex flex-1 flex-col justify-between">
-        <h3 className="text-[1rem] leading-5 font-bold">{data.name}</h3>
+        <h3 className="text-[1rem] leading-5 font-bold">{data.business_name}</h3>
         <div className="flex w-fit items-center gap-2 rounded-[.5rem] bg-[#FADDD5] px-3 py-1">
           <CreditIcon />
-          <p className="text-body1">{data.price_credits} credits</p>
+          <p className="text-body1">{data.credit_price} credits</p>
         </div>
         <div className="flex gap-12">
           <div className="flex items-center gap-2">
@@ -39,7 +39,7 @@ const ExperienceCard = (data: ExperienceType) => {
           </div>
           <div className="flex items-center gap-2">
             <CalendarIcon />
-            <p className="text-body1">{formatDate(data.exp_date)}</p>
+            <p className="text-body1">{formatDate(data.timeslot_date)}</p>
           </div>
           <div className="flex items-center gap-2">
             <ClockIcon />
