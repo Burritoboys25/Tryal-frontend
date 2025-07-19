@@ -2,7 +2,6 @@
 
 import React, { createContext, useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
-import { getCurrentUser } from '@/shared/services/user'
 import { User } from '@/shared/types/userTypes'
 
 interface UserContextType {
@@ -25,20 +24,32 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
   })
 
   useEffect(() => {
-    if (session?.user?.id) {
-      getCurrentUser(session.user.id)
-        .then(data => {
-          setUserData(data)
-          localStorage.setItem(USER_DATA_KEY, JSON.stringify(data))
-        })
-        .catch(err => {
-          console.error('Failed to fetch user data:', err)
-        })
-    } else {
+  if (!session?.user?.id) {
+    setUserData(null)
+    localStorage.removeItem(USER_DATA_KEY)
+    return
+  }
+
+  const fetchUser = async () => {
+    try {
+      const res = await fetch(`/api/users/${session.user.id}`, {
+        credentials: 'include',
+      })
+
+      if (!res.ok) throw new Error('Failed to fetch user')
+
+      const data = await res.json()
+      setUserData(data)
+      localStorage.setItem(USER_DATA_KEY, JSON.stringify(data))
+    } catch (err) {
+      console.error('Failed to fetch user data:', err)
       setUserData(null)
       localStorage.removeItem(USER_DATA_KEY)
     }
-  }, [session?.user?.id])
+  }
+
+  fetchUser()
+}, [session])
 
   return <UserContext.Provider value={{ userData, setUserData }}>{children}</UserContext.Provider>
 }

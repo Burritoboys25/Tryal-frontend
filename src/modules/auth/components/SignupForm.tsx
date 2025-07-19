@@ -7,7 +7,6 @@ import FormField from '@/shared/components/ui/forms/FormField'
 import { useState } from 'react'
 import { SignupFormData, signupFormSchema } from '../validations/signup.schema'
 import CheckboxField from '@/shared/components/ui/forms/CheckboxField'
-import { signupUser } from '../services/auth'
 import { signIn } from 'next-auth/react'
 import { APIFieldError } from '../lib/errors'
 import { useRouter } from 'next/navigation'
@@ -49,7 +48,22 @@ const SignupForm = () => {
         password: result.data.password,
       }
 
-      await signupUser(signupPayload)
+      const res = await fetch('/api/users/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(signupPayload),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        if (data.fieldErrors) {
+          setFieldErrors(data.fieldErrors)
+        } else {
+          setFieldErrors({ backend: [data.error || 'Signup failed'] })
+        }
+        return
+      }
 
       await signIn('credentials', {
         email: result.data.email,
