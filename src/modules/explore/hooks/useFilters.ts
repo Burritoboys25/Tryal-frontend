@@ -16,7 +16,6 @@ export const useFilters = () => {
     ],
     groupType: [],
     duration: [
-      { label: 'Any', value: Infinity },
       { label: '30 mins', value: 30 },
       { label: '45 mins', value: 45 },
       { label: '1 hour', value: 60 },
