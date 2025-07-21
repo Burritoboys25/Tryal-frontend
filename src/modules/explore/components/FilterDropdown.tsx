@@ -41,7 +41,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
     if (isMulti) {
       return Array.isArray(value) && value.length > 0
     } else if (isSingle) {
-      return value !== null && value !== Infinity
+      return value !== '' && value !== Infinity
     } else if (isRange) {
       return (
         Array.isArray(value) &&
@@ -75,7 +75,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
     if (isMulti) {
       setLocalValue([] as Filters[FilterKey])
     } else if (isSingle) {
-      setLocalValue(null as Filters[FilterKey])
+      setLocalValue('' as Filters[FilterKey])
     } else if (isRange) {
       setLocalValue(options as Filters[FilterKey])
     }
@@ -97,7 +97,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
     <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
         <button
-          className={`focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-2 focus:outline-none data-[state=open]:ring-2 ${
+          className={`focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1 ${
             isApplied ? 'border-primary' : 'border-input'
           }`}
         >
