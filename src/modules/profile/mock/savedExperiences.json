@@ -1,16 +1,14 @@
 [
   {
-    "user_bookmarks_id": "1",
+    "business_id": "1",
     "user_id": "1",
     "business_name": "SoulScape Wellness",
-    "credit_price": 35,
-    "rating": 4
+    "address": "1234 Easy St"
   },
   {
-    "user_bookmarks_id": "2",
+    "business_id": "2",
     "user_id": "1",
     "business_name": "SoulScape Wellness",
-    "credit_price": 35,
-    "rating": 4
+    "address": "1234 Easy St"
   }
 ]

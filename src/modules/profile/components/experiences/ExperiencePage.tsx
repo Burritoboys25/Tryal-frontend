@@ -18,12 +18,10 @@ const ExperiencePage = () => {
     })),
   )
 
-  const handleBookmarkClick = (user_bookmarks_id: string) => {
+  const handleBookmarkClick = (business_id: string) => {
     setSavedExperiences(prevItems =>
       prevItems.map(item =>
-        item.user_bookmarks_id === user_bookmarks_id
-          ? { ...item, isBookmarked: !item.isBookmarked }
-          : item,
+        item.business_id === business_id ? { ...item, isBookmarked: !item.isBookmarked } : item,
       ),
     )
   }

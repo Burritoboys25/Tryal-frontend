@@ -3,7 +3,7 @@ import ProfilePage from '@/modules/profile/components/ProfilePage'
 
 const Profile = async () => {
   // TODO: get userid from session -- currently hardcoded
-  const userId = '96204bc2-ddf9-4708-b841-ead5a153b308'
+  const userId = '272d2788-ee1e-4056-ae09-4829aff17909'
   const data = await fetch(`${process.env.BACKEND_URL}/api/users/${userId}`)
   const profileData = await data.json()
 

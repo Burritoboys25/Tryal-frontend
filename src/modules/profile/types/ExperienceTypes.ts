@@ -13,10 +13,9 @@ export type ExperienceType = {
 }
 
 export type SavedExperienceType = {
-  user_bookmarks_id: string
   user_id: string
+  business_id: string
   business_name: string
-  credit_price: number
-  rating: number
+  address: string
   isBookmarked: boolean
 }

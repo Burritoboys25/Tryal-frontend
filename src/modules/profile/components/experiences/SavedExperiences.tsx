@@ -37,16 +37,16 @@ const ExperienceCard = ({ item, handleBookmarkClick }: CardProps) => {
             color="#e4572e"
             fill={item.isBookmarked ? '#e4572e' : '#ffffff'}
             className="cursor-pointer"
-            onClick={() => handleBookmarkClick(item.user_bookmarks_id)}
+            onClick={() => handleBookmarkClick(item.business_id)}
           />
         </div>
         {/*  */}
         <div className="mb-2 flex w-fit items-center gap-2 rounded-[.5rem] bg-[#FADDD5] px-3 py-1">
           <CreditIcon />
-          <p className="text-body1">{item.credit_price} credits</p>
+          <p className="text-body1">{item.address}</p>
         </div>
         <div className="mb-2">
-          <StarDisplay rating={item.rating} size={16} />
+          <StarDisplay rating={5} size={16} />
         </div>
       </div>
 
@@ -62,7 +62,7 @@ const SavedExperiences = ({ data, handleBookmarkClick }: Props) => {
     <>
       {data.map(card => (
         <ExperienceCard
-          key={card.user_bookmarks_id}
+          key={card.business_id}
           item={card}
           handleBookmarkClick={handleBookmarkClick}
         />
