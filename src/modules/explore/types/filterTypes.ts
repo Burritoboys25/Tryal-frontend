@@ -1,10 +1,10 @@
 export type Categories = {
-  categoryId: number
+  categoryId: string
   name: string
 }
 
 export type GroupTypes = {
-  groupTypeId: number
+  groupTypeId: string
   name: string
 }
 
@@ -35,7 +35,7 @@ export type FilterConfigItem = {
 export type Filters = {
   type: string[]
   skillLevel: string[]
-  groupType: number | null
+  groupType: string
   duration: number
   credits: [number, number]
   distance: number

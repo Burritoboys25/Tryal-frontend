@@ -25,7 +25,7 @@ export function getFiltersFromSearchParams(searchParams: URLSearchParams): Filte
     skillLevel: searchParams.get('skillLevel')?.split(',') || [],
     duration: searchParams.get('duration') ? Number(searchParams.get('duration')) : Infinity,
     distance: searchParams.get('distance') ? Number(searchParams.get('distance')) : Infinity,
-    groupType: searchParams.get('groupTypeIds') ? Number(searchParams.get('groupTypeIds')) : null,
+    groupType: searchParams.get('groupTypeIds') || '',
     credits: [
       Number(searchParams.get('creditsMin')) || 0,
       Number(searchParams.get('creditsMax')) || 100,
