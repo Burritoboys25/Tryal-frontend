@@ -8,10 +8,6 @@ import { ExperienceType } from '../../types/ExperienceTypes'
 import { formatDate, formatTime } from '../../utils/TimeFormatter'
 import Image from 'next/image'
 
-type Props = {
-  data: ExperienceType[]
-}
-
 const ExperienceCard = (data: ExperienceType) => {
   return (
     <div className="flex h-[8.625rem] cursor-pointer gap-7 rounded-md border border-[#CBCBCB] px-5 py-3">
@@ -59,10 +55,12 @@ const ExperienceCard = (data: ExperienceType) => {
   )
 }
 
-const UpcomingExperiences = ({ data }: Props) => {
+const UpcomingExperiences: React.FC<{
+  items: ExperienceType[]
+}> = ({ items }) => {
   return (
     <>
-      {data.map(card => (
+      {Array.isArray(items) && items.map(card => (
         <ExperienceCard key={card.booking_id} {...card} />
       ))}
     </>

@@ -2,8 +2,8 @@ export type ExperienceType = {
   user_id: string
   booking_id: string
   timeslot_id: string
-  booking_status: string
   experience_id: string
+  booking_status: string
   business_name: string
   address: string
   credit_price: number

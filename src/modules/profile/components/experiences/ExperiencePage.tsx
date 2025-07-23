@@ -5,12 +5,14 @@ import ExperienceTabs from './ExperienceTabs'
 import UpcomingExperiences from './UpcomingExperiences'
 import SavedExperiences from './SavedExperiences'
 import PastExperiences from './PastExperiences'
-import UpcomingExperiencesData from '../../mock/upcomingExperiences.json'
+//import UpcomingExperiencesData from '../../mock/upcomingExperiences.json'
 import SavedExperiencesData from '../../mock/savedExperiences.json'
 import PastExperiencesData from '../../mock/pastExperiences.json'
+import { ExperienceType } from '../../types/ExperienceTypes'
 
-const ExperiencePage = () => {
+const ExperiencePage = ({ bookings }: { bookings: ExperienceType[]}) => {
   const [tab, setTab] = useState('upcoming')
+  const [upcomingExperiences, setUpcomingExperiences] = useState<ExperienceType[]>(bookings || [])
   const [savedExperiences, setSavedExperiences] = useState(
     SavedExperiencesData.map(experience => ({
       ...experience,
@@ -34,7 +36,7 @@ const ExperiencePage = () => {
       {/* Experience List Container */}
       <div className="mt-2 flex flex-col gap-3">
         {/* {tabComponents[tab] ?? tabComponents['upcoming']} */}
-        {tab === 'upcoming' && <UpcomingExperiences data={UpcomingExperiencesData} />}
+        {tab === 'upcoming' && <UpcomingExperiences items={upcomingExperiences} />}
         {tab === 'saved' && (
           <SavedExperiences data={savedExperiences} handleBookmarkClick={handleBookmarkClick} />
         )}
