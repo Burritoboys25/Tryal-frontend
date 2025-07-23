@@ -1,14 +1,14 @@
 [
   {
     "business_id": "1",
-    "user_id": "1",
-    "business_name": "SoulScape Wellness",
+    "userId": "1",
+    "businessName": "SoulScape Wellness",
     "address": "1234 Easy St"
   },
   {
     "business_id": "2",
-    "user_id": "1",
-    "business_name": "SoulScape Wellness",
+    "userId": "1",
+    "businessName": "SoulScape Wellness",
     "address": "1234 Easy St"
   }
 ]

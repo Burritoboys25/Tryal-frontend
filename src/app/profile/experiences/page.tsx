@@ -6,13 +6,15 @@ const Page = async () => {
   const userId = '272d2788-ee1e-4056-ae09-4829aff17909'
   const data = await fetch(`${process.env.NEXTAUTH_URL}/api/profile/${userId}/bookings`)
   const bookingsData = await data.json()
+  const bookmarksData = await fetch(`${process.env.NEXTAUTH_URL}/api/users/${userId}/bookmarks`)
+  const bookmarks = await bookmarksData.json();
 
   return (
     <div className="">
       <h1 className="text-h3">Experiences</h1>
       <p className="text-body2 mt-1">View and/or manage your experiences.</p>
 
-      <ExperiencePage bookings={bookingsData} />
+      <ExperiencePage bookings={bookingsData} bookmarks={bookmarks} />
     </div>
   )
 }

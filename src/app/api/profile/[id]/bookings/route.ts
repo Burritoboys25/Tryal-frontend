@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET(_: NextRequest, { params }: { params: Promise<{ userId: string }> }) {
-  const { userId } = await params
+export async function GET(_: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = await params
+
+  console.log('User Id: ' + id);
 
   try {
-    const result = await fetch(`${process.env.BACKEND_URL}/api/bookings/users/${userId}`, {
+    const result = await fetch(`${process.env.BACKEND_URL}/api/bookings/user/${id}`, {
       method: 'GET',
       credentials: 'include',
       headers: {
