@@ -12,13 +12,10 @@ import { ExperienceType, SavedExperienceType } from '../../types/ExperienceTypes
 
 const ExperiencePage = ({ bookings, bookmarks }: { bookings: ExperienceType[], bookmarks: SavedExperienceType[] }) => {
   const [tab, setTab] = useState('upcoming')
-  const [upcomingExperiences, setUpcomingExperiences] = useState<ExperienceType[]>(
-    bookings?.filter(booking => booking.bookingStatus === 'BOOKED') || []
-  );
 
-  const [pastExperiences, setPastExperiences] = useState<ExperienceType[]>(
-    bookings?.filter(booking => booking.bookingStatus !== 'BOOKED') || []
-  )
+  const upcomingExperiences = bookings?.filter(booking => booking.bookingStatus === 'BOOKED') || []
+
+  const pastExperiences = bookings?.filter(booking => booking.bookingStatus !== 'BOOKED') || []
 
   const [savedExperiences, setSavedExperiences] = useState(
     bookmarks.map(experience => ({
