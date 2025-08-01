@@ -9,7 +9,7 @@ const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_K
 
 const CheckoutPage = () => {
   const searchParams = useSearchParams()
-  const priceId = searchParams.get('priceId')
+  const planId = searchParams.get('planId')
 
   const [user, setUser] = useState<{ id: string; email: string } | null>(null)
 
@@ -34,7 +34,7 @@ const CheckoutPage = () => {
   }, [user])
 
   const options = useMemo(() => {
-    if (!user || !priceId) {
+    if (!user || !planId) {
       return null
     }
 
@@ -44,7 +44,7 @@ const CheckoutPage = () => {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            priceId: priceId,
+            planId: planId,
             email: user.email,
             userId: user.id,
           }),
@@ -53,7 +53,7 @@ const CheckoutPage = () => {
           .then(data => data.clientSecret)
       },
     }
-  }, [user, priceId])
+  }, [user, planId])
 
   return (
     <div id="checkout">
