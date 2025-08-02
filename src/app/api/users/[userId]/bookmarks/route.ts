@@ -6,7 +6,7 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ userId
   const { userId } = await params
 
   try {
-    const response = await fetch(`${API_BASE_URL}/api/user-bookmarks?userId=${userId}`, {
+    const response = await fetch(`${process.env.BACKEND_URL}/api/user-bookmarks/${userId}`, {
       credentials: 'include',
     })
 
