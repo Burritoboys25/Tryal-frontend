@@ -2,19 +2,20 @@
 import React, { useEffect, useState } from 'react'
 import { Popover, PopoverTrigger, PopoverContent } from '@/shared/components/ui/base/popover'
 import ArrowDropDownIcon from '@/shared/assets/icons/arrow_drop_down.svg'
-import MultiSelectDropdownBody from './filter-dropdowns/MultiSelectDropdownBody'
-import SingleSelectDropdownBody from './filter-dropdowns/SingleSelectDropdownBody'
+import MultiSelectDropdownBody from './MultiSelectDropdownBody'
+import SingleSelectDropdownBody from './SingleSelectDropdownBody'
 import { Button } from '@/shared/components/ui/base/button'
-import RangedSliderDropdownBody from './filter-dropdowns/RangedSliderDropdownBody'
-import { FilterKey, FilterOption, Filters } from '../types/filterTypes'
+import RangedSliderDropdownBody from './RangedSliderDropdownBody'
+import { FilterKey, FilterOption, Filters } from '../../../../modules/explore/types/filterTypes'
 
 interface FilterDropdownProps {
-  label: string
+  label: string | React.ReactNode
   type: 'multi' | 'single' | 'range'
   options: FilterOption[] | [number, number]
   value: Filters[FilterKey]
   onApply: (val: Filters[FilterKey]) => void
   onClear: () => void
+  className?: string
 }
 
 const FilterDropdown: React.FC<FilterDropdownProps> = ({
@@ -24,6 +25,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   value,
   onApply,
   onClear,
+  className,
 }) => {
   // Flags for dropdowns.
   const isMulti = type === 'multi'
@@ -97,9 +99,12 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
     <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
         <button
-          className={`focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1 ${
-            isApplied ? 'border-primary' : 'border-input'
-          }`}
+          className={
+            className ||
+            `focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1 ${
+              isApplied ? 'border-primary' : 'border-input'
+            }`
+          }
         >
           <span>{label}</span>
           <ArrowDropDownIcon className="text-foreground h-[1rem] w-[1rem]" />

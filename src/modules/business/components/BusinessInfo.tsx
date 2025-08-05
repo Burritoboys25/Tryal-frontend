@@ -14,9 +14,9 @@ import PhoneIcon from '@/shared/assets/icons/phone.svg'
 import WebsiteIcon from '@/shared/assets/icons/website.svg'
 
 const BusinessInfo = ({ business }: { business: Business }) => {
-  const minCredits = business.minCredits
-  const maxCredits = business.maxCredits
-  const name = business.name
+  const [bookmarked, setBookmarked] = useState(false)
+  const { minCredits, maxCredits, name, categories = [], address, phoneNumber, website } = business
+
   const images = [
     '/mock_business_img_1.png',
     '/mock_business_img_2.png',
@@ -24,12 +24,7 @@ const BusinessInfo = ({ business }: { business: Business }) => {
     '/landing_page_img_2.png',
     '/landing_page_img_3.png',
   ]
-  const categories = business.categories ?? []
-  // const address = business.address ?? ''
-  // const phone = business.phoneNumber ?? ''
-  // const website = business.website ?? ''
   const rating = 4.5
-  const [bookmarked, setBookmarked] = useState(false)
 
   const handleToggleBookmark = () => {
     setBookmarked(prev => !prev)
@@ -114,23 +109,23 @@ const BusinessInfo = ({ business }: { business: Business }) => {
             the perfect space to create.
           </p>
           <div className="text-body2 flex w-[257px] flex-shrink-0 flex-col gap-3.5">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <LocationOnIcon />
-              <span>{business.address ?? ''}</span>
+              <span>{address ?? ''}</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <PhoneIcon />
-              <span>{business.phoneNumber ?? ''}</span>
+              <span>{phoneNumber ?? ''}</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <WebsiteIcon />
               <a
-                href={business.website ?? ''}
+                href={website ?? ''}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline"
               >
-                {business.website ?? ''}
+                {website ?? ''}
               </a>
             </div>
             {/* Instagram row placeholder */}

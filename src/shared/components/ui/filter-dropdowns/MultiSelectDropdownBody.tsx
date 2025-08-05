@@ -1,6 +1,6 @@
 import React from 'react'
 import { Checkbox } from '@/shared/components/ui/base/checkbox'
-import { FilterOption } from '../../types/filterTypes'
+import { FilterOption } from '../../../../../modules/explore/types/filterTypes'
 
 type Props = {
   options: FilterOption[]

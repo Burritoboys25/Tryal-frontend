@@ -34,3 +34,13 @@ a.mapboxgl-ctrl-logo {
   position: relative;
   z-index: 1;
 }
+
+/* Date Picker Styles */
+.rdp-root {
+  --rdp-accent-color: oklch(var(--primary)) !important;
+  --rdp-accent-background-color: oklch(var(--primary) / 0.15);
+}
+
+.rdp-caption_label {
+  padding: 2px !important;
+}

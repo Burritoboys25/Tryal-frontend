@@ -2,7 +2,7 @@
 import React from 'react'
 import { RadioGroup, RadioGroupItem } from '@/shared/components/ui/base/radio-group'
 import { Label } from '@/shared/components/ui/base/label'
-import { FilterOption } from '../../types/filterTypes'
+import { FilterOption } from '@/modules/explore/types/filterTypes'
 
 type Props = {
   options: FilterOption[]
