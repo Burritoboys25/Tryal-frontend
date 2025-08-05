@@ -16,6 +16,7 @@ export type SavedExperienceType = {
   userId: string
   businessId: string
   businessName: string
-  address: string
+  minCredits: number
+  maxCredits: number
   isBookmarked: boolean
 }
