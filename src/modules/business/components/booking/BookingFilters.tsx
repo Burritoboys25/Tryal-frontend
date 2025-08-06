@@ -18,9 +18,14 @@ const peopleOptions = [
 
 const ExperiencesCards = () => {
   const [selectedPeople, setSelectedPeople] = useState(2)
-  const [date, setDate] = useState<Date | undefined>(undefined)
+  const [date, setDate] = useState<Date>(new Date())
   const [month, setMonth] = useState<Date | undefined>(undefined)
+  // const [bookedDate, setBookedDate] = useState<Date | null>(null)
   const [open, setOpen] = useState(false)
+
+  //   const handleBookDate = () => {
+  //   setBookedDate(date)
+  // }
 
   return (
     <>
@@ -29,7 +34,7 @@ const ExperiencesCards = () => {
         <div className="flex flex-col gap-3">
           <FilterDropdown
             label={
-              <span className="flex items-center gap-2">
+              <span className="text-label flex items-center gap-2">
                 <PersonIcon className="h-6 w-6" />
                 {`${selectedPeople} people`}
               </span>
@@ -51,10 +56,10 @@ const ExperiencesCards = () => {
               <button
                 type="button"
                 id="date"
-                className="focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background border-muted-foreground hover:border-primary-hover/30 flex w-48 items-center justify-between gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium font-normal whitespace-nowrap transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1"
+                className="focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background border-muted-foreground hover:border-primary-hover/30 flex w-48 items-center justify-between gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium whitespace-nowrap transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1"
               >
                 <CalendarIcon className="mr-2 h-6 w-6" />
-                <span>
+                <span className="text-label">
                   {date
                     ? date.toLocaleDateString('en-US', {
                         month: 'long',
@@ -73,8 +78,10 @@ const ExperiencesCards = () => {
                 captionLayout="dropdown"
                 month={month}
                 onMonthChange={setMonth}
+                startMonth={new Date()}
+                endMonth={new Date(new Date().getFullYear() + 1, new Date().getMonth())}
                 onSelect={d => {
-                  setDate(d)
+                  if (d) setDate(d)
                   setOpen(false)
                 }}
                 className="rdp-root rounded-lg border p-8 shadow-sm"

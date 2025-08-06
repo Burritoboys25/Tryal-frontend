@@ -21,6 +21,9 @@ export const Calendar: React.FC<CalendarProps> = ({ className, ...props }) => {
         today: `border-primary`,
         selected: `bg-accent rounded-full`,
         root: `${defaultClassNames.root} shadow-lg p-8 rounded-lg border bg-white`,
+        dropdown: 'rdp-dropdown text-label',
+        dropdown_month: 'rdp-dropdown text-label',
+        dropdown_year: 'rdp-dropdown text-label',
       }}
       className={className}
       {...props}
