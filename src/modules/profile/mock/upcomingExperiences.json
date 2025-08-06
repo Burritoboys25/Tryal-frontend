@@ -1,0 +1,28 @@
+[
+  {
+    "userId": "1",
+    "bookingId": "1",
+    "timeslotId": "1",
+    "bookingStatus": "booked",
+    "experienceId": "1",
+    "businessName": "Terra Studio",
+    "address": "501 E Ben White Blvd, Austin, TX 78704",
+    "creditPrice": 35,
+    "party": 2,
+    "timeslotDate": "2025-03-08",
+    "startTime": "12:00"
+  },
+  {
+    "userId": "1",
+    "bookingId": "2",
+    "timeslotId": "2",
+    "bookingStatus": "booked",
+    "experienceId": "2",
+    "businessName": "Terra Studio",
+    "address": "501 E Ben White Blvd, Austin, TX 78704",
+    "creditPrice": 35,
+    "party": 2,
+    "timeslotDate": "2025-03-08",
+    "startTime": "12:00"
+  }
+]

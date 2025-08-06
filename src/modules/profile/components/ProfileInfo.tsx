@@ -1,6 +1,15 @@
+'use client'
+
 import React from 'react'
 
 const ProfileInfo = () => {
+  // const { data: session } = useSession()
+  // Generate user initials and profile image URL
+  // For now using mock data, but this will be replaced with session data when backend is ready
+  // const userFirstName = session?.user?.firstName || 'User'
+  // const userLastName = session?.user?.lastName || ''
+  // const userId = session?.user?.userId || ''
+
   return (
     <div className="flex items-center gap-7">
       {/* Profile Image */}

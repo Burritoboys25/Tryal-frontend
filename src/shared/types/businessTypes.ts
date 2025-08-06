@@ -22,7 +22,7 @@ export interface Business {
 
 // Experience type
 export interface Experience {
-  exp_id: string
+  experience_id: string
   business_id: string
   name: string
   description: string
@@ -44,6 +44,6 @@ export interface Category {
 // Links an experience to a category.
 export interface ExperienceCategory {
   exp_cat_id: string
-  exp_id: string
+  experience_id: string
   cat_id: string
 }

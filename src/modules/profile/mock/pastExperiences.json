@@ -1,0 +1,28 @@
+[
+  {
+    "userId": "1",
+    "bookingId": "a",
+    "timeslotId": "a",
+    "bookingStatus": "attended",
+    "experienceId": "1",
+    "businessName": "The Flavor Lab",
+    "address": "01 E Ben White Blvd, Austin, TX 78704",
+    "creditPrice": 50,
+    "party": 2,
+    "timeslotDate": "2025-02-20",
+    "startTime": "17:00"
+  },
+  {
+    "userId": "1",
+    "bookingId": "b",
+    "timeslotId": "a",
+    "bookingStatus": "attended",
+    "experienceId": "1",
+    "businessName": "The Flavor Lab",
+    "address": "01 E Ben White Blvd, Austin, TX 78704",
+    "creditPrice": 50,
+    "party": 2,
+    "timeslotDate": "2024-05-12",
+    "startTime": "19:00"
+  }
+]
