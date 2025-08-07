@@ -1,1 +1,5 @@
-// Empty route folder for now
+import { NextResponse } from 'next/server'
+
+export async function GET() {
+  return NextResponse.json({ message: 'Empty route folder for now' })
+}
