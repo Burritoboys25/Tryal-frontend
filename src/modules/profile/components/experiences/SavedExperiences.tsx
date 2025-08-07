@@ -44,7 +44,7 @@ const ExperienceCard = ({ item, handleBookmarkClick }: CardProps) => {
         {/*  */}
         <div className="mb-2 flex w-fit items-center gap-2 rounded-[.5rem] bg-[#FADDD5] px-3 py-1">
           <CreditIcon />
-          <p className="text-body1">{item.address}</p>
+          <p className="text-body1">{`${item.minCredits} - ${item.maxCredits}`}</p>
         </div>
         <div className="mb-2">
           <StarDisplay rating={5} size={16} />
