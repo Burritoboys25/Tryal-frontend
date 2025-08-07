@@ -1,15 +1,32 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 import ExperienceCards from './ExperienceCards'
 import BookingFilters from './BookingFilters'
+import BookingTimes from './BookingTimes'
+import { Experience } from '@/shared/types/experienceTypes'
+import { getBusinessExperiences } from '@/modules/business/services/business'
 
-const BookingMain = () => {
+const BookingMain = ({ businessId }: { businessId: string }) => {
+  const [experiences, setExperiences] = useState<Experience[]>([])
+
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      const data = await getBusinessExperiences(businessId)
+      setExperiences(data)
+      console.log('Fetched experiences:', data)
+    }
+    fetchExperiences()
+  }, [businessId])
+
+  // We need to add and pass booking times down with experiences
+
   return (
-    <>
-      <div className="mb-12">
-        <BookingFilters />
-      </div>
-      <ExperienceCards />
-    </>
+    <div className="flex flex-col gap-[36px]">
+      <BookingFilters />
+      <ExperienceCards experiences={experiences} />
+      <BookingTimes />
+    </div>
   )
 }
 

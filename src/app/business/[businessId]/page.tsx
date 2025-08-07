@@ -18,14 +18,14 @@ export default async function BusinessListingPage(props: {
     <ViewLayout type="default">
       <Container>
         <Suspense fallback={<p className="py-[5rem] text-center">Loading...</p>}>
-          <div className="screen-minus-navbar-explore mt-12 flex flex-col space-y-8">
+          <div className="screen-minus-navbar-business mt-12 flex flex-col space-y-8">
             {business ? (
               <>
                 <div className="mb-12">
                   <BusinessInfo business={business} />
                 </div>
                 <div className="mb-12">
-                  <BookingMain />
+                  <BookingMain businessId={businessId} />
                 </div>
                 <Reviews />
               </>

@@ -16,7 +16,7 @@ const peopleOptions = [
   { label: '5 people', value: 5 },
 ]
 
-const ExperiencesCards = () => {
+const BookingFilters = () => {
   const [selectedPeople, setSelectedPeople] = useState(2)
   const [date, setDate] = useState<Date>(new Date())
   const [month, setMonth] = useState<Date | undefined>(undefined)
@@ -28,7 +28,7 @@ const ExperiencesCards = () => {
   // }
 
   return (
-    <>
+    <section>
       <div className="text-sub1 mb-4">Booking</div>
       <div className="flex gap-4">
         <div className="flex flex-col gap-3">
@@ -90,8 +90,8 @@ const ExperiencesCards = () => {
           </Popover>
         </div>
       </div>
-    </>
+    </section>
   )
 }
 
-export default ExperiencesCards
+export default BookingFilters

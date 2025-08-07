@@ -1,9 +1,9 @@
-import { User } from '@/shared/types/userTypes'
+import { User } from '@/shared/types/experienceTypes'
 import { NextRequest, NextResponse } from 'next/server'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
 
-export async function GET(_: NextRequest, { params }: { params:  Promise<{ userId: string }> }) {
+export async function GET(_: NextRequest, { params }: { params: Promise<{ userId: string }> }) {
   const { userId } = await params
 
   try {

@@ -1,4 +1,5 @@
 import { Business } from '@/modules/explore/types/businessTypes'
+import { Experience } from '@/shared/types/experienceTypes'
 
 const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
 
@@ -19,7 +20,7 @@ export async function getBusinessCategories(id: string): Promise<string[]> {
   return data?.categories || []
 }
 
-// Helper to fetch business and categories using the API routes (not backend)
+// Helper to fetch business and categories using the API routes
 export async function getBusinessWithCategoriesFromApi(id: string): Promise<Business | undefined> {
   // Fetch business data from your own API route
   const business = await getBusinessById(id)
@@ -28,4 +29,27 @@ export async function getBusinessWithCategoriesFromApi(id: string): Promise<Busi
   const categories = await getBusinessCategories(id)
   // Combine and return
   return { ...business, categories }
+}
+
+export async function getBusinessExperiences(businessId: string): Promise<Experience[]> {
+  try {
+    const response = await fetch(
+      `${baseUrl}/api/experiences/by-business?businessId=${businessId}`,
+      {
+        next: { revalidate: 60 },
+      },
+    )
+    if (!response.ok) {
+      console.log(
+        'Fetching experiences from:',
+        `${baseUrl}/api/experiences/by-business?businessId=${businessId}`,
+      )
+      return []
+    }
+    const data = await response.json()
+    return data.experiences || []
+  } catch (error) {
+    console.error('Network error fetching experiences:', error)
+    return []
+  }
 }
