@@ -107,7 +107,7 @@ const ViewEditPage = () => {
         {/* Map Box */}
         <div className="h-[189px] w-[281px] bg-gray-500"></div>
         {/* Contact Details */}
-        <div>
+        <div className='flex flex-col gap-3.5'>
           <div className="flex items-center gap-2">
             <MapPin />
             <p className="text-body2">1625 Maple Street, Austin, Tx 78701</p>
