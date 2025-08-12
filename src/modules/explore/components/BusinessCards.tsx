@@ -25,6 +25,7 @@ const ExploreCard = ({
   onHoverEnd,
   bookmarked,
   onToggleBookmark,
+  onDoubleClick,
 }: {
   name: string
   type: string[]
@@ -41,6 +42,7 @@ const ExploreCard = ({
   onHoverEnd: () => void
   bookmarked: boolean
   onToggleBookmark: () => void
+  onDoubleClick: (id: string) => void
 }) => {
   return (
     <div
@@ -48,6 +50,7 @@ const ExploreCard = ({
         selected ? 'border-primary font-bold' : 'hover:bg-muted/50 border-transparent bg-white'
       } `}
       onClick={() => onSelect(businessId)} // when clicked sends up the business_id to the parent
+      onDoubleClick={() => onDoubleClick(businessId)}
       onMouseEnter={onHover}
       onMouseLeave={onHoverEnd}
     >
@@ -99,12 +102,22 @@ const ExploreCard = ({
 const BusinessCards: React.FC<{
   items: Business[]
   onSelect: (id: string) => void
+  onDoubleClick: (id: string) => void
   selectedId: string
   hoveredId: string | null
   onHover: (id: string | null) => void
   bookmarkedIds: string[]
   onToggleBookmark: (business_id: string) => void
-}> = ({ items, onSelect, selectedId, hoveredId, onHover, bookmarkedIds, onToggleBookmark }) => (
+}> = ({
+  items,
+  onSelect,
+  onDoubleClick,
+  selectedId,
+  hoveredId,
+  onHover,
+  bookmarkedIds,
+  onToggleBookmark,
+}) => (
   <div className="px-[0.5rem]">
     {items.map(item => (
       <ExploreCard
@@ -115,6 +128,7 @@ const BusinessCards: React.FC<{
         type={[...new Set(item.categories.map(c => c.split('&')[0]))]}
         selected={selectedId === item.businessId}
         onSelect={onSelect}
+        onDoubleClick={onDoubleClick}
         hovered={hoveredId === item.businessId}
         onHover={() => onHover(item.businessId)}
         onHoverEnd={() => onHover(null)}

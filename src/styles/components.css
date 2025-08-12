@@ -34,3 +34,32 @@ a.mapboxgl-ctrl-logo {
   position: relative;
   z-index: 1;
 }
+
+/* Date Picker Styles */
+.rdp-root {
+  --rdp-accent-color: oklch(var(--primary)) !important;
+  --rdp-accent-background-color: oklch(var(--primary) / 0.15);
+}
+
+.rdp-caption_label {
+  padding: 2px !important;
+}
+
+.rdp-caption_dropdowns {
+  display: flex;
+  gap: 0.5rem;
+}
+/* Custom Calendar Dropdown Styles */
+.rdp-dropdown {
+  padding: 0.5rem 1rem !important;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: inherit;
+}
+.rdp-dropdown,
+.rdp-dropdown option,
+.rdp-dropdown select {
+  font-family: inherit;
+  color: inherit;
+}

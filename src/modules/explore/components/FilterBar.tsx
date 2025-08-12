@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import FilterDropdown from './FilterDropdown'
 import { Button } from '@/shared/components/ui/base/button'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
 
 import { filterConfig } from '../config/filterConfig'
 import { FilterKey, Filters, FilterOptionMap } from '../types/filterTypes'
+import FilterDropdown from '@/shared/components/ui/filter-dropdowns/FilterDropdown'
 
 type FilterBarProps = {
   filters: Filters

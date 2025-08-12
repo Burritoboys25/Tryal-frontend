@@ -5,7 +5,7 @@ import ProfileTabs from '@/modules/profile/components/ProfileTabs'
 
 export default function ProfileLayout({ children }: { children: React.ReactNode }) {
   return (
-    <ViewLayout type="profile">
+    <ViewLayout type="default">
       <Container className="py-[3rem] h-[calc(100vh-69px)]">
         <div className="px-[6rem]">
           <ProfileInfo />
