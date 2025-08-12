@@ -1,14 +1,27 @@
-import React from 'react'
 import ProfilePage from '@/modules/profile/components/ProfilePage'
 
-const Profile = async () => {
-  // TODO: get userid from session -- currently hardcoded
+export const dynamic = 'force-dynamic' // Render this page on every request
+
+export default async function Profile() {
+  // TODO: Replace with session-based userId
   const userId = '272d2788-ee1e-4056-ae09-4829aff17909'
-  let profileData
-  if (process.env.NEXT_PUBLIC_ENV === 'dev') {
-    const baseUrl = process.env.BACKEND_URL || 'http://localhost:8080'
-    const data = await fetch(`${baseUrl}/api/users/${userId}`)
-    profileData = await data.json()
+  let profileData = null
+
+  try {
+    if (process.env.BACKEND_URL) {
+      const baseUrl = process.env.BACKEND_URL
+      const res = await fetch(`${baseUrl}/api/users/${userId}`, {
+        cache: 'no-store', // ensures fresh data every request
+      })
+
+      if (!res.ok) {
+        throw new Error(`Failed to fetch profile: ${res.statusText}`)
+      }
+
+      profileData = await res.json()
+    }
+  } catch (error) {
+    console.error('Error fetching profile data:', error)
   }
 
   return (
@@ -21,5 +34,3 @@ const Profile = async () => {
     </div>
   )
 }
-
-export default Profile
