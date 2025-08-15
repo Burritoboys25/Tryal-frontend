@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { Button } from '@/shared/components/ui/base/button'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
 import CalendarIcon from '@/shared/assets/icons/calendar.svg'
@@ -61,7 +62,14 @@ const UpcomingExperiences: React.FC<{
 }> = ({ items }) => {
   return (
     <>
-      {Array.isArray(items) && items.map(card => <ExperienceCard key={card.bookingId} {...card} />)}
+      {Array.isArray(items) && items.map(card => (
+        <Link
+          href={`/profile/experiences/view-edit/${card.bookingId}`}
+          key={card.bookingId}
+        >
+          <ExperienceCard  {...card} />
+        </Link>
+      ))}
     </>
   )
 }

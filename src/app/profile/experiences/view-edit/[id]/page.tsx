@@ -4,8 +4,11 @@ import Link from 'next/link'
 import { Button } from '@/shared/components/ui/base/button'
 import { ArrowLeft } from 'lucide-react'
 
-const page = () => {
+const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   // TODO: Fetch Experience details from backend
+  const { id } = await params
+  // get Booking details by booking id^
+
   return (
     <div>
       <Link href={'/profile/experiences'}>
@@ -17,6 +20,7 @@ const page = () => {
           <ArrowLeft />
           <span className="text-button ml-1">Back</span>
         </Button>
+        {id}
       </Link>
 
       <ViewEditPage />
