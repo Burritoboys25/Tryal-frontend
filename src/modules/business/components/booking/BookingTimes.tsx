@@ -8,9 +8,9 @@ const BookingTimes = () => {
 
   return (
     <section>
-      <div className="text-sub3 mb-4">Available Times</div>
-      <div className="w-[474px]">
-        <div className="mb-6 grid grid-cols-4 gap-4">
+      <div className="text-sub3 mb-[1rem]">Available Times</div>
+      <div className="w-[29.625rem]">
+        <div className="mb-[1.5rem] grid grid-cols-4 gap-[1rem]">
           {times.map(time => (
             <Button
               key={time}

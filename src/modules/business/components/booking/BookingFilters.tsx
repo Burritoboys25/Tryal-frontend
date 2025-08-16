@@ -29,9 +29,9 @@ const BookingFilters = () => {
 
   return (
     <section>
-      <div className="text-sub1 mb-4">Booking</div>
-      <div className="flex gap-4">
-        <div className="flex flex-col gap-3">
+      <div className="text-sub1 mb-[1rem]">Booking</div>
+      <div className="flex gap-[1rem]">
+        <div className="flex flex-col gap-[0.75rem]">
           <FilterDropdown
             label={
               <span className="text-label flex items-center gap-2">
@@ -49,14 +49,14 @@ const BookingFilters = () => {
             className="focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background border-muted-foreground hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1"
           />
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-[0.75rem]">
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
               {/* TODO: change button usage */}
               <button
                 type="button"
                 id="date"
-                className="focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background border-muted-foreground hover:border-primary-hover/30 flex w-48 items-center justify-between gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium whitespace-nowrap transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1"
+                className="focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background border-muted-foreground hover:border-primary-hover/30 flex w-[12rem] items-center justify-between gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium whitespace-nowrap transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1"
               >
                 <CalendarIcon className="mr-2 h-6 w-6" />
                 <span className="text-label">
@@ -84,7 +84,7 @@ const BookingFilters = () => {
                   if (d) setDate(d)
                   setOpen(false)
                 }}
-                className="rdp-root rounded-lg border p-8 shadow-sm"
+                className="rdp-root rounded-lg border p-[2rem] shadow-sm"
               />
             </PopoverContent>
           </Popover>
