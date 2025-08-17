@@ -19,7 +19,7 @@ const BookingTimes = () => {
               style={{
                 color: selected === time ? 'white' : 'oklch(0.65 0.22 35.34)',
               }}
-              className="text-button text rounded-full"
+              className="text-button text cursor-pointer rounded-full"
               onClick={() => setSelected(time)}
             >
               {time}

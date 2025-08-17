@@ -16,6 +16,7 @@ const ExperienceCards = ({ experiences }: { experiences: Experience[] }) => {
     <section>
       <div className="text-sub3 mb-[1rem]">Available Classes</div>
       <ScrollArea className="w-full" orientation="horizontal">
+        {/* experience cards */}
         <div className="flex flex-row gap-[1rem] overflow-x-auto pb-[0.5rem]">
           {experiences.map(exp => (
             <div
