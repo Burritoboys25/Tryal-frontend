@@ -5,6 +5,7 @@ import ArrowDropDownIcon from '@/shared/assets/icons/arrow_drop_down.svg'
 import MultiSelectDropdownBody from './MultiSelectDropdownBody'
 import SingleSelectDropdownBody from './SingleSelectDropdownBody'
 import { Button } from '@/shared/components/ui/base/button'
+import { cn } from '@/shared/lib/utils'
 import RangedSliderDropdownBody from './RangedSliderDropdownBody'
 import { FilterKey, FilterOption, Filters } from '../../../../modules/explore/types/filterTypes'
 
@@ -16,6 +17,7 @@ interface FilterDropdownProps {
   onApply: (val: Filters[FilterKey]) => void
   onClear: () => void
   className?: string
+  disableSelected?: boolean
 }
 
 const FilterDropdown: React.FC<FilterDropdownProps> = ({
@@ -26,6 +28,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   onApply,
   onClear,
   className,
+  disableSelected = false,
 }) => {
   // Flags for dropdowns.
   const isMulti = type === 'multi'
@@ -93,22 +96,18 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
     }
   }
 
-  const isApplied = isFilterApplied()
+  const isApplied = disableSelected ? false : isFilterApplied()
 
   return (
     <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
-        <button
-          className={
-            className ||
-            `focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1 ${
-              isApplied ? 'border-primary' : 'border-input'
-            }`
-          }
+        <Button
+          variant="filter"
+          className={cn(className, isApplied ? 'border-primary' : 'border-input')}
         >
           <span>{label}</span>
           <ArrowDropDownIcon className="text-foreground h-[1rem] w-[1rem]" />
-        </button>
+        </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto px-0 pt-[0.25rem]" align="start">
         <div className="flex flex-col">
