@@ -17,6 +17,7 @@ import {
   getFiltersFromSearchParams,
 } from '@/modules/explore/services/filterBusinesses'
 import { buildQueryParams } from '@/modules/explore/libs/buildQueryParams'
+import { addUserBookmark, removeUserBookmark } from '../services/bookmark'
 
 // import { useSession } from 'next-auth/react'
 // import {
@@ -69,24 +70,25 @@ const ExploreMain = () => {
   //     .catch(() => setBookmarkedIds([]))
   // }, [session?.user?.id])
 
-  // Update bookmarks in local state only
-  const handleToggleBookmark = (business_id: string) => {
-    // if (!session?.user?.id) return
-    setBookmarkedIds(prev => {
-      const isBookmarked = prev.includes(business_id)
-      if (isBookmarked) {
-        // removeUserBookmark(session.user.id, business_id)
-        const updated = prev.filter(id => id !== business_id)
-        console.log('Unbookmarked:', business_id, 'Current bookmarks:', updated)
-        return updated
-      } else {
-        // addUserBookmark(session.user.id, business_id)
-        const updated = [...prev, business_id]
-        console.log('Bookmarked:', business_id, 'Current bookmarks:', updated)
-        return updated
-      }
-    })
+  const handleToggleBookmark = async (business_id: string) => {
+  const isBookmarked = bookmarkedIds.includes(business_id)
+
+  if (isBookmarked) {
+    try {
+      await removeUserBookmark('272d2788-ee1e-4056-ae09-4829aff17909', business_id) // userId hardcoded -- should use session?.user?.id 
+      setBookmarkedIds(prev => prev.filter(id => id !== business_id))
+    } catch (err) {
+      console.error('Failed to unbookmark:', err)
+    }
+  } else {
+    try {
+      await addUserBookmark('272d2788-ee1e-4056-ae09-4829aff17909', business_id) // userId hardcoded -- should use session?.user?.id 
+      setBookmarkedIds(prev => [...prev, business_id])
+    } catch (err) {
+      console.error('Failed to bookmark:', err)
+    }
   }
+}
 
   // Update the filter state and push the new search params to the url.
   const handleFilterChange = <K extends FilterKey>(key: K, value: Filters[K]) => {
