@@ -31,14 +31,15 @@ interface MockUserBookmark {
   businessIds: string[]
 }
 
-const ExploreMain = () => {
+const ExploreMain = ({ bookmarks }: { bookmarks: string[] }) => {
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   // Find the mock user's bookmarked business IDs
   const mockUserId = 'user1'
   const initialBookmarkedIds =
     (mockUserBookmarks as MockUserBookmark[]).find(u => u.userId === mockUserId)?.businessIds || []
-  const [bookmarkedIds, setBookmarkedIds] = useState<string[]>(initialBookmarkedIds)
+  
+  const [bookmarkedIds, setBookmarkedIds] = useState<string[]>(bookmarks || [])
   const [businesses, setBusinesses] = useState<Business[]>([])
 
   // Filter state generated from search params.

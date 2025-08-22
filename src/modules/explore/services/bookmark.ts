@@ -3,10 +3,10 @@ import { UserBookmarks } from '@/shared/types/userTypes'
 // Get all bookmarks for a user
 export async function getUserBookmarks(userId: string): Promise<string[]> {
   // userId should come from session in the calling component
-  const res = await fetch(`/api/user-bookmarks/${userId}`)
+  const res = await fetch(`/api/users/${userId}/bookmarks`)
   if (!res.ok) throw new Error('Failed to fetch user bookmarks')
   const data = await res.json()
-  return data.bookmarkedBusinessIds || []
+  return data
 }
 
 // Add a businessId to the user's bookmarks
