@@ -19,8 +19,7 @@ const ExperienceCard = (data: ExperienceType) => {
           alt="Business Photo"
           // width={133}
           // height={110}
-          // remove background color when we have a default pic --> currently using as placeholder
-          className="rounded-md bg-gray-300"
+          className="rounded-md"
         />
       </div>
 

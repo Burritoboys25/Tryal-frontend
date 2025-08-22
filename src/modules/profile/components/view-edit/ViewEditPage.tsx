@@ -9,8 +9,33 @@ import CalendarIcon from '@/shared/assets/icons/calendar.svg'
 import ClockIcon from '@/shared/assets/icons/clock.svg'
 import PersonIcon from '@/shared/assets/icons/person.svg'
 import DefaultImage from '../../../../../public/default_experience_image.png'
+import { formatDate, formatTime } from '../../utils/TimeFormatter'
 
-const ViewEditPage = () => {
+enum BookingStatus {
+  BOOKED = 'BOOKED',
+  CANCELLED = 'CANCELLED',
+  COMPLETED = 'COMPLETED',
+}
+
+interface BookingDetails {
+  userId: string
+  bookingId: string
+  timeslotId: string
+  experienceId: string
+  bookingStatus: 'BOOKED' | 'CANCELLED' | 'COMPLETED' | string // extend with other statuses if needed
+  businessName: string
+  address: string
+  phoneNumber: string
+  website: string
+  creditPrice: number
+  instagramHandle?: string // optional since you noted it might come from CMS
+  party: number
+  timeslotDate: string // could be Date if you want to parse it
+  startTime: string     // could also be Date or a time type
+}
+
+// TODO: Fix bookingDetails type when it's more clear what object should return
+const ViewEditPage = (bookingDetails: BookingDetails) => {
   return (
     <div className="mx-auto mt-[2rem] flex w-[60rem]">
       {/* Left Container */}
@@ -26,23 +51,23 @@ const ViewEditPage = () => {
           />
 
           <div className="gap- flex flex-1 flex-col justify-between">
-            <h3 className="text-[1.5rem] leading-7 font-bold">{'Terra Studio'}</h3>
+            <h3 className="text-[1.5rem] leading-7 font-bold">{bookingDetails.businessName}</h3>
             <div className="flex w-fit items-center gap-2 rounded-[.5rem] bg-[#FADDD5] px-3 py-1">
               <CreditIcon />
-              <p className="text-body1">{'35'} credits</p>
+              <p className="text-body1">{bookingDetails.creditPrice} credits</p>
             </div>
             <div className="flex gap-4">
               <div className="flex items-center gap-2">
                 <PersonIcon />
-                <p className="text-body1">{'2'}</p>
+                <p className="text-body1">{bookingDetails.party}</p>
               </div>
               <div className="flex items-center gap-2">
                 <CalendarIcon />
-                <p className="text-body1">{/*formatDate(data.timeslotDate)*/}March 8, 2025</p>
+                <p className="text-body1">{formatDate(bookingDetails.timeslotDate)}</p>
               </div>
               <div className="flex items-center gap-2">
                 <ClockIcon />
-                <p className="text-body1">{/*formatTime(data.startTime)*/}12:00 PM</p>
+                <p className="text-body1">{formatTime(bookingDetails.startTime)}</p>
               </div>
             </div>
 
@@ -105,20 +130,21 @@ const ViewEditPage = () => {
       {/* Right Container - Map */}
       <div className="flex flex-col gap-8">
         {/* Map Box */}
+        {/* TODO: Implement MAPBOX */}
         <div className="h-[189px] w-[281px] bg-gray-500"></div>
         {/* Contact Details */}
         <div className='flex flex-col gap-3.5'>
           <div className="flex items-center gap-2">
             <MapPin />
-            <p className="text-body2">1625 Maple Street, Austin, Tx 78701</p>
+            <p className="text-body2">{bookingDetails.address}</p>
           </div>
           <div className="flex items-center gap-2">
             <Phone />
-            <p className="text-body2">(541) 456-4356</p>
+            <p className="text-body2">{bookingDetails.phoneNumber}</p>
           </div>
           <div className="flex items-center gap-2">
             <AppWindow />
-            <p className="text-body2">terrastudios.com</p>
+            <p className="text-body2">{bookingDetails.website}</p>
           </div>
           <div className="flex items-center gap-2">
             <Instagram />
