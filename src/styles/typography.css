@@ -9,11 +9,13 @@
 }
 
 .text-h2 {
-  @apply text-[1.5rem] leading-[2.5rem] font-semibold tracking-tight md:text-[2.25rem] md:leading-[3.25rem];
+  font-size: clamp(2rem, 1rem + 2.4vw, 4rem);
+
+  @apply /* @apply md:leading-[3.25rem]; */ text-[1.5rem] leading-[2.5rem] font-semibold tracking-tight md:text-[2.25rem];
 }
 
 .text-h3 {
-  @apply text-[1.5rem] leading-[2.5rem] font-semibold;
+  font-size: clamp(1.5rem, 0.75rem + 1.5vw, 2.5rem);
 }
 
 .text-sub1 {
@@ -59,4 +61,16 @@
 .font-logo {
   font-family: var(--font-rubik);
   @apply tracking-widest;
+}
+
+.hero-text {
+  font-size: 2rem;
+  font-weight: 600;
+  /* font-size: clamp(0.8rem, 2rem + 4vw, 12rem); */
+
+  @apply leading-tight tracking-tight;
+
+  @media (min-width: 768px) {
+    font-size: clamp(1rem, 2rem + 4vw, 12rem);
+  }
 }

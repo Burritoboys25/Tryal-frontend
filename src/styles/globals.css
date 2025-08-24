@@ -7,6 +7,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --breakpoint-3xl: 1920px;
+  --max-width-3xl: 1920px;
+}
+
 @theme inline {
   --color-primary-hover: var(--primary-hover);
   --color-primary-disabled: var(--primary-disabled);
@@ -87,5 +92,15 @@
   /* Body styles for background and text color */
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .noScrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+  .noScrollbar {
+    -ms-overflow-style: none; /* IE, Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }

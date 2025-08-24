@@ -13,3 +13,11 @@
 .screen-minus-navbar-business {
   min-height: calc(100vh - 5.625rem);
 }
+
+.main-container {
+  @apply h-dvh snap-y snap-proximity overflow-y-auto scroll-smooth;
+}
+
+.section-width-container {
+  @apply mx-auto px-4 2xl:max-w-3xl 2xl:px-8;
+}

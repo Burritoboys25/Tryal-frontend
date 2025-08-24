@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${manrope.variable} ${rubik.variable} `}>
-      <body className="min-h-screen w-full">
+      <body className="w-full">
         <NextAuthSessionProvider>
           <UserProvider>
             <Toaster />

@@ -37,11 +37,13 @@ const ViewLayout = ({ type, children, header, footer }: ViewLayoutProps) => {
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <>
       {header ?? defaultNavbar}
-      <main className="mt-[4.3125rem] flex-grow">{children}</main>
-      {footer ?? defaultFooter}
-    </div>
+      <main className="main-container">
+        {children}
+        {footer ?? defaultFooter}
+      </main>
+    </>
   )
 }
 
