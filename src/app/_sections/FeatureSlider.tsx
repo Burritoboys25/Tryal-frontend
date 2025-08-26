@@ -2,7 +2,7 @@
 
 import { Button } from '@/shared/components/ui/base/button'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 type Slide = {
   id: string
@@ -92,7 +92,7 @@ export default function FeatureSlider() {
   const prev = () => goTo(Math.max(0, index - 1))
   const next = () => goTo(Math.min(SLIDES.length - 1, index + 1))
 
-  // const dots = useMemo(() => new Array(SLIDES.length).fill(0), [])
+  const dots = useMemo(() => new Array(SLIDES.length).fill(0), [])
 
   return (
     <section
@@ -143,25 +143,8 @@ export default function FeatureSlider() {
       </div>
 
       {/* Controls */}
-      {/* <div className="mt-6 flex items-center justify-between">
-        <div className="flex gap-2">
-          <button
-            className="grid h-10 w-10 place-items-center rounded-full bg-neutral-800 hover:bg-neutral-700"
-            onClick={prev}
-            aria-label="Previous slide"
-          >
-            ‹
-          </button>
-          <button
-            className="grid h-10 w-10 place-items-center rounded-full bg-neutral-800 hover:bg-neutral-700"
-            onClick={next}
-            aria-label="Next slide"
-          >
-            ›
-          </button>
-        </div>
-
-        <div className="flex gap-2">
+      <div className="mt-6 flex items-center justify-between">
+        <div className="ml-auto flex gap-2">
           {dots.map((_, i) => (
             <button
               key={i}
@@ -174,18 +157,18 @@ export default function FeatureSlider() {
             />
           ))}
         </div>
-      </div> */}
+      </div>
     </section>
   )
 }
 
 function SlideCard({ slide }: { slide: Slide }) {
   return (
-    <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
+    <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-4">
       {/* Left panel */}
       <div
         className={[
-          'rounded-[2rem] p-6 sm:p-8 lg:p-10',
+          'rounded-[2rem] p-6 sm:p-8 lg:col-span-1 lg:p-10',
           slide.accent ?? 'bg-amber-200',
           'text-neutral-900',
         ].join(' ')}
@@ -202,8 +185,8 @@ function SlideCard({ slide }: { slide: Slide }) {
       </div>
 
       {/* Right panel: device frame */}
-      <div className="relative rounded-[2rem]">
-        <div className="relative mx-auto aspect-[16/10] w-full overflow-hidden rounded-2xl bg-white shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
+      <div className="relative rounded-[2rem] lg:col-span-3">
+        <div className="relative mx-auto aspect-[16/7] w-full overflow-hidden rounded-2xl bg-white shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
           {/* status bar bump */}
           <div className="absolute top-2 left-1/2 h-2 w-24 -translate-x-1/2 rounded-full bg-neutral-200/80" />
 

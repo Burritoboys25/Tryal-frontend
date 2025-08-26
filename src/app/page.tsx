@@ -23,6 +23,7 @@ import Section from '@/shared/components/layout/Section'
 
 import Hero from '@/app/_sections/Hero'
 import FeatureSlider from './_sections/FeatureSlider'
+import Faq from './_sections/Faq'
 
 const cards = [
   {
@@ -101,6 +102,28 @@ export default function Home() {
         <FeatureSlider />
       </Section>
 
+      <Section className="flex min-h-[70dvh] snap-center flex-col justify-center">
+        <div className="grid grid-cols-1 gap-y-16 md:grid-cols-3">
+          <h3 className="text-h2 md:col-span-2">
+            Tryall is the first two-sided platform built for local experience providers and the
+            communities they serve. We make it easy to discover, book, and manage unique experiences
+            while helping businesses grow, reach new audiences, and strengthen community—all through
+            one simple subscription.
+          </h3>
+          <div className="col-span-full grid grid-cols-subgrid">
+            {cards.slice(0, 3).map(({ title, icon: Icon, description }) => (
+              <div key={title} className="col-span-1">
+                <div className="w-auto">
+                  <Icon className="h-[8rem] w-[8rem]" aria-hidden="true" />
+                  <h4 className="text-sub1">{title}</h4>
+                  <p className="text-body2 mt-1 max-w-1/2">{description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
       {/* Explore, Connect, Book Section */}
       <Section className="flex min-h-dvh w-full snap-start items-center">
         <div className="mx-auto w-full rounded-3xl bg-[#e7efef] px-[1rem] py-[1rem] md:px-[5rem] md:py-[5rem]">
@@ -124,7 +147,7 @@ export default function Home() {
       </Section>
 
       {/* Marque Section */}
-      <section className="mt-[10rem] flex w-full snap-center items-center">
+      <section className="mt-[10rem] flex w-full items-center">
         <div className="mx-auto mb-[4rem] w-full text-center">
           <h1 className="text-h2">
             Find your
@@ -148,7 +171,7 @@ export default function Home() {
         </div>
       </section>
       {/* Gif Laptop Section*/}
-      <Section className="grid-section mt-[14rem] flex w-full snap-center items-center">
+      <Section className="grid-section my-[14rem] flex w-full snap-center items-center">
         <div className="mx-auto w-full text-center">
           <h1 className="text-h2 mb-[0.5rem]">
             Booking unforgettable experiences has never been this
@@ -165,8 +188,11 @@ export default function Home() {
           </div>
         </div>
       </Section>
+      <Section className="flex snap-center items-center">
+        <Faq />
+      </Section>
       {/* Join Waitlist Section */}
-      <Section className="grid-section my-[9rem] flex w-full snap-center items-center">
+      <Section className="my-[9rem] flex w-full items-center">
         <div className="mx-auto w-full text-center">
           <h1 className="text-h2">
             Fun&apos;s around the corner —
