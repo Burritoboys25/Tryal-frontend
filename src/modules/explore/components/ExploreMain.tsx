@@ -56,19 +56,6 @@ const ExploreMain = () => {
     })
   }, [searchParams])
 
-  // Uncomment when backend integration is ready
-  // const { data: session } = useSession()
-  // console.log('Session info:')
-  // console.log(session)
-
-  // const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([])
-  // useEffect(() => {
-  //   if (!session?.user?.id) return
-  //   getUserBookmarks(session.user.id)
-  //     .then(ids => setBookmarkedIds(ids))
-  //     .catch(() => setBookmarkedIds([]))
-  // }, [session?.user?.id])
-
   // Update bookmarks in local state only
   const handleToggleBookmark = (business_id: string) => {
     // if (!session?.user?.id) return

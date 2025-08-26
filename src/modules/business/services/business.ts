@@ -1,23 +1,19 @@
-import { Business } from '@/modules/explore/types/businessTypes'
 import { Experience } from '@/shared/types/experienceTypes'
-
-const baseUrl = process.env.JAVA_BACKEND_URL || 'http://localhost:8080'
-
-async function fetcher<T>(url: string): Promise<T | undefined> {
-  const res = await fetch(url)
-  if (!res.ok) return undefined
-  return res.json()
-}
+import { Business } from '@/modules/explore/types/businessTypes'
+import apiBaseUrl from '@/shared/lib/apiBaseUrl'
 
 export async function getBusinessById(id: string): Promise<Business | undefined> {
-  const data = await fetcher<{ businessDTO: Business }>(`${baseUrl}/api/businesses/${id}`)
-  if (!data?.businessDTO) return undefined
+  const res = await fetch(`${apiBaseUrl}/api/businesses/${id}`)
+  if (!res.ok) return undefined
+  const data = await res.json()
   return data.businessDTO
 }
 
 export async function getBusinessCategories(id: string): Promise<string[]> {
-  const data = await fetcher<{ categories: string[] }>(`${baseUrl}/api/businesses/${id}/categories`)
-  return data?.categories || []
+  const res = await fetch(`${apiBaseUrl}/api/businesses/${id}/categories`)
+  if (!res.ok) return []
+  const data = await res.json()
+  return data.categories || []
 }
 
 // Helper to fetch business and categories using the API routes
@@ -28,16 +24,17 @@ export async function getBusinessWithCategoriesFromApi(id: string): Promise<Busi
   return { ...business, categories }
 }
 
-// Fetch all experiences for a specific business from your backend API
+// Fetch all experiences for a specific business from backend API
 export async function getBusinessExperiences(businessId: string): Promise<Experience[]> {
   try {
-    const url = `${baseUrl}/api/experiences?businessId=${businessId}`
-    const response = await fetch(url, { next: { revalidate: 60 } })
+    const url = `${apiBaseUrl}/api/experiences?businessId=${businessId}`
+    const response = await fetch(url)
     if (!response.ok) {
       console.log('Fetching experiences from:', url)
       return []
     }
-    return await response.json()
+    const data = await response.json()
+    return data.experiences || []
   } catch (error) {
     console.error('Network error fetching experiences:', error)
     return []
@@ -47,13 +44,14 @@ export async function getBusinessExperiences(businessId: string): Promise<Experi
 // Fetch all experiences from your backend API
 export async function getAllExperiences(): Promise<Experience[]> {
   try {
-    const url = `${baseUrl}/api/experiences`
-    const response = await fetch(url, { next: { revalidate: 60 } })
+    const url = `${apiBaseUrl}/api/experiences`
+    const response = await fetch(url)
     if (!response.ok) {
       console.log('Fetching all experiences from:', url)
       return []
     }
-    return await response.json()
+    const data = await response.json()
+    return data.experiences || []
   } catch (error) {
     console.error('Network error fetching all experiences:', error)
     return []
