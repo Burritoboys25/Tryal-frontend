@@ -1,5 +1,5 @@
 import ProfilePage from '@/modules/profile/components/ProfilePage'
-import apiBaseUrl from '@/shared/lib/apiBaseUrl'
+import API_BASE_URL from '@/shared/lib/apiBaseUrl'
 
 export const dynamic = 'force-dynamic' // Render this page on every request
 
@@ -9,7 +9,7 @@ export default async function Profile() {
   let profileData = null
 
   try {
-    const res = await fetch(`${apiBaseUrl}/api/users/${userId}`, {
+    const res = await fetch(`${API_BASE_URL}/api/users/${userId}`, {
       cache: 'no-store', // ensures fresh data every request
     })
     if (!res.ok) {

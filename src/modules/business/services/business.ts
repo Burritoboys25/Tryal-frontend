@@ -1,16 +1,16 @@
 import { Experience } from '@/shared/types/experienceTypes'
 import { Business } from '@/modules/explore/types/businessTypes'
-import apiBaseUrl from '@/shared/lib/apiBaseUrl'
+import API_BASE_URL from '@/shared/lib/apiBaseUrl'
 
 export async function getBusinessById(id: string): Promise<Business | undefined> {
-  const res = await fetch(`${apiBaseUrl}/api/businesses/${id}`)
+  const res = await fetch(`${API_BASE_URL}/api/businesses/${id}`)
   if (!res.ok) return undefined
   const data = await res.json()
   return data.businessDTO
 }
 
 export async function getBusinessCategories(id: string): Promise<string[]> {
-  const res = await fetch(`${apiBaseUrl}/api/businesses/${id}/categories`)
+  const res = await fetch(`${API_BASE_URL}/api/businesses/${id}/categories`)
   if (!res.ok) return []
   const data = await res.json()
   return data.categories || []
@@ -27,7 +27,7 @@ export async function getBusinessWithCategoriesFromApi(id: string): Promise<Busi
 // Fetch all experiences for a specific business from backend API
 export async function getBusinessExperiences(businessId: string): Promise<Experience[]> {
   try {
-    const url = `${apiBaseUrl}/api/experiences?businessId=${businessId}`
+    const url = `${API_BASE_URL}/api/experiences?businessId=${businessId}`
     const response = await fetch(url)
     if (!response.ok) {
       console.log('Fetching experiences from:', url)
@@ -44,7 +44,7 @@ export async function getBusinessExperiences(businessId: string): Promise<Experi
 // Fetch all experiences from your backend API
 export async function getAllExperiences(): Promise<Experience[]> {
   try {
-    const url = `${apiBaseUrl}/api/experiences`
+    const url = `${API_BASE_URL}/api/experiences`
     const response = await fetch(url)
     if (!response.ok) {
       console.log('Fetching all experiences from:', url)
