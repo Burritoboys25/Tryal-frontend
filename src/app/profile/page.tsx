@@ -17,7 +17,7 @@ const Profile = async () => {
       <p className="text-body2">
         Your information here will be shared with the business when you make a booking.
       </p>
-      <ProfilePage {...profileData?.userDTO} />
+      <ProfilePage {...profileData?.data.userDTO} />
     </div>
   )
 }
