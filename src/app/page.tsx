@@ -24,6 +24,7 @@ import Section from '@/shared/components/layout/Section'
 import Hero from '@/app/_sections/Hero'
 import FeatureSlider from './_sections/FeatureSlider'
 import Faq from './_sections/Faq'
+import Intro from './_sections/Intro'
 
 const cards = [
   {
@@ -97,12 +98,9 @@ export default function Home() {
       <Section>
         <Hero />
       </Section>
-      <Section className="flex min-h-dvh snap-start flex-col justify-center">
-        <h2 className="text-h2">See what you can do with Tryal</h2>
-        <FeatureSlider />
-      </Section>
+      <Intro />
 
-      <Section className="flex min-h-[70dvh] snap-center flex-col justify-center">
+      {/* <Section className="flex min-h-[70dvh] snap-center flex-col justify-center">
         <div className="grid grid-cols-1 gap-y-16 md:grid-cols-3">
           <h3 className="text-h2 md:col-span-2">
             Tryall is the first two-sided platform built for local experience providers and the
@@ -122,6 +120,10 @@ export default function Home() {
             ))}
           </div>
         </div>
+      </Section> */}
+      <Section className="flex min-h-dvh snap-start flex-col justify-center">
+        <h2 className="text-h2">See what you can do with Tryal</h2>
+        <FeatureSlider />
       </Section>
 
       {/* Explore, Connect, Book Section */}

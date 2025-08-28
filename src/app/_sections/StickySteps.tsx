@@ -1,12 +1,9 @@
 'use client'
 
-import { useRef } from 'react'
 import LocationIcon from '@/shared/assets/icons/where_to_vote.svg'
 import BookingIcon from '@/shared/assets/icons/booking.svg'
 import CalendarIcon from '@/shared/assets/icons/calendar_clock.svg'
 import HikingIcon from '@/shared/assets/icons/hiking.svg'
-
-import Section from '@/shared/components/layout/Section'
 
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
@@ -54,7 +51,6 @@ function StepCard({
   title,
   description,
   icon: Icon,
-  className = '',
 }: {
   id: string
   title: string
@@ -66,7 +62,7 @@ function StepCard({
     <div className="flex flex-col px-6 py-5">
       <div className="text-h2 text-primary">{id}</div>
       <Icon className="size-24 self-center md:size-48" aria-hidden="true" />
-      <div className="mt-4 space-y-3">
+      <div className="space-y-3">
         <div className="text-h2">{title}</div>
         <div className="text-2xl">{description}</div>
       </div>
@@ -239,7 +235,7 @@ const StickySteps = () => {
   })
 
   return (
-    <section className="cards-section">
+    <section className="cards-section relative">
       <div className="cards-container">
         {/* <div id="card-1" className="card top-0 rounded-3xl bg-yellow-500"> */}
         <div id="card-1" className="card top-0 rounded-3xl">
