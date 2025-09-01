@@ -11,12 +11,6 @@ import PersonIcon from '@/shared/assets/icons/person.svg'
 import DefaultImage from '../../../../../public/default_experience_image.png'
 import { formatDate, formatTime } from '../../utils/TimeFormatter'
 
-enum BookingStatus {
-  BOOKED = 'BOOKED',
-  CANCELLED = 'CANCELLED',
-  COMPLETED = 'COMPLETED',
-}
-
 interface BookingDetails {
   userId: string
   bookingId: string
