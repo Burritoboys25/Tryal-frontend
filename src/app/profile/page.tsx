@@ -9,6 +9,7 @@ const Profile = async () => {
     const baseUrl = process.env.BACKEND_URL || 'http://localhost:8080';
     const data = await fetch(`${baseUrl}/api/users/${userId}`)
     profileData = await data.json()
+    console.log(profileData);
   }
 
   return (
@@ -17,7 +18,7 @@ const Profile = async () => {
       <p className="text-body2">
         Your information here will be shared with the business when you make a booking.
       </p>
-      <ProfilePage {...profileData?.data.userDTO} />
+      <ProfilePage {...profileData?.data} />
     </div>
   )
 }

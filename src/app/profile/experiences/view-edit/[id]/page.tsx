@@ -5,28 +5,25 @@ import { Button } from '@/shared/components/ui/base/button'
 import { ArrowLeft } from 'lucide-react'
 
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
-  // TODO: Fetch Experience details from backend
+  // TODO: get userid from session -- currently hardcoded
+  const userId = '272d2788-ee1e-4056-ae09-4829aff17909'
+
   const { id } = await params
   // TODO: call backend get Booking details by booking id
-
-  // DUMMY DATA
-  const bookingDetails = {
-    userId: '272d2788-ee1e-4056-ae09-4829aff17909',
-    bookingId: '4e934f72-cc98-4eaa-9f55-715a7bcb1020',
-    timeslotId: 'b080741a-9d41-47d4-a4c7-7d29eb4b3240',
-    experienceId: '1676081d-f345-4d0e-af47-57abfec8a658',
-    bookingStatus: 'BOOKED',
-    businessName: 'Tryal Experience',
-    address: '123 Tryal Way, Austin, TX 78701',
-    phoneNumber: '(541) 456-4356',
-    website: 'terrastudios.com',
-    creditPrice: 2,
-    //! Business socials are not stored in database -- are we getting it from CMS??
-    instagramHandle: '@terrastudio',
-    party: 2,
-    timeslotDate: '2025-03-08',
-    startTime: '12:00:00',
+  const getUserBookings = async () => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/profile/${userId}/bookings`, {
+        cache: 'no-store', // disables static caching
+      })
+      const data = await res.json();
+      return data.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
+  const bookings = await getUserBookings();
+  console.log
+  const bookingDetail = bookings?.find((booking: { bookingId: string }) => booking.bookingId == id);
 
   return (
     <div>
@@ -41,7 +38,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         </Button>
       </Link>
 
-      <ViewEditPage {...bookingDetails} />
+      <ViewEditPage {...bookingDetail} />
     </div>
   )
 }
