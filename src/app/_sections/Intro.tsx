@@ -51,11 +51,11 @@ const Intro = () => {
         stagger: 0.12,
       })
       .from(
-        '#intro-grid',
+        '.grid-item',
         {
           opacity: 0,
           duration: 1,
-          stagger: 0.12,
+          stagger: 0.06,
         },
         'start+=1',
       )
@@ -74,14 +74,12 @@ const Intro = () => {
           while helping businesses grow, reach new audiences, and strengthen community—all through
           one simple subscription.
         </h3>
-        <div id="intro-grid" className="col-span-full grid grid-cols-subgrid">
+        <div id="intro-grid" className="col-span-full grid grid-cols-subgrid space-y-16">
           {cards.slice(0, 3).map(({ title, icon: Icon, description }) => (
             <div key={title} className="col-span-1">
-              <div className="w-auto">
-                <Icon className="h-[8rem] w-[8rem]" aria-hidden="true" />
-                <h4 className="text-sub1">{title}</h4>
-                <p className="text-body2 mt-1 max-w-1/2">{description}</p>
-              </div>
+              <Icon className="grid-item h-[8rem] w-[8rem]" aria-hidden="true" />
+              <h4 className="grid-item text-sub1">{title}</h4>
+              <p className="grid-item text-body2 mt-1 w-full md:max-w-1/2">{description}</p>
             </div>
           ))}
         </div>
