@@ -34,11 +34,7 @@ interface MockUserBookmark {
 const ExploreMain = ({ bookmarks }: { bookmarks: string[] }) => {
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
-  // Find the mock user's bookmarked business IDs
-  const mockUserId = 'user1'
-  const initialBookmarkedIds =
-    (mockUserBookmarks as MockUserBookmark[]).find(u => u.userId === mockUserId)?.businessIds || []
-  
+
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>(bookmarks || [])
   const [businesses, setBusinesses] = useState<Business[]>([])
 
@@ -72,24 +68,24 @@ const ExploreMain = ({ bookmarks }: { bookmarks: string[] }) => {
   // }, [session?.user?.id])
 
   const handleToggleBookmark = async (business_id: string) => {
-  const isBookmarked = bookmarkedIds.includes(business_id)
+    const isBookmarked = bookmarkedIds.includes(business_id)
 
-  if (isBookmarked) {
-    try {
-      await removeUserBookmark('272d2788-ee1e-4056-ae09-4829aff17909', business_id) // userId hardcoded -- should use session?.user?.id 
-      setBookmarkedIds(prev => prev.filter(id => id !== business_id))
-    } catch (err) {
-      console.error('Failed to unbookmark:', err)
-    }
-  } else {
-    try {
-      await addUserBookmark('272d2788-ee1e-4056-ae09-4829aff17909', business_id) // userId hardcoded -- should use session?.user?.id 
-      setBookmarkedIds(prev => [...prev, business_id])
-    } catch (err) {
-      console.error('Failed to bookmark:', err)
+    if (isBookmarked) {
+      try {
+        await removeUserBookmark('272d2788-ee1e-4056-ae09-4829aff17909', business_id) // TODO: userId hardcoded -- use session?.user?.id
+        setBookmarkedIds(prev => prev.filter(id => id !== business_id))
+      } catch (err) {
+        console.error('Failed to unbookmark:', err)
+      }
+    } else {
+      try {
+        await addUserBookmark('272d2788-ee1e-4056-ae09-4829aff17909', business_id) // TODO: userId hardcoded -- use session?.user?.id
+        setBookmarkedIds(prev => [...prev, business_id])
+      } catch (err) {
+        console.error('Failed to bookmark:', err)
+      }
     }
   }
-}
 
   // Update the filter state and push the new search params to the url.
   const handleFilterChange = <K extends FilterKey>(key: K, value: Filters[K]) => {
