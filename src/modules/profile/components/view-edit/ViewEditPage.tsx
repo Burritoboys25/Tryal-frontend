@@ -94,7 +94,7 @@ const ViewEditPage = (bookingDetails: BookingDetails) => {
         <div className="mt-12 flex w-[83%] flex-col gap-6">
           <h4 className="text-sub1">What to know before you go</h4>
           <div className="flex flex-col gap-4">
-            <h6 className="text-sub3">Business' terms and conditions</h6>
+            <h6 className="text-sub3">Business&apos; terms and conditions</h6>
             <p className="text-body2">
               Cancellations made at least 48 hours in advance may be rescheduled once. No-shows or
               late cancellations are non-refundable.
@@ -112,10 +112,10 @@ const ViewEditPage = (bookingDetails: BookingDetails) => {
           <div className="flex flex-col gap-4">
             <h6 className="text-sub3">Note from business</h6>
             <p className="text-body2">
-              We’re so excited to welcome you into our cozy clay studio! Whether it’s your first
+              We&apos;re so excited to welcome you into our cozy clay studio! Whether it&apos;s your first
               time or your hundredth, our classes are all about creativity, connection, and getting
-              your hands a little dirty. Don’t stress about being “good”—just come ready to play,
-              relax, and make something from the heart. We’ll guide you every step of the way. Can’t
+              your hands a little dirty. Don&apos;t stress about being “good”—just come ready to play,
+              relax, and make something from the heart. We&apos;ll guide you every step of the way. Can&apos;t
               wait to create with you!
             </p>
           </div>

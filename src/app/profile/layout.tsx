@@ -34,7 +34,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
     )
   } else {
     return (
-      <ViewLayout type="profile">
+      <ViewLayout type="default">
         <Container className="h-[calc(100vh-69px)] py-[3rem]">
           {children}
         </Container>
