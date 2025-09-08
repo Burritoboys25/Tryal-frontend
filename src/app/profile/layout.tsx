@@ -11,7 +11,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
 
   if (!pathname.startsWith('/profile/experiences/view-edit/')) {
     return (
-      <ViewLayout type="profile">
+      <ViewLayout type="default">
         <Container className="h-[calc(100vh-69px)] py-[3rem]">
           <div className="px-[6rem]">
             <ProfileInfo />

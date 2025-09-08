@@ -24,32 +24,40 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
   })
 
   useEffect(() => {
-  if (!session?.user?.id) {
-    setUserData(null)
-    localStorage.removeItem(USER_DATA_KEY)
-    return
-  }
-
-  const fetchUser = async () => {
-    try {
-      const res = await fetch(`/api/users/${session.user.id}`, {
-        credentials: 'include',
-      })
-
-      if (!res.ok) throw new Error('Failed to fetch user')
-
-      const data = await res.json()
-      setUserData(data)
-      localStorage.setItem(USER_DATA_KEY, JSON.stringify(data))
-    } catch (err) {
-      console.error('Failed to fetch user data:', err)
+    if (!session?.user?.id) {
       setUserData(null)
-      localStorage.removeItem(USER_DATA_KEY)
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem(USER_DATA_KEY)
+      }
+      return
     }
-  }
 
-  fetchUser()
-}, [session])
+    const fetchUser = async () => {
+      try {
+        const res = await fetch(`/api/users/${session.user.id}`, {
+          credentials: 'include',
+        })
+
+        if (!res.ok) throw new Error('Failed to fetch user')
+
+        const data = await res.json()
+        setUserData(data)
+        if (typeof window !== 'undefined') {
+          localStorage.setItem(USER_DATA_KEY, JSON.stringify(data))
+        }
+      } catch (err) {
+        if (process.env.NODE_ENV !== 'production') {
+          console.error('Failed to fetch user data:', err)
+        }
+        setUserData(null)
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem(USER_DATA_KEY)
+        }
+      }
+    }
+
+    fetchUser()
+  }, [session])
 
   return <UserContext.Provider value={{ userData, setUserData }}>{children}</UserContext.Provider>
 }
