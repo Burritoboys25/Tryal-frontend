@@ -6,10 +6,8 @@ import React, { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import BusinessCards from '@/modules/explore/components/BusinessCards'
 import { FilterKey } from '@/modules/explore/types/filterTypes'
-
 import Map from '@/modules/explore/components/mapbox/Map'
 import { Business } from '@/modules/explore/types/businessTypes'
-import mockUserBookmarks from '@/shared/mock/user/userBookmarks.json'
 import { useFilters } from '@/modules/explore/hooks/useFilters'
 import { Filters } from '@/modules/explore/types/filterTypes'
 import {
@@ -20,16 +18,6 @@ import { buildQueryParams } from '@/modules/explore/libs/buildQueryParams'
 import { addUserBookmark, removeUserBookmark } from '../services/bookmark'
 
 // import { useSession } from 'next-auth/react'
-// import {
-//   getUserBookmarks,
-//   addUserBookmark,
-//   removeUserBookmark,
-// } from '@/modules/explore/services/bookmark'
-
-interface MockUserBookmark {
-  userId: string
-  businessIds: string[]
-}
 
 const ExploreMain = ({ bookmarks }: { bookmarks: string[] }) => {
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined)
