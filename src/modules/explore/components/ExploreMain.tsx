@@ -41,7 +41,7 @@ const ExploreMain = ({ bookmarks }: { bookmarks: string[] }) => {
       setBusinesses(businesses)
     })
   }, [searchParams])
-
+  
   // Uncomment when backend integration is ready
   // const { data: session } = useSession()
   // console.log('Session info:')
