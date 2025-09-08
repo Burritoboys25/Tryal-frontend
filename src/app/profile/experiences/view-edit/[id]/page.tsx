@@ -3,6 +3,7 @@ import ViewEditPage from '@/modules/profile/components/view-edit/ViewEditPage'
 import Link from 'next/link'
 import { Button } from '@/shared/components/ui/base/button'
 import { ArrowLeft } from 'lucide-react'
+import API_BASE_URL from '@/shared/lib/apiBaseUrl'
 
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   // TODO: get userid from session -- currently hardcoded
@@ -12,7 +13,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   // TODO: call backend get Booking details by booking id
   const getUserBookings = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/profile/${userId}/bookings`, {
+      const res = await fetch(`${API_BASE_URL}/api/profile/${userId}/bookings`, {
         cache: 'no-store', // disables static caching
       })
       const data = await res.json();
@@ -22,7 +23,6 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
     }
   }
   const bookings = await getUserBookings();
-  console.log
   const bookingDetail = bookings?.find((booking: { bookingId: string }) => booking.bookingId == id);
 
   return (
