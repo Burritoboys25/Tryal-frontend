@@ -1,17 +1,19 @@
 'use client'
 
 import Section from '@/shared/components/layout/Section'
-import ReactLenis from 'lenis/react'
+
+import { ReactLenis } from 'lenis/react'
 import { useRef } from 'react'
-import FPHero from '../_sections/FPHero'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
+
+import FPHero from '../_sections/FPHero'
 import HowItWorks from '../_sections/FPHowItWorks'
 import Benefits from '../_sections/FPBenefits'
 
 gsap.registerPlugin(useGSAP)
 
-const HowItWorksPage = () => {
+const ForPartnersPage = () => {
   const scrollContainer = useRef(null)
 
   return (
@@ -34,4 +36,4 @@ const HowItWorksPage = () => {
   )
 }
 
-export default HowItWorksPage
+export default ForPartnersPage

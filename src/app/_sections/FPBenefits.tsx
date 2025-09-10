@@ -5,6 +5,7 @@ import Section from '@/shared/components/layout/Section'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
+import { registerGSAPScrollTrigger } from '@/shared/lib/registerGSAPScrollTrigger'
 import SignupIcon from '@/shared/assets/icons/signup.svg'
 import DiscoverIcon from '@/shared/assets/icons/discover.svg'
 import BookIcon from '@/shared/assets/icons/book.svg'
@@ -39,6 +40,7 @@ const benefits = [
 
 const FPBenefits = () => {
   useGSAP(() => {
+    registerGSAPScrollTrigger()
     gsap.registerPlugin(SplitText)
     const titleSplit = new SplitText('#benefits-title', {
       type: 'lines',
