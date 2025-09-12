@@ -1,4 +1,4 @@
-export type PlanType = 'SUBSCRIPTION' | 'ONE_TIME'
+export type PlanType = 'MONTH' | 'YEAR' | 'ONE_TIME'
 
 export interface Plan {
   planId: string

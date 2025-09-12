@@ -43,7 +43,8 @@ const PlanCards = ({ plans, currentPlanId }: PlanCardsProps) => {
                     </div>
 
                     <div className="mb-1 text-lg font-semibold">
-                      ${plan.price.toFixed(2)} {plan.planType === 'SUBSCRIPTION' ? '/mo' : ''}
+                      ${plan.price.toFixed(2)}
+                      {plan.planType === 'MONTH' ? '/mo' : plan.planType === 'YEAR' ? '/yr' : ''}
                     </div>
 
                     <div className="text-muted-foreground mb-3 text-sm">
@@ -55,7 +56,7 @@ const PlanCards = ({ plans, currentPlanId }: PlanCardsProps) => {
 
                   <Button
                     type="button"
-                    className={`mt-4 w-[8.3125rem] h-[2.5rem] rounded-full mx-auto ${!isCurrent ? 'cursor-pointer' : ''}`}
+                    className={`mx-auto mt-4 h-[2.5rem] w-[8.3125rem] rounded-full ${!isCurrent ? 'cursor-pointer' : ''}`}
                     disabled={isCurrent}
                     onClick={() => !isCurrent && setSelectedId(plan.planId)}
                   >
