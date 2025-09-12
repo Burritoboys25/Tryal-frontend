@@ -6,7 +6,7 @@ export async function getUserBookmarks(userId: string): Promise<string[]> {
   const res = await fetch(`/api/user-bookmarks?userId=${userId}`)
   if (!res.ok) throw new Error('Failed to fetch user bookmarks')
   const data = await res.json()
-  return data.bookmarkedBusinessIds || []
+  return data.data || []
 }
 
 // Add a businessId to the user's bookmarks
@@ -18,7 +18,8 @@ export async function addUserBookmark(userId: string, businessId: string): Promi
     body: JSON.stringify({ userId, businessId }),
   })
   if (!res.ok) throw new Error('Failed to add bookmark')
-  return res.json()
+  const response = await res.json()
+  return response.data;
 }
 
 // Remove a businessId from the user's bookmarks
@@ -30,4 +31,6 @@ export async function removeUserBookmark(userId: string, businessId: string): Pr
     body: JSON.stringify({ userId, businessId }),
   })
   if (!res.ok) throw new Error('Failed to remove bookmark')
+  const response = await res.json()
+  return response.data;
 }

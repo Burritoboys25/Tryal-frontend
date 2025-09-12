@@ -11,7 +11,8 @@ export async function fetchFilteredBusinesses(filters: Filters): Promise<{
     const url = query ? `/api/explore/businesses?${query}` : '/api/explore/businesses'
     const res = await fetch(url)
     const data = await res.json()
-    return { businesses: data.businesses as Business[] }
+    const businesses = data.data;
+    return { businesses: businesses as Business[] }
   } catch (error) {
     console.error('Error fetching businesses:', error)
     return { businesses: [] }
