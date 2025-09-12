@@ -22,16 +22,14 @@ type ProfileProp = {
   stripeCustomerId: string
 }
 
-const ProfilePage = ({...UserData} : ProfileProp) => {
-  const [formData, setFormData] = useState<ProfileFormData>(
-    {
-      firstName: UserData.firstName || '',
-      lastName: UserData.lastName || '',
-      email: UserData.email || '',
-      phoneNumber: UserData.phoneNumber || '',
-      dateOfBirth: UserData.dateOfBirth || '',
-    },
-  )
+const ProfilePage = ({ ...UserData }: ProfileProp) => {
+  const [formData, setFormData] = useState<ProfileFormData>({
+    firstName: UserData.firstName || '',
+    lastName: UserData.lastName || '',
+    email: UserData.email || '',
+    phoneNumber: UserData.phoneNumber || '',
+    dateOfBirth: UserData.dateOfBirth || '',
+  })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -73,7 +71,7 @@ const ProfilePage = ({...UserData} : ProfileProp) => {
       })
 
       if (res.ok) {
-        showToast({ type: 'success', description: 'Profile updated successfully!'})
+        showToast({ type: 'success', description: 'Profile updated successfully!' })
       } else {
         showToast({ type: 'error' })
         const data = await res.json()
