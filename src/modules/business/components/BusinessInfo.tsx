@@ -26,6 +26,19 @@ const BusinessInfo = ({ business }: { business: Business }) => {
   ]
   const rating = 4.5
 
+  const creditBadge =
+    typeof minCredits === 'number' &&
+    !isNaN(minCredits) &&
+    typeof maxCredits === 'number' &&
+    !isNaN(maxCredits) ? (
+      <Badge className="bg-accent ml-6 flex h-[3.1875rem] w-[11.8125rem] items-center gap-1">
+        <span className="text-sub2 text-foreground flex items-center gap-[0.375rem]">
+          <CreditIcon className="!h-[1.5rem] !w-[1.5rem]" />
+          {minCredits === maxCredits ? `${minCredits}` : `${minCredits}-${maxCredits}`} credits
+        </span>
+      </Badge>
+    ) : null
+
   const handleToggleBookmark = () => {
     setBookmarked(prev => !prev)
     // TODO: Implement Bookmark per user similar to explore page
@@ -38,12 +51,7 @@ const BusinessInfo = ({ business }: { business: Business }) => {
       {/* Header: Name, credits, bookmark */}
       <div className="flex w-full items-center">
         <div className="text-h2">{name}</div>
-        <Badge className="bg-accent ml-6 flex h-[3.1875rem] w-[11.8125rem] items-center gap-1">
-          <span className="text-sub2 text-foreground flex items-center gap-[0.375rem]">
-            <CreditIcon className="!h-[1.5rem] !w-[1.5rem]" />
-            {minCredits === maxCredits ? `${minCredits}` : `${minCredits}-${maxCredits}`} credits
-          </span>
-        </Badge>
+        {creditBadge}
         <Button variant="outline" className="ml-auto cursor-pointer" onClick={handleToggleBookmark}>
           {bookmarked ? (
             <BookmarkedIcon className="h-[1.5rem] w-[1.5rem]" />

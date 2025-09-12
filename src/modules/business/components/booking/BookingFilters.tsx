@@ -7,6 +7,7 @@ import CalendarIcon from '@/shared/assets/icons/calendar.svg'
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/components/ui/base/popover'
 import { Calendar } from '@/shared/components/ui/base/calendar'
 import { ChevronDownIcon } from 'lucide-react'
+import { Button } from '@/shared/components/ui/base/button'
 
 const peopleOptions = [
   { label: '1 person', value: 1 },
@@ -29,9 +30,9 @@ const BookingFilters = () => {
 
   return (
     <section>
-      <div className="text-sub1 mb-4">Booking</div>
-      <div className="flex gap-4">
-        <div className="flex flex-col gap-3">
+      <div className="text-sub1 mb-[1rem]">Booking</div>
+      <div className="flex gap-[1rem]">
+        <div className="flex flex-col gap-[0.75rem]">
           <FilterDropdown
             label={
               <span className="text-label flex items-center gap-2">
@@ -46,18 +47,14 @@ const BookingFilters = () => {
               if (typeof val === 'number') setSelectedPeople(val)
             }}
             onClear={() => setSelectedPeople(2)}
+            disableSelected
             className="focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background border-muted-foreground hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1"
           />
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-[0.75rem]">
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
-              {/* TODO: change button usage */}
-              <button
-                type="button"
-                id="date"
-                className="focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background border-muted-foreground hover:border-primary-hover/30 flex w-48 items-center justify-between gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium whitespace-nowrap transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1"
-              >
+              <Button variant="filter">
                 <CalendarIcon className="mr-2 h-6 w-6" />
                 <span className="text-label">
                   {date
@@ -69,7 +66,7 @@ const BookingFilters = () => {
                     : 'Select date'}
                 </span>
                 <ChevronDownIcon className="text-foreground h-[1rem] w-[1rem]" />
-              </button>
+              </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto overflow-hidden p-0" align="start">
               <Calendar
@@ -84,7 +81,7 @@ const BookingFilters = () => {
                   if (d) setDate(d)
                   setOpen(false)
                 }}
-                className="rdp-root rounded-lg border p-8 shadow-sm"
+                className="rdp-root rounded-lg border p-[2rem] shadow-sm"
               />
             </PopoverContent>
           </Popover>

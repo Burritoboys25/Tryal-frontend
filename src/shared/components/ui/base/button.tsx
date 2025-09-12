@@ -11,6 +11,8 @@ const buttonVariants = cva(
         outline: 'border border-primary text-primary bg-white hover:bg-primary/10',
         text: 'bg-transparent text-primary hover:bg-outline-hover',
         link: 'text-link underline hover:opacity-80',
+        filter:
+          'focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background border-muted-foreground hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1',
       },
       size: {
         default: 'px-[1rem] py-[0.5rem]',

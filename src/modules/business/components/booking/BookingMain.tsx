@@ -22,7 +22,7 @@ const BookingMain = ({ businessId }: { businessId: string }) => {
   // We need to add and pass booking times down with experiences
 
   return (
-    <div className="flex flex-col gap-[36px]">
+    <div className="flex flex-col gap-[2.25rem]">
       <BookingFilters />
       <ExperienceCards experiences={experiences} />
       <BookingTimes />
