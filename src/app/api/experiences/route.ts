@@ -15,8 +15,8 @@ export async function GET(req: NextRequest) {
     }
     const data = await response.json()
     // Support both array and object responses from backend
-    const experiences = Array.isArray(data) ? data : data.experiences || []
-    return NextResponse.json({ experiences }, { status: 200 })
+    const experiences = Array.isArray(data.data) ? data : []
+    return NextResponse.json(experiences)
   } catch (error) {
     console.error('Error fetching experiences:', error)
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
