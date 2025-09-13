@@ -115,10 +115,9 @@
 
 .cards-container {
   position: relative;
-  height: 50%;
-  width: 50%;
   display: flex;
   flex-direction: column;
+  @apply h-1/2 w-full md:h-1/2 md:w-1/2;
 }
 
 .card {

@@ -12,6 +12,7 @@
 :root {
   /* Additional Colors */
   --primary-hover: oklch(0.71 0.1756 35.44); /* #e47d4d */
+  --primary-hover: oklch(0.71 0.1756 35.44); /* #e47d4d */
   --primary-disabled: #d1d5db; /* soft gray for disabled */
   --primary-foreground: oklch(0 0 0); /* #000000 */
   /* --outline-hover: #feeae3; */
@@ -23,7 +24,9 @@
   --info: #308be4;
   --icon-input: #828282;
 
-  --background: oklch(1 0 0); /* #ffffff */
+  /* --background: oklch(1 0 0); #ffffff */
+  --background: #fffef; /*#ffffff */
+  --background-gray: oklch(0.9077 0.0026 48.72);
   --foreground: oklch(0.3012 0 89.88); /* #2e2e2e*/
   --card: oklch(1 0 0); /* #ffffff */
   --card-foreground: oklch(0 0 0); /* #000000 */

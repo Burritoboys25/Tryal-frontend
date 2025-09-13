@@ -4,6 +4,7 @@ import { Button } from '@/shared/components/ui/base/button'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import HamburgerToggle from '@/shared/components/ui/mobile/HamburgerToggle'
+// import { SegmentedToggle } from '../ui/ThumbToggle'
 
 interface LandingNavbarProps {
   disablePartner?: boolean
@@ -29,7 +30,7 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
       <nav
         className={`fixed top-0 right-0 left-0 z-50 mx-auto min-h-[4.3125rem] w-full px-4 transition-shadow duration-300 2xl:max-w-3xl 2xl:px-8 ${scrolled ? 'shadow-sm' : ''}`}
       >
-        <div className="flex w-full items-center justify-between bg-white py-[1rem]">
+        <div className="flex w-full items-center justify-between py-[1rem]">
           {/* Logo */}
           <div className="w-[9.375rem]">
             <Link href="/" className="font-logo text-[2rem] font-medium">
@@ -38,9 +39,8 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden flex-grow justify-center gap-[2rem] text-sm text-[1rem] text-gray-700 md:flex">
+          <div className="hidden justify-center gap-[2rem] text-sm text-[1rem] text-gray-700 md:flex">
             <Link href="/about">About us</Link>
-            <Link href="/how-it-works">How it works</Link>
           </div>
 
           {/* Desktop CTA */}
@@ -65,11 +65,6 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
               <li>
                 <Link href="/about" onClick={handleClick} className="inline-block">
                   About us
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-it-works" onClick={handleClick}>
-                  How it works
                 </Link>
               </li>
             </ul>

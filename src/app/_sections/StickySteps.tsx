@@ -5,9 +5,9 @@ import BookingIcon from '@/shared/assets/icons/booking.svg'
 import CalendarIcon from '@/shared/assets/icons/calendar_clock.svg'
 import HikingIcon from '@/shared/assets/icons/hiking.svg'
 
-import { useGSAP } from '@gsap/react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Section from '@/shared/components/layout/Section'
+import { gsap, useGSAP } from '@/shared/lib/gsap'
+import { useRef } from 'react'
 
 type SvgIcon = React.ComponentType<React.SVGProps<SVGSVGElement>>
 
@@ -71,173 +71,130 @@ function StepCard({
 }
 
 const StickySteps = () => {
-  //   useGSAP(() => {
-  //     gsap.registerPlugin(ScrollTrigger)
-  //     const cards = document.querySelectorAll('.card')
-  //     console.log(cards)
+  const scope = useRef<HTMLElement>(null)
 
-  //     const totalCards = cards.length
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: scope.current,
+          pinSpacing: true,
+          markers: true,
+          start: 'top top',
+          end: '+=2000',
+          pin: true,
+          scrub: 0.5,
+        },
+      })
 
-  //     // set the first card noraml positon
-  //     gsap.set(cards[0], { y: '0%', scale: 1, rotation: 0 })
-
-  //     // other cards push down by height
-  //     for (let i = 1; i < totalCards; i++) {
-  //       gsap.set(cards[i], { y: '100%', scale: 1, rotation: 0 })
-  //     }
-
-  //     const tl = gsap.timeline({
-  //       scrollTrigger: {
-  //         trigger: '.cards-section',
-  //         start: 'top top',
-  //         end: 'bottom top',
-  //         pin: true,
-  //         scrub: 0.5,
-  //         markers: true,
-  //       },
-  //     })
-  //     for (let i = 0; i < totalCards - 1; i++) {
-  //       const currentCard = cards[i]
-  //       const nextCard = cards[i + 1]
-  //       const position = i
-
-  //       tl.to(
-  //         currentCard,
-  //         {
-  //           scale: 0.95,
-  //           duration: 1,
-  //           ease: 'none',
-  //         },
-  //         position,
-  //       )
-
-  //       tl.to(
-  //         nextCard,
-  //         {
-  //           y: '0%',
-  //           duration: 1,
-  //           ease: 'none',
-  //         },
-  //         position,
-  //       )
-  //     }
-  //   })
-
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger)
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.cards-section',
-        pinSpacing: true,
-        markers: true,
-        start: 'top top',
-        end: '+=2000',
-        pin: true,
-        scrub: 0.5,
-      },
-    })
-
-    tl.addLabel('card1')
-    tl.to('#card-1', {
-      yPercent: 0,
-      opacity: 1,
-    })
-
-    tl.from('#card-2', {
-      yPercent: 75,
-      opacity: 0,
-    })
-    tl.addLabel('card2')
-    tl.to(
-      '#card-1',
-      {
-        scale: 0.925,
-        yPercent: -0.75,
+      tl.addLabel('card1')
+      tl.to('#card-1', {
+        yPercent: 0,
         opacity: 1,
-      },
-      '-=0.3',
-    )
-    tl.to('#card-2', {
-      yPercent: 0,
-      opacity: 1,
-    })
+      })
 
-    // Animation for card 3
-    tl.from('#card-3', {
-      yPercent: 75,
-      opacity: 0,
-    })
-    tl.addLabel('card3')
-    tl.to(
-      '#card-2',
-      {
-        scale: 0.95,
-        yPercent: -0.5,
+      tl.from('#card-2', {
+        yPercent: 75,
+        opacity: 0,
+      })
+      tl.addLabel('card2')
+      tl.to(
+        '#card-1',
+        {
+          scale: 0.925,
+          yPercent: -0.75,
+          opacity: 1,
+        },
+        '-=0.3',
+      )
+      tl.to('#card-2', {
+        yPercent: 0,
         opacity: 1,
-      },
-      '-=0.3',
-    )
-    tl.to('#card-3', {
-      yPercent: 0,
-      opacity: 1,
-    })
+      })
 
-    // Animation for card 4
-    tl.from('#card-4', {
-      yPercent: 75,
-      opacity: 0,
-    })
-    tl.addLabel('card4')
-    tl.to(
-      '#card-3',
-      {
-        scale: 0.98,
-        yPercent: -0.4,
+      // Animation for card 3
+      tl.from('#card-3', {
+        yPercent: 75,
+        opacity: 0,
+      })
+      tl.addLabel('card3')
+      tl.to(
+        '#card-2',
+        {
+          scale: 0.95,
+          yPercent: -0.5,
+          opacity: 1,
+        },
+        '-=0.3',
+      )
+      tl.to('#card-3', {
+        yPercent: 0,
         opacity: 1,
-      },
-      '-=0.3',
-    )
-    tl.to('#card-4', {
-      yPercent: 0,
-      opacity: 1,
-    })
+      })
 
-    tl.to(
-      '#card-1',
-      {
-        scale: 0.925,
-        yPercent: -1.5,
-        opacity: 0.9,
-      },
-      '-=0.3',
-    )
+      // Animation for card 4
+      tl.from('#card-4', {
+        yPercent: 75,
+        opacity: 0,
+      })
+      tl.addLabel('card4')
+      tl.to(
+        '#card-3',
+        {
+          scale: 0.98,
+          yPercent: -0.4,
+          opacity: 1,
+        },
+        '-=0.3',
+      )
+      tl.to('#card-4', {
+        yPercent: 0,
+        opacity: 1,
+      })
 
-    tl.to(
-      '#card-2',
-      {
-        scale: 0.95,
-        yPercent: -1.125,
-        opacity: 0.9,
-      },
-      '-=0.3',
-    )
+      tl.to(
+        '#card-1',
+        {
+          scale: 0.925,
+          yPercent: -1.5,
+          opacity: 0.9,
+        },
+        '-=0.3',
+      )
 
-    tl.to(
-      '#card-3',
-      {
-        scale: 0.98,
-        yPercent: -0.85,
-        opacity: 0.9,
-      },
-      '-=0.3',
-    )
-  })
+      tl.to(
+        '#card-2',
+        {
+          scale: 0.95,
+          yPercent: -1.125,
+          opacity: 0.9,
+        },
+        '-=0.3',
+      )
+
+      tl.to(
+        '#card-3',
+        {
+          scale: 0.98,
+          yPercent: -0.85,
+          opacity: 0.9,
+        },
+        '-=0.3',
+      )
+    },
+    { scope: scope },
+  )
 
   return (
-    <section className="cards-section relative">
+    <Section
+      ref={scope}
+      className="cards-section relative"
+      id="sticky-steps"
+      background="tan"
+      roundedTop
+      offsetSection
+    >
       <div className="cards-container">
-        {/* <div id="card-1" className="card top-0 rounded-3xl bg-yellow-500"> */}
         <div id="card-1" className="card top-0 rounded-3xl">
           <StepCard
             id="01"
@@ -273,7 +230,7 @@ const StickySteps = () => {
           />
         </div>
       </div>
-    </section>
+    </Section>
   )
 }
 

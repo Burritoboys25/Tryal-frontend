@@ -20,6 +20,7 @@ import ViewLayout from '@/shared/components/layout/ViewLayout'
 // import BlurBackground from '@/shared/components/ui/base/BlurBackground'
 
 import Section from '@/shared/components/layout/Section'
+import SectionCard from '@/shared/components/layout/SectionCard'
 
 import Hero from '@/app/_sections/Hero'
 import FeatureSlider from './_sections/FeatureSlider'
@@ -98,33 +99,14 @@ export default function Home() {
       <Section>
         <Hero />
       </Section>
-      <Intro />
+      <Section className="flex h-auto snap-start flex-col justify-center">
+        <Intro />
+      </Section>
 
-      {/* <Section className="flex min-h-[70dvh] snap-center flex-col justify-center">
-        <div className="grid grid-cols-1 gap-y-16 md:grid-cols-3">
-          <h3 className="text-h2 md:col-span-2">
-            Tryall is the first two-sided platform built for local experience providers and the
-            communities they serve. We make it easy to discover, book, and manage unique experiences
-            while helping businesses grow, reach new audiences, and strengthen community—all through
-            one simple subscription.
-          </h3>
-          <div className="col-span-full grid grid-cols-subgrid">
-            {cards.slice(0, 3).map(({ title, icon: Icon, description }) => (
-              <div key={title} className="col-span-1">
-                <div className="w-auto">
-                  <Icon className="h-[8rem] w-[8rem]" aria-hidden="true" />
-                  <h4 className="text-sub1">{title}</h4>
-                  <p className="text-body2 mt-1 max-w-1/2">{description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section> */}
-      <Section className="flex min-h-dvh snap-start flex-col justify-center">
+      <SectionCard className="flex min-h-dvh snap-start flex-col justify-center bg-white">
         <h2 className="text-h2">See what you can do with Tryal</h2>
         <FeatureSlider />
-      </Section>
+      </SectionCard>
 
       {/* Explore, Connect, Book Section */}
       <Section className="flex min-h-dvh w-full snap-start items-center">
@@ -162,7 +144,7 @@ export default function Home() {
               {marqueList.map(({ title, icon: Icon }) => (
                 <div
                   key={title}
-                  className="flex items-center gap-[0.5rem] rounded-xl p-[1rem] shadow-md inset-shadow-xs"
+                  className="flex items-center gap-[0.5rem] rounded-xl bg-white p-[1rem] shadow-md inset-shadow-xs"
                 >
                   <Icon arial-hidden="true" />
                   <h4 className="text-sub1">{title}</h4>
@@ -190,21 +172,12 @@ export default function Home() {
           </div>
         </div>
       </Section>
-      <Section className="flex snap-center items-center">
-        <Faq />
-      </Section>
-      {/* Join Waitlist Section */}
-      <Section className="my-[9rem] flex w-full items-center">
-        <div className="mx-auto w-full text-center">
-          <h1 className="text-h2">
-            Fun&apos;s around the corner —
-            <span className="text-primary"> Don&apos;t miss out!</span>
-          </h1>
-          <div className="mx-auto mt-[3rem] flex w-full justify-center md:max-w-md">
-            <InterestWaitlistForm />
-          </div>
-        </div>
-      </Section>
+
+      <div className="-mb-[1rem]">
+        <SectionCard className="flex snap-center items-center bg-white">
+          <Faq />
+        </SectionCard>
+      </div>
     </ViewLayout>
   )
 }

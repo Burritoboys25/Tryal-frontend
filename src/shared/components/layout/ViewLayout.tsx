@@ -40,8 +40,9 @@ const ViewLayout = ({ type, children, header, footer }: ViewLayoutProps) => {
     <>
       {header ?? defaultNavbar}
       <main className="main-container">
+        {/* <main className=""> */}
         {children}
-        {footer ?? defaultFooter}
+        <div className="px-2">{footer ?? defaultFooter}</div>
       </main>
     </>
   )

@@ -100,3 +100,23 @@ a.mapboxgl-ctrl-logo {
     animation: none;
   }
 }
+
+/* Fade blur for hero */
+.mask-fade-y {
+  /* adjust fade depth with --fade (px or %) */
+  --fade: 0.5rem;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black var(--fade),
+    black calc(100% - var(--fade)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black var(--fade),
+    black calc(100% - var(--fade)),
+    transparent 100%
+  );
+}

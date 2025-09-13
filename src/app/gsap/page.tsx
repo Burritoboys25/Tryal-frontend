@@ -1,18 +1,16 @@
 'use client'
-import Section from '@/shared/components/layout/Section'
-import Hero from '../_sections/Hero'
-
-// import RevealWrapper from '@/shared/components/animations/RevealWrapper'
-
 import { useRef } from 'react'
-
 import { ReactLenis } from 'lenis/react'
+import Hero from '../_sections/Hero'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 
 import Intro from '../_sections/Intro'
 import Features from '../_sections/Features'
 import StickySteps from '../_sections/StickySteps'
+import Faq from '../_sections/Faq'
+import MainFooter from '@/shared/components/layout/MainFooter'
+import FunMarquee from '../_sections/FunMarquee'
 
 gsap.registerPlugin(useGSAP)
 
@@ -23,14 +21,14 @@ export default function GSAPPage() {
     <>
       <ReactLenis root>
         <div ref={scrollContainer}>
-          <Section>
-            <Hero />
-          </Section>
+          <Hero />
           <Intro />
+          <FunMarquee />
           <Features />
           <StickySteps />
-          <div className="h-[100dvh]" />
+          <Faq />
         </div>
+        <MainFooter />
       </ReactLenis>
     </>
   )

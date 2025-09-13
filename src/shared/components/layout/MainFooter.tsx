@@ -55,7 +55,7 @@ export default function MainFooter() {
             </div>
 
             {/* Follow Column */}
-            <div className="col-span-2 md:justify-self-end md:text-end">
+            <div className="col-span-2">
               <h4 className="text-primary mb-4 text-lg font-bold uppercase">Follow</h4>
               <ul className="space-y-3 text-sm">
                 <li>

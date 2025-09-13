@@ -111,7 +111,7 @@ export default function FeatureSlider() {
             key={s.id}
             onClick={() => goTo(i)}
             className={[
-              'rounded-full px-4 py-2 text-sm transition',
+              'hidden rounded-full px-4 py-2 text-sm transition md:block',
               // 'bg-neutral-800 hover:bg-neutral-700',
               i === index ? 'ring-2 ring-white/80' : 'ring-1 ring-white/10',
             ].join(' ')}

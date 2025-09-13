@@ -21,3 +21,15 @@
 .section-width-container {
   @apply mx-auto px-4 2xl:max-w-3xl 2xl:px-8;
 }
+
+.grid-12 {
+  @apply grid grid-cols-4 gap-x-[clamp(1rem,2vw,2rem)] md:grid-cols-12;
+}
+
+.section-vertical-spacing {
+  @apply py-32;
+}
+
+.inner {
+  @apply mx-auto w-full px-4 md:px-6 2xl:px-12;
+}
