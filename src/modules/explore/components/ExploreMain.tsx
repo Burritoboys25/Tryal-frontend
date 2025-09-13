@@ -6,10 +6,8 @@ import React, { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import BusinessCards from '@/modules/explore/components/BusinessCards'
 import { FilterKey } from '@/modules/explore/types/filterTypes'
-
 import Map from '@/modules/explore/components/mapbox/Map'
 import { Business } from '@/modules/explore/types/businessTypes'
-import mockUserBookmarks from '@/shared/mock/user/userBookmarks.json'
 import { useFilters } from '@/modules/explore/hooks/useFilters'
 import { Filters } from '@/modules/explore/types/filterTypes'
 import {
@@ -17,27 +15,15 @@ import {
   getFiltersFromSearchParams,
 } from '@/modules/explore/services/filterBusinesses'
 import { buildQueryParams } from '@/modules/explore/libs/buildQueryParams'
+import { addUserBookmark, removeUserBookmark } from '../services/bookmark'
 
 // import { useSession } from 'next-auth/react'
-// import {
-//   getUserBookmarks,
-//   addUserBookmark,
-//   removeUserBookmark,
-// } from '@/modules/explore/services/bookmark'
 
-interface MockUserBookmark {
-  userId: string
-  businessIds: string[]
-}
-
-const ExploreMain = () => {
+const ExploreMain = ({ bookmarks }: { bookmarks: string[] }) => {
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
-  // Find the mock user's bookmarked business IDs
-  const mockUserId = 'user1'
-  const initialBookmarkedIds =
-    (mockUserBookmarks as MockUserBookmark[]).find(u => u.userId === mockUserId)?.businessIds || []
-  const [bookmarkedIds, setBookmarkedIds] = useState<string[]>(initialBookmarkedIds)
+
+  const [bookmarkedIds, setBookmarkedIds] = useState<string[]>(bookmarks || [])
   const [businesses, setBusinesses] = useState<Business[]>([])
 
   // Filter state generated from search params.
@@ -55,7 +41,7 @@ const ExploreMain = () => {
       setBusinesses(businesses)
     })
   }, [searchParams])
-
+  
   // Uncomment when backend integration is ready
   // const { data: session } = useSession()
   // console.log('Session info:')
@@ -69,23 +55,24 @@ const ExploreMain = () => {
   //     .catch(() => setBookmarkedIds([]))
   // }, [session?.user?.id])
 
-  // Update bookmarks in local state only
-  const handleToggleBookmark = (business_id: string) => {
-    // if (!session?.user?.id) return
-    setBookmarkedIds(prev => {
-      const isBookmarked = prev.includes(business_id)
-      if (isBookmarked) {
-        // removeUserBookmark(session.user.id, business_id)
-        const updated = prev.filter(id => id !== business_id)
-        console.log('Unbookmarked:', business_id, 'Current bookmarks:', updated)
-        return updated
-      } else {
-        // addUserBookmark(session.user.id, business_id)
-        const updated = [...prev, business_id]
-        console.log('Bookmarked:', business_id, 'Current bookmarks:', updated)
-        return updated
+  const handleToggleBookmark = async (business_id: string) => {
+    const isBookmarked = bookmarkedIds.includes(business_id)
+
+    if (isBookmarked) {
+      try {
+        await removeUserBookmark('272d2788-ee1e-4056-ae09-4829aff17909', business_id) // TODO: userId hardcoded -- use session?.user?.id
+        setBookmarkedIds(prev => prev.filter(id => id !== business_id))
+      } catch (err) {
+        console.error('Failed to unbookmark:', err)
       }
-    })
+    } else {
+      try {
+        await addUserBookmark('272d2788-ee1e-4056-ae09-4829aff17909', business_id) // TODO: userId hardcoded -- use session?.user?.id
+        setBookmarkedIds(prev => [...prev, business_id])
+      } catch (err) {
+        console.error('Failed to bookmark:', err)
+      }
+    }
   }
 
   // Update the filter state and push the new search params to the url.

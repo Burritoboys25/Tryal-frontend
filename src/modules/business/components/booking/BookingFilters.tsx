@@ -54,7 +54,6 @@ const BookingFilters = () => {
         <div className="flex flex-col gap-[0.75rem]">
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
-              {/* TODO: change button usage */}
               <Button variant="filter">
                 <CalendarIcon className="mr-2 h-6 w-6" />
                 <span className="text-label">

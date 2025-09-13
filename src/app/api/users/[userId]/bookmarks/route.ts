@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
+const BACKEND_URL = process.env.BACKEND_URL
 
 export async function GET(_: NextRequest, { params }: { params: Promise<{ userId: string }> }) {
   const { userId } = await params
 
   try {
-    const response = await fetch(`${process.env.BACKEND_URL}/api/user-bookmarks/${userId}`, {
+    const response = await fetch(`${BACKEND_URL}/api/user-bookmarks/${userId}`, {
       credentials: 'include',
     })
 
@@ -26,7 +26,7 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ userId
   }
 }
 
-export async function POST(req: NextRequest, { params }: { params:  Promise<{ userId: string }> }) {
+export async function POST(req: NextRequest, { params }: { params: Promise<{ userId: string }> }) {
   const { userId } = await params
   const { businessId } = await req.json()
 
@@ -35,22 +35,22 @@ export async function POST(req: NextRequest, { params }: { params:  Promise<{ us
   }
 
   try {
-    const response = await fetch(`${API_BASE_URL}/api/user-bookmarks`, {
+    const response = await fetch(`${BACKEND_URL}/api/user-bookmarks`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({ userId, businessId }),
     })
 
-    const data = await response.json()
-
+    const data = await response.json();
+    
     if (!response.ok) {
       return NextResponse.json(
-        { error: data.message || 'Failed to add bookmark' },
+        { error: data?.message || 'Failed to add bookmark' },
         { status: response.status },
       )
     }
-
+    
     return NextResponse.json(data)
   } catch (error) {
     console.error('POST bookmark error:', error)
@@ -58,7 +58,10 @@ export async function POST(req: NextRequest, { params }: { params:  Promise<{ us
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params:  Promise<{ userId: string }> }) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: Promise<{ userId: string }> },
+) {
   const { userId } = await params
   const { businessId } = await req.json()
 
@@ -67,11 +70,10 @@ export async function DELETE(req: NextRequest, { params }: { params:  Promise<{ 
   }
 
   try {
-    const response = await fetch(`${API_BASE_URL}/api/user-bookmarks`, {
+    const response = await fetch(`${BACKEND_URL}/api/user-bookmarks/${userId}/${businessId}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({ userId, businessId }),
     })
 
     const data = await response.json()

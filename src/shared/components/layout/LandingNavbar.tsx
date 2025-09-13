@@ -41,6 +41,7 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
           {/* Desktop Nav */}
           <div className="hidden justify-center gap-[2rem] text-sm text-[1rem] text-gray-700 md:flex">
             <Link href="/about">About us</Link>
+            <Link href="/for-partners">For Partners</Link>
           </div>
 
           {/* Desktop CTA */}

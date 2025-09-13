@@ -1,13 +1,13 @@
 import { User } from '@/shared/types/userTypes'
 import { NextRequest, NextResponse } from 'next/server'
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
+const BACKEND_URL = process.env.BACKEND_URL
 
 export async function GET(_: NextRequest, { params }: { params: Promise<{ userId: string }> }) {
   const { userId } = await params
 
   try {
-    const res = await fetch(`${API_BASE_URL}/api/users/${userId}`, {
+    const res = await fetch(`${BACKEND_URL}/api/users/${userId}`, {
       credentials: 'include',
     })
 
@@ -29,7 +29,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ us
   try {
     const body: Partial<User> = await req.json()
 
-    const res = await fetch(`${API_BASE_URL}/api/users/${userId}`, {
+    const res = await fetch(`${BACKEND_URL}/api/users/${userId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
