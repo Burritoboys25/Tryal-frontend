@@ -13,12 +13,12 @@ const FPHero = () => {
   useGSAP(() => {
     gsap.registerPlugin(SplitText)
     const heroSplit = new SplitText('.title', {
-      type: 'words',
-      mask: 'words',
+      type: 'lines',
+      mask: 'lines',
     })
     const subSplit = new SplitText('.sub-text', {
-      type: 'words',
-      mask: 'words',
+      type: 'lines',
+      mask: 'lines',
     })
 
     gsap.from('.fphero-section', {
@@ -32,7 +32,7 @@ const FPHero = () => {
       },
     })
 
-    gsap.from(heroSplit.words, {
+    gsap.from(heroSplit.lines, {
       yPercent: 100,
       opacity: 0,
       duration: 1.2,
@@ -43,7 +43,7 @@ const FPHero = () => {
         start: 'top 80%',
       },
     })
-    gsap.from(subSplit.words, {
+    gsap.from(subSplit.lines, {
       yPercent: 100,
       opacity: 0,
       duration: 1.2,
