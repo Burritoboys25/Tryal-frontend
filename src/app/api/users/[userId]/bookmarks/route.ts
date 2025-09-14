@@ -42,15 +42,15 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ use
       body: JSON.stringify({ userId, businessId }),
     })
 
-    const data = await response.json()
-
+    const data = await response.json();
+    
     if (!response.ok) {
       return NextResponse.json(
-        { error: data.message || 'Failed to add bookmark' },
+        { error: data?.message || 'Failed to add bookmark' },
         { status: response.status },
       )
     }
-
+    
     return NextResponse.json(data)
   } catch (error) {
     console.error('POST bookmark error:', error)
@@ -70,11 +70,10 @@ export async function DELETE(
   }
 
   try {
-    const response = await fetch(`${BACKEND_URL}/api/user-bookmarks`, {
+    const response = await fetch(`${BACKEND_URL}/api/user-bookmarks/${userId}/${businessId}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({ userId, businessId }),
     })
 
     const data = await response.json()
