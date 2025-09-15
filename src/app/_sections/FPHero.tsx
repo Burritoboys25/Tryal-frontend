@@ -1,8 +1,7 @@
 'use client'
 
-import { useGSAP } from '@gsap/react'
 import SplitText from 'gsap/SplitText'
-import gsap from 'gsap'
+import { gsap, useGSAP } from '@/shared/lib/gsap'
 import { Button } from '@/shared/components/ui/base/button'
 import Link from 'next/link'
 import { useState } from 'react'

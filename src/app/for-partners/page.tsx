@@ -10,6 +10,8 @@ import { gsap } from 'gsap'
 import FPHero from '../_sections/FPHero'
 import HowItWorks from '../_sections/FPHowItWorks'
 import Benefits from '../_sections/FPBenefits'
+import Pricing from '../_sections/Pricing'
+import FaqSection from '../_sections/Faq'
 
 gsap.registerPlugin(useGSAP)
 
@@ -29,6 +31,8 @@ const ForPartnersPage = () => {
           </Section>
           <HowItWorks />
           <Benefits />
+          <Pricing />
+          <FaqSection />
           <div className="h-[100dvh]" />
         </div>
       </ReactLenis>
