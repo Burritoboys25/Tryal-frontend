@@ -54,13 +54,7 @@ const FaqSection = () => {
   )
 
   return (
-    <Section
-      background="orange"
-      roundedTop
-      offsetSection
-      className="pt-12 pb-24 md:pt-24 md:pb-32"
-      ref={scope}
-    >
+    <Section background="orange" roundedTop className="pt-12 pb-24 md:pt-24 md:pb-32" ref={scope}>
       <div className="relative grid grid-cols-1 gap-8 rounded-3xl px-0 lg:grid-cols-2">
         <div className="text-center lg:sticky lg:top-[96px] lg:col-span-full lg:text-left">
           <h2
