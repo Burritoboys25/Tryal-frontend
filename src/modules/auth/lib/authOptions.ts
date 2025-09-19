@@ -61,7 +61,7 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         const u = user as JwtUser
-        token.id = u.id || ''
+        token.userId = u.id || ''
         token.accessToken = u.accessToken || ''
         token.refreshToken = u.refreshToken || ''
       }
@@ -70,7 +70,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       if (token) {
         session.user = {
-          id: token.id ?? '',
+          userId: token.userId ?? '',
         }
         session.accessToken = token.accessToken
         session.refreshToken = token.refreshToken

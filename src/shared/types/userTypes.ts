@@ -1,11 +1,12 @@
 export interface User {
-  id: string
+  userId: string
   email: string
   firstName: string
   lastName: string
   remember?: boolean
   activeSubscription?: UserSubscription
 }
+
 export interface UserBookmarks {
   userId: string
   businessIds: string[]

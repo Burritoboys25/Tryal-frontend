@@ -18,7 +18,7 @@ export default function ChangePlan() {
     }
 
     console.log(userData)
-    console.log("TEST")
+
   }, [userData])
 
   useEffect(() => {
