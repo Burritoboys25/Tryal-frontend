@@ -15,12 +15,14 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     const raw = localStorage.getItem('userData')
+
     if (raw) {
       try {
         const parsed = JSON.parse(raw)
+
         setUser({
-          id: parsed.userDTO.userId,
-          email: parsed.userDTO.email,
+          id: parsed.userId,
+          email: parsed.email,
         })
       } catch (e) {
         console.error('Failed to fetch userdata:', e)

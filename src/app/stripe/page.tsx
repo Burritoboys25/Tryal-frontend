@@ -23,7 +23,8 @@ const SubscriptionPage = () => {
     const fetchPlans = async () => {
       try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/plans`)
-        const data = await res.json()
+        const { data } = await res.json()
+
         setPlans(data)
       } catch (err) {
         console.error('Failed to fetch plans', err)
@@ -48,7 +49,7 @@ const SubscriptionPage = () => {
             key={plan.planId}
             onClick={() => setSelected(plan)}
             className={`cursor-pointer rounded-2xl border-2 p-6 shadow-md transition-all ${
-              selected?.name === plan.name
+              selected?.planId === plan.planId
                 ? 'border-blue-500 bg-white'
                 : 'border-transparent bg-white hover:border-gray-300'
             }`}
