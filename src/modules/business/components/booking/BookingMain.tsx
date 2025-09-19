@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'next/navigation';
+import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import ExperienceCards from './ExperienceCards'
 import BookingFilters from './BookingFilters'
@@ -11,12 +11,15 @@ import { Timeslot } from '@/shared/types/timeslotTypes'
 import { Button } from '@/shared/components/ui/base/button'
 
 const BookingMain = ({ experiences }: { experiences: Experience[] }) => {
-  // const [experiences, setExperiences] = useState<Experience[]>(experienceList)
   const [selectedCard, setSelectedCard] = useState<string | null>(null)
   const [selectedTimeslot, setSelectedTimeslot] = useState<string | null>(null)
   const [timeslots, setTimeslots] = useState<Timeslot[]>([])
 
-  const params = useParams();
+  const [selectedPeople, setSelectedPeople] = useState(1)
+  const [date, setDate] = useState<Date>(new Date())
+  const [month, setMonth] = useState<Date | undefined>(undefined)
+
+  const params = useParams()
   const businessId = params.businessId
 
   useEffect(() => {
@@ -31,7 +34,14 @@ const BookingMain = ({ experiences }: { experiences: Experience[] }) => {
 
   return (
     <div className="flex flex-col gap-[2.25rem]">
-      <BookingFilters />
+      <BookingFilters
+        selectedPeople={selectedPeople}
+        setSelectedPeople={setSelectedPeople}
+        date={date}
+        setDate={setDate}
+        month={month}
+        setMonth={setMonth}
+      />
       <ExperienceCards
         experiences={experiences}
         selectedCard={selectedCard}
@@ -45,14 +55,14 @@ const BookingMain = ({ experiences }: { experiences: Experience[] }) => {
       <Link
         href={{
           pathname: '/booking-review',
-          query: { businessId: businessId, timeslotId: selectedTimeslot },
+          query: { businessId: businessId, timeslotId: selectedTimeslot, party: selectedPeople },
         }}
         className="w-[29.625rem]"
       >
         <Button
           variant="solid"
           size="lg"
-          className="bg-primary w-full rounded-full text-white"
+          className="bg-primary w-full cursor-pointer rounded-full text-white"
           disabled={!selectedTimeslot}
         >
           Reserve booking
