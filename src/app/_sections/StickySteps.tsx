@@ -186,15 +186,12 @@ const StickySteps = () => {
   )
 
   return (
-    <Section
-      ref={scope}
-      className="cards-section relative"
-      id="sticky-steps"
-      background="tan"
-      roundedTop
-      offsetSection
-    >
-      <div className="cards-container">
+    <Section ref={scope} className="cards-section relative" id="sticky-steps" background="teal">
+      <h3 className="absolute top-1/8 left-1/2 -translate-x-1/2 text-center text-3xl">
+        Turn your curiosity into memories in just 4 steps. A quick and easy process to bring your
+        next experience to life.
+      </h3>
+      <div className="cards-container text-foreground-light">
         <div id="card-1" className="card top-0 rounded-3xl">
           <StepCard
             id="01"
@@ -203,7 +200,6 @@ const StickySteps = () => {
             icon={LocationIcon}
           />
         </div>
-        {/* <div id="card-2" className="card top-[30px] bg-red-500"> */}
         <div id="card-2" className="card top-[30px]">
           <StepCard
             id="02"
@@ -220,7 +216,6 @@ const StickySteps = () => {
             icon={CalendarIcon}
           />
         </div>
-        {/* <div id="card-4" className="card top-[90px] bg-green-500"> */}
         <div id="card-4" className="card top-[90px]">
           <StepCard
             id="04"
