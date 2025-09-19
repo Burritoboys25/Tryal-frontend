@@ -2,7 +2,7 @@
 
 import { Button } from '@/shared/components/ui/base/button'
 import Image from 'next/image'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type Slide = {
   id: string
@@ -18,38 +18,26 @@ const SLIDES: Slide[] = [
   {
     id: 'credits',
     tab: 'Flexible Credits',
-    eyebrow: 'Flexible Credits',
-    title: 'One subscription.\nUnlimited experiences.',
-    body: 'Use monthly credits to book fitness classes, cooking workshops, art sessions, and more. No hidden fees—just choose how you want to spend your credits.',
+    title: 'Connect with Like-Minded Explorers',
+    body: 'Join a community of curious adventurers. Share tips, meet friends, and be inspired by others’ experiences.',
     image: '/landing_page_img_1.png',
-    accent: 'bg-amber-200',
+    accent: 'bg-surface-light-blue',
   },
   {
     id: 'discovery',
     tab: 'Discovery Tools',
-    eyebrow: 'Discovery Tools',
     title: 'Find new experiences\naround every corner.',
     body: 'Browse gyms, studios, and local creators all in one app. Filter by location, category, or time to uncover experiences tailored to your lifestyle.',
     image: '/landing_page_img_1.png',
-    accent: 'bg-emerald-200',
+    accent: 'bg-amber-200',
   },
   {
     id: 'booking',
     tab: 'Seamless Booking',
-    eyebrow: 'Seamless Booking',
     title: 'Reserve your spot\nwith just a tap.',
     body: 'Instantly book and manage reservations with an intuitive calendar. Join in person or virtually without the hassle of phone calls or emails.',
     image: '/landing_page_img_1.png',
     accent: 'bg-sky-200',
-  },
-  {
-    id: 'insights',
-    tab: 'Personal Insights',
-    eyebrow: 'Personal Insights',
-    title: 'Track your journey\nand make it count.',
-    body: 'See where your credits go, track attendance, and measure your progress. Personalized insights help you get the most out of your membership.',
-    image: '/landing_page_img_1.png',
-    accent: 'bg-violet-200',
   },
 ]
 
@@ -92,11 +80,9 @@ export default function FeatureSlider() {
   const prev = () => goTo(Math.max(0, index - 1))
   const next = () => goTo(Math.min(SLIDES.length - 1, index + 1))
 
-  const dots = useMemo(() => new Array(SLIDES.length).fill(0), [])
-
   return (
-    <section
-      className="relative w-full py-2 text-white"
+    <div
+      className="relative h-full w-full text-white"
       aria-label="Feature slider"
       onKeyDown={e => {
         if (e.key === 'ArrowLeft') prev()
@@ -111,9 +97,10 @@ export default function FeatureSlider() {
             key={s.id}
             onClick={() => goTo(i)}
             className={[
-              'hidden rounded-full px-4 py-2 text-sm transition md:block',
-              // 'bg-neutral-800 hover:bg-neutral-700',
-              i === index ? 'ring-2 ring-white/80' : 'ring-1 ring-white/10',
+              'hover:bg-surface-teal/80 hidden rounded-full px-4 py-2 text-sm transition md:block',
+              'bg-surface-teal/80',
+              'text-foreground-dark',
+              i === index ? 'bg-primary hover:bg-primary/90 ring-1 ring-white/10' : '',
             ].join(' ')}
             aria-pressed={i === index}
           >
@@ -125,14 +112,16 @@ export default function FeatureSlider() {
       {/* Track */}
       <div
         ref={trackRef}
-        className="noScrollbar relative snap-x snap-mandatory overflow-x-auto scroll-smooth"
+        className="noScrollbar relative h-full snap-x snap-mandatory overflow-x-auto scroll-smooth"
       >
-        <div className="flex min-w-full gap-6">
+        <div className="flex h-full w-[92vw] min-w-full gap-6 sm:w-[88vw] lg:w-full">
           {SLIDES.map((s, i) => (
             <div
               key={s.id}
-              ref={el => (itemRefs.current[i] = el)}
-              className="w-[92vw] shrink-0 snap-start sm:w-[88vw] lg:w-full"
+              ref={el => {
+                itemRefs.current[i] = el
+              }}
+              className="h-full w-[92vw] shrink-0 snap-start sm:w-[88vw] lg:w-full"
               aria-roledescription="slide"
               aria-label={`${i + 1} of ${SLIDES.length}`}
             >
@@ -141,55 +130,35 @@ export default function FeatureSlider() {
           ))}
         </div>
       </div>
-
-      {/* Controls */}
-      <div className="mt-6 flex items-center justify-between">
-        <div className="ml-auto flex gap-2">
-          {dots.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              className={[
-                'h-2.5 w-2.5 rounded-full transition',
-                i === index ? 'bg-zinc-900' : 'bg-zinc-300 hover:bg-zinc-600',
-              ].join(' ')}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+    </div>
   )
 }
 
 function SlideCard({ slide }: { slide: Slide }) {
   return (
-    <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-4">
+    <div className="grid w-full grid-cols-1 gap-4 md:h-[70dvh] lg:grid-cols-3">
       {/* Left panel */}
       <div
         className={[
-          'rounded-[2rem] p-6 sm:p-8 lg:col-span-1 lg:p-10',
-          slide.accent ?? 'bg-amber-200',
-          'text-neutral-900',
+          'rounded-[2rem] p-6 sm:p-8 lg:col-span-1 lg:p-8',
+          slide.accent ?? 'bg-surface-light-blue',
+          'text-foreground-light',
         ].join(' ')}
       >
-        {slide.eyebrow && (
-          <span className="inline-flex items-center rounded-full bg-white/60 px-3 py-1 text-xs font-medium">
-            {slide.eyebrow}
-          </span>
-        )}
-        <h2 className="text-h2 mt-4 leading-tight font-bold tracking-tight whitespace-pre-line">
-          {slide.title}
-        </h2>
-        <p className="text-body mt-4 text-neutral-700">{slide.body}</p>
+        <div className="flex h-full max-w-[75%] flex-col justify-between">
+          <h2 className="text-h2 mt-4 leading-tight font-semibold tracking-tight whitespace-pre-line">
+            {slide.title}
+          </h2>
+          <p className="text-sub4">{slide.body}</p>
+        </div>
       </div>
 
-      {/* Right panel: device frame */}
-      <div className="relative rounded-[2rem] lg:col-span-3">
-        <div className="relative mx-auto aspect-[16/7] w-full overflow-hidden rounded-2xl bg-white shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
-          {/* status bar bump */}
-          <div className="absolute top-2 left-1/2 h-2 w-24 -translate-x-1/2 rounded-full bg-neutral-200/80" />
+      {/* Middle Panel */}
+      <div className="bg-surface-teal hidden rounded-2xl lg:col-span-1 lg:block" />
 
+      {/* Right panel: device frame */}
+      <div className="relative rounded-[2rem]">
+        <div className="relative mx-auto h-full w-full overflow-hidden rounded-2xl bg-white shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
           <Image
             src={slide.image}
             alt={slide.title}

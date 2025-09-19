@@ -8,10 +8,7 @@ const Features = () => {
   const scope = useRef<HTMLElement>(null!)
   useRevealSplit(scope)
   return (
-    <Section ref={scope} className="flex min-h-dvh snap-start flex-col justify-center">
-      <h2 className="text-h2" data-reveal-split>
-        See what you can do with Tryal
-      </h2>
+    <Section ref={scope} full className="mx-auto 2xl:max-w-[95vw]">
       <FeatureSlider />
     </Section>
   )
