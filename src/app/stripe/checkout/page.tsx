@@ -14,7 +14,6 @@ const CheckoutPage = () => {
   const [user, setUser] = useState<{ id: string; email: string } | null>(null)
 
   useEffect(() => {
-    //TODO: Eventually remove from local storage
     const raw = localStorage.getItem('userData')
     if (raw) {
       try {
