@@ -47,7 +47,7 @@ const CheckoutPage = () => {
           }),
         })
           .then(res => res.json())
-          .then(data => data.clientSecret)
+          .then(({ data }) => data.clientSecret)
       },
     }
   }, [user, planId])
