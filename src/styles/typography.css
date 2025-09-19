@@ -9,8 +9,7 @@
 
 .text-h2 {
   font-size: clamp(2rem, 1rem + 2.4vw, 4rem);
-
-  @apply /* @apply md:leading-[3.25rem]; */ text-[1.5rem] leading-[2.5rem] font-semibold tracking-tight md:text-[2.25rem];
+  @apply text-[1.5rem] leading-[2.5rem] font-semibold tracking-tight md:text-[2.25rem];
 }
 
 .text-h3 {
@@ -18,7 +17,7 @@
 }
 
 .text-sub1 {
-  @apply text-[1.25rem] leading-[2rem] font-semibold;
+  @apply text-[1rem] leading-[1.5rem] font-semibold md:text-[1.25rem] md:leading-[2rem];
 }
 
 .text-sub2 {
@@ -30,11 +29,11 @@
 }
 
 .text-sub4 {
-  @apply text-[1rem] leading-[1.875rem] font-normal;
+  @apply text-[0.875rem] leading-[1.75rem] font-normal md:text-[1rem] md:leading-[1.875rem];
 }
 
 .text-body1 {
-  @apply text-[0.875rem] leading-[1.75rem] font-medium;
+  @apply text-[0.875rem] leading-[1.75rem] font-medium md:text-[0.875rem] md:leading-[1.75rem];
 }
 
 .text-body2 {
