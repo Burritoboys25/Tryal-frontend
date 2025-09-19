@@ -88,10 +88,11 @@ const Hero = () => {
     <Section
       id="hero"
       ref={scope}
-      className="grid min-h-screen snap-start grid-cols-1 md:grid-cols-12"
+      className="grid min-h-screen grid-cols-1 md:grid-cols-12 2xl:px-24"
+      full
     >
       {/* Left Side */}
-      <div className="row-start-2 self-start md:col-span-6 md:row-start-1 md:self-center">
+      <div className="row-start-2 self-start px-4 md:col-span-6 md:row-start-1 md:self-center md:px-0">
         <div data-reveal-split>
           <h1 className="hero-text title">
             Discover.
