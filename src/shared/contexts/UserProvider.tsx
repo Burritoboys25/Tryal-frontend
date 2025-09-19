@@ -34,16 +34,21 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
     const fetchUser = async () => {
       try {
-        const res = await fetch(`/api/users/${session.user.id}`, {
-          credentials: 'include',
-        })
+        const [userRes, subRes] = await Promise.all([
+          fetch(`/api/users/${session.user.id}`, { credentials: 'include' }),
+          fetch(`/api/users/${session.user.id}/subscriptions?active=true`),
+        ])
 
-        if (!res.ok) throw new Error('Failed to fetch user')
+        if (!userRes.ok || !subRes.ok) throw new Error('Failed to fetch data')
 
-        const data = await res.json()
-        setUserData(data)
+        const userData = await userRes.json()
+        const subscriptionData = await subRes.json()
+        const activeSubscription = subscriptionData[0]
+
+        setUserData({ ...userData, activeSubscription })
+
         if (typeof window !== 'undefined') {
-          localStorage.setItem(USER_DATA_KEY, JSON.stringify(data))
+          localStorage.setItem(USER_DATA_KEY, JSON.stringify({ ...userData, activeSubscription }))
         }
       } catch (err) {
         if (process.env.NODE_ENV !== 'production') {

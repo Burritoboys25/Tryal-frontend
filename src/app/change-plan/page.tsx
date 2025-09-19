@@ -6,26 +6,27 @@ import Container from '@/shared/components/layout/Container'
 import PlanCards from '@/modules/plan/components/PlanCards'
 import { Plan } from '@/shared/types/planTypes'
 import React, { useEffect, useState } from 'react'
+import { useUser } from '@/shared/hooks/useUser'
 
 export default function ChangePlan() {
+  const { userData } = useUser()
   const [activePlans, setActivePlans] = useState<Plan[]>([])
-  const [currentPlanId, setCurrentPlanId] = useState<string>("")
+  const [currentPlanId, setCurrentPlanId] = useState<string>('')
 
   useEffect(() => {
-    //TODO: fetch logged in user current planId from cache if applicable
-    // if (!cache?.user?.planId) {
-      
-    // }
+    if (userData?.activeSubscription?.planId) {
+      setCurrentPlanId(userData.activeSubscription.planId)
+    }
+  }, [userData])
 
+  useEffect(() => {
     const fetchPlans = async () => {
       try {
         const res = await fetch(`/api/plans/`)
-
         if (!res.ok) throw new Error('Failed to fetch plans')
 
         const plans = await res.json()
         setActivePlans(plans.data)
-
       } catch (err) {
         console.log(err)
       }
@@ -33,8 +34,6 @@ export default function ChangePlan() {
 
     fetchPlans()
   }, [])
-
-  console.log(activePlans)
 
   return (
     <ViewLayout type="default">
