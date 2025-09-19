@@ -8,20 +8,20 @@ import { gsap, useGSAP, SplitText } from '@/shared/lib/gsap'
 
 const cards = [
   {
-    title: 'Trusted local favorites',
-    icon: LocationIcon,
-    description: 'Only the best - every experience is verified and selected by our team',
-  },
-  {
     title: 'Seamless booking',
     icon: BookingIcon,
     description: 'Book your favorite activities in just a few taps. Simple, fast, and stress-free.',
   },
   {
-    title: 'Flexible for any schedule',
-    icon: CalendarIcon,
+    title: 'Support local & small businesses',
+    icon: LocationIcon,
     description:
-      "Whether you're free on weekends or just an hour after work, find activities that fit your life.",
+      'Every booking helps local instructors, artists, and entrepreneurs grow their passion.',
+  },
+  {
+    title: 'Unleash your inner explorer',
+    icon: CalendarIcon,
+    description: 'Break away from the usual and dive into new hobbies and experiences.',
   },
 ]
 
@@ -34,6 +34,12 @@ const Intro = () => {
         mask: 'lines',
         linesClass: 'overflow-visible leading-[1.4]', // prevent line cuttoff
       })
+      const itemSplit = new SplitText('[data-anim="split-reveal"]', {
+        type: 'lines',
+        mask: 'lines',
+      })
+
+      const icons = gsap.utils.toArray('[data-anim="fade-in"]') // Element[]
 
       const tl = gsap.timeline({
         defaults: { ease: 'power4.out' },
@@ -51,17 +57,19 @@ const Intro = () => {
           stagger: 0.12,
         })
         .from(
-          '.grid-item',
+          itemSplit.lines,
           {
-            opacity: 0,
+            yPercent: 100,
             duration: 1,
             stagger: 0.06,
           },
           'start+=1',
         )
+        .from(icons, { autoAlpha: 0, duration: 1, stagger: 0.06 }, 'start+=1')
 
       return () => {
         titleSplit.revert()
+        itemSplit.revert()
       }
     },
     { scope: scope },
@@ -72,20 +80,32 @@ const Intro = () => {
       id="intro"
       className="flex min-h-[70dvh] snap-center flex-col justify-center"
       ref={scope}
+      background="teal"
     >
-      <div className="grid grid-cols-1 gap-y-16 md:grid-cols-3">
-        <h3 id="intro-title" className="text-h2 overflow-visible md:col-span-2">
-          Tryall is the first two-sided platform built for local experience providers and the
-          communities they serve. We make it easy to discover, book, and manage unique experiences
-          while helping businesses grow, reach new audiences, and strengthen community—all through
-          one simple subscription.
+      <div className="grid grid-cols-1 gap-y-8 md:grid-cols-3 md:gap-y-16">
+        <h3
+          id="intro-title"
+          className="overflow-visible text-xl md:col-span-3 md:max-w-1/2 md:text-4xl md:font-semibold"
+        >
+          Welcome to Tryal, the easiest way to explore and book experiences near you—or halfway
+          across the world. Whether you&apos;re craving adventure, relaxation, or something totally
+          new, we&apos;ve got curated options to fit every mood.
         </h3>
-        <div id="intro-grid" className="col-span-full grid grid-cols-subgrid space-y-16">
+        <div
+          id="intro-grid"
+          className="col-span-full grid grid-cols-subgrid space-y-8 md:space-y-16"
+        >
           {cards.slice(0, 3).map(({ title, icon: Icon, description }) => (
-            <div key={title} className="col-span-1">
-              <Icon className="grid-item h-[8rem] w-[8rem]" aria-hidden="true" />
-              <h4 className="grid-item text-sub1">{title}</h4>
-              <p className="grid-item mt-1 w-full md:max-w-1/2">{description}</p>
+            <div key={title} className="col-span-1 flex gap-3 md:max-w-4/5">
+              <Icon className="size-11" aria-hidden="true" data-anim="fade-in" />
+              <div>
+                <h4 className="text-sub1" data-anim="split-reveal">
+                  {title}
+                </h4>
+                <p className="text-sub4 w-full" data-anim="split-reveal">
+                  {description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
