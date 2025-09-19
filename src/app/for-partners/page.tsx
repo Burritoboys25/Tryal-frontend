@@ -12,6 +12,7 @@ import HowItWorks from '../_sections/FPHowItWorks'
 import Benefits from '../_sections/FPBenefits'
 import Pricing from '../_sections/Pricing'
 import FaqSection from '../_sections/Faq'
+import FaFeatures from '../_sections/FaFeatures'
 
 gsap.registerPlugin(useGSAP)
 
@@ -31,6 +32,7 @@ const ForPartnersPage = () => {
           </Section>
           <HowItWorks />
           <Benefits />
+          <FaFeatures />
           <Pricing />
           <FaqSection />
           <div className="h-[100dvh]" />
