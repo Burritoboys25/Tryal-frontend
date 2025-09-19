@@ -6,43 +6,25 @@ type SectionProps = {
   className?: string
   id?: string
   full?: boolean // for full-bleed sections
-  background?: 'orange' | 'gray' | 'white' | 'none' | 'teal' | 'nacho' | 'black' | 'tan'
-  roundedTop?: boolean
-  roundedBottom?: boolean
-  offsetSection?: boolean
+  background?: 'teal' | 'nacho' | 'orange' | 'white' | 'none' | 'black' | 'light-teal'
 }
 
 const Section = forwardRef<HTMLElement, SectionProps>(
-  (
-    {
-      children,
-      className = '',
-      id,
-      full = false,
-      background = 'none',
-      roundedTop,
-      roundedBottom,
-      offsetSection,
-    },
-    ref,
-  ) => {
+  ({ children, className = '', id, full = false, background = 'none' }, ref) => {
     return (
       <section
         id={id}
         ref={ref}
         className={clsx(
-          full ? '' : 'section-width-container',
+          full ? '' : 'section-width-container rounded-3xl',
           {
-            'bg-orange-500 text-white': background === 'orange',
-            'bg-gray-400 text-black': background === 'gray',
-            'bg-white text-black': background === 'white',
-            'bg-[#FFB517] text-white': background === 'nacho',
-            'bg-black text-white': background === 'black',
-            'text-foreground bg-[#fdf1e7]': background === 'tan',
+            'bg-surface-teal text-foreground-dark': background === 'teal',
+            'bg-surface-light-orange text-foreground-light': background === 'nacho',
+            'bg-surface-light-white text-foreground-light': background === 'white',
+            'bg-surface-light-teal text-foreground-light': background === 'light-teal',
+            'text-foreground-dark bg-black': background === 'black',
             'bg-transparent': background === 'none',
-            'rounded-t-3xl': roundedTop,
-            'rounded-b-3xl': roundedBottom,
-            '-mb-8 pb-8': offsetSection,
+            'bg-orange-500 text-white': background === 'orange',
           },
           className,
         )}
