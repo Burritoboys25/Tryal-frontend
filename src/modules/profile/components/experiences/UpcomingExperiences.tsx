@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { Button } from '@/shared/components/ui/base/button'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
 import CalendarIcon from '@/shared/assets/icons/calendar.svg'
@@ -18,8 +19,7 @@ const ExperienceCard = (data: ExperienceType) => {
           alt="Business Photo"
           // width={133}
           // height={110}
-          // remove background color when we have a default pic --> currently using as placeholder
-          className="rounded-md bg-gray-300"
+          className="rounded-md"
         />
       </div>
 
@@ -61,7 +61,14 @@ const UpcomingExperiences: React.FC<{
 }> = ({ items }) => {
   return (
     <>
-      {Array.isArray(items) && items.map(card => <ExperienceCard key={card.bookingId} {...card} />)}
+      {Array.isArray(items) && items.map(card => (
+        <Link
+          href={`/profile/experiences/view-edit/${card.bookingId}`}
+          key={card.bookingId}
+        >
+          <ExperienceCard  {...card} />
+        </Link>
+      ))}
     </>
   )
 }

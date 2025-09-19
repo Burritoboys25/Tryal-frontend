@@ -6,14 +6,14 @@ export async function getBusinessById(id: string): Promise<Business | undefined>
   const res = await fetch(`${API_BASE_URL}/api/businesses/${id}`)
   if (!res.ok) return undefined
   const data = await res.json()
-  return data.businessDTO
+  return data.data
 }
 
 export async function getBusinessCategories(id: string): Promise<string[]> {
   const res = await fetch(`${API_BASE_URL}/api/businesses/${id}/categories`)
   if (!res.ok) return []
   const data = await res.json()
-  return data.categories || []
+  return data.data || []
 }
 
 // Helper to fetch business and categories using the API routes
@@ -34,7 +34,7 @@ export async function getBusinessExperiences(businessId: string): Promise<Experi
       return []
     }
     const data = await response.json()
-    return data.experiences || []
+    return data.data || []
   } catch (error) {
     console.error('Network error fetching experiences:', error)
     return []
@@ -51,7 +51,7 @@ export async function getAllExperiences(): Promise<Experience[]> {
       return []
     }
     const data = await response.json()
-    return data.experiences || []
+    return data.data || []
   } catch (error) {
     console.error('Network error fetching all experiences:', error)
     return []

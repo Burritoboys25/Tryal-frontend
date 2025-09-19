@@ -1,29 +1,44 @@
+'use client'
+
 import Container from '@/shared/components/layout/Container'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
 import ProfileInfo from '@/modules/profile/components/ProfileInfo'
 import ProfileTabs from '@/modules/profile/components/ProfileTabs'
+import { usePathname } from 'next/navigation'
 
 export default function ProfileLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <ViewLayout type="default">
-      <Container className="py-[3rem] h-[calc(100vh-69px)]">
-        <div className="px-[6rem]">
-          <ProfileInfo />
+  const pathname = usePathname()
 
-          {/* Line border */}
-          <hr className="mt-5" />
+  if (!pathname.startsWith('/profile/experiences/view-edit/')) {
+    return (
+      <ViewLayout type="default">
+        <Container className="h-[calc(100vh-69px)] py-[3rem]">
+          <div className="px-[6rem]">
+            <ProfileInfo />
 
-          {/* Main Container */}
-          <div className="mt-12 flex">
-            {/* Navigation Tabs  */}
-            <div className="flex-1 mt-2">
-              <ProfileTabs />
+            {/* Line border */}
+            <hr className="mt-5" />
+
+            {/* Main Container */}
+            <div className="mt-12 flex">
+              {/* Navigation Tabs  */}
+              <div className="mt-2 flex-1">
+                <ProfileTabs />
+              </div>
+              {/* Main Content */}
+              <div className="flex-[2.7]">{children}</div>
             </div>
-            {/* Main Content */}
-            <div className="flex-[2.7]">{children}</div>
           </div>
-        </div>
-      </Container>
-    </ViewLayout>
-  )
+        </Container>
+      </ViewLayout>
+    )
+  } else {
+    return (
+      <ViewLayout type="default">
+        <Container className="h-[calc(100vh-69px)] py-[3rem]">
+          {children}
+        </Container>
+      </ViewLayout>
+    )
+  }
 }
