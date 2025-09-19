@@ -61,27 +61,24 @@ const FunMarquee = () => {
     { scope: scope },
   )
   return (
-    <Section id="marque" ref={scope} className="flex items-center py-12" full>
-      <div className="mx-auto mb-[4rem] w-full text-center">
-        <h1 className="text-h2" data-anim="split-reveal">
-          Find your
-          <span className="text-primary"> next passion </span>
-          from a wide variety of categories
-        </h1>
-        {/* Marque */}
-        <div className="mt-[4rem] flex w-full overflow-hidden">
-          <Marquee pauseOnHover className="[--duration:25s]">
-            {marqueList.map(({ title, icon: Icon }) => (
-              <div
-                key={title}
-                className="flex items-center gap-[0.5rem] rounded-xl bg-white p-[1rem] shadow-md inset-shadow-xs"
-              >
-                <Icon arial-hidden="true" />
-                <h4 className="text-sub1">{title}</h4>
-              </div>
-            ))}
-          </Marquee>
-        </div>
+    <Section id="marque" ref={scope} full className="flex items-center">
+      <div
+        className="text-h2 bg-surface-teal text-foreground-dark ml-4 flex h-32 w-[40vw] items-center justify-center rounded-2xl md:ml-12 md:h-49 md:w-[20vw]"
+        data-anim="split-reveal"
+      >
+        Explore
+      </div>
+
+      {/* Marque */}
+      <div className="flex w-full overflow-hidden">
+        <Marquee pauseOnHover className="[--duration:25s]">
+          {marqueList.map(({ title, icon: Icon }) => (
+            <div key={title} className="ml-24 flex items-center gap-2">
+              <Icon arial-hidden="true" />
+              <h4 className="text-sub1">{title}</h4>
+            </div>
+          ))}
+        </Marquee>
       </div>
     </Section>
   )
