@@ -6,8 +6,16 @@ import React, { useState } from 'react'
 import { Badge } from '@/shared/components/ui/base/badge'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
 
-const ExperienceCards = ({ experiences }: { experiences: Experience[] }) => {
-  const [selectedId, setSelectedId] = useState<string | null>(null)
+const ExperienceCards = ({
+  experiences,
+  selectedCard,
+  setSelectedCard
+}: {
+  experiences: Experience[]
+  selectedCard: string | null
+  setSelectedCard: React.Dispatch<React.SetStateAction<string | null>>
+}) => {
+  // const [selectedId, setSelectedId] = useState<string | null>(null)
 
   if (!experiences || experiences.length === 0) {
     return <div className="py-[2.5rem] text-center text-2xl">No experiences available</div>
@@ -21,9 +29,9 @@ const ExperienceCards = ({ experiences }: { experiences: Experience[] }) => {
           {experiences.map(exp => (
             <div
               key={exp.experienceId}
-              onClick={() => setSelectedId(exp.experienceId)}
+              onClick={() => setSelectedCard(exp.experienceId)}
               className={`hover:bg-muted/50 mb-[1rem] flex h-[24.875rem] w-[17.8125rem] flex-col items-center rounded-xl border-2 bg-white p-[1rem] shadow-md transition-all duration-300 hover:cursor-pointer ${
-                selectedId === exp.experienceId ? 'border-primary font-bold' : 'border-transparent'
+                selectedCard === exp.experienceId ? 'border-primary font-bold' : 'border-transparent'
               }`}
             >
               <Image
