@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 
 // GET /api/plans
+// All active plans
 export async function GET() {
   try {
     const result = await fetch(`${process.env.BACKEND_URL}/api/plans`)
