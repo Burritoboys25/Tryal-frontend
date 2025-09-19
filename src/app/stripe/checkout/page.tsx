@@ -30,10 +30,6 @@ const CheckoutPage = () => {
     }
   }, [])
 
-  useEffect(() => {
-    console.log(user?.email, user?.id)
-  }, [user])
-
   const options = useMemo(() => {
     if (!user || !planId) {
       return null
