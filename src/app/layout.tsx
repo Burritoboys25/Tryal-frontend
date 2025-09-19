@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${rubik.variable} `}>
+    <html lang="en" className={`${manrope.variable} ${rubik.variable} teal`}>
       <body className="w-full">
         <NextAuthSessionProvider>
           <UserProvider>
