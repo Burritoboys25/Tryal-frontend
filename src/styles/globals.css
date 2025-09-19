@@ -10,6 +10,19 @@
 @theme {
   --breakpoint-3xl: 1920px;
   --max-width-3xl: 1920px;
+
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-light: var(--surface-light);
+  --color-surface-peach: var(--surface-peach);
+
+  --color-surface-teal: #0e3a44;
+  --color-surface-light-blue: #6dd5ec;
+  --color-surface-light-orange: #faddd5;
+  --color-surface-light-teal: #d5f3fa;
+  --color-surface-light-white: #f5f5f5;
+
+  --color-foreground-light: #2e1109;
+  --color-foreground-dark: #f5f5f5;
 }
 
 @theme inline {
@@ -117,7 +130,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  @apply h-1/2 w-full md:h-1/2 md:w-1/2;
+  @apply h-1/2 w-full md:h-1/2 md:w-1/2 2xl:h-[416px] 2xl:w-[580px];
 }
 
 .card {
@@ -129,4 +142,13 @@
   background-color: white;
   border: 1px solid #e0e0e0;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+svg.thicc-path {
+  position: absolute;
+  width: 100vw;
+  height: 200vw;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }

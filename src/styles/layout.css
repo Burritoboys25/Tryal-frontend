@@ -19,7 +19,7 @@
 }
 
 .section-width-container {
-  @apply mx-auto px-4 2xl:max-w-3xl 2xl:px-8;
+  @apply mx-auto max-w-[90vw] px-4 py-12 2xl:max-w-[95vw] 2xl:px-24 2xl:py-20;
 }
 
 .grid-12 {
