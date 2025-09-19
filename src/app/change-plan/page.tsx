@@ -16,6 +16,9 @@ export default function ChangePlan() {
     if (userData?.activeSubscription?.planId) {
       setCurrentPlanId(userData.activeSubscription.planId)
     }
+
+    console.log(userData)
+    console.log("TEST")
   }, [userData])
 
   useEffect(() => {

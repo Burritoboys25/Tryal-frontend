@@ -31,18 +31,17 @@ export const authOptions: NextAuthOptions = {
           })
 
           if (!res.ok) {
-            const data = await res.json()
-            throw new Error(data.error || 'Login failed')
+            throw new Error('Login failed')
           }
 
-          const data = await res.json()
+          const token = await res.json()
 
-          const decodedToken = jwtDecode<{ sub: string }>(data.accessToken)
+          const decodedToken = jwtDecode<{ sub: string }>(token.data.accessToken)
 
           return {
             id: decodedToken.sub,
-            accessToken: data.accessToken,
-            refreshToken: data.refreshToken,
+            accessToken: token.data.accessToken,
+            refreshToken: token.data.refreshToken,
           } as JwtUser
         } catch (error) {
           console.error('Login error:', error)

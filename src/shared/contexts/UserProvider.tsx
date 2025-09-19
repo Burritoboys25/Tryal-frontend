@@ -43,12 +43,12 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
         const userData = await userRes.json()
         const subscriptionData = await subRes.json()
-        const activeSubscription = subscriptionData[0]
+        const activeSubscription = subscriptionData.data[0]
 
-        setUserData({ ...userData, activeSubscription })
+        setUserData({ ...userData.data, activeSubscription })
 
         if (typeof window !== 'undefined') {
-          localStorage.setItem(USER_DATA_KEY, JSON.stringify({ ...userData, activeSubscription }))
+          localStorage.setItem(USER_DATA_KEY, JSON.stringify({ ...userData.data, activeSubscription }))
         }
       } catch (err) {
         if (process.env.NODE_ENV !== 'production') {
