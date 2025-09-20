@@ -50,8 +50,8 @@ const page = async ({ searchParams }: PageProps) => {
               <span className="text-button ml-1">Back</span>
             </Button>
           </Link>
-          <div className='mt-12'>
-            <BookingReview bookingDetail={bookingDetail} party={party} />
+          <div className='mt-12 container'>
+            <BookingReview bookingDetail={bookingDetail} businessName={business?.name ?? ""} party={party} />
           </div>
 
         </div>
