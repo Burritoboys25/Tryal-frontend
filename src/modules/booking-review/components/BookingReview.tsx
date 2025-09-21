@@ -30,6 +30,7 @@ const BookingReview: React.FC<BookingReviewProps> = ({ bookingDetail, businessNa
   return (
     <section className="mx-auto flex w-[370px] flex-col gap-[2rem]">
       <div className="flex gap-[2rem]">
+        {/* image */}
         <div className="h-[132px] w-[160px] rounded-xl bg-gray-300"></div>
         <div className="flex flex-col gap-2">
           {/* {businessName} - {experience.experienceName} */}
@@ -49,8 +50,8 @@ const BookingReview: React.FC<BookingReviewProps> = ({ bookingDetail, businessNa
       </div>
 
       {/* credits */}
-      <div className="flex justify-end items-center gap-[2rem]">
-        <div className='mx-auto'>
+      <div className="flex items-center justify-end gap-[2rem]">
+        <div className="mx-auto">
           <div className="flex items-center gap-2 rounded-[.5rem] bg-[#FADDD5] px-4 py-3">
             <CreditIcon />
             <p className="text-sub2 text-primary">{experience.creditPrice} credits</p>
