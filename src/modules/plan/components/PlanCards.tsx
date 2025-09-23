@@ -13,6 +13,8 @@ const PlanCards = ({ plans, currentPlanId }: PlanCardsProps) => {
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const middleIndex = Math.floor(plans.length / 2)
 
+  //TODO: Selecting a changed plan card should route to /api/stripe/update in backend
+
   return (
     <section>
       <ScrollArea className="w-full" orientation="horizontal">
