@@ -85,7 +85,7 @@ const Intro = () => {
       <div className="grid grid-cols-1 gap-y-8 md:grid-cols-3 md:gap-y-24">
         <h3
           id="intro-title"
-          className="overflow-visible text-xl md:col-span-3 md:max-w-1/2 md:text-4xl md:font-semibold"
+          className="overflow-visible text-xl md:col-span-3 md:max-w-3/4 md:text-2xl md:font-semibold 2xl:max-w-1/2 2xl:text-4xl"
         >
           Welcome to Tryal — the easiest way to discover and book experiences near you or halfway
           across the world. Whether you’re seeking adventure, relaxation, or something completely
