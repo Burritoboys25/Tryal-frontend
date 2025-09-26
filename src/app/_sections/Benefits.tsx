@@ -46,8 +46,6 @@ const Benefits = () => {
       const path = svg.querySelector('path') as SVGPathElement | null
       if (!path) return
 
-      console.log(path)
-
       const initPath = () => {
         const length = path.getTotalLength()
         gsap.set(path, { strokeDasharray: length, strokeDashoffset: -length })
@@ -110,20 +108,22 @@ const Benefits = () => {
       </svg>
 
       {/* Steps */}
-      <div className="space-y-2">
+      <div className="mx-auto max-w-[90vw] space-y-2 px-4 2xl:max-w-[95vw] 2xl:px-24">
         {BENEFITS.map((benefit, index) => (
           <div
             key={index}
-            className={`flex h-[50vh] items-center justify-between md:gap-64 md:px-8 ${index % 2 !== 0 ? '' : 'md:flex-row-reverse'}`}
+            className={`flex h-[50vh] items-center justify-between md:gap-64 ${index % 2 !== 0 ? '' : 'md:flex-row-reverse'}`}
             ref={el => setBenefitRef(el, index)}
           >
             <div
-              className={`flex max-w-2xl flex-col gap-2 px-4 ${index % 2 === 0 ? '' : 'col-start-1'} `}
+              className={`flex max-w-2xl flex-col gap-2 ${index % 2 === 0 ? '' : 'col-start-1'} `}
             >
-              <h3 className="text-[2rem] font-semibold tracking-tight">{benefit.title}</h3>
+              <h3 className="text-[1.75rem] font-semibold tracking-tight 2xl:text-[2rem]">
+                {benefit.title}
+              </h3>
               <p className="text-sub2">{benefit.description}</p>
             </div>
-            <div className="relative h-[389px] max-w-xl flex-1 overflow-hidden rounded-2xl">
+            <div className="relative max-w-xl flex-1 overflow-hidden rounded-2xl lg:h-[389px]">
               <Image src={benefit.image} alt={benefit.title} className="object-cover" fill />
             </div>
           </div>
