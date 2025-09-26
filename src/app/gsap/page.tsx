@@ -11,6 +11,7 @@ import FunMarquee from '../_sections/FunMarquee'
 import ExploreMore from '../_sections/ExploreMore'
 import Stats from '../_sections/Stats'
 import PathScrollSteps from '../_sections/PathScrollSteps'
+import Benefits from '../_sections/Benefits'
 
 export default function GSAPPage() {
   return (
@@ -20,6 +21,7 @@ export default function GSAPPage() {
           <Hero />
           <FunMarquee />
           <Intro />
+          <Benefits />
           <ExploreMore />
           <Stats />
           <StickySteps />
