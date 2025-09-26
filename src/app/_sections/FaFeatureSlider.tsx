@@ -17,10 +17,10 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     id: 'pricing',
-    tab: 'Smart Pricing Adjustments',
-    eyebrow: 'Demand-Driven Pricing',
-    title: 'Surge When It’s Hot, Fill When It’s Not',
-    body: 'Automatically adjust your prices based on demand. Raise prices during peak times to maximize revenue, or lower them during slow periods to encourage bookings.',
+    tab: 'Smart Pricing & Optimization',
+    eyebrow: 'Demand-Driven Intelligence',
+    title: 'Smarter Pricing, Bigger Impact',
+    body: 'Automatically adjust your prices based on demand, seasonality, and class popularity. Open or reduce class sizes as needed, while AI-powered insights recommend the best times and price points to maximize bookings and revenue. Think of it as surge-pricing — but built for your business.',
     image: '/calendar.png',
     accent: 'bg-amber-200',
   },
@@ -41,24 +41,6 @@ const SLIDES: Slide[] = [
     body: 'Weather, cancellations, or shifting schedules? No problem. Easily edit or reschedule your experiences in just a few clicks, keeping your business running smoothly.',
     image: '/landing_page_img_2.png',
     accent: 'bg-sky-200',
-  },
-  {
-    id: 'optimization',
-    tab: 'Class Size Optimization',
-    eyebrow: 'Adaptive Capacity Management',
-    title: 'Maximize Seats, Maximize Earnings',
-    body: 'Adjust availability based on demand. Add extra seats to a popular class or reduce capacity for an exclusive session to create a premium feel.',
-    image: '/landing_page_img_3.png',
-    accent: 'bg-violet-200',
-  },
-  {
-    id: 'ai',
-    tab: 'AI-Driven Recommendations',
-    eyebrow: 'Data-Powered Insights',
-    title: 'Smarter Insights for Smarter Pricing',
-    body: 'Our AI-powered tools will suggest the best time slots and price points based on historical demand, ensuring you always stay one step ahead.',
-    image: '/landing_page_img_4.png',
-    accent: 'bg-rose-200',
   },
 ]
 

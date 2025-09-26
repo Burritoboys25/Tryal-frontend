@@ -186,7 +186,13 @@ const StickySteps = () => {
   )
 
   return (
-    <Section ref={scope} className="cards-section relative" id="sticky-steps" background="teal">
+    <Section
+      ref={scope}
+      className="cards-section mx-w-[40vw] relative mx-8 rounded-3xl"
+      full
+      id="sticky-steps"
+      background="teal"
+    >
       <h3 className="absolute top-1/8 left-1/2 -translate-x-1/2 text-center text-3xl">
         Turn your curiosity into memories in just 4 steps. A quick and easy process to bring your
         next experience to life.
