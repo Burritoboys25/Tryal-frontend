@@ -89,19 +89,19 @@ const Hero = () => {
       id="hero"
       ref={scope}
       className="grid min-h-screen grid-cols-1 md:grid-cols-12 2xl:px-24"
-      full
+      background="light-teal"
     >
       {/* Left Side */}
       <div className="row-start-2 self-start px-4 md:col-span-6 md:row-start-1 md:self-center md:px-0">
         <div data-reveal-split>
-          <h1 className="hero-text title">
+          <h1 className="hero-text title text-[#09272E]">
             Discover.
             <br />
             Experience.
             <br />
             Repeat.
           </h1>
-          <p className="text-sub1 sub-text text-muted-foreground mt-2 mb-4 md:max-w-xl">
+          <p className="text-sub2 sub-text mt-2 mb-4 text-[#09272E] md:max-w-xl">
             From hidden gems to thrilling adventures—find and book unforgettable experiences{' '}
           </p>
         </div>

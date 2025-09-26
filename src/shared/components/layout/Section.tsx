@@ -18,7 +18,7 @@ const Section = forwardRef<HTMLElement, SectionProps>(
         className={clsx(
           full ? '' : 'section-width-container rounded-3xl',
           {
-            'bg-surface-teal text-foreground-dark': background === 'teal',
+            'text-foreground-dark bg-[#124E5B]': background === 'teal',
             'bg-surface-light-orange text-foreground-light': background === 'nacho',
             'bg-surface-light-white text-foreground-light': background === 'white',
             'bg-surface-light-teal text-foreground-light': background === 'light-teal',

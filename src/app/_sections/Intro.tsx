@@ -1,8 +1,8 @@
 'use client'
 import Section from '@/shared/components/layout/Section'
-import LocationIcon from '@/shared/assets/icons/where_to_vote.svg'
+import PottedPlantIcon from '@/shared/assets/icons/pottedPlant.svg'
 import BookingIcon from '@/shared/assets/icons/booking.svg'
-import CalendarIcon from '@/shared/assets/icons/calendar_clock.svg'
+import HikingIcon from '@/shared/assets/icons/hiking.svg'
 import { useRef } from 'react'
 import { gsap, useGSAP, SplitText } from '@/shared/lib/gsap'
 
@@ -14,13 +14,13 @@ const cards = [
   },
   {
     title: 'Support local & small businesses',
-    icon: LocationIcon,
+    icon: PottedPlantIcon,
     description:
       'Every booking helps local instructors, artists, and entrepreneurs grow their passion.',
   },
   {
     title: 'Unleash your inner explorer',
-    icon: CalendarIcon,
+    icon: HikingIcon,
     description: 'Break away from the usual and dive into new hobbies and experiences.',
   },
 ]
@@ -78,18 +78,20 @@ const Intro = () => {
   return (
     <Section
       id="intro"
-      className="flex min-h-[70dvh] snap-center flex-col justify-center"
+      className="flex min-h-[70dvh] flex-col justify-center py-14"
       ref={scope}
-      background="teal"
+      background="none"
     >
-      <div className="grid grid-cols-1 gap-y-8 md:grid-cols-3 md:gap-y-16">
+      <div className="grid grid-cols-1 gap-y-8 md:grid-cols-3 md:gap-y-24">
         <h3
           id="intro-title"
           className="overflow-visible text-xl md:col-span-3 md:max-w-1/2 md:text-4xl md:font-semibold"
         >
-          Welcome to Tryal, the easiest way to explore and book experiences near you—or halfway
-          across the world. Whether you&apos;re craving adventure, relaxation, or something totally
-          new, we&apos;ve got curated options to fit every mood.
+          Welcome to Tryal — the easiest way to discover and book experiences near you or halfway
+          across the world. Whether you’re seeking adventure, relaxation, or something completely
+          new, our platform curates activities to fit every mood and moment. With trusted hosts,
+          flexible booking, and unique options you won’t find anywhere else, Tryal makes it simple
+          to explore more and create lasting memories.
         </h3>
         <div
           id="intro-grid"
