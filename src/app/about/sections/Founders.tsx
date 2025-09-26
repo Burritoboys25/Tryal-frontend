@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Mail } from 'lucide-react'
 import Linkedin from '@/shared/assets/icons/linkedin.svg'
 import BlurBackground from '@/shared/components/ui/base/BlurBackground'
+import Section from '@/shared/components/layout/Section'
 
 const founders = [
   {
@@ -37,10 +38,10 @@ const founders = [
 
 export default function Founders() {
   return (
-    <section id="contact" className="py-[6rem]">
+    <Section id="contact" background="salmon" className="py-[6rem]">
       <Container className="text-center">
-        <h2 className="text-h2 mb-[1rem]">Get to Know the Founders Behind The Mission</h2>
-        <p className="text-body2 mx-auto mb-[3rem] max-w-2xl">
+        <h1 className="text-h1 mb-[1rem]">Get to Know the Founders Behind The Mission</h1>
+        <p className="text-sub4 mx-auto mb-[3rem]">
           Our team is a passionate group of innovators, creators, and problem-solvers dedicated to
           making a difference. Each member brings unique skills and expertise, working together to
           drive our mission forward.
@@ -88,6 +89,6 @@ export default function Founders() {
           </div>
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }

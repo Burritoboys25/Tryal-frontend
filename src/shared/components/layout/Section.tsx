@@ -6,7 +6,7 @@ type SectionProps = {
   className?: string
   id?: string
   full?: boolean // for full-bleed sections
-  background?: 'teal' | 'nacho' | 'orange' | 'white' | 'none' | 'black' | 'light-teal'
+  background?: 'teal' | 'nacho' | 'orange' | 'white' | 'none' | 'black' | 'light-teal' | 'salmon'
 }
 
 const Section = forwardRef<HTMLElement, SectionProps>(
@@ -25,6 +25,7 @@ const Section = forwardRef<HTMLElement, SectionProps>(
             'text-foreground-dark bg-black': background === 'black',
             'bg-transparent': background === 'none',
             'bg-orange-500 text-white': background === 'orange',
+            'text-background bg-[#FADDD5]': background === 'salmon',
           },
           className,
         )}

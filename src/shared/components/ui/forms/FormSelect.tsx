@@ -33,7 +33,7 @@ export const FormSelect = ({
         {label}
       </Label>
       <Select value={value} onValueChange={onChange}>
-        <SelectTrigger id={name} className="w-full">
+        <SelectTrigger id={name} className="w-full bg-white">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>

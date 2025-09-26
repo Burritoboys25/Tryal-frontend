@@ -71,7 +71,7 @@ const ReferralForm = () => {
   return (
     <section className="-mt-[4.5rem] flex min-h-screen items-center justify-center px-[1rem]">
       <form className="max-w-md space-y-[1.5rem]" onSubmit={handleSubmit}>
-        <h1 className="text-h2">Thank you for your interest!</h1>
+        <h1 className="text-h1">Thank you for your interest!</h1>
         <div className="text-body2 space-y-[1rem]">
           <p className="">
             We&apos;re excited to have you on board. We&apos;ll be sending you updates via email as
