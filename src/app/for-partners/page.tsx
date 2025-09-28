@@ -1,43 +1,35 @@
 'use client'
 
-import Section from '@/shared/components/layout/Section'
-
-import { ReactLenis } from 'lenis/react'
-import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 
 import FPHero from '../_sections/FPHero'
-import HowItWorks from '../_sections/FPHowItWorks'
 import Benefits from '../_sections/FPBenefits'
-import Pricing from '../_sections/Pricing'
 import FaqSection from '../_sections/Faq'
 import FaFeatures from '../_sections/FaFeatures'
+import LenisProvider from '@/shared/lib/LenisProvider'
+import ExploreMore from '../_sections/ExploreMore'
+import PathScrollSteps from '../_sections/PathScrollSteps'
+import MainFooter from '@/shared/components/layout/MainFooter'
 
 gsap.registerPlugin(useGSAP)
 
 const ForPartnersPage = () => {
-  const scrollContainer = useRef(null)
-
   return (
     <>
-      <ReactLenis root>
-        <div ref={scrollContainer}>
-          <Section className="relative overflow-hidden rounded-2xl border px-2">
-            <div className="absolute inset-0 z-0 bg-[url('/FPWelcome.png')] bg-cover bg-center opacity-40" />
-            <div className="absolute inset-0 z-10 bg-black/40" />
-            <div className="relative z-20">
-              <FPHero />
-            </div>
-          </Section>
-          <HowItWorks />
+      <LenisProvider>
+        <div className="space-y-4 md:space-y-8">
+          <FPHero />
           <Benefits />
+          <ExploreMore />
           <FaFeatures />
-          <Pricing />
-          <FaqSection />
-          <div className="h-[100dvh]" />
+          <PathScrollSteps />
+          <div className="pb-12">
+            <FaqSection />
+          </div>
         </div>
-      </ReactLenis>
+        <MainFooter />
+      </LenisProvider>
     </>
   )
 }

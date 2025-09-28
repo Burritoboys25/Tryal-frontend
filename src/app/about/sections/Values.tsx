@@ -3,7 +3,7 @@ import BalanceIcon from '@/shared/assets/icons/balance.svg'
 import CommunityIcon from '@/shared/assets/icons/community.svg'
 import ExplorationIcon from '@/shared/assets/icons/exploration.svg'
 import OpenMindedIcon from '@/shared/assets/icons/openminded.svg'
-import BlurBackground from '@/shared/components/ui/base/BlurBackground'
+import Section from '@/shared/components/layout/Section'
 
 const values = [
   {
@@ -34,20 +34,14 @@ const values = [
 
 const Values = () => {
   return (
-    <section className="flex flex-col items-center text-center">
-      <h2 className="text-h2 mb-4">Our Values</h2>
-      <p className="text-body2 mx-auto mb-12 max-w-lg">
+    <Section id="values" background="teal" className="flex flex-col items-center text-center">
+      <h1 className="text-h1 mb-4">Our Values</h1>
+      <p className="text-sub4 mx-auto mb-12">
         Our values are the foundation of everything we do. They guide our decisions, shape our
         culture, and define how we work together and serve our community.
       </p>
 
       <div className="relative z-0 flex items-center justify-center">
-        <BlurBackground
-          className="absolute top-1/2 left-1/2 -z-10 h-full max-h-[25rem] w-[4rem] max-w-full -translate-x-1/2 -translate-y-1/2 overflow-hidden md:h-[12.5rem] md:w-[12.5rem] 2xl:h-[3.125rem] 2xl:w-full"
-          blur="5rem"
-          color="#F4BCAB"
-          style={{ borderRadius: '4rem' }}
-        />
         <div className="grid grid-cols-1 gap-[1.25rem] text-left md:grid-cols-2 2xl:grid-cols-4">
           {values.map(({ title, icon: Icon, description }) => (
             <div
@@ -56,14 +50,14 @@ const Values = () => {
             >
               <div className="flex items-center gap-[1rem]">
                 <Icon className="h-[3rem] w-[3rem]" aria-hidden="true" />
-                <h4 className="text-sub1">{title}</h4>
+                <h4 className="text-sub1 text-background">{title}</h4>
               </div>
               <div className="text-body2 text-muted-foreground">{description}</div>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   )
 }
 

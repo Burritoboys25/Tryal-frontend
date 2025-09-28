@@ -74,10 +74,7 @@ const FPBenefits = () => {
   }, [])
 
   return (
-    <Section
-      id="benefits"
-      className="flex min-h-[70dvh] snap-center flex-col justify-center py-16 md:py-24"
-    >
+    <Section id="benefits" background="none">
       <div className="grid w-full grid-cols-1 md:grid-cols-5">
         <h3 id="benefits-title" className="text-h2 mb-2 text-left md:col-span-3 md:col-start-1">
           Running a local business is hard enough without spending hours on marketing, managing

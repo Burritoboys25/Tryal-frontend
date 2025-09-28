@@ -61,7 +61,7 @@ const FunMarquee = () => {
     { scope: scope },
   )
   return (
-    <Section id="marque" ref={scope} full className="flex items-center">
+    <Section id="marquee" ref={scope} full className="flex items-center">
       <div
         className="text-h2 text-foreground-dark flex h-32 w-[40vw] items-center justify-center rounded-2xl bg-[#124E5B] md:ml-8 md:h-49 md:w-[20vw]"
         data-anim="split-reveal"
