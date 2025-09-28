@@ -8,7 +8,7 @@ export default function ThankYouPage() {
     <>
       <Section
         id="thank-you"
-        background="light-teal"
+        background="white"
         className="flex justify-center pt-[5.0625rem] pb-[7.5rem]"
       >
         <Suspense fallback={<p className="py-[5rem] text-center">Loading...</p>}>

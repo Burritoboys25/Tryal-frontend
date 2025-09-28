@@ -107,8 +107,8 @@ const BecomePartnerForm = () => {
     <>
       <Section
         id="partner-waitlist"
-        className="flex justify-center pt-[5.0625rem] pb-[7.5rem]"
-        background="light-teal"
+        className="flex min-h-screen justify-center pt-[5.0625rem] pb-[7.5rem]"
+        background="white"
       >
         <form onSubmit={handleSubmit} className="w-full max-w-[27rem] space-y-[0.5rem]">
           <div className="space-y-[0.375rem]">
