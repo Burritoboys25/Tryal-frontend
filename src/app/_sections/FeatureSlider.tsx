@@ -153,12 +153,6 @@ function SlideCard({ slide }: { slide: Slide }) {
           'text-[#2E1109]',
         ].join(' ')}
       >
-        {/* Uncomment if we want to use eyebrow */}
-        {/* {slide.eyebrow && (
-          <span className="inline-flex items-center rounded-full bg-white/60 px-3 py-1 text-xs font-medium">
-            {slide.eyebrow}
-          </span>
-        )} */}
         <div className="flex h-full max-w-[75%] flex-col justify-between">
           <h2 className="text-h2 mt-4 leading-tight font-semibold tracking-tight whitespace-pre-line">
             {slide.title}

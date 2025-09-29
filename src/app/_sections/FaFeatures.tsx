@@ -161,15 +161,12 @@ function SlideCard({ slide }: { slide: Slide }) {
           'text-neutral-900',
         ].join(' ')}
       >
-        {slide.eyebrow && (
-          <span className="inline-flex items-center rounded-full bg-white/60 px-3 py-1 text-xs font-medium">
-            {slide.eyebrow}
-          </span>
-        )}
-        <h2 className="text-h2 mt-4 leading-tight font-bold tracking-tight whitespace-pre-line">
-          {slide.title}
-        </h2>
-        <p className="text-body mt-4 text-neutral-700">{slide.body}</p>
+        <div className="flex h-full max-w-[75%] flex-col justify-between">
+          <h2 className="text-h2 mt-4 leading-tight font-semibold tracking-tight whitespace-pre-line">
+            {slide.title}
+          </h2>
+          <p className="text-sub4">{slide.body}</p>
+        </div>
       </div>
 
       {/* Right panel: device frame */}
