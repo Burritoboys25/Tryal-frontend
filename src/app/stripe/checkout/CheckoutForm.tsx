@@ -30,7 +30,7 @@ const CheckoutForm = () => {
 
     return {
       fetchClientSecret: () =>
-        fetch('http://localhost:8080/api/stripe/session', {
+        fetch(`${process.env.BACKEND_URL}/api/stripe/session`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

@@ -13,7 +13,7 @@ const ReturnPage = () => {
     const urlParams = new URLSearchParams(queryString)
     const sessionId = urlParams.get('session_id')
 
-    fetch(`http://localhost:8080/api/stripe/session?session_id=${sessionId}`)
+    fetch(`${process.env.BACKEND_URL}/api/stripe/session?session_id=${sessionId}`)
       .then(res => res.json())
       .then(data => {
         setStatus(data.status)
