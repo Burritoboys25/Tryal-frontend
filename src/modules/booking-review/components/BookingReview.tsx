@@ -7,7 +7,6 @@ import ClockIcon from '@/shared/assets/icons/clock.svg'
 import PersonIcon from '@/shared/assets/icons/person.svg'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
 import { Button } from '@/shared/components/ui/base/button'
-import { Plus } from 'lucide-react'
 
 interface BookingDetail {
   experience: Experience

@@ -2,7 +2,6 @@ import { ScrollArea, ScrollBar } from '@/shared/components/ui/base/scroll-area'
 import { Experience } from '@/shared/types/experienceTypes'
 import DefaultImage from '../../../../../public/default_experience_image.png'
 import Image from 'next/image'
-import React, { useState } from 'react'
 import { Badge } from '@/shared/components/ui/base/badge'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
 

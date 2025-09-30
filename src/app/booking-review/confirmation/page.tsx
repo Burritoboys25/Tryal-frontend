@@ -66,7 +66,7 @@ const page = () => {
                 <h1 className="text-sub1">What to know before you go</h1>
                 <div className="flex flex-col gap-4">
                   <h2 className="text-[1rem] leading-[2rem] font-bold">
-                    Business' terms and conditions
+                    Business&apos; terms and conditions
                   </h2>
                   <p className="text-[0.875rem] leading-[1rem]">
                     Cancellations made at least 48 hours in advance may be rescheduled once.
