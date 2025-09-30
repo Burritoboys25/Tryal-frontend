@@ -1,10 +1,11 @@
 import Container from '@/shared/components/layout/Container'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
-import { CircleCheck } from 'lucide-react'
+// import { CircleCheck } from 'lucide-react'
 import CalendarIcon from '@/shared/assets/icons/calendar.svg'
 import ClockIcon from '@/shared/assets/icons/clock.svg'
 import PersonIcon from '@/shared/assets/icons/person.svg'
-import React from 'react'
+import CheckIcon from '@/shared/assets/icons/check_circle.svg'
+// import CreditIcon from '@/shared/assets/icons/credit.svg'
 
 const page = () => {
   return (
@@ -15,7 +16,7 @@ const page = () => {
             <div className="h-[769px] w-[562px]">
               {/* Confirmation Heading */}
               <div className="flex flex-col items-center gap-2">
-                <CircleCheck size={90} color="#388e3c" />
+                <CheckIcon />
                 <h1 className="text-h3">Booking Confirmed</h1>
               </div>
 
