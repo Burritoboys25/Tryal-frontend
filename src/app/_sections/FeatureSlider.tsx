@@ -154,8 +154,8 @@ function SlideCard({ slide }: { slide: Slide }) {
             {slide.eyebrow}
           </span>
         )} */}
-        <div className="flex h-full flex-col justify-between">
-          <h2 className="text-h2 mt-4 max-w-[80%] leading-tight font-semibold tracking-tight whitespace-pre-line">
+        <div className="flex h-full max-w-[75%] flex-col justify-between">
+          <h2 className="text-h2 mt-4 leading-tight font-semibold tracking-tight whitespace-pre-line">
             {slide.title}
           </h2>
           <p className="text-sub4">{slide.body}</p>

@@ -17,16 +17,22 @@ const peopleOptions = [
   { label: '5 people', value: 5 },
 ]
 
-const BookingFilters = () => {
-  const [selectedPeople, setSelectedPeople] = useState(2)
-  const [date, setDate] = useState<Date>(new Date())
-  const [month, setMonth] = useState<Date | undefined>(undefined)
-  // const [bookedDate, setBookedDate] = useState<Date | null>(null)
+const BookingFilters = ({
+  selectedPeople,
+  setSelectedPeople,
+  date,
+  setDate,
+  month,
+  setMonth,
+}: {
+  selectedPeople: number
+  setSelectedPeople: React.Dispatch<React.SetStateAction<number>>
+  date: Date
+  setDate: React.Dispatch<React.SetStateAction<Date>>
+  month: Date | undefined
+  setMonth: React.Dispatch<React.SetStateAction<Date | undefined>>
+}) => {
   const [open, setOpen] = useState(false)
-
-  //   const handleBookDate = () => {
-  //   setBookedDate(date)
-  // }
 
   return (
     <section>

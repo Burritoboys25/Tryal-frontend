@@ -33,7 +33,7 @@ function MainHeader({ showSearch = false }: MainHeader) {
   // const userFirstName = session?.user?.firstName || 'User'
   // const userLastName = session?.user?.lastName || ''
   // const userInitials = `${userFirstName.charAt(0)}${userLastName.charAt(0)}`.toUpperCase()
-  const profileImageUrl = `"https://github.com/shadcn.png"`
+  const profileImageUrl = "https://github.com/shadcn.png"
 
   return (
     <header className="fixed top-0 right-0 left-0 z-50 min-h-[4.3125rem] w-full bg-white">
