@@ -17,12 +17,12 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   {
-    id: 'events',
-    tab: 'Events',
-    title: 'Never Miss an Experience',
-    body: 'Discover upcoming experiences and live events near you. From workshops to festivals, there’s always something new to join.',
-    image: '/landing_page_img_1.png',
-    accent: 'bg-[#ABE7F4]',
+    id: 'pricing',
+    tab: 'AI Pricing Adjustments',
+    title: "Surge When It's Hot Fill When It's Not",
+    body: 'Automatically adjust your prices based on demand. Raise prices during peak times to maximize revenue, or lower them during slow periods to encourage bookings.',
+    image: '/demos/chartdemo.mp4',
+    accent: 'bg-[#F4BCAB]',
   },
   {
     id: 'discovery',
@@ -30,7 +30,7 @@ const SLIDES: Slide[] = [
     title: 'Find new experiences\naround every corner.',
     body: 'Browse gyms, studios, and local creators all in one app. Filter by location, category, or time to uncover experiences tailored to your lifestyle.',
     image: '/landing_page_img_1.png',
-    accent: 'bg-[#F4BCAB]',
+    accent: 'bg-[#ABE7F4]',
   },
   {
     id: 'booking',
@@ -82,12 +82,7 @@ export default function FeatureSlider() {
   const next = () => goTo(Math.min(SLIDES.length - 1, index + 1))
 
   return (
-    <Section
-      id="feature-slider"
-      full
-      className="w-full snap-center flex-col justify-center px-4 md:px-9"
-      background="none"
-    >
+    <Section id="feature-slider" className="px-0" background="none" full>
       <div
         className="relative h-full w-full text-white"
         aria-label="Feature slider"
@@ -148,7 +143,7 @@ function SlideCard({ slide }: { slide: Slide }) {
       {/* Left panel */}
       <div
         className={[
-          'rounded-[2rem] p-6 sm:p-8 lg:col-span-1 lg:p-10',
+          'rounded-3xl p-6 sm:p-8 lg:col-span-1 lg:p-10',
           slide.accent ?? 'bg-amber-200',
           'text-[#2E1109]',
         ].join(' ')}
@@ -159,8 +154,8 @@ function SlideCard({ slide }: { slide: Slide }) {
             {slide.eyebrow}
           </span>
         )} */}
-        <div className="flex h-full max-w-[75%] flex-col justify-between">
-          <h2 className="text-h2 mt-4 leading-tight font-semibold tracking-tight whitespace-pre-line">
+        <div className="flex h-full flex-col justify-between">
+          <h2 className="text-h2 mt-4 max-w-[80%] leading-tight font-semibold tracking-tight whitespace-pre-line">
             {slide.title}
           </h2>
           <p className="text-sub4">{slide.body}</p>
@@ -168,15 +163,19 @@ function SlideCard({ slide }: { slide: Slide }) {
       </div>
 
       {/* Right panel: device frame */}
-      <div className="relative rounded-[2rem] lg:col-span-3">
-        <div className="relative mx-auto aspect-[16/7] w-full overflow-hidden rounded-2xl bg-white shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
-          <Image
-            src={slide.image}
-            alt={slide.title}
-            fill
-            className="object-cover"
-            priority={false}
-          />
+      <div className="relative lg:col-span-3">
+        <div className="relative mx-auto aspect-[16/7] h-full w-full overflow-hidden rounded-3xl bg-white shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
+          {slide.image.includes('.mp4') ? (
+            <video src={slide.image} autoPlay loop muted className="object-cover object-center" />
+          ) : (
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-cover"
+              priority={false}
+            />
+          )}
         </div>
       </div>
     </div>
