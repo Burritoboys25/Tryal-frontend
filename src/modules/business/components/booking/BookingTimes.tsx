@@ -1,39 +1,38 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from '@/shared/components/ui/base/button'
+import { Timeslot } from '@/shared/types/timeslotTypes'
+import { formatTime } from '@/shared/utils/TimeFormatter'
 
-const times = ['11:00 PM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM']
-
-const BookingTimes = () => {
-  const [selected, setSelected] = useState<string | null>(null)
+const BookingTimes = ({
+  timeslots,
+  selectedTimeslot,
+  setSelectedTimeslot
+}: {
+  timeslots: Timeslot[]
+  selectedTimeslot: string | null
+  setSelectedTimeslot: React.Dispatch<React.SetStateAction<string | null>>
+}) => {
 
   return (
     <section>
       <div className="text-sub3 mb-[1rem]">Available Times</div>
       <div className="w-[29.625rem]">
-        <div className="mb-[1.5rem] grid grid-cols-4 gap-[1rem]">
-          {times.map(time => (
+        <div className="mb-[1.5rem] grid grid-cols-4 gap-3">
+          {timeslots.map(time => (
             <Button
-              key={time}
-              variant={selected === time ? 'solid' : 'outline'}
+              key={time.timeslotId}
+              variant={selectedTimeslot === time.timeslotId ? 'solid' : 'outline'}
               size="lg"
               style={{
-                color: selected === time ? 'white' : 'oklch(0.65 0.22 35.34)',
+                color: selectedTimeslot === time.timeslotId ? 'white' : 'oklch(0.65 0.22 35.34)',
               }}
               className="text-button text cursor-pointer rounded-full"
-              onClick={() => setSelected(time)}
+              onClick={() => setSelectedTimeslot(time.timeslotId)}
             >
-              {time}
+              {formatTime(time.startTime)}
             </Button>
           ))}
         </div>
-        <Button
-          variant="solid"
-          size="lg"
-          className="bg-primary w-full rounded-full text-white"
-          disabled={!selected}
-        >
-          Reserve booking
-        </Button>
       </div>
     </section>
   )

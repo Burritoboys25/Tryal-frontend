@@ -1,3 +1,5 @@
+import { Timeslot } from "./timeslotTypes"
+
 export type Experience = {
   experienceId: string 
   businessId: string 
@@ -9,4 +11,5 @@ export type Experience = {
   duration: number
   creditPrice: number
   isActive: boolean
+  timeslots?: Timeslot[]
 }

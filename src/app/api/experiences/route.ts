@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
     const businessId = searchParams.get('businessId')
     let response
     if (businessId) {
-      response = await fetch(`${BACKEND_URL}/api/experiences?businessId=${businessId}`)
+      response = await fetch(`${BACKEND_URL}/api/experiences/business/${businessId}`)
     } else {
       response = await fetch(`${BACKEND_URL}/api/experiences`)
     }
