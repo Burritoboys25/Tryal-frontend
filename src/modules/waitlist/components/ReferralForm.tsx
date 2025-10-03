@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { Button } from '@/shared/components/ui/base/button'
 import { useSearchParams } from 'next/navigation'
 import CheckboxField from '@/shared/components/ui/forms/CheckboxField'
@@ -15,18 +16,17 @@ const referralOptions = [
   'Other',
 ]
 
-import React from 'react'
 
-const ReferralForm = () => {
+const ReferralForm = ({email}: {email: string}) => {
   const [selectedReferrals, setSelectedReferrals] = useState<string[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
 
   const searchParams = useSearchParams()
-  const email = searchParams.get('email')
+  // const email = searchParams.get('email')
   const type = searchParams.get('type')
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleReferralSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!email || !type) return
 
@@ -69,18 +69,16 @@ const ReferralForm = () => {
   }
 
   return (
-    <section className="-mt-[4.5rem] flex min-h-screen items-center justify-center px-[1rem]">
-      <form className="max-w-md space-y-[1.5rem]" onSubmit={handleSubmit}>
-        <h1 className="text-h2">Thank you for your interest!</h1>
-        <div className="text-body2 space-y-[1rem]">
-          <p className="">
-            We&apos;re excited to have you on board. We&apos;ll be sending you updates via email as
-            we get closer to launch, so keep an eye on your inbox!{' '}
-          </p>
-          <p>
-            Before you go, could you let us know how you heard about us? It really helps us out!
-          </p>
-        </div>
+    <form className="max-w-sm" onSubmit={handleReferralSubmit}>
+      <h1 className="text-h1">Thank you for your interest!</h1>
+      <div className="mt-2 flex flex-col gap-5 text-[0.875rem] leading-[1.25rem]">
+        <p className="">
+          We&apos;re excited to have you on board. We&apos;ll be sending you updates via email as we
+          get closer to launch, so keep an eye on your inbox!{' '}
+        </p>
+        <p>Before you go, could you let us know how you heard about us? It really helps us out!</p>
+      </div>
+      <div className='mt-8 flex flex-col gap-4'>
         {referralOptions.map(option => (
           <CheckboxField
             key={option}
@@ -91,11 +89,11 @@ const ReferralForm = () => {
             onChange={handleReferralChange}
           />
         ))}
-        <Button type="submit" variant="solid" className="mt-[0.5rem] w-full">
-          {isSubmitting ? 'Submitting...' : 'Submit'}
-        </Button>
-      </form>
-    </section>
+      </div>
+      <Button type="submit" variant="solid" className="mt-7 w-full cursor-pointer">
+        {isSubmitting ? 'Submitting...' : 'Submit'}
+      </Button>
+    </form>
   )
 }
 

@@ -15,14 +15,18 @@ type ViewLayoutProps = {
 const ViewLayout = ({ type, children, header, footer }: ViewLayoutProps) => {
   let defaultNavbar: React.ReactNode = null
   let defaultFooter: React.ReactNode = null
+  let partnerBGColor = ''
+  let mainStyles = 'mt-[4.3125rem]'
   switch (type) {
     case 'landing':
       defaultNavbar = <LandingNavbar />
       defaultFooter = <MainFooter />
       break
     case 'partner':
-      defaultNavbar = <LandingNavbar disablePartner={true} />
+      defaultNavbar = null
       defaultFooter = <MainFooter />
+      partnerBGColor = 'bg-[#09272E]'
+      mainStyles = 'h-screen p-[2rem]'
       break
     case 'explore':
       defaultNavbar = <MainHeader showSearch={true} />
@@ -37,9 +41,9 @@ const ViewLayout = ({ type, children, header, footer }: ViewLayoutProps) => {
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className={`flex min-h-screen flex-col ${partnerBGColor}`}>
       {header ?? defaultNavbar}
-      <main className="mt-[4.3125rem] flex-grow">{children}</main>
+      <main className={`flex-grow ${mainStyles}`}>{children}</main>
       {footer ?? defaultFooter}
     </div>
   )
