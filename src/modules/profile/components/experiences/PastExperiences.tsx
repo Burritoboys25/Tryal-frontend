@@ -4,7 +4,7 @@ import CalendarIcon from '@/shared/assets/icons/calendar.svg'
 import ClockIcon from '@/shared/assets/icons/clock.svg'
 import PersonIcon from '@/shared/assets/icons/person.svg'
 import { ExperienceType } from '../../types/ExperienceTypes'
-import { formatDate, formatTime } from '../../utils/TimeFormatter'
+import { formatDate, formatTime } from '../../../../shared/utils/TimeFormatter'
 import Image from 'next/image'
 import DefaultImage from '../../../../../public/default_experience_image.png'
 

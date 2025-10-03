@@ -9,7 +9,7 @@ import CalendarIcon from '@/shared/assets/icons/calendar.svg'
 import ClockIcon from '@/shared/assets/icons/clock.svg'
 import PersonIcon from '@/shared/assets/icons/person.svg'
 import DefaultImage from '../../../../../public/default_experience_image.png'
-import { formatDate, formatTime } from '../../utils/TimeFormatter'
+import { formatDate, formatTime } from '../../../../shared/utils/TimeFormatter'
 
 interface BookingDetails {
   userId: string
@@ -25,7 +25,7 @@ interface BookingDetails {
   instagramHandle?: string // optional since you noted it might come from CMS
   party: number
   timeslotDate: string // could be Date if you want to parse it
-  startTime: string     // could also be Date or a time type
+  startTime: string // could also be Date or a time type
 }
 
 // TODO: Fix bookingDetails type when it's more clear what object should return
@@ -112,11 +112,11 @@ const ViewEditPage = (bookingDetails: BookingDetails) => {
           <div className="flex flex-col gap-4">
             <h6 className="text-sub3">Note from business</h6>
             <p className="text-body2">
-              We&apos;re so excited to welcome you into our cozy clay studio! Whether it&apos;s your first
-              time or your hundredth, our classes are all about creativity, connection, and getting
-              your hands a little dirty. Don&apos;t stress about being “good”—just come ready to play,
-              relax, and make something from the heart. We&apos;ll guide you every step of the way. Can&apos;t
-              wait to create with you!
+              We&apos;re so excited to welcome you into our cozy clay studio! Whether it&apos;s your
+              first time or your hundredth, our classes are all about creativity, connection, and
+              getting your hands a little dirty. Don&apos;t stress about being “good”—just come
+              ready to play, relax, and make something from the heart. We&apos;ll guide you every
+              step of the way. Can&apos;t wait to create with you!
             </p>
           </div>
         </div>
@@ -127,7 +127,7 @@ const ViewEditPage = (bookingDetails: BookingDetails) => {
         {/* TODO: Implement MAPBOX */}
         <div className="h-[189px] w-[281px] bg-gray-500"></div>
         {/* Contact Details */}
-        <div className='flex flex-col gap-3.5'>
+        <div className="flex flex-col gap-3.5">
           <div className="flex items-center gap-2">
             <MapPin />
             <p className="text-body2">{bookingDetails.address}</p>
