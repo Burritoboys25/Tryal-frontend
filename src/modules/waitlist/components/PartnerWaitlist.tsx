@@ -3,7 +3,6 @@
 import React from 'react'
 import PartnerWaitlistForm from './PartnerWaitlistForm'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import {
   partnerWaitlistSchema,
   PartnerWaitlistFormData,
@@ -37,8 +36,6 @@ const PartnerWaitlist = () => {
     }))
   }
 
-  const router = useRouter()
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -67,7 +64,6 @@ const PartnerWaitlist = () => {
       if (res.ok) {
         showToast({ type: 'waitlist', description: 'We’ll be in touch soon!' })
         setIsSubmitted(true)
-        // router.push(`/thank-you?email=${encodeURIComponent(form.email)}&type=partner`)
       } else {
         showToast({ type: 'error' })
         const data = await res.json()

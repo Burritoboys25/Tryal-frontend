@@ -17,7 +17,7 @@ const referralOptions = [
 ]
 
 
-const ReferralForm = ({email}: {email: string | null }) => {
+const ReferralForm = ({email}: {email: string | null | undefined }) => {
   const [selectedReferrals, setSelectedReferrals] = useState<string[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
@@ -26,6 +26,8 @@ const ReferralForm = ({email}: {email: string | null }) => {
   const type = searchParams.get('type')
 
   const handleReferralSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(email)
+    console.log(type)
     e.preventDefault()
     if (!email || !type) return
 
