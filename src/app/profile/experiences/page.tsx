@@ -3,7 +3,7 @@ import ExperiencePage from '@/modules/profile/components/experiences/ExperienceP
 import API_BASE_URL from '@/shared/lib/apiBaseUrl'
 
 const Page = async () => {
-  //   // TODO: get userid from session -- currently hardcoded
+  // TODO: get userid from session -- currently hardcoded
   const userId = '272d2788-ee1e-4056-ae09-4829aff17909'
 
   const bookingsRes = await fetch(`${API_BASE_URL}/api/profile/${userId}/bookings`, {
@@ -21,7 +21,7 @@ const Page = async () => {
       <h1 className="text-h3">Experiences</h1>
       <p className="text-body2 mt-1">View and/or manage your experiences.</p>
 
-      <ExperiencePage bookings={bookings} bookmarks={bookmarks} />
+      <ExperiencePage bookings={bookings.data} bookmarks={bookmarks.data} />
     </div>
   )
 }

@@ -42,7 +42,7 @@ export const useFilters = () => {
         const categories = await res.json()
 
         // Map the Categories response to lavel and value for front end
-        const categoryOptions: FilterOption[] = categories.map((cat: Categories) => ({
+        const categoryOptions: FilterOption[] = categories.data.map((cat: Categories) => ({
           label: cat.name,
           value: cat.categoryId,
         }))
@@ -64,7 +64,7 @@ export const useFilters = () => {
         const groupTypes = await res.json()
 
         // Map the GroupTypes response to label and value for front end
-        const groupTypeOptions: FilterOption[] = groupTypes.map((groupType: GroupTypes) => ({
+        const groupTypeOptions: FilterOption[] = groupTypes.data.map((groupType: GroupTypes) => ({
           label: groupType.name,
           value: groupType.groupTypeId,
         }))
