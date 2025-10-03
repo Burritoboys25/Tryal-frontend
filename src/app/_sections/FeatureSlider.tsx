@@ -82,7 +82,7 @@ export default function FeatureSlider() {
   const next = () => goTo(Math.min(SLIDES.length - 1, index + 1))
 
   return (
-    <Section id="feature-slider" className="px-0" background="none" full>
+    <Section id="feature-slider" className="mx-auto px-0 2xl:max-w-[95vw]" background="none" full>
       <div
         className="relative h-full w-full text-white"
         aria-label="Feature slider"

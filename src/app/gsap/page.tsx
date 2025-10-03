@@ -3,7 +3,6 @@ import LenisProvider from '@/shared/lib/LenisProvider'
 import Hero from '../_sections/Hero'
 
 import Intro from '../_sections/Intro'
-import Features from '../_sections/Features'
 import StickySteps from '../_sections/StickySteps'
 import Faq from '../_sections/Faq'
 import MainFooter from '@/shared/components/layout/MainFooter'
@@ -12,6 +11,7 @@ import ExploreMore from '../_sections/ExploreMore'
 import Stats from '../_sections/Stats'
 import PathScrollSteps from '../_sections/PathScrollSteps'
 import Benefits from '../_sections/Benefits'
+import FeatureSlider from '../_sections/FeatureSlider'
 
 export default function GSAPPage() {
   return (
@@ -25,7 +25,7 @@ export default function GSAPPage() {
           <ExploreMore />
           <Stats />
           <StickySteps />
-          <Features />
+          <FeatureSlider />
           <Faq />
           <PathScrollSteps />
         </div>

@@ -5,7 +5,6 @@ import Faq from './_sections/Faq'
 import Intro from './_sections/Intro'
 import LenisProvider from '@/shared/lib/LenisProvider'
 import MainFooter from '@/shared/components/layout/MainFooter'
-import Features from './_sections/Features'
 import StickySteps from './_sections/StickySteps'
 import Stats from './_sections/Stats'
 import FunMarquee from './_sections/FunMarquee'
@@ -23,7 +22,6 @@ export default function Home() {
           <Stats />
           <StickySteps />
           {/* Features will be the laptop gif */}
-          <Features />
           <div className="py-12">
             <Faq />
           </div>
