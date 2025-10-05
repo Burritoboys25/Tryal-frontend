@@ -1,59 +1,60 @@
 /* All global css classes that deal with typography*/
+
 .text-display {
-  @apply text-[3.5rem] font-extrabold;
+  @apply text-[4.375rem] font-extrabold;
 }
 
 .text-h1 {
-  @apply text-[2.5rem] leading-[3.5rem] font-bold tracking-tight;
+  @apply text-[3.125rem] leading-[4.375rem] font-bold tracking-tight;
 }
 
 .text-h2 {
-  font-size: clamp(2rem, 1rem + 2.4vw, 4rem);
-  @apply text-[1.5rem] leading-[2.5rem] font-semibold tracking-tight md:text-[2.25rem];
+  font-size: clamp(2.5rem, 1.25rem + 3vw, 5rem);
+  @apply text-[1.875rem] leading-[3.125rem] font-semibold tracking-tight md:text-[2.8125rem];
 }
 
 .text-h3 {
-  font-size: clamp(1.5rem, 0.75rem + 1.5vw, 2.5rem);
+  font-size: clamp(1.875rem, 0.9375rem + 1.875vw, 3.125rem);
 }
 
 .text-sub1 {
-  @apply text-[1rem] leading-[1.5rem] font-semibold md:text-[1.25rem] md:leading-[2rem];
+  @apply text-[1.25rem] leading-[1.875rem] font-semibold md:text-[1.5625rem] md:leading-[2.5rem];
 }
 
 .text-sub2 {
-  @apply text-[1.25rem] leading-[1.875rem] font-medium;
+  @apply text-[1.5625rem] leading-[2.34375rem] font-medium;
 }
 
 .text-sub3 {
-  @apply text-[1rem] leading-[2rem] font-bold;
+  @apply text-[1.25rem] leading-[2.5rem] font-bold;
 }
 
 .text-sub4 {
-  @apply text-[0.875rem] leading-[1.75rem] font-normal md:text-[1rem] md:leading-[1.875rem];
+  @apply text-[1.09375rem] leading-[2.1875rem] font-normal md:text-[1.25rem] md:leading-[2.34375rem];
 }
 
 .text-body1 {
-  @apply text-[0.875rem] leading-[1.75rem] font-medium md:text-[0.875rem] md:leading-[1.75rem];
+  @apply text-[1.09375rem] leading-[2.1875rem] font-medium md:text-[1.09375rem] md:leading-[2.1875rem];
 }
 
 .text-body2 {
-  @apply text-[0.875rem] leading-[1.625rem] font-normal;
+  @apply text-[1.09375rem] leading-[2.03125rem] font-normal;
 }
 
 .text-caption1 {
-  @apply text-[0.75rem] leading-[1.125rem] font-semibold;
+  @apply text-[0.9375rem] leading-[1.40625rem] font-semibold;
 }
 
 .text-caption2 {
-  @apply text-[0.75rem] leading-[1.125rem] font-normal;
+  @apply text-[0.9375rem] leading-[1.40625rem] font-normal;
 }
 
 .text-button {
-  @apply text-[0.875rem] leading-[1.25rem] font-bold tracking-wide;
+  @apply text-[1.09375rem] leading-[1.5625rem] font-bold tracking-wide;
 }
 
 .text-label {
-  @apply text-[0.875rem] leading-[1.25rem] font-semibold tracking-wide;
+  @apply text-[1.09375rem] leading-[1.5625rem] font-semibold tracking-wide;
 }
 
 .font-logo {

@@ -216,11 +216,11 @@ const PathScrollSteps = () => {
           <div
             key={idx}
             ref={el => setStepRef(el, idx)}
-            className={`h-[347px] w-[484px] rounded-2xl bg-white p-6 ${idx % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'}`}
+            className={`h-[434px] w-[605px] rounded-2xl bg-white p-6 ${idx % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'}`}
           >
-            <div className="flex h-full flex-col justify-start">
+            <div className="flex h-full flex-1 flex-col justify-between">
               <div className="text-h2 text-primary text-left">{step.step}</div>
-              <div className="my-4 flex justify-center">{step.icon}</div>
+              <div className="my-6 flex justify-center">{step.icon}</div>
               <h3 className="text-h2 text-background mb-2 text-left">{step.title}</h3>
               <p className="text-body2 text-background text-left">{step.description}</p>
             </div>

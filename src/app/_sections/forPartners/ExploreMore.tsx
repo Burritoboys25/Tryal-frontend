@@ -32,7 +32,7 @@ const SLIDES = [
 
 // TODO Implement Button Click
 const ExploreMore = () => {
-  const [idx, setIdx] = useState<number>(0)
+  const [, setIdx] = useState<number>(0)
 
   const prev = () => setIdx((prev: number) => (prev - 1 + SLIDES.length) % SLIDES.length)
   const next = () => setIdx((prev: number) => (prev + 1 + SLIDES.length) % SLIDES.length)
