@@ -88,14 +88,15 @@ const FaFeatures = () => {
     <Section
       id="fa-feature"
       full
-      className="ml-8 w-full snap-center flex-col justify-center px-4 md:px-9"
+      className="w-full snap-center flex-col justify-center px-4 md:px-9"
       background="none"
     >
-      <h2 className="text-h2 mb-2 text-3xl font-bold">Dynamic Pricing & Scheduling Made Easy</h2>
-      <p className="mb-4 text-lg">
-        Your business isn’t one-size-fits-all — your pricing and scheduling shouldn’t be either.
-        With Tryal, you have the freedom to:
-      </p>
+      <div className="mr-auto w-full max-w-[789px]">
+        <h2 className="text-h2 mb-2 pb-8 text-3xl font-bold">
+          Running a local business is hard enough without spending hours on marketing, managing
+          bookings, and filling seats.
+        </h2>
+      </div>
       <div
         className="relative h-full w-full text-white"
         aria-label="Fa Feature slider"
@@ -129,14 +130,14 @@ const FaFeatures = () => {
           ref={trackRef}
           className="noScrollbar relative h-full snap-x snap-mandatory overflow-x-auto scroll-smooth"
         >
-          <div className="flex h-full w-[92vw] min-w-full gap-6 sm:w-[88vw] lg:w-full">
+          <div className="flex h-full max-w-full gap-6 sm:max-w-full lg:max-w-full">
             {SLIDES.map((s, i) => (
               <div
                 key={s.id}
                 ref={el => {
                   itemRefs.current[i] = el
                 }}
-                className="h-full w-[92vw] shrink-0 snap-start sm:w-[88vw] lg:w-full"
+                className="h-full max-w-full shrink-0 snap-start sm:max-w-full lg:max-w-full"
                 aria-roledescription="slide"
                 aria-label={`${i + 1} of ${SLIDES.length}`}
               >
