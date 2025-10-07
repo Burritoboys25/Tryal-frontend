@@ -47,6 +47,7 @@ export function SegmentedToggle({
         style={
           {
             // number of segments + position
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             ['--n' as any]: String(options.length),
             transform: `translateX(calc(${idx} * (100% + 0.5rem)))`,
           } as React.CSSProperties

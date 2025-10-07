@@ -3,13 +3,12 @@
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 
-import FPHero from '../_sections/FPHero'
-import Benefits from '../_sections/FPBenefits'
+import FPHero from '../_sections/forPartners/FPHero'
+import Benefits from '../_sections/forPartners/Benefits'
 import FaqSection from '../_sections/Faq'
-import FaFeatures from '../_sections/FaFeatures'
+import FaFeatures from '../_sections/forPartners/FaFeatures'
 import LenisProvider from '@/shared/lib/LenisProvider'
-import ExploreMore from '../_sections/ExploreMore'
-import PathScrollSteps from '../_sections/PathScrollSteps'
+import PathScrollSteps from '../_sections/forPartners/PathScrollSteps'
 import MainFooter from '@/shared/components/layout/MainFooter'
 
 gsap.registerPlugin(useGSAP)
@@ -21,7 +20,6 @@ const ForPartnersPage = () => {
         <div className="space-y-4 md:space-y-8">
           <FPHero />
           <Benefits />
-          <ExploreMore />
           <FaFeatures />
           <PathScrollSteps />
           <div className="pb-12">

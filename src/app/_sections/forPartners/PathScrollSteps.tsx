@@ -1,34 +1,43 @@
 'use client'
 import { useRef } from 'react'
-import { useGSAP, gsap, ScrollTrigger } from '@/shared/lib/gsap'
+import { useGSAP, gsap } from '@/shared/lib/gsap'
+import SignupIcon from '@/shared/assets/icons/signup.svg'
+import RegisterIcon from '@/shared/assets/icons/register.svg'
+import OptimizeIcon from '@/shared/assets/icons/optimize.svg'
 
 const STEPS = [
   {
-    title: 'Step 1: Apply & Get Verified',
+    step: '01',
+    icon: <SignupIcon />,
+    title: 'Apply & Get Verified',
     description:
-      'We carefully verify each partner to ensure a safe and high-quality experience for customers. This vetting system ensures only legitimate, high-quality businesses are on the platform.',
+      'Join a trusted network through a quick verification process that builds customer confidence and ensures quality experiences.',
     highlight:
       'Build trust: “We carefully verify each partner to ensure a safe and high-quality experience for customers.”',
   },
   {
-    title: 'Step 2: Register Experiences & Set Prices',
+    step: '02',
+    icon: <RegisterIcon />,
+    title: 'List Your Experiences',
     description:
-      'Quickly list your activities, set pricing, and manage availability. Our onboarding flow is designed to get you up and running fast.',
+      'Easily create listings, set prices, and manage availability with our simple onboarding to start attracting bookings fast.',
     highlight:
       'Emphasize ease of onboarding: “Quickly list your activities, set pricing, and manage availability.”',
   },
   {
-    title: 'Step 3: Manage & Optimize',
+    step: '03',
+    icon: <OptimizeIcon />,
+    title: 'Manage & Grow',
     description:
-      'Adjust class sizes, times, or prices based on demand with our flexible scheduling and dynamic pricing tools.',
+      'Use dynamic pricing and flexible scheduling to adapt to demand, boost visibility, and maximize revenue.',
     highlight:
       'Explain dynamic pricing & flexible scheduling: adjust class sizes, times, or prices based on demand.',
   },
 ]
 
-function clamp(n: number, min = 0, max = 1) {
-  return Math.min(max, Math.max(min, n))
-}
+// function clamp(n: number, min = 0, max = 1) {
+//   return Math.min(max, Math.max(min, n))
+// }
 
 // const PathScrollSteps = () => {
 //   const containerRef = useRef<HTMLDivElement | null>(null)
@@ -138,10 +147,6 @@ const PathScrollSteps = () => {
         },
       })
 
-      const vh = () => window.innerHeight
-
-      const pinStep = () => Math.round(vh() * 0.1)
-
       stepRefs.current.forEach(step => {
         if (!step) return
 
@@ -160,16 +165,6 @@ const PathScrollSteps = () => {
             },
           },
         )
-
-        ScrollTrigger.create({
-          trigger: step,
-          start: 'top 5%',
-          end: () => `+=${pinStep()}`,
-          pin: true,
-          anticipatePin: 1,
-          pinSpacing: true,
-          markers: true,
-        })
       })
 
       // stepRefs.current.forEach(step => {
@@ -216,15 +211,19 @@ const PathScrollSteps = () => {
       </svg>
 
       {/* Steps */}
-      <div className="section-width-container relative mt-10 flex min-h-[200vh] flex-col gap-[40vh]">
+      <div className="section-width-container relative mt-10 flex flex-col gap-[40vh]">
         {STEPS.map((step, idx) => (
           <div
             key={idx}
             ref={el => setStepRef(el, idx)}
-            className={`bg-surface-teal h-[15rem] w-[40%] rounded-2xl p-6 ${idx % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'}`}
+            className={`h-[434px] w-[605px] rounded-2xl bg-white p-6 ${idx % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'}`}
           >
-            <h3 className="text-h2">{step.title}</h3>
-            <p className="text-body2">{step.description}</p>
+            <div className="flex h-full flex-1 flex-col justify-between">
+              <div className="text-h2 text-primary text-left">{step.step}</div>
+              <div className="my-6 flex justify-center">{step.icon}</div>
+              <h3 className="text-h2 text-background mb-2 text-left">{step.title}</h3>
+              <p className="text-body2 text-background text-left">{step.description}</p>
+            </div>
           </div>
         ))}
       </div>

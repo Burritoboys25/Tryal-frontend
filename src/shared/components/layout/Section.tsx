@@ -6,7 +6,16 @@ type SectionProps = {
   className?: string
   id?: string
   full?: boolean // for full-bleed sections
-  background?: 'teal' | 'nacho' | 'orange' | 'white' | 'none' | 'black' | 'light-teal' | 'salmon'
+  background?:
+    | 'teal'
+    | 'nacho'
+    | 'orange'
+    | 'white'
+    | 'none'
+    | 'black'
+    | 'light-teal'
+    | 'salmon'
+    | 'dark-teal'
 }
 
 const Section = forwardRef<HTMLElement, SectionProps>(
@@ -19,6 +28,7 @@ const Section = forwardRef<HTMLElement, SectionProps>(
           full ? '' : 'section-width-container rounded-3xl',
           {
             'text-foreground-dark bg-[#124E5B]': background === 'teal',
+            'text-foreground-dark bg-[#09272e]': background === 'dark-teal',
             'bg-surface-light-orange text-foreground-light': background === 'nacho',
             'bg-surface-light-white text-foreground-light': background === 'white',
             'bg-surface-light-teal text-foreground-light': background === 'light-teal',

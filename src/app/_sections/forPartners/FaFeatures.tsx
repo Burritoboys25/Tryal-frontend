@@ -21,7 +21,7 @@ const SLIDES: Slide[] = [
     tab: 'Smart Pricing & Optimization',
     eyebrow: 'Demand-Driven Intelligence',
     title: 'Smarter Pricing, Bigger Impact',
-    body: 'Automatically adjust your prices based on demand, seasonality, and class popularity. Open or reduce class sizes as needed, while AI-powered insights recommend the best times and price points to maximize bookings and revenue. Think of it as surge-pricing — but built for your business.',
+    body: 'Let AI help you fine-tune prices based on real demand, seasonality, and class popularity — not just raise them. Adjust class sizes or offer special rates to fill slow days, while insights guide you toward the best times and price points to increase bookings and overall revenue.',
     image: '/calendar.png',
     accent: 'bg-[#F4BCAB]',
   },
@@ -30,7 +30,7 @@ const SLIDES: Slide[] = [
     tab: 'Seasonal & Event-Based Pricing',
     eyebrow: 'Holiday & Event Flexibility',
     title: 'Match Your Prices to the Moment',
-    body: 'Take advantage of holidays, seasons, and local events. Whether it’s a Valentine’s workshop, summer festival, or holiday special, you can instantly tailor your pricing to fit the occasion.',
+    body: 'Create timely offers that align with holidays, seasons, or local events. From Valentine’s workshops to summer festivals, tailor your pricing and experiences to capture attention and maximize engagement.',
     image: '/landing_page_img_1.png',
     accent: 'bg-[#81CFC0]',
   },
@@ -39,7 +39,7 @@ const SLIDES: Slide[] = [
     tab: 'Real-Time Flexibility',
     eyebrow: 'Instant Scheduling Control',
     title: 'Reschedule Without the Stress',
-    body: 'Weather, cancellations, or shifting schedules? No problem. Easily edit or reschedule your experiences in just a few clicks, keeping your business running smoothly.',
+    body: 'Stay adaptable when plans change. Update class times, adjust capacity, or reschedule experiences in just a few clicks — no hassle, no lost opportunities.',
     image: '/landing_page_img_2.png',
     accent: 'bg-[#ABE7F4]',
   },
@@ -88,14 +88,15 @@ const FaFeatures = () => {
     <Section
       id="fa-feature"
       full
-      className="ml-8 w-full snap-center flex-col justify-center px-4 md:px-9"
-      background="none"
+      className="w-full snap-center flex-col justify-center px-4 md:px-9"
+      background="dark-teal"
     >
-      <h2 className="text-h2 mb-2 text-3xl font-bold">Dynamic Pricing & Scheduling Made Easy</h2>
-      <p className="mb-4 text-lg">
-        Your business isn’t one-size-fits-all — your pricing and scheduling shouldn’t be either.
-        With Tryal, you have the freedom to:
-      </p>
+      <div className="mr-auto w-full max-w-[789px]">
+        <h2 className="text-h2 mb-2 pb-8 text-3xl font-bold">
+          Running a local business is hard enough without spending hours on marketing, managing
+          bookings, and filling seats.
+        </h2>
+      </div>
       <div
         className="relative h-full w-full text-white"
         aria-label="Fa Feature slider"
@@ -129,14 +130,14 @@ const FaFeatures = () => {
           ref={trackRef}
           className="noScrollbar relative h-full snap-x snap-mandatory overflow-x-auto scroll-smooth"
         >
-          <div className="flex h-full w-[92vw] min-w-full gap-6 sm:w-[88vw] lg:w-full">
+          <div className="flex h-full max-w-full gap-6 sm:max-w-full lg:max-w-full">
             {SLIDES.map((s, i) => (
               <div
                 key={s.id}
                 ref={el => {
                   itemRefs.current[i] = el
                 }}
-                className="h-full w-[92vw] shrink-0 snap-start sm:w-[88vw] lg:w-full"
+                className="h-full max-w-full shrink-0 snap-start sm:max-w-full lg:max-w-full"
                 aria-roledescription="slide"
                 aria-label={`${i + 1} of ${SLIDES.length}`}
               >
@@ -161,11 +162,11 @@ function SlideCard({ slide }: { slide: Slide }) {
           'text-neutral-900',
         ].join(' ')}
       >
-        <div className="flex h-full max-w-[75%] flex-col justify-between">
-          <h2 className="text-h2 mt-4 leading-tight font-semibold tracking-tight whitespace-pre-line">
+        <div className="flex h-full flex-col justify-between">
+          <h2 className="text-h2 text-background mt-4 w-[75%] leading-tight font-semibold tracking-tight whitespace-pre-line">
             {slide.title}
           </h2>
-          <p className="text-sub4">{slide.body}</p>
+          <p className="text-sub4 text-background w-full">{slide.body}</p>
         </div>
       </div>
 
