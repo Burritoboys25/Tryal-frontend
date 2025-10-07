@@ -139,7 +139,7 @@ export default function FeatureSlider() {
 
 function SlideCard({ slide }: { slide: Slide }) {
   return (
-    <div className="grid h-full grid-cols-1 items-stretch gap-4 lg:grid-cols-4">
+    <div className="grid h-full grid-cols-1 items-stretch gap-4 lg:grid-cols-2 xl:grid-cols-4">
       {/* Left panel */}
       <div
         className={[
@@ -157,7 +157,7 @@ function SlideCard({ slide }: { slide: Slide }) {
       </div>
 
       {/* Right panel: device frame */}
-      <div className="relative lg:col-span-3">
+      <div className="relative lg:col-span-1 xl:col-span-3">
         <div className="relative mx-auto aspect-[16/7] h-full w-full overflow-hidden rounded-3xl bg-white shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
           {slide.image.includes('.mp4') ? (
             <video src={slide.image} autoPlay loop muted className="object-cover object-center" />
