@@ -5,25 +5,25 @@ import { useGSAP, gsap } from '@/shared/lib/gsap'
 
 export const BENEFITS = [
   {
-    title: 'Boost your visibility with the right audience.',
+    title: '1400% Boost in Online Visibility in Just 6 Months',
     description:
       'Get your experience in front of people actively searching for unique activities to do in your city, no wasted ad spend — just direct access to new customers.',
     image: '/landing_page_img_1.png',
   },
   {
-    title: 'Earn more with flexible pricing & scheduling',
+    title: '40% More Seats Filled with Dynamic Pricing & Smart Scheduling',
     description:
       'Fill more seats by adjusting prices, class sizes, and availability based on demand. Our tools give you the flexibility to maximize revenue while keeping control.',
     image: '/landing_page_img_2.png',
   },
   {
-    title: 'Save time with seamless bookings',
+    title: '15-30% Revenue Uplift from Streamlined Booking Flows',
     description:
       "Manage all your experiences in one place from scheduling to payment. We streamline the process so you don't need to juggle multiple platforms.",
     image: '/landing_page_img_3.png',
   },
   {
-    title: 'Gain insights to grow smarter',
+    title: '23x Higher Customer Acquistion with Real-Time Analytics',
     description:
       "Track performance, customer trends, and booking patterns with real-time analytics — helping you understand what's working and how to improve.",
     image: '/landing_page_img_4.png',
