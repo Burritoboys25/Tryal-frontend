@@ -188,7 +188,7 @@ const StickySteps = () => {
   return (
     <Section
       ref={scope}
-      className="cards-section relative mx-auto max-w-[90vw] rounded-3xl 2xl:max-w-[95vw] 2xl:px-24"
+      className="cards-section relative mx-8 rounded-3xl"
       full
       id="sticky-steps"
       background="teal"

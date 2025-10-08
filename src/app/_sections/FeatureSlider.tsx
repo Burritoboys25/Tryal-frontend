@@ -17,28 +17,28 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   {
-    id: 'pricing',
-    tab: 'AI Pricing Adjustments',
-    title: "Surge When It's Hot Fill When It's Not",
-    body: 'Automatically adjust your prices based on demand. Raise prices during peak times to maximize revenue, or lower them during slow periods to encourage bookings.',
-    image: '/demos/chartdemo.mp4',
-    accent: 'bg-[#F4BCAB]',
-  },
-  {
-    id: 'discovery',
-    tab: 'Discovery Tools',
-    title: 'Find new experiences\naround every corner.',
-    body: 'Browse gyms, studios, and local creators all in one app. Filter by location, category, or time to uncover experiences tailored to your lifestyle.',
+    id: 'events',
+    tab: 'Events',
+    title: 'Stay in the know\nwith live events.',
+    body: 'Discover upcoming experiences and live events near you. From workshops to classes, there’s always something new to join.',
     image: '/landing_page_img_1.png',
     accent: 'bg-[#ABE7F4]',
   },
   {
-    id: 'booking',
-    tab: 'Seamless Booking',
-    title: 'Reserve your spot\nwith just a tap.',
-    body: 'Instantly book and manage reservations with an intuitive calendar. Join in person or virtually without the hassle of phone calls or emails.',
+    id: 'community',
+    tab: 'Community',
+    title: 'Connect with Like-Minded Explorers',
+    body: 'Join a community of curious adventurers. Share tips, meet friends, and be inspired by others’ experiences.',
     image: '/landing_page_img_1.png',
-    accent: 'bg-[#81CFC0]',
+    accent: 'bg-[#F4BCAB]',
+  },
+  {
+    id: 'seasonal', 
+    tab: 'Seasonal',
+    title: 'Celebrate the Season',
+    body: 'Explore experiences tailored to the season. From summer adventures to winter retreats, find activities that fit the moment.',
+    image: '/landing_page_img_1.png',
+    accent: 'bg-[#B3E2D9]',
   },
 ]
 
@@ -82,7 +82,12 @@ export default function FeatureSlider() {
   const next = () => goTo(Math.min(SLIDES.length - 1, index + 1))
 
   return (
-    <Section id="feature-slider" className="mx-auto px-0 2xl:max-w-[95vw]" background="none" full>
+    <Section
+      id="feature"
+      full
+      className="w-full snap-center flex-col justify-center px-4 md:px-9"
+      background="dark-teal"
+    >
       <div
         className="relative h-full w-full text-white"
         aria-label="Feature slider"

@@ -22,7 +22,7 @@ const SLIDES: Slide[] = [
     eyebrow: 'Demand-Driven Intelligence',
     title: 'Smarter Pricing, Bigger Impact',
     body: 'Let AI help you fine-tune prices based on real demand, seasonality, and class popularity — not just raise them. Adjust class sizes or offer special rates to fill slow days, while insights guide you toward the best times and price points to increase bookings and overall revenue.',
-    image: '/calendar.png',
+    image: '/demos/chartdemo.mp4',
     accent: 'bg-[#F4BCAB]',
   },
   {
@@ -171,18 +171,19 @@ function SlideCard({ slide }: { slide: Slide }) {
       </div>
 
       {/* Right panel: device frame */}
-      <div className="relative rounded-[2rem] lg:col-span-3">
-        <div className="relative mx-auto aspect-[16/7] w-full overflow-hidden rounded-2xl bg-white shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
-          {/* status bar bump */}
-          <div className="absolute top-2 left-1/2 h-2 w-24 -translate-x-1/2 rounded-full bg-neutral-200/80" />
-
-          <Image
-            src={slide.image}
-            alt={slide.title}
-            fill
-            className="object-cover"
-            priority={false}
-          />
+      <div className="relative lg:col-span-1 xl:col-span-3">
+        <div className="relative mx-auto aspect-[16/7] h-full w-full overflow-hidden rounded-3xl bg-white shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
+          {slide.image.includes('.mp4') ? (
+            <video src={slide.image} autoPlay loop muted className="object-cover object-center" />
+          ) : (
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-cover"
+              priority={false}
+            />
+          )}
         </div>
       </div>
     </div>
