@@ -5,7 +5,7 @@
 }
 
 .text-h1 {
-  @apply text-[2.5rem] leading-[3.5rem] font-bold tracking-tight;
+  @apply text-[2.5rem] leading-[3.5rem] font-bold tracking-tight 2xl:leading-[3rem];
 }
 
 .text-h2 {
