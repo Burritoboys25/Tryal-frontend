@@ -153,13 +153,13 @@ const FaFeatures = () => {
 
 function SlideCard({ slide }: { slide: Slide }) {
   return (
-    <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-4">
+    <div className="grid h-full grid-cols-1 items-stretch gap-4 lg:grid-cols-2 xl:grid-cols-4">
       {/* Left panel */}
       <div
         className={[
           'rounded-[2rem] p-6 sm:p-8 lg:col-span-1 lg:p-10',
           slide.accent ?? 'bg-amber-200',
-          'text-neutral-900',
+          'text-[#2E1109]',
         ].join(' ')}
       >
         <div className="flex h-full flex-col justify-between">
