@@ -33,8 +33,7 @@ export const STEPS: {
   {
     id: '03',
     title: 'Book',
-    description:
-      'Simply book experiences with a few clicks. Our easy-to-use platform ensures seamless booking.',
+    description: 'Book your next experience quickly and easily—just a few clicks and you’re set.',
     icon: CalendarIcon,
   },
   {
@@ -218,7 +217,7 @@ const StickySteps = () => {
           <StepCard
             id="03"
             title="Book"
-            description="Simply book experiences with a few clicks. Our easy-to-use platform ensures seamless booking."
+            description="Book your next experience quickly and easily—just a few clicks and you’re set."
             icon={CalendarIcon}
           />
         </div>

@@ -55,9 +55,9 @@ export default function MainFooter() {
                 </li>
                 <li>
                   <Link
-                    href="/#feature-slider"
+                    href="/#feature"
                     className="hover:text-primary transition-colors"
-                    onClick={e => handleSectionClick(e, 'feature-slider')}
+                    onClick={e => handleSectionClick(e, 'feature')}
                   >
                     Experiences
                   </Link>
