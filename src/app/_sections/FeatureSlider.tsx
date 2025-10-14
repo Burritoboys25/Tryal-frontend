@@ -33,7 +33,7 @@ const SLIDES: Slide[] = [
     accent: 'bg-[#F4BCAB]',
   },
   {
-    id: 'seasonal', 
+    id: 'seasonal',
     tab: 'Seasonal',
     title: 'Celebrate the Season',
     body: 'Explore experiences tailored to the season. From summer adventures to winter retreats, find activities that fit the moment.',
@@ -148,16 +148,16 @@ function SlideCard({ slide }: { slide: Slide }) {
       {/* Left panel */}
       <div
         className={[
-          'rounded-3xl p-6 sm:p-8 lg:col-span-1 lg:p-10',
+          'rounded-[2rem] p-6 sm:p-8 lg:col-span-1 lg:p-10',
           slide.accent ?? 'bg-amber-200',
           'text-[#2E1109]',
         ].join(' ')}
       >
-        <div className="flex h-full max-w-[75%] flex-col justify-between">
-          <h2 className="text-h2 mt-4 leading-tight font-semibold tracking-tight whitespace-pre-line">
+        <div className="flex h-full flex-col justify-between">
+          <h2 className="text-h2 text-background mt-4 w-[75%] leading-tight font-semibold tracking-tight whitespace-pre-line">
             {slide.title}
           </h2>
-          <p className="text-sub4">{slide.body}</p>
+          <p className="text-sub4 text-background w-full">{slide.body}</p>
         </div>
       </div>
 

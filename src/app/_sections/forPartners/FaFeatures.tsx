@@ -158,7 +158,7 @@ function SlideCard({ slide }: { slide: Slide }) {
         className={[
           'rounded-[2rem] p-6 sm:p-8 lg:col-span-1 lg:p-10',
           slide.accent ?? 'bg-amber-200',
-          'text-neutral-900',
+          'text-[#2E1109]',
         ].join(' ')}
       >
         <div className="flex h-full flex-col justify-between">
