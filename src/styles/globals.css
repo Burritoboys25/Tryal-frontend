@@ -1,15 +1,15 @@
-@import './typography.css';
-@import './layout.css';
-@import './components.css';
 @import './themes.css';
+@import './typography.css';
 @import 'tailwindcss';
+@import './layout.css';
 @import 'tw-animate-css';
+@import './components.css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --breakpoint-3xl: 1920px;
-  --max-width-3xl: 1920px;
+  --breakpoint-3xl: 120rem;
+  --max-width-3xl: 120rem;
 
   --color-surface-dark: var(--surface-dark);
   --color-surface-light: var(--surface-light);
