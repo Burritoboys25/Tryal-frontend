@@ -3,11 +3,13 @@ import Values from './sections/Values'
 import LenisProvider from '@/shared/lib/LenisProvider'
 import MainFooter from '@/shared/components/layout/MainFooter'
 import OurStory from './sections/OurStory'
+import LandingNavbar from '@/shared/components/layout/LandingNavbar'
 
 export default function AboutPage() {
   return (
     <>
       <LenisProvider>
+        <LandingNavbar />
         <div className="space-y-4 md:space-y-8">
           <OurStory />
           <Values />

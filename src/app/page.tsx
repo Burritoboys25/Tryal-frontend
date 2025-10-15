@@ -9,11 +9,13 @@ import StickySteps from './_sections/StickySteps'
 import Stats from './_sections/Stats'
 import FunMarquee from './_sections/FunMarquee'
 import FeatureSlider from './_sections/FeatureSlider'
+import LandingNavbar from '@/shared/components/layout/LandingNavbar'
 
 export default function Home() {
   return (
     <>
       <LenisProvider>
+        <LandingNavbar />
         <div className="space-y-4 md:space-y-8">
           <Hero />
           <Intro />

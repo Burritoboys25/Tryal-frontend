@@ -2,6 +2,7 @@
 
 import { Button } from '@/shared/components/ui/base/button'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import HamburgerToggle from '@/shared/components/ui/mobile/HamburgerToggle'
 // import { SegmentedToggle } from '../ui/ThumbToggle'
@@ -13,6 +14,9 @@ interface LandingNavbarProps {
 function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
+
+  const isActive = (path: string) => pathname === path
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,10 +29,12 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
 
   const handleClick = () => setIsOpen(!isOpen)
 
+  const activeLinkClass = 'font-bold border-b-2 border-b-white'
+
   return (
     <>
       <nav
-        className={`fixed top-0 right-0 left-0 z-50 mx-auto min-h-[4.3125rem] w-full px-4 transition-shadow duration-300 2xl:max-w-3xl 2xl:px-8 ${scrolled ? 'shadow-sm' : ''}`}
+        className={`glass-element fixed top-10 right-0 left-0 z-50 mx-auto min-h-[4.3125rem] w-[70%] px-4 transition-shadow duration-300 2xl:max-w-3xl 2xl:px-8 ${scrolled ? 'shadow-sm' : ''}`}
       >
         <div className="flex w-full items-center justify-between py-[1rem]">
           {/* Logo */}
@@ -39,14 +45,17 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden justify-center gap-[2rem] text-sm text-[1rem] text-gray-700 md:flex">
-            <Link href="/about">About us</Link>
-            <Link href="/for-partners">For Partners</Link>
+          <div className="hidden justify-center gap-[2rem] text-[1rem] text-white md:flex">
+            <Link href="/" className={isActive('/') ? activeLinkClass : ''}>
+              For Explorers
+            </Link>
+            <Link href="/for-partners" className={isActive('/for-partners') ? activeLinkClass : ''}>For Businesses</Link>
+            <Link href="/about" className={isActive('/about') ? activeLinkClass : ''}>About us</Link>
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden w-[9.375rem] md:flex">
-            <Button variant="solid" className={disablePartner ? 'invisible' : ''}>
+          <div className="hidden md:flex">
+            <Button variant="solid" className={disablePartner ? 'invisible' : 'w-[10.5rem]'}>
               <Link href="/partner-waitlist">Become a partner</Link>
             </Button>
           </div>
