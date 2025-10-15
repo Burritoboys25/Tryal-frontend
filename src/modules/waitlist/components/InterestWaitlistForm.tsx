@@ -40,7 +40,7 @@ const InterestWaitlistForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-full flex-col gap-[1.5rem] md:flex-row 2xl:max-w-[31.625rem] 2xl:gap-[0.1875rem]"
+      className="flex w-full flex-col gap-2 md:flex-row md:gap-2 2xl:max-w-[31.625rem]"
     >
       <Input
         type="email"
@@ -50,7 +50,7 @@ const InterestWaitlistForm = () => {
         className="flex-grow-0 sm:w-auto sm:flex-grow md:flex-grow-0 2xl:flex-grow"
         required
       />
-      <Button type="submit" disabled={isSubmitting} className="min-w-[7rem] cursor-pointer">
+      <Button type="submit" disabled={isSubmitting} className="min-w-[130px] cursor-pointer">
         {isSubmitting ? 'Joining...' : 'Join Waitlist'}
       </Button>
     </form>

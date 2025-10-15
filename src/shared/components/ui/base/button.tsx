@@ -13,6 +13,8 @@ const buttonVariants = cva(
         link: 'text-link underline hover:opacity-80',
         filter:
           'focus:ring-primary data-[state=open]:ring-primary text-foreground bg-background border-muted-foreground hover:border-primary-hover/30 flex items-center gap-[0.25rem] rounded-full border px-[1rem] py-[0.5rem] text-sm font-medium transition-colors focus:ring-1 focus:outline-none data-[state=open]:ring-1',
+        tab: 'bg-primary text-white ring-1 ring-white/10 hover:bg-primary-hover',
+        tabInactive: 'border-primary ring-primary border-2 bg-white text-primary ring-2',
       },
       size: {
         default: 'px-[1rem] py-[0.5rem]',

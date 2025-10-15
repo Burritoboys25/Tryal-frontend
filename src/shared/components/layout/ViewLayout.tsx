@@ -3,7 +3,7 @@ import LandingNavbar from '@/shared/components/layout/LandingNavbar'
 import MainFooter from '@/shared/components/layout/MainFooter'
 import MainHeader from './MainHeader'
 
-type LayoutType = 'landing' | 'partner' | 'explore' | 'default'
+type LayoutType = 'landing' | 'partner' | 'explore' | 'default' | 'temp'
 
 type ViewLayoutProps = {
   type?: LayoutType | null
@@ -36,6 +36,9 @@ const ViewLayout = ({ type, children, header, footer }: ViewLayoutProps) => {
       defaultNavbar = <MainHeader showSearch={false} />
       defaultFooter = <MainFooter />
       break
+    case 'temp':
+      defaultNavbar = <LandingNavbar />
+      defaultFooter = null
     default:
       break
   }

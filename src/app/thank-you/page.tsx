@@ -1,4 +1,7 @@
 import ReferralForm from '@/modules/waitlist/components/ReferralForm'
+// Need to readd section and main footer in
+// import MainFooter from '@/shared/components/layout/MainFooter'
+// import Section from '@/shared/components/layout/Section'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
 import { Suspense } from 'react'
 

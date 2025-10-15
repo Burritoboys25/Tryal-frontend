@@ -1,12 +1,12 @@
-import ViewLayout from '@/shared/components/layout/ViewLayout'
-import Container from '@/shared/components/layout/Container'
 import React from 'react'
 import { terms, TermsSection, termsUpdatedAt } from './data/terms'
+import Section from '@/shared/components/layout/Section'
+import MainFooter from '@/shared/components/layout/MainFooter'
 
 const TermsPage = () => {
   return (
-    <ViewLayout type={'landing'}>
-      <Container>
+    <>
+      <Section id="privacy" background="white" className="overflow-hidden pt-[5rem] pb-[10rem]">
         <div className="pt-[2.75rem] pb-[5rem]">
           <section className="pt-[2.5rem]">
             <h1 className="text-h2 mb-[1rem] text-center">Terms of Use</h1>
@@ -35,8 +35,11 @@ const TermsPage = () => {
             </section>
           ))}
         </div>
-      </Container>
-    </ViewLayout>
+      </Section>
+      <div className="pt-12">
+        <MainFooter />
+      </div>
+    </>
   )
 }
 

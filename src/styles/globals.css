@@ -1,11 +1,29 @@
-@import './typography.css';
-@import './layout.css';
-@import './components.css';
 @import './themes.css';
+@import './typography.css';
 @import 'tailwindcss';
+@import './layout.css';
 @import 'tw-animate-css';
+@import './components.css';
 
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-3xl: 120rem;
+  --max-width-3xl: 120rem;
+
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-light: var(--surface-light);
+  --color-surface-peach: var(--surface-peach);
+
+  --color-surface-teal: #0e3a44;
+  --color-surface-light-blue: #6dd5ec;
+  --color-surface-light-orange: #faddd5;
+  --color-surface-light-teal: #d5f3fa;
+  --color-surface-light-white: #f5f5f5;
+
+  --color-foreground-light: #2e1109;
+  --color-foreground-dark: #f5f5f5;
+}
 
 @theme inline {
   --color-primary-hover: var(--primary-hover);
@@ -88,4 +106,56 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer utilities {
+  .noScrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+  .noScrollbar {
+    -ms-overflow-style: none; /* IE, Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+.cards-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+}
+
+.cards-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  @apply h-1/2 w-full md:h-1/2 md:w-1/2 2xl:h-[416px] 2xl:w-[580px];
+}
+
+.card {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+svg.thicc-path {
+  position: absolute;
+  width: 100vw;
+  height: 200vw;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.glass-element {
+  background-color: rgba(9, 39, 46, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
 }
