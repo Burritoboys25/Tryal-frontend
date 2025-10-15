@@ -138,7 +138,7 @@ const PathScrollSteps = () => {
         ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top bottom',
+          start: 'top bottom-=400',
           end: 'bottom top',
           scrub: true,
           invalidateOnRefresh: true,
@@ -193,7 +193,7 @@ const PathScrollSteps = () => {
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden">
-      <svg
+      {/* <svg
         width="1000"
         height="1890"
         viewBox="0 0 1000 1890"
@@ -207,6 +207,22 @@ const PathScrollSteps = () => {
           stroke="#E97958"
           strokeWidth="14.2383"
           strokeLinecap="round"
+        />
+      </svg> */}
+      <svg
+        width="1440"
+        height="1566"
+        viewBox="0 0 1440 1566"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="pointer-events-none absolute inset-0 h-[275dvh] w-full"
+        ref={svgRef}
+      >
+        <path
+          d="M-51.0009 25.8586C149.08 -99.3193 323.866 454.935 603.998 284.5C1023.82 29.0787 1560.83 275.802 1188 487.5C803.645 705.742 115.067 988.259 147.499 687C151.976 645.42 910.015 537.49 835.499 812.5C760.984 1087.51 1501 559.575 1501 710.5C1501 753 1570.5 899 905.499 1070.5C676.482 1129.56 -198.425 1402.98 -93.001 1174C31.9986 902.5 1155.5 1317 1470 1558.5"
+          stroke="#E97958"
+          stroke-width="14.2383"
+          stroke-linecap="round"
         />
       </svg>
 
@@ -227,7 +243,6 @@ const PathScrollSteps = () => {
           </div>
         ))}
       </div>
-      <div className="h-[30vh] bg-yellow-100" />
     </section>
   )
 }

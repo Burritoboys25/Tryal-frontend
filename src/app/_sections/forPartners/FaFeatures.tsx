@@ -22,7 +22,7 @@ const SLIDES: Slide[] = [
     eyebrow: 'Demand-Driven Intelligence',
     title: 'Smarter Pricing, Bigger Impact',
     body: 'Let AI help you fine-tune prices based on real demand, seasonality, and class popularity — not just raise them. Adjust class sizes or offer special rates to fill slow days, while insights guide you toward the best times and price points to increase bookings and overall revenue.',
-    image: '/calendar.png',
+    image: '/demos/peaktimes.gif',
     accent: 'bg-[#F4BCAB]',
   },
   {
@@ -31,7 +31,7 @@ const SLIDES: Slide[] = [
     eyebrow: 'Holiday & Event Flexibility',
     title: 'Match Your Prices to the Moment',
     body: 'Create timely offers that align with holidays, seasons, or local events. From Valentine’s workshops to summer festivals, tailor your pricing and experiences to capture attention and maximize engagement.',
-    image: '/landing_page_img_1.png',
+    image: '/demos/spider.gif',
     accent: 'bg-[#81CFC0]',
   },
   {
@@ -40,7 +40,7 @@ const SLIDES: Slide[] = [
     eyebrow: 'Instant Scheduling Control',
     title: 'Reschedule Without the Stress',
     body: 'Stay adaptable when plans change. Update class times, adjust capacity, or reschedule experiences in just a few clicks — no hassle, no lost opportunities.',
-    image: '/landing_page_img_2.png',
+    image: '/demos/calendar.gif',
     accent: 'bg-[#ABE7F4]',
   },
 ]
@@ -89,14 +89,13 @@ const FaFeatures = () => {
       id="fa-feature"
       full
       className="w-full snap-center flex-col justify-center px-4 md:px-9"
-      background="dark-teal"
     >
-      <div className="mr-auto w-full max-w-[789px]">
+      {/* <div className="mr-auto w-full max-w-[789px]">
         <h2 className="text-h2 mb-2 pb-8 text-3xl font-bold">
           Running a local business is hard enough without spending hours on marketing, managing
           bookings, and filling seats.
         </h2>
-      </div>
+      </div> */}
       <div
         className="relative h-full w-full text-white"
         aria-label="Fa Feature slider"
@@ -137,7 +136,7 @@ const FaFeatures = () => {
                 ref={el => {
                   itemRefs.current[i] = el
                 }}
-                className="h-full max-w-full shrink-0 snap-start sm:max-w-full lg:max-w-full"
+                className="h-full max-w-full shrink-0 snap-start lg:max-w-full"
                 aria-roledescription="slide"
                 aria-label={`${i + 1} of ${SLIDES.length}`}
               >
@@ -153,17 +152,17 @@ const FaFeatures = () => {
 
 function SlideCard({ slide }: { slide: Slide }) {
   return (
-    <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-4 xl:max-h-[569px] xl:grid-cols-[454px_1fr] 2xl:max-h-[700px] 2xl:grid-cols-[1fr_3fr]">
       {/* Left panel */}
       <div
         className={[
           'rounded-[2rem] p-6 sm:p-8 lg:col-span-1 lg:p-10',
           slide.accent ?? 'bg-amber-200',
-          'text-neutral-900',
+          'text-[#2E1109]',
         ].join(' ')}
       >
         <div className="flex h-full flex-col justify-between">
-          <h2 className="text-h2 text-background mt-4 w-[75%] leading-tight font-semibold tracking-tight whitespace-pre-line">
+          <h2 className="text-background text-h2 mt-4 leading-tight font-semibold tracking-tight whitespace-pre-line">
             {slide.title}
           </h2>
           <p className="text-sub4 text-background w-full">{slide.body}</p>
@@ -171,11 +170,13 @@ function SlideCard({ slide }: { slide: Slide }) {
       </div>
 
       {/* Right panel: device frame */}
-      <div className="relative rounded-[2rem] lg:col-span-3">
-        <div className="relative mx-auto aspect-[16/7] w-full overflow-hidden rounded-2xl bg-white shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
-          {/* status bar bump */}
-          <div className="absolute top-2 left-1/2 h-2 w-24 -translate-x-1/2 rounded-full bg-neutral-200/80" />
-
+      {/* <div className="relative lg:col-span-1 xl:col-span-3"> */}
+      <div className="bg-surface-light relative mx-auto h-full w-full overflow-hidden rounded-3xl shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
+        {slide.image.includes('.gif') ? (
+          <div className="flex h-full w-full items-center justify-center bg-[#fdfdfd] p-4">
+            <img src={slide.image} className="max-h-full max-w-full object-contain" />
+          </div>
+        ) : (
           <Image
             src={slide.image}
             alt={slide.title}
@@ -183,7 +184,7 @@ function SlideCard({ slide }: { slide: Slide }) {
             className="object-cover"
             priority={false}
           />
-        </div>
+        )}
       </div>
     </div>
   )

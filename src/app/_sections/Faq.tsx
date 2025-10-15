@@ -58,11 +58,11 @@ const FaqSection = () => {
       <div className="relative grid grid-cols-1 gap-8 rounded-3xl px-0 lg:grid-cols-2">
         <div className="text-center lg:sticky lg:top-[96px] lg:col-span-full lg:text-left">
           <h2
-            className="text-2xl leading-tight font-bold sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
+            className="text-2xl leading-tight font-bold text-[#09272E] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
             data-anim="split-reveal"
           >
-            Frequently <br className="hidden sm:block" />
-            Asked Questions
+            Frequently Asked <br className="hidden sm:block" />
+            Questions
           </h2>
         </div>
 
@@ -70,10 +70,10 @@ const FaqSection = () => {
           {faqItems.map((item, i) => {
             const isOpen = openQuestions.includes(i)
             return (
-              <div key={i} className="border-b border-white/[.2] pb-6 sm:pb-4">
+              <div key={i} className="border-b border-black/[.2] pb-6 sm:pb-4">
                 <button
                   onClick={() => toggleQuestion(i)}
-                  className="flex w-full items-start text-left text-sm font-semibold transition-opacity hover:opacity-80 sm:text-base md:text-lg"
+                  className="flex w-full items-start text-left text-sm font-semibold text-[#09272E] transition-opacity hover:opacity-80 sm:text-base md:text-lg"
                 >
                   <div
                     className={`mt-0.5 mr-3 flex-shrink-0 transition-transform duration-300 sm:mt-1 sm:mr-4 ${

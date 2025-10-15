@@ -22,7 +22,7 @@ const values = [
     title: 'Community',
     icon: CommunityIcon,
     description:
-      'We foster meaningful relationships with your community by bringing like-minded individuals together and supporting local businesses.',
+      'We foster relationships with your community by bringing like-minded individuals together and supporting local businesses.',
   },
   {
     title: 'Open-minded',
@@ -42,17 +42,17 @@ const Values = () => {
       </p>
 
       <div className="relative z-0 flex items-center justify-center">
-        <div className="grid grid-cols-1 gap-[1.25rem] text-left md:grid-cols-2 2xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-[1.5rem] md:grid-cols-2 2xl:grid-cols-4">
           {values.map(({ title, icon: Icon, description }) => (
             <div
               key={title}
-              className="flex max-w-[17.75rem] flex-col gap-[1rem] rounded-xl bg-white p-[1.5rem] shadow-xl"
+              className="flex flex-col items-center justify-between gap-[0.75rem] rounded-xl bg-white px-[0.75rem] py-[1.5rem] shadow-xl"
             >
-              <div className="flex items-center gap-[1rem]">
-                <Icon className="h-[3rem] w-[3rem]" aria-hidden="true" />
-                <h4 className="text-sub1 text-background">{title}</h4>
+              <Icon className="mt-[1rem] h-[6rem] w-[6rem]" aria-hidden="true" />
+              <h4 className="text-sub3 text-background">{title}</h4>
+              <div className="text-body2 text-muted-foreground min-h-[3rem] overflow-hidden text-center">
+                {description}
               </div>
-              <div className="text-body2 text-muted-foreground">{description}</div>
             </div>
           ))}
         </div>
