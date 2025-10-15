@@ -54,9 +54,16 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex">
-            <Button variant="solid" className={disablePartner ? 'invisible' : 'w-[10.5rem]'}>
-              <Link href="/partner-waitlist">Become a partner</Link>
+          <div className="hidden w-[9.375rem] md:flex">
+            <Button variant="solid" className={disablePartner ? 'invisible' : ''}>
+              <Link
+                href={{
+                  pathname: '/partner-waitlist',
+                  query: { type: 'partner' },
+                }}
+              >
+                Become a partner
+              </Link>
             </Button>
           </div>
 
