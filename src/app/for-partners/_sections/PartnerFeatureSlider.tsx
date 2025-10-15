@@ -19,25 +19,22 @@ const SLIDES: Slide[] = [
   {
     id: 'pricing',
     tab: 'Smart Pricing & Optimization',
-    eyebrow: 'Demand-Driven Intelligence',
     title: 'Smarter Pricing, Bigger Impact',
     body: 'Let AI help you fine-tune prices based on real demand, seasonality, and class popularity — not just raise them. Adjust class sizes or offer special rates to fill slow days, while insights guide you toward the best times and price points to increase bookings and overall revenue.',
     image: '/demos/peaktimes.gif',
     accent: 'bg-[#F4BCAB]',
   },
   {
-    id: 'seasonal',
-    tab: 'Seasonal & Event-Based Pricing',
-    eyebrow: 'Holiday & Event Flexibility',
-    title: 'Match Your Prices to the Moment',
-    body: 'Create timely offers that align with holidays, seasons, or local events. From Valentine’s workshops to summer festivals, tailor your pricing and experiences to capture attention and maximize engagement.',
+    id: 'dashboard',
+    tab: 'All-in-One Dashboard',
+    title: 'Manage Everything from One Smart Hub',
+    body: 'Manage your entire business from a single place. Track bookings, monitor performance, and gain insights that help you grow—without juggling multiple tools.',
     image: '/demos/spider.gif',
     accent: 'bg-[#81CFC0]',
   },
   {
     id: 'booking',
     tab: 'Real-Time Flexibility',
-    eyebrow: 'Instant Scheduling Control',
     title: 'Reschedule Without the Stress',
     body: 'Stay adaptable when plans change. Update class times, adjust capacity, or reschedule experiences in just a few clicks — no hassle, no lost opportunities.',
     image: '/demos/calendar.gif',
@@ -45,7 +42,7 @@ const SLIDES: Slide[] = [
   },
 ]
 
-const FaFeatures = () => {
+const PartnerFeatureSlider = () => {
   const scope = useRef<HTMLElement>(null!)
   useRevealSplit(scope)
   const [index, setIndex] = useState(0)
@@ -170,7 +167,6 @@ function SlideCard({ slide }: { slide: Slide }) {
       </div>
 
       {/* Right panel: device frame */}
-      {/* <div className="relative lg:col-span-1 xl:col-span-3"> */}
       <div className="bg-surface-light relative mx-auto h-full w-full overflow-hidden rounded-3xl shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
         {slide.image.includes('.gif') ? (
           <div className="flex h-full w-full items-center justify-center bg-[#fdfdfd] p-4">
@@ -190,4 +186,4 @@ function SlideCard({ slide }: { slide: Slide }) {
   )
 }
 
-export default FaFeatures
+export default PartnerFeatureSlider

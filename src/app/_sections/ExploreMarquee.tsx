@@ -41,7 +41,7 @@ const marqueList = [
   },
 ]
 
-const FunMarquee = () => {
+const ExploreMarquee = () => {
   const scope = useRef<HTMLElement>(null)
   useGSAP(
     () => {
@@ -84,4 +84,4 @@ const FunMarquee = () => {
   )
 }
 
-export default FunMarquee
+export default ExploreMarquee

@@ -42,7 +42,7 @@ const SLIDES: Slide[] = [
   },
 ]
 
-export default function FeatureSlider() {
+export default function UserFeatureSlider () {
   const [index, setIndex] = useState(0)
   const trackRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])

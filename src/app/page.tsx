@@ -7,8 +7,8 @@ import LenisProvider from '@/shared/lib/LenisProvider'
 import MainFooter from '@/shared/components/layout/MainFooter'
 import StickySteps from './_sections/StickySteps'
 import Stats from './_sections/Stats'
-import FunMarquee from './_sections/FunMarquee'
-import FeatureSlider from './_sections/FeatureSlider'
+import ExploreMarquee from './_sections/ExploreMarquee'
+import UserFeatureSlider from './_sections/UserFeatureSlider'
 import LandingNavbar from '@/shared/components/layout/LandingNavbar'
 
 export default function Home() {
@@ -19,11 +19,11 @@ export default function Home() {
         <div className="space-y-4 md:space-y-8">
           <Hero />
           <Intro />
-          <FeatureSlider />
-          <FunMarquee />
+          <UserFeatureSlider />
+          <ExploreMarquee />
           <Stats />
           <StickySteps />
-          {/* Features will be the laptop gif */}
+          {/* Laptop GIF component goes here */}
           <div className="py-12">
             <Faq />
           </div>

@@ -72,15 +72,6 @@ export default function MainFooter() {
                     Contact
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/#faq"
-                    className="hover:text-primary transition-colors"
-                    onClick={e => handleSectionClick(e, 'faq')}
-                  >
-                    FAQs
-                  </Link>
-                </li>
               </ul>
             </div>
 

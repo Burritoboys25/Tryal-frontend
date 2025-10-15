@@ -2,6 +2,8 @@ import Section from '@/shared/components/layout/Section'
 import Image from 'next/image'
 import { useState } from 'react'
 
+
+//This component is currently not in use but won't be deleted as it might be used in the future
 const SLIDES = [
   {
     title: 'Baking',

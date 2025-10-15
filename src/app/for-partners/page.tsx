@@ -3,12 +3,12 @@
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 
-import FPHero from '../_sections/forPartners/FPHero'
-import Benefits from '../_sections/forPartners/Benefits'
-import FaqSection from '../_sections/Faq'
-import FaFeatures from '../_sections/forPartners/FaFeatures'
+import Hero from './_sections/Hero'
+import Benefits from './_sections/Benefits'
+import Faq from '../_sections/Faq'
+import PartnerFeatureSlider from './_sections/PartnerFeatureSlider'
 import LenisProvider from '@/shared/lib/LenisProvider'
-import PathScrollSteps from '../_sections/forPartners/PathScrollSteps'
+import PartnerSteps from './_sections/PartnerSteps'
 import MainFooter from '@/shared/components/layout/MainFooter'
 import LandingNavbar from '@/shared/components/layout/LandingNavbar'
 
@@ -20,12 +20,12 @@ const ForPartnersPage = () => {
       <LenisProvider>
         <LandingNavbar />
         <div className="space-y-4 md:space-y-8">
-          <FPHero />
+          <Hero />
           <Benefits />
-          <FaFeatures />
-          <PathScrollSteps />
+          <PartnerFeatureSlider />
+          <PartnerSteps />
           <div className="pb-12">
-            <FaqSection />
+            <Faq />
           </div>
         </div>
         <MainFooter />

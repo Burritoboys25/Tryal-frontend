@@ -6,12 +6,12 @@ import Intro from '../_sections/Intro'
 import StickySteps from '../_sections/StickySteps'
 import Faq from '../_sections/Faq'
 import MainFooter from '@/shared/components/layout/MainFooter'
-import FunMarquee from '../_sections/FunMarquee'
-import ExploreMore from '../_sections/forPartners/ExploreMore'
+import FunMarquee from '../_sections/ExploreMarquee'
+import ExploreMore from '../for-partners/_sections/ExploreMore'
 import Stats from '../_sections/Stats'
-import PathScrollSteps from '../_sections/forPartners/PathScrollSteps'
-import Benefits from '../_sections/forPartners/Benefits'
-import FeatureSlider from '../_sections/FeatureSlider'
+import PathScrollSteps from '../for-partners/_sections/PartnerSteps'
+import Benefits from '../for-partners/_sections/Benefits'
+import FeatureSlider from '../_sections/UserFeatureSlider'
 
 export default function GSAPPage() {
   return (
