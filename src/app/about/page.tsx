@@ -1,21 +1,24 @@
 import Founders from '@/app/about/sections/Founders'
-import MissionVision from '@/app/about/sections/MissionVision'
-import OurStory from '@/app/about/sections/OurStory'
 import Values from './sections/Values'
-import ViewLayout from '@/shared/components/layout/ViewLayout'
-import Container from '@/shared/components/layout/Container'
+import LenisProvider from '@/shared/lib/LenisProvider'
+import MainFooter from '@/shared/components/layout/MainFooter'
+import OurStory from './sections/OurStory'
+import LandingNavbar from '@/shared/components/layout/LandingNavbar'
 
 export default function AboutPage() {
   return (
-    <ViewLayout type={'landing'}>
-      <Container>
-        <div className="space-y-8 md:space-y-12 2xl:space-y-24">
+    <>
+      <LenisProvider>
+        <LandingNavbar />
+        <div className="space-y-4 md:space-y-8">
           <OurStory />
-          <MissionVision />
           <Values />
           <Founders />
         </div>
-      </Container>
-    </ViewLayout>
+        <div className="pt-12">
+          <MainFooter />
+        </div>
+      </LenisProvider>
+    </>
   )
 }

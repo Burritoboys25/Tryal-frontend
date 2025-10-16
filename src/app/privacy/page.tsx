@@ -1,12 +1,12 @@
-import ViewLayout from '@/shared/components/layout/ViewLayout'
-import Container from '@/shared/components/layout/Container'
 import React from 'react'
 import { policies, PolicySection, policyEffectiveAt } from './data/policy'
+import Section from '@/shared/components/layout/Section'
+import MainFooter from '@/shared/components/layout/MainFooter'
 
 const PrivacyPage = () => {
   return (
-    <ViewLayout type={'landing'}>
-      <Container>
+    <>
+      <Section id="privacy" background="white" className="overflow-hidden pt-[5rem] pb-[10rem]">
         <div className="pt-[2.75rem] pb-[5rem]">
           <section className="py-[2.5rem]">
             <h1 className="text-h2 mb-[1rem] text-center">Privacy Policy</h1>
@@ -51,8 +51,11 @@ const PrivacyPage = () => {
             This Privacy Policy is governed by the laws of the State of Texas.
           </p>
         </div>
-      </Container>
-    </ViewLayout>
+      </Section>
+      <div className="pt-12">
+        <MainFooter />
+      </div>
+    </>
   )
 }
 

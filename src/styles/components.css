@@ -63,3 +63,60 @@ a.mapboxgl-ctrl-logo {
   font-family: inherit;
   color: inherit;
 }
+
+/* components.css */
+.marquee-viewport {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+@keyframes marquee-vert {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  flex-direction: column;
+  animation: marquee-vert var(--marquee-duration, 24s) linear infinite;
+  will-change: transform;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+/* Pause when the COLUMN container is hovered */
+.marquee-pause:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Fade blur for hero */
+.mask-fade-y {
+  /* adjust fade depth with --fade (px or %) */
+  --fade: 0.5rem;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black var(--fade),
+    black calc(100% - var(--fade)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black var(--fade),
+    black calc(100% - var(--fade)),
+    transparent 100%
+  );
+}

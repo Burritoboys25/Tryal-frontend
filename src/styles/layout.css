@@ -13,3 +13,23 @@
 .screen-minus-navbar-business {
   min-height: calc(100vh - 5.625rem);
 }
+
+.main-container {
+  @apply h-dvh snap-y snap-proximity overflow-y-auto scroll-smooth;
+}
+
+.section-width-container {
+  @apply mx-auto max-w-[90vw] px-4 py-12 2xl:max-w-[95vw] 2xl:px-24 2xl:py-20;
+}
+
+.grid-12 {
+  @apply grid grid-cols-4 gap-x-[clamp(1rem,2vw,2rem)] md:grid-cols-12;
+}
+
+.section-vertical-spacing {
+  @apply py-32;
+}
+
+.inner {
+  @apply mx-auto w-full px-4 md:px-6 2xl:px-12;
+}
