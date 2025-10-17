@@ -60,10 +60,12 @@ function StepCard({
   return (
     <div className="flex flex-col px-6 py-5">
       <div className="text-h2 text-primary">{id}</div>
-      <Icon className="size-24 self-center md:size-48" aria-hidden="true" />
+      <Icon className="size-48 self-center md:size-48 xl:size-42" aria-hidden="true" />
       <div className="space-y-3">
-        <div className="text-h2">{title}</div>
-        <div className="text-2xl">{description}</div>
+        <div className="3xl:text-[2.75rem] text-foreground-teal text-[1.25rem] font-bold xl:text-[2.25rem] 2xl:text-[2.5rem]">
+          {title}
+        </div>
+        <div className="text-foreground-teal text-body2">{description}</div>
       </div>
     </div>
   )
@@ -79,7 +81,7 @@ const StickySteps = () => {
           trigger: scope.current,
           pinSpacing: true,
           markers: true,
-          start: 'top top',
+          start: 'top top+=30',
           end: '+=2000',
           pin: true,
           scrub: 0.5,
@@ -187,12 +189,11 @@ const StickySteps = () => {
   return (
     <Section
       ref={scope}
-      className="cards-section relative mx-8 rounded-3xl"
-      full
+      className="cards-section relative w-full rounded-3xl"
       id="sticky-steps"
       background="teal"
     >
-      <h3 className="absolute top-1/8 left-1/2 -translate-x-1/2 text-center text-3xl">
+      <h3 className="text-semibold mx-auto text-center text-[1.25rem] xl:w-3/4 xl:text-[2rem]">
         Turn your curiosity into memories in just 4 steps. A quick and easy process to bring your
         next experience to life.
       </h3>
