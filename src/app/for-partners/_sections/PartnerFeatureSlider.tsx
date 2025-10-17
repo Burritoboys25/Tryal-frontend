@@ -13,6 +13,7 @@ type Slide = {
   body: string
   image: string
   accent?: string
+  imageClassName?: string
 }
 
 const SLIDES: Slide[] = [
@@ -39,6 +40,7 @@ const SLIDES: Slide[] = [
     body: 'Stay adaptable when plans change. Update class times, adjust capacity, or reschedule experiences in just a few clicks — no hassle, no lost opportunities.',
     image: '/demos/calendar.gif',
     accent: 'bg-[#ABE7F4]',
+    imageClassName: 'scale-100 2xl:scale-120',
   },
 ]
 
@@ -170,7 +172,10 @@ function SlideCard({ slide }: { slide: Slide }) {
       <div className="bg-surface-light relative mx-auto h-full w-full overflow-hidden rounded-3xl shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
         {slide.image.includes('.gif') ? (
           <div className="flex h-full w-full items-center justify-center bg-[#fdfdfd] p-4">
-            <img src={slide.image} className="max-h-full max-w-full object-contain" />
+            <img
+              src={slide.image}
+              className={`max-h-full max-w-full object-contain ${slide.imageClassName ? slide.imageClassName : ''}`}
+            />
           </div>
         ) : (
           <Image
