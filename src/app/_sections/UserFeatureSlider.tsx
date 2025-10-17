@@ -42,7 +42,7 @@ const SLIDES: Slide[] = [
   },
 ]
 
-export default function UserFeatureSlider () {
+export default function UserFeatureSlider() {
   const [index, setIndex] = useState(0)
   const trackRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -148,7 +148,7 @@ function SlideCard({ slide }: { slide: Slide }) {
       {/* Left panel */}
       <div
         className={[
-          'rounded-[2rem] p-6 sm:p-8 lg:col-span-1 lg:p-10',
+          'rounded-2xl p-6 sm:p-8 lg:col-span-1 lg:p-10',
           slide.accent ?? 'bg-amber-200',
           'text-[#2E1109]',
         ].join(' ')}
@@ -163,7 +163,7 @@ function SlideCard({ slide }: { slide: Slide }) {
 
       {/* Right panel: device frame */}
       <div className="relative lg:col-span-1 xl:col-span-3">
-        <div className="relative mx-auto aspect-[16/7] h-full w-full overflow-hidden rounded-3xl bg-white shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
+        <div className="relative mx-auto aspect-[16/7] h-full w-full overflow-hidden rounded-2xl bg-white shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
           {slide.image.includes('.mp4') ? (
             <video src={slide.image} autoPlay loop muted className="object-cover object-center" />
           ) : (
