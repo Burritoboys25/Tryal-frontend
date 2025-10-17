@@ -18,8 +18,8 @@ function Input({ className, type, icon, ...props }: InputProps) {
         type={type}
         data-slot="input"
         className={cn(
-          'h-[2.5rem] w-full rounded-sm border-1 px-[0.75rem] py-[0.5rem] shadow-xs',
-          'text-foreground placeholder:text-muted-foreground border-input bg-white',
+          'h-[2.5rem] w-full rounded-xl border-1 px-[0.75rem] py-[0.5rem] shadow-xs',
+          'placeholder:text-foreground-muted placeholder:opacity-100 border-input opacity-100 bg-white/20 text-foreground-muted',
 
           // Interaction states
           'transition-colors duration-300 ease-in-out outline-none',
