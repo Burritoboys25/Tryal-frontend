@@ -51,7 +51,7 @@ const Stats = () => {
             <AnimateNumberTo start={0} end={1} suffix="" /> in{' '}
             <AnimateNumberTo start={0} end={4} suffix="" />
           </h3>
-          <p className="text-[1rem] md:text-[1.5rem]" data-anim="split-reveal">
+          <p className="text-h3" data-anim="split-reveal">
             Americans say their life feels boring or stuck in a routine.
           </p>
         </div>
@@ -59,7 +59,7 @@ const Stats = () => {
           <h3 className="mb-2 text-6xl font-medium md:mb-4 md:text-8xl" data-anim="from-to">
             <AnimateNumberTo start={0} end={76} suffix="%" />
           </h3>
-          <p className="text-[1rem] md:text-[1.5rem]" data-anim="split-reveal">
+          <p className="text-h3" data-anim="split-reveal">
             of people would rather spend money on experiences than material things.
           </p>
         </div>
