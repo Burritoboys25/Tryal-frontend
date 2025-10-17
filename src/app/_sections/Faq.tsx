@@ -79,7 +79,7 @@ const FaqSection = ({ audience }: FaqSectionProps) => {
               <div key={i} className="border-b border-black/[.2] pb-6 sm:pb-4">
                 <button
                   onClick={() => toggleQuestion(i)}
-                  className="flex w-full items-start text-left text-sm font-semibold text-[#09272E] transition-opacity hover:opacity-80 sm:text-base md:text-lg"
+                  className="flex w-full items-start text-left text-sm font-semibold text-[#09272E] transition-opacity hover:opacity-80 sm:text-base md:text-lg hover:cursor-pointer"
                 >
                   <div
                     className={`mt-0.5 mr-3 flex-shrink-0 transition-transform duration-300 sm:mt-1 sm:mr-4 ${
