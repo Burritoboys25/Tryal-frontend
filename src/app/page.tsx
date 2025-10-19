@@ -10,6 +10,7 @@ import Stats from './_sections/Stats'
 import ExploreMarquee from './_sections/ExploreMarquee'
 import UserFeatureSlider from './_sections/UserFeatureSlider'
 import LandingNavbar from '@/shared/components/layout/LandingNavbar'
+import LaptopGif from './_sections/LaptopGif'
 
 export default function Home() {
   return (
@@ -23,7 +24,7 @@ export default function Home() {
           <ExploreMarquee />
           <Stats />
           <StickySteps />
-          {/* Laptop GIF component goes here */}
+          <LaptopGif />
           <div className="py-12">
             <Faq />
           </div>
