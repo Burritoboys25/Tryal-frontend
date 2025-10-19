@@ -54,29 +54,32 @@ const FaqSection = () => {
   )
 
   return (
-    <Section background="light-teal" id="faq" className="pt-12 pb-24 md:pt-24 md:pb-32" ref={scope}>
-      <div className="relative grid grid-cols-1 gap-8 rounded-3xl px-0 lg:grid-cols-2">
+    <Section
+      background="light-teal"
+      id="faq"
+      full
+      className="mx-8 rounded-3xl py-12 md:py-24"
+      ref={scope}
+    >
+      <div className="relative grid grid-cols-1 gap-8 px-20 lg:grid-cols-2">
         <div className="text-center lg:sticky lg:top-[96px] lg:col-span-full lg:text-left">
-          <h2
-            className="text-2xl leading-tight font-bold text-[#09272E] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
-            data-anim="split-reveal"
-          >
+          <h2 className="text-display text-[#09272E]" data-anim="split-reveal">
             Frequently Asked <br className="hidden sm:block" />
             Questions
           </h2>
         </div>
 
-        <div className="space-y-6 sm:space-y-8 md:space-y-8 lg:col-start-2">
+        <div className="space-y-6 sm:space-y-8 lg:col-start-2">
           {faqItems.map((item, i) => {
             const isOpen = openQuestions.includes(i)
             return (
-              <div key={i} className="border-b border-black/[.2] pb-6 sm:pb-4">
+              <div key={i} className="border-b border-black/20 pb-6 sm:pb-4">
                 <button
                   onClick={() => toggleQuestion(i)}
-                  className="flex w-full items-start text-left text-sm font-semibold text-[#09272E] transition-opacity hover:opacity-80 sm:text-base md:text-lg"
+                  className="text-sub2 flex w-full items-center gap-3 text-left text-[#09272E] transition-opacity hover:opacity-80 sm:gap-4"
                 >
                   <div
-                    className={`mt-0.5 mr-3 flex-shrink-0 transition-transform duration-300 sm:mt-1 sm:mr-4 ${
+                    className={`flex-shrink-0 transition-transform duration-300 ${
                       isOpen ? 'rotate-180' : ''
                     }`}
                   >
@@ -92,11 +95,11 @@ const FaqSection = () => {
                 </button>
 
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${
+                  className={`ml-6 overflow-hidden text-sm leading-relaxed transition-all duration-300 sm:ml-8 sm:text-base md:ml-10 ${
                     isOpen ? 'mt-3 max-h-96 opacity-100 sm:mt-1' : 'max-h-0 opacity-0'
-                  } ml-6 text-sm leading-relaxed sm:ml-8 sm:text-base md:ml-10`}
+                  }`}
                 >
-                  <div className="py-1">{item.answer}</div>
+                  {item.answer}
                 </div>
               </div>
             )
