@@ -30,7 +30,7 @@ const FormField = ({
 
   return (
     <div className="space-y-1.5">
-      <Label htmlFor={inputId} className="text-label">
+      <Label htmlFor={inputId} className="text-label text-[#2e2e2e]">
         {label}
       </Label>
       <div className="relative">

@@ -25,8 +25,8 @@ const ViewLayout = ({ type, children, header, footer }: ViewLayoutProps) => {
     case 'partner':
       defaultNavbar = null
       defaultFooter = <MainFooter />
-      partnerBGColor = 'bg-[#09272E]'
-      mainStyles = 'h-screen p-[2rem]'
+      // partnerBGColor = 'bg-[#09272E]'
+      // mainStyles = 'h-screen p-[2rem]'
       break
     case 'explore':
       defaultNavbar = <MainHeader showSearch={true} />

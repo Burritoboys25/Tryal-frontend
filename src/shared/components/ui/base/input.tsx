@@ -4,10 +4,10 @@ import { cn } from '@/shared/lib/utils'
 
 interface InputProps extends React.ComponentProps<'input'> {
   icon?: React.ReactNode
-  textColor?: string
+  inputStyles?: string
 }
 
-function Input({ className, textColor, type, icon, ...props }: InputProps) {
+function Input({ className, inputStyles, type, icon, ...props }: InputProps) {
   return (
     <div className={cn(icon && 'relative', className)}>
       {icon && (
@@ -21,9 +21,10 @@ function Input({ className, textColor, type, icon, ...props }: InputProps) {
         // text-foreground-muted
         className={cn(
           'h-[2.5rem] w-full rounded-xl border-1 px-[0.75rem] py-[0.5rem] shadow-xs',
-          'placeholder:text-foreground-muted placeholder:opacity-100 border-input opacity-100 bg-white/20',
-          // Text color
-          textColor || '',
+          'placeholder:text-foreground-muted placeholder:opacity-100 border-input text-foreground-teal bg-white',
+          
+          // input styles
+          inputStyles || '',
 
           // Interaction states
           'transition-colors duration-300 ease-in-out outline-none',
