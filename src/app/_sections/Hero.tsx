@@ -107,7 +107,7 @@ const Hero = () => {
         </div>
         <div className="overflow-hidden">
           <div className="cta-form">
-            <InterestWaitlistForm />
+            <InterestWaitlistForm textColor='text-foreground-teal' />
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@ export default function MainFooter() {
               <span className="block text-[#E97958] lg:text-6xl">Don&apos;t miss out!</span>
             </h2>
             <div>
-              <InterestWaitlistForm />
+              <InterestWaitlistForm textColor='text-foreground-muted' />
             </div>
           </div>
 
