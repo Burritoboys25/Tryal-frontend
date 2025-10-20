@@ -3,6 +3,7 @@ import ReferralForm from '@/modules/waitlist/components/ReferralForm'
 // import MainFooter from '@/shared/components/layout/MainFooter'
 // import Section from '@/shared/components/layout/Section'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
+import Image from 'next/image'
 import { Suspense } from 'react'
 
 export default async function ThankYouPage({
@@ -18,7 +19,9 @@ export default async function ThankYouPage({
           <div className="flex flex-2/5 items-center justify-center 2xl:flex-1/2">
             <ReferralForm email={email} />
           </div>
-          <div className="flex-3/5 self-stretch rounded-2xl bg-[#D9D9D9] 2xl:flex-1/2"></div>
+          <div className="relative flex-3/5 self-stretch overflow-hidden rounded-2xl bg-[#D9D9D9] 2xl:flex-1/2">
+            <Image src="/thankyou-test.png" alt="Thank you" fill className="object-cover" />
+          </div>
         </section>
       </Suspense>
     </ViewLayout>

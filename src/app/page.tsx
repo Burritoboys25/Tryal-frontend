@@ -8,7 +8,7 @@ import MainFooter from '@/shared/components/layout/MainFooter'
 import StickySteps from './_sections/StickySteps'
 import Stats from './_sections/Stats'
 import ExploreMarquee from './_sections/ExploreMarquee'
-import UserFeatureSlider from './_sections/UserFeatureSlider'
+import { FeatureSlider } from '@/shared/components/ui/FeatureSlider'
 import LandingNavbar from '@/shared/components/layout/LandingNavbar'
 import LaptopGif from './_sections/LaptopGif'
 
@@ -20,7 +20,7 @@ export default function Home() {
         <div className="space-y-4 md:space-y-8">
           <Hero />
           <Intro />
-          <UserFeatureSlider />
+          <FeatureSlider />
           <ExploreMarquee />
           <Stats />
           <StickySteps />

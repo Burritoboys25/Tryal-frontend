@@ -6,7 +6,7 @@ import { gsap } from 'gsap'
 import Hero from './_sections/Hero'
 import Benefits from './_sections/Benefits'
 import Faq from '../_sections/Faq'
-import PartnerFeatureSlider from './_sections/PartnerFeatureSlider'
+import { FeatureSlider } from '@/shared/components/ui/FeatureSlider'
 import LenisProvider from '@/shared/lib/LenisProvider'
 import PartnerSteps from './_sections/PartnerSteps'
 import MainFooter from '@/shared/components/layout/MainFooter'
@@ -22,7 +22,7 @@ const ForPartnersPage = () => {
         <div className="space-y-4 md:space-y-8">
           <Hero />
           <Benefits />
-          <PartnerFeatureSlider />
+          <FeatureSlider />
           <PartnerSteps />
           <div className="pb-12">
             <Faq />
