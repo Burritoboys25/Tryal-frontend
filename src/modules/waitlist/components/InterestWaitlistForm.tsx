@@ -44,7 +44,7 @@ const InterestWaitlistForm = () => {
     >
       <Input
         type="email"
-        placeholder="Email address"
+        placeholder="Enter email address"
         value={email}
         onChange={e => setEmail(e.target.value)}
         className="flex-grow-0 sm:w-auto sm:flex-grow md:flex-grow-0 2xl:flex-grow"
