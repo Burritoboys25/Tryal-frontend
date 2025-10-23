@@ -6,20 +6,17 @@ import { useGSAP, gsap } from '@/shared/lib/gsap'
 export const BENEFITS = [
   {
     title: '14x Boost in Visibility',
-    description:
-      'Reach thousands of new customers without paying for ads.',
+    description: 'Reach thousands of new customers without paying for ads.',
     image: '/landing_page_img_1.png',
   },
   {
     title: '40% More Seats Filled',
-    description:
-      'Fill last-minute spots and keep your classes fully booked.',
-    image: '/landing_page_img_2.png',
+    description: 'Fill last-minute spots and keep your classes fully booked.',
+    image: '/40_test.png',
   },
   {
     title: 'Up to 30% More Revenue',
-    description:
-      "Streamlined bookings and payments mean less admin, more income.",
+    description: 'Streamlined bookings and payments mean less admin, more income.',
     image: '/landing_page_img_3.png',
   },
   // {
@@ -30,8 +27,7 @@ export const BENEFITS = [
   // },
   {
     title: '0 Upfront Cost',
-    description:
-      "Start earning from day one - No fees, no risk, no commitment.",
+    description: 'Start earning from day one - No fees, no risk, no commitment.',
     image: '/landing_page_img_4.png',
   },
 ]

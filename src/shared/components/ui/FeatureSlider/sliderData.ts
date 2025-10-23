@@ -22,7 +22,7 @@ export const USER_SLIDES: Slide[] = [
     tab: 'Community',
     title: 'Connect with Like-Minded Explorers',
     body: 'Join a community of curious adventurers who love trying new things. Meet others who share your passions, exchange tips, and find inspiration through shared experiences.',
-    image: '/community_test.png',
+    image: '/community_test_1.png',
     accent: 'bg-[#F4BCAB]',
   },
   {
