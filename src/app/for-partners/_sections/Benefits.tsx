@@ -5,27 +5,33 @@ import { useGSAP, gsap } from '@/shared/lib/gsap'
 
 export const BENEFITS = [
   {
-    title: '1400% Boost in Online Visibility in Just 6 Months',
+    title: '14x Boost in Visibility',
     description:
-      'Get your experience in front of people actively searching for unique activities to do in your city, no wasted ad spend — just direct access to new customers.',
+      'Reach thousands of new customers without paying for ads.',
     image: '/landing_page_img_1.png',
   },
   {
-    title: '40% More Seats Filled with Dynamic Pricing & Smart Scheduling',
+    title: '40% More Seats Filled',
     description:
-      'Fill more seats by adjusting prices, class sizes, and availability based on demand. Our tools give you the flexibility to maximize revenue while keeping control.',
+      'Fill last-minute spots and keep your classes fully booked.',
     image: '/landing_page_img_2.png',
   },
   {
-    title: '15-30% Revenue Uplift from Streamlined Booking Flows',
+    title: 'Up to 30% More Revenue',
     description:
-      "Manage all your experiences in one place from scheduling to payment. We streamline the process so you don't need to juggle multiple platforms.",
+      "Streamlined bookings and payments mean less admin, more income.",
     image: '/landing_page_img_3.png',
   },
+  // {
+  //   title: '23x Faster Growth',
+  //   description:
+  //     "Measure, learn, and grow faster than ever.",
+  //   image: '/landing_page_img_4.png',
+  // },
   {
-    title: '23x Higher Customer Acquistion with Real-Time Analytics',
+    title: '0 Upfront Cost',
     description:
-      "Track performance, customer trends, and booking patterns with real-time analytics — helping you understand what's working and how to improve.",
+      "Start earning from day one - No fees, no risk, no commitment.",
     image: '/landing_page_img_4.png',
   },
 ]
