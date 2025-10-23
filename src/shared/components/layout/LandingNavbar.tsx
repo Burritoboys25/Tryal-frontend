@@ -49,7 +49,7 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
             <Link href="/" className={isActive('/') ? activeLinkClass : ''}>
               For Explorers
             </Link>
-            <Link href="/for-partners" className={isActive('/for-partners') ? activeLinkClass : ''}>For Businesses</Link>
+            <Link href="/for-partners" className={isActive('/for-partners') ? activeLinkClass : ''}>For Partners</Link>
             <Link href="/about" className={isActive('/about') ? activeLinkClass : ''}>About us</Link>
           </div>
 
