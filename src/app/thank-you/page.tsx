@@ -1,8 +1,6 @@
 import ReferralForm from '@/modules/waitlist/components/ReferralForm'
-// Need to readd section and main footer in
-// import MainFooter from '@/shared/components/layout/MainFooter'
-// import Section from '@/shared/components/layout/Section'
-import ViewLayout from '@/shared/components/layout/ViewLayout'
+import MainFooter from '@/shared/components/layout/MainFooter'
+import Section from '@/shared/components/layout/Section'
 import { Suspense } from 'react'
 
 export default async function ThankYouPage({
@@ -12,15 +10,21 @@ export default async function ThankYouPage({
 }) {
   const email = (await searchParams).email
   return (
-    <ViewLayout type={'partner'}>
+    <>
       <Suspense fallback={<p className="py-[5rem] text-center">Loading...</p>}>
-        <section className="flex h-full flex-row items-center rounded-2xl bg-[#F5F5F5] px-[2rem] py-[2rem]">
+        <Section 
+          className="m-6 p-6 h-[calc(100dvh-3rem)] flex flex-row items-center rounded-2xl"
+          background='white'
+          full
+        >
           <div className="flex flex-2/5 items-center justify-center 2xl:flex-1/2">
             <ReferralForm email={email} />
           </div>
           <div className="flex-3/5 self-stretch rounded-2xl bg-[#D9D9D9] 2xl:flex-1/2"></div>
-        </section>
+        </Section>
       </Suspense>
-    </ViewLayout>
+      <MainFooter />
+    </>
+
   )
 }

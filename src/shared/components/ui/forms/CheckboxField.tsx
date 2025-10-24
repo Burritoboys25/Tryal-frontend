@@ -36,7 +36,7 @@ const CheckboxField = ({
         disabled={disabled}
         className="border-border border-2"
       />
-      <Label>{label}</Label>
+      <Label className='font-normal'>{label}</Label>
       <p
         id={errorId}
         className={cn(

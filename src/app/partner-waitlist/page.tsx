@@ -1,4 +1,3 @@
-import ViewLayout from '@/shared/components/layout/ViewLayout'
 import PartnerWaitlist from '@/modules/waitlist/components/PartnerWaitlist'
 import Section from '@/shared/components/layout/Section'
 import MainFooter from '@/shared/components/layout/MainFooter'
@@ -7,7 +6,7 @@ const BecomePartnerForm = () => {
   return (
     <>
       <Section
-        className="mx-6 my-6 flex h-[calc(100dvh-3rem)] flex-row items-center rounded-2xl px-6 py-6"
+        className="m-6 p-6 h-[calc(100dvh-3rem)] flex flex-row items-center rounded-2xl"
         background="white"
         full
       >
