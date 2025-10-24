@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from 'react'
 import { Button } from '@/shared/components/ui/base/button'
 import Image from 'next/image'
 
+import { useMediaQuery } from '@/shared/hooks/useMediaQuery'
 type Slide = {
   id: string
   tab: string
@@ -40,7 +41,7 @@ const SLIDES: Slide[] = [
     body: 'Stay adaptable when plans change. Update class times, adjust capacity, or reschedule experiences in just a few clicks — no hassle, no lost opportunities.',
     image: '/demos/calendar.gif',
     accent: 'bg-[#ABE7F4]',
-    imageClassName: 'scale-100 2xl:scale-120',
+    imageClassName: 'scale-100 2xl:scale-120 2xl:py-14',
   },
 ]
 
@@ -50,6 +51,7 @@ const PartnerFeatureSlider = () => {
   const [index, setIndex] = useState(0)
   const trackRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
+  const isMobile = useMediaQuery('(max-width: 1023px)')
 
   const goTo = (i: number) => {
     const el = itemRefs.current[i]
@@ -105,13 +107,13 @@ const PartnerFeatureSlider = () => {
         tabIndex={0}
       >
         {/* Tabs */}
-        <div className="mb-4 flex flex-wrap gap-3">
+        <div className="mb-4 flex flex-nowrap gap-3 overflow-hidden">
           {SLIDES.map((s, i) => (
             <Button
               key={s.id}
               onClick={() => goTo(i)}
               className={[
-                'hover:bg-surface-teal/80 hidden rounded-full px-4 py-2 text-sm transition md:block',
+                'hover:bg-surface-teal/80 rounded-full px-4 py-2 text-sm whitespace-nowrap transition',
                 'bg-[#124E5B]',
                 'text-foreground-dark',
                 i === index ? 'bg-primary hover:bg-primary/90 ring-1 ring-white/10' : '',
@@ -139,7 +141,7 @@ const PartnerFeatureSlider = () => {
                 aria-roledescription="slide"
                 aria-label={`${i + 1} of ${SLIDES.length}`}
               >
-                <SlideCard slide={s} />
+                {isMobile ? <MobileSlideCard slide={s} /> : <SlideCard slide={s} />}
               </div>
             ))}
           </div>
@@ -149,13 +151,45 @@ const PartnerFeatureSlider = () => {
   )
 }
 
+function MobileSlideCard({ slide }: { slide: Slide }) {
+  return (
+    <div
+      className={`flex h-[600px] flex-col space-y-5 rounded-2xl p-4 ${slide.accent ? slide.accent : 'bg-amber-200'}`}
+    >
+      <div className="bg-surface-light relative mx-auto w-full overflow-hidden rounded-3xl shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
+        {slide.image.includes('.gif') ? (
+          <img
+            src={slide.image}
+            className={`max-h-full max-w-full object-contain ${slide.imageClassName ? slide.imageClassName : ''}`}
+          />
+        ) : (
+          <Image
+            src={slide.image}
+            alt={slide.title}
+            fill
+            className="object-cover"
+            priority={false}
+          />
+        )}
+      </div>
+
+      <div className="flex h-full flex-1 flex-col">
+        <h2 className="text-foreground-teal text-xl leading-tight font-semibold tracking-tight whitespace-pre-line">
+          {slide.title}
+        </h2>
+        <p className="text-foreground-teal text-body2 mt-auto">{slide.body}</p>
+      </div>
+    </div>
+  )
+}
+
 function SlideCard({ slide }: { slide: Slide }) {
   return (
     <div className="grid grid-cols-1 gap-4 xl:max-h-[569px] xl:grid-cols-[454px_1fr] 2xl:max-h-[700px] 2xl:grid-cols-[1fr_3fr]">
       {/* Left panel */}
       <div
         className={[
-          'rounded-[2rem] p-6 sm:p-8 lg:col-span-1 lg:p-10',
+          'rounded-2xl p-6 sm:p-8 lg:col-span-1 lg:p-10',
           slide.accent ?? 'bg-amber-200',
           'text-[#2E1109]',
         ].join(' ')}
