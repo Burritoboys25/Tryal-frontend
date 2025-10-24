@@ -4,6 +4,9 @@ import { useGSAP, gsap } from '@/shared/lib/gsap'
 import SignupIcon from '@/shared/assets/icons/signup.svg'
 import RegisterIcon from '@/shared/assets/icons/register.svg'
 import OptimizeIcon from '@/shared/assets/icons/optimize.svg'
+import { useMediaQuery } from '@/shared/hooks/useMediaQuery'
+// import Section from '@/shared/components/layout/Section'
+import { StepCard } from '@/app/_sections/StickySteps'
 
 const STEPS = [
   {
@@ -12,30 +15,29 @@ const STEPS = [
     title: 'Apply & Get Verified',
     description:
       'Join a trusted network through a quick verification process that builds customer confidence and ensures quality experiences.',
-    highlight:
-      'Build trust: “We carefully verify each partner to ensure a safe and high-quality experience for customers.”',
   },
   {
     step: '02',
     icon: <RegisterIcon />,
-    title: 'List Your Experiences',
-    description:
-      'Easily create listings, set prices, and manage availability with our simple onboarding to start attracting bookings fast.',
-    highlight:
-      'Emphasize ease of onboarding: “Quickly list your activities, set pricing, and manage availability.”',
+    title: 'Register & Set Prices',
+    description: 'Quickly list your experiences, set pricing, and manage availability.',
   },
   {
     step: '03',
     icon: <OptimizeIcon />,
-    title: 'Manage & Grow',
+    title: 'Manage & Optimize',
     description:
-      'Use dynamic pricing and flexible scheduling to adapt to demand, boost visibility, and maximize revenue.',
-    highlight:
-      'Explain dynamic pricing & flexible scheduling: adjust class sizes, times, or prices based on demand.',
+      'Dynamic pricing & flexible scheduling: adjust class sizes, times, or prices based on demand.',
   },
 ]
 
 const PartnerSteps = () => {
+  const isMobile = useMediaQuery('(max-width: 1023px)')
+
+  return isMobile ? <MobilePartnerSteps /> : <PartnerStepsDesktop />
+}
+
+const PartnerStepsDesktop = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null)
   const svgRef = useRef<SVGSVGElement | null>(null)
   const stepRefs = useRef<HTMLDivElement[]>([])
@@ -124,13 +126,158 @@ const PartnerSteps = () => {
             className={`h-[434px] w-[605px] rounded-2xl bg-white p-6 ${idx % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'}`}
           >
             <div className="flex h-full flex-1 flex-col justify-between">
-              <div className="text-h2 text-primary text-left">{step.step}</div>
+              <div className="text-primary text-left text-[2rem] font-semibold lg:text-[2.25rem] xl:text-[2.5rem] 2xl:text-[2.75rem]">
+                {step.step}
+              </div>
               <div className="my-6 flex justify-center">{step.icon}</div>
-              <h3 className="text-h2 text-background mb-2 text-left">{step.title}</h3>
-              <p className="text-body2 text-background text-left">{step.description}</p>
+              <h3 className="text-background 3xl:text-[3rem] text-left text-2xl font-semibold md:text-[2rem] lg:text-[2.25rem] 2xl:text-[2.5rem]">
+                {step.title}
+              </h3>
+              <p className="text-background text-left text-sm lg:text-xl">{step.description}</p>
             </div>
           </div>
         ))}
+      </div>
+    </section>
+  )
+}
+
+const MobilePartnerSteps = () => {
+  const scope = useRef<HTMLElement>(null)
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: scope.current,
+          pinSpacing: true,
+          markers: true,
+          start: 'top top+=30',
+          end: '+=1500',
+          pin: true,
+          scrub: 0.5,
+        },
+      })
+
+      tl.addLabel('card1')
+      tl.to('#card-1', {
+        yPercent: 0,
+        opacity: 1,
+      })
+
+      tl.from('#card-2', {
+        yPercent: 75,
+        opacity: 0,
+      })
+      tl.addLabel('card2')
+      tl.to(
+        '#card-1',
+        {
+          scale: 0.925,
+          yPercent: -0.75,
+          opacity: 1,
+        },
+        '-=0.3',
+      )
+      tl.to('#card-2', {
+        yPercent: 0,
+        opacity: 1,
+      })
+
+      // Animation for card 3
+      tl.from('#card-3', {
+        yPercent: 75,
+        opacity: 0,
+      })
+      tl.addLabel('card3')
+      tl.to(
+        '#card-2',
+        {
+          scale: 0.95,
+          yPercent: -0.5,
+          opacity: 1,
+        },
+        '-=0.3',
+      )
+      tl.to('#card-3', {
+        yPercent: 0,
+        opacity: 1,
+      })
+
+      tl.to(
+        '#card-3',
+        {
+          scale: 0.98,
+          yPercent: -0.4,
+          opacity: 1,
+        },
+        '-=0.3',
+      )
+
+      tl.to(
+        '#card-1',
+        {
+          scale: 0.925,
+          yPercent: -1.5,
+          opacity: 0.9,
+        },
+        '-=0.3',
+      )
+
+      tl.to(
+        '#card-2',
+        {
+          scale: 0.95,
+          yPercent: -1.125,
+          opacity: 1,
+        },
+        '-=0.3',
+      )
+
+      tl.to(
+        '#card-3',
+        {
+          scale: 0.98,
+          yPercent: -0.85,
+          opacity: 1,
+        },
+        '-=0.3',
+      )
+    },
+    { scope: scope },
+  )
+
+  return (
+    <section
+      ref={scope}
+      className="cards-section section-width-container relative w-full rounded-3xl"
+      id="sticky-steps"
+    >
+      <div className="cards-container text-foreground-light">
+        <div id="card-1" className="card top-0 rounded-3xl">
+          <StepCard
+            id="01"
+            title="Apply & Get Verified"
+            description="We carefully verify each partner to ensure a safe and high-quality experience for customers."
+            icon={SignupIcon}
+          />
+        </div>
+        <div id="card-2" className="card top-[30px]">
+          <StepCard
+            id="02"
+            title="Register & Set Prices"
+            description="Quickly list your experiences, set pricing, and manage availability."
+            icon={RegisterIcon}
+          />
+        </div>
+        <div id="card-3" className="card top-[60px]">
+          <StepCard
+            id="03"
+            title="Manage & Optimize"
+            description="Dynamic pricing & flexible scheduling: adjust class sizes, times, or prices based on demand."
+            icon={OptimizeIcon}
+          />
+        </div>
       </div>
     </section>
   )
