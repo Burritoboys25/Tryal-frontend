@@ -25,9 +25,8 @@ const cards = [
   },
 ]
 
-const Intro = () => {
-  const scope = useRef<HTMLElement>(null)
-  useGSAP(
+/* 
+useGSAP(
     () => {
       const titleSplit = new SplitText('#intro-title', {
         type: 'lines',
@@ -75,6 +74,66 @@ const Intro = () => {
     { scope: scope },
   )
 
+*/
+
+const Intro = () => {
+  const scope = useRef<HTMLElement>(null)
+  useGSAP(
+    () => {
+      const icons = gsap.utils.toArray('[data-anim="fade-in"]') // Element[]
+
+      const tl = gsap.timeline({
+        defaults: { ease: 'power4.out' },
+        scrollTrigger: {
+          trigger: scope.current,
+          start: 'top 65%',
+        },
+      })
+
+      tl.add('start')
+
+      SplitText.create('#intro-title', {
+        type: 'lines',
+        mask: 'lines',
+        autoSplit: true,
+        linesClass: 'overflow-visible leading-[1.4]',
+        onSplit(self) {
+          const tween = gsap.from(self.lines, {
+            yPercent: 100,
+            duration: 1,
+            stagger: 0.12,
+            ease: 'power4.out',
+            paused: true,
+          })
+
+          tl.add(tween.play(), 'start')
+          return tween
+        },
+      })
+
+      SplitText.create('[data-anim="split-reveal"]', {
+        type: 'lines',
+        mask: 'lines',
+        autoSplit: true,
+        onSplit(self) {
+          const tween = gsap.from(self.lines, {
+            yPercent: 100,
+            duration: 1,
+            stagger: 0.06,
+            ease: 'power4.out',
+            paused: true,
+            // onComplete: () => self.revert()
+          })
+          tl.add(tween.play(), 'start+=1')
+          return tween
+        },
+      })
+
+      tl.from(icons, { autoAlpha: 0, duration: 1, stagger: 0.06 }, 'start+=1')
+    },
+    { scope: scope },
+  )
+
   return (
     <Section
       id="intro"
@@ -100,11 +159,11 @@ const Intro = () => {
           {cards.slice(0, 3).map(({ title, icon: Icon, description }) => (
             <div key={title} className="col-span-1 flex gap-3 md:max-w-4/5">
               <Icon className="size-11" aria-hidden="true" data-anim="fade-in" />
-              <div>
+              <div className='flex-1' data-anim="split-reveal">
                 <h4 className="text-sub1" data-anim="split-reveal">
                   {title}
                 </h4>
-                <p className="text-sub4 w-full" data-anim="split-reveal">
+                <p className="text-body2 md:text-sub4 w-full" data-anim="split-reveal">
                   {description}
                 </p>
               </div>

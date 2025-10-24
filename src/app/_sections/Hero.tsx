@@ -35,9 +35,8 @@ function Tiles({ items }: { items: StaticImageData[] }) {
   )
 }
 
-const Hero = () => {
-  const scope = useRef<HTMLElement>(null)
-  useGSAP(
+/* 
+useGSAP(
     () => {
       const heroSplit = new SplitText('.title', {
         type: 'lines',
@@ -84,6 +83,71 @@ const Hero = () => {
     { scope: scope },
   )
 
+*/
+
+const Hero = () => {
+  const scope = useRef<HTMLElement>(null)
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        defaults: { ease: 'power4.out' },
+      })
+      tl.add('start') // label to align cleanly
+        .from('#gallery-1', { yPercent: 100, duration: 3, opacity: 0 }, 'start')
+        .from('#gallery-2', { yPercent: -100, duration: 3, opacity: 0 }, 'start')
+        .fromTo(
+          '.tile__reveal',
+          { clipPath: 'inset(50% 0% 50% 0% round 0.75rem)' }, // start: 0-height slice
+          {
+            clipPath: 'inset(0% 0% 0% 0% round 0.75rem)', // end: fully visible
+            duration: 2,
+            ease: 'power4.out',
+            stagger: { each: 0.06, from: 'center' }, // center-out staggering
+          },
+          'start+=0.5',
+        )
+      
+      SplitText.create('.title', {
+        type: 'lines',
+        mask: 'lines',
+        autoSplit: true,
+        onSplit(self) {
+          const tween = gsap.from(self.lines, {
+            yPercent: 100,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.12,
+            ease: 'power4.out',
+            paused: true,
+          })
+          tl.add(tween.play(), 'start+=0.6')
+          return tween
+        },
+      })
+      
+      SplitText.create('.sub-text', {
+        type: 'lines',
+        mask: 'lines',
+        autoSplit: true,
+        onSplit(self) {
+          const tween = gsap.from(self.lines, {
+            yPercent: 100,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.12,
+            ease: 'power4.out',
+            paused: true,
+          })
+          tl.add(tween.play(), 'start+=1.2')
+          return tween
+        },
+      })
+      
+      tl.from('.cta-form', { yPercent: 100, opacity: 0, duration: 1.2 }, 'start+=1.4')
+    },
+    { scope: scope },
+  )
+
   return (
     <Section
       id="hero"
@@ -92,7 +156,7 @@ const Hero = () => {
       background="light-teal"
     >
       {/* Left Side */}
-      <div className="row-start-2 self-start px-0.5 md:col-span-6 md:row-start-1 md:self-center md:px-4">
+      <div className="row-start-2 self-start md:col-span-6 md:row-start-1 md:self-center md:px-4">
         <div data-reveal-split>
           <h1 className="hero-text title text-[#09272E]">
             Discover.

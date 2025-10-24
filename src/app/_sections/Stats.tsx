@@ -4,23 +4,44 @@ import AnimateNumberTo from '@/shared/lib/animations/AnimateNumberTo'
 import { useGSAP, SplitText, gsap } from '@/shared/lib/gsap'
 import { useRef } from 'react'
 
+// if (!containerRef.current) return
+      // const revealTargets = containerRef.current.querySelectorAll('[data-anim="split-reveal"]')
+
+      // const splits: SplitText[] = []
+      // const allLines: Element[] = []
+
+      // revealTargets.forEach(target => {
+      //   const split = new SplitText(target, { type: 'lines', mask: 'lines' })
+      //   splits.push(split)
+      //   allLines.push(...split.lines)
+      // })
+
+      // const tl = gsap.timeline({
+      //   scrollTrigger: {
+      //     trigger: containerRef.current,
+      //     start: 'top 75%',
+      //     once: true,
+      //   },
+      // })
+
+      // tl.from(allLines, {
+      //   opacity: 0,
+      //   y: 100,
+      //   duration: 1,
+      //   ease: 'power4.out',
+      // })
+
+      // return () => {
+      //   splits.forEach(split => split.revert())
+      // }
+
 const Stats = () => {
   const containerRef = useRef<HTMLElement>(null)
 
   useGSAP(
     () => {
       if (!containerRef.current) return
-      const revealTargets = containerRef.current.querySelectorAll('[data-anim="split-reveal"]')
-
-      const splits: SplitText[] = []
-      const allLines: Element[] = []
-
-      revealTargets.forEach(target => {
-        const split = new SplitText(target, { type: 'lines', mask: 'lines' })
-        splits.push(split)
-        allLines.push(...split.lines)
-      })
-
+      
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -29,16 +50,25 @@ const Stats = () => {
         },
       })
 
-      tl.from(allLines, {
-        opacity: 0,
-        y: 100,
-        duration: 1,
-        ease: 'power4.out',
+      tl.add('start')
+
+      SplitText.create('[data-anim="split-reveal"]', {
+        type: 'lines',
+        mask: 'lines',
+        autoSplit: true,
+        onSplit(self) {
+          const tween = gsap.from(self.lines, {
+            yPercent: 100,
+            duration: 1,
+            ease: 'power4.out',
+            paused: true,
+            onComplete: () => self.revert()
+          })
+          tl.add(tween.play(), 'start')
+          return tween
+        },
       })
 
-      return () => {
-        splits.forEach(split => split.revert())
-      }
     },
     { scope: containerRef },
   )
