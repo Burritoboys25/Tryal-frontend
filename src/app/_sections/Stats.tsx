@@ -4,37 +4,6 @@ import AnimateNumberTo from '@/shared/lib/animations/AnimateNumberTo'
 import { useGSAP, SplitText, gsap } from '@/shared/lib/gsap'
 import { useRef } from 'react'
 
-// if (!containerRef.current) return
-      // const revealTargets = containerRef.current.querySelectorAll('[data-anim="split-reveal"]')
-
-      // const splits: SplitText[] = []
-      // const allLines: Element[] = []
-
-      // revealTargets.forEach(target => {
-      //   const split = new SplitText(target, { type: 'lines', mask: 'lines' })
-      //   splits.push(split)
-      //   allLines.push(...split.lines)
-      // })
-
-      // const tl = gsap.timeline({
-      //   scrollTrigger: {
-      //     trigger: containerRef.current,
-      //     start: 'top 75%',
-      //     once: true,
-      //   },
-      // })
-
-      // tl.from(allLines, {
-      //   opacity: 0,
-      //   y: 100,
-      //   duration: 1,
-      //   ease: 'power4.out',
-      // })
-
-      // return () => {
-      //   splits.forEach(split => split.revert())
-      // }
-
 const Stats = () => {
   const containerRef = useRef<HTMLElement>(null)
 
