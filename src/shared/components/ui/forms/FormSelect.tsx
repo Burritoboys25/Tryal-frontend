@@ -29,7 +29,7 @@ export const FormSelect = ({
 }: FormSelectProps) => {
   return (
     <div className="space-y-1.5">
-      <Label htmlFor={name} className="text-label">
+      <Label htmlFor={name} className="text-label text-[#2e2e2e]">
         {label}
       </Label>
       <Select value={value} onValueChange={onChange}>

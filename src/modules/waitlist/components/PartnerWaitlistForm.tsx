@@ -40,7 +40,7 @@ const PartnerWaitlistForm = ({
   return (
     <form onSubmit={handleSubmit} className="max-w-[27.2rem]">
       <div className="flex flex-col">
-        <h2 className="text-h1 text-foreground-teal">Get Discovered. Get Booked. Grow with Us!</h2>
+        <h1 className="text-h1 text-foreground-teal">Get Discovered. Get Booked. Grow with Us!</h1>
         <p className="text-muted-foreground text-[0.875rem] leading-[1.25rem] mt-2">
           Ready to join our growing network? By partnering with us, you&apos;ll be exposed to more
           customers looking to discover and book unique experiences.
@@ -150,19 +150,19 @@ const PartnerWaitlistForm = ({
             }}
           />
 
-          <label className="text-caption2 text-muted-foreground">
+          <label className="text-[0.75rem] font-semibold text-black">
             I agree to receive marketing and other communications from Tryal. *
           </label>
         </div>
 
-        <p className="text-caption2 text-muted-foreground">
+        <p className="text-[0.75rem] text-muted-foreground">
           You can unsubscribe from these communications at any time. For more information, please
           review our{' '}
-          <Link href="/terms" className="text-link">
-            Terms of Use
+          <Link href="/terms" className="text-link text-[#1d58fa]">
+            Terms and Conditions
           </Link>
           {' and '}
-          <Link href="/privacy" className="text-link">
+          <Link href="/privacy" className="text-link text-[#1d58fa]">
             Privacy Policy
           </Link>
           .

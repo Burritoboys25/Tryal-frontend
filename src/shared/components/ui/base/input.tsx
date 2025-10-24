@@ -20,7 +20,7 @@ function Input({ className, inputStyles, type, icon, ...props }: InputProps) {
         data-slot="input"
         // text-foreground-muted
         className={cn(
-          'h-[2.5rem] w-full rounded-xl border-1 px-[0.75rem] py-[0.5rem] shadow-xs',
+          'h-[2.5rem] w-full rounded-lg border-1 px-[0.75rem] py-[0.5rem] shadow-xs',
           'placeholder:text-foreground-muted placeholder:opacity-100 border-input text-foreground-teal bg-white',
           
           // input styles
