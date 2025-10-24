@@ -5,21 +5,21 @@ import { useGSAP, gsap } from '@/shared/lib/gsap'
 
 export const BENEFITS = [
   {
-    title: '14x Boost in Visibility',
-    description:
-      'Reach thousands of new customers without paying for ads.',
+    metric: '14x',
+    metricLabel: 'Boost in Visibility',
+    description: 'Reach thousands of new customers without paying for ads.',
     image: '/landing_page_img_1.png',
   },
   {
-    title: '40% More Seats Filled',
-    description:
-      'Fill last-minute spots and keep your classes fully booked.',
+    metric: '40%',
+    metricLabel: 'More Seats Filled',
+    description: 'Fill last-minute spots and keep your classes fully booked.',
     image: '/landing_page_img_2.png',
   },
   {
-    title: 'Up to 30% More Revenue',
-    description:
-      "Streamlined bookings and payments mean less admin, more income.",
+    metric: '30%',
+    metricLabel: 'More Revenue',
+    description: 'Streamlined bookings and payments mean less admin, more income.',
     image: '/landing_page_img_3.png',
   },
   // {
@@ -29,9 +29,9 @@ export const BENEFITS = [
   //   image: '/landing_page_img_4.png',
   // },
   {
-    title: '0 Upfront Cost',
-    description:
-      "Start earning from day one - No fees, no risk, no commitment.",
+    metric: '0',
+    metricLabel: 'Upfront Cost',
+    description: 'Start earning from day one - No fees, no risk, no commitment.',
     image: '/landing_page_img_4.png',
   },
 ]
@@ -123,15 +123,20 @@ const Benefits = () => {
             ref={el => setBenefitRef(el, index)}
           >
             <div
-              className={`flex max-w-2xl flex-col gap-2 ${index % 2 === 0 ? '' : 'col-start-1'} `}
+              className={`flex max-w-2xl flex-col gap-[2rem] ${index % 2 === 0 ? '' : 'col-start-1'} `}
             >
-              <h3 className="text-[1.75rem] font-semibold tracking-tight 2xl:text-[2rem]">
-                {benefit.title}
-              </h3>
-              <p className="text-sub2">{benefit.description}</p>
+              <div className="flex flex-row items-center gap-3">
+                <h2 className="text-4xl font-semibold md:text-8xl 2xl:text-[10rem]">
+                  {benefit.metric}
+                </h2>
+                <h3 className="text-xl font-semibold md:text-2xl 2xl:text-4xl">
+                  {benefit.metricLabel}
+                </h3>
+              </div>
+              <p className="text-sub4">{benefit.description}</p>
             </div>
             <div className="relative max-w-xl flex-1 overflow-hidden rounded-2xl lg:h-[389px]">
-              <Image src={benefit.image} alt={benefit.title} className="object-cover" fill />
+              <Image src={benefit.image} alt={benefit.metricLabel} className="object-cover" fill />
             </div>
           </div>
         ))}
