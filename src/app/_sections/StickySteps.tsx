@@ -45,7 +45,7 @@ export const STEPS: {
   },
 ]
 
-function StepCard({
+export function StepCard({
   id,
   title,
   description,
@@ -58,14 +58,16 @@ function StepCard({
   className?: string
 }) {
   return (
-    <div className="flex flex-col px-6 py-5">
+    <div className="flex h-full flex-col px-6 py-5">
       <div className="text-h2 text-primary">{id}</div>
-      <Icon className="size-48 self-center md:size-48 xl:size-42" aria-hidden="true" />
-      <div className="space-y-3">
-        <div className="3xl:text-[2.75rem] text-foreground-teal text-[1.25rem] font-bold xl:text-[2.25rem] 2xl:text-[2.5rem]">
-          {title}
+      <div className="flex flex-1 flex-col items-center justify-between">
+        <Icon className="size-37 self-center md:size-38 xl:size-42" aria-hidden="true" />
+        <div className="space-y-3">
+          <div className="3xl:text-[2.5rem] text-foreground-teal text-[1.5rem] font-bold md:text-[2rem] xl:text-[2.25rem]">
+            {title}
+          </div>
+          <div className="text-foreground-teal 3xl:text-2xl text-sm xl:text-xl">{description}</div>
         </div>
-        <div className="text-foreground-teal text-body2">{description}</div>
       </div>
     </div>
   )
@@ -168,7 +170,7 @@ const StickySteps = () => {
         {
           scale: 0.95,
           yPercent: -1.125,
-          opacity: 0.9,
+          opacity: 1,
         },
         '-=0.3',
       )
@@ -178,7 +180,7 @@ const StickySteps = () => {
         {
           scale: 0.98,
           yPercent: -0.85,
-          opacity: 0.9,
+          opacity: 1,
         },
         '-=0.3',
       )
