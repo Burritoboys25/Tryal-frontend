@@ -126,14 +126,14 @@
   justify-content: space-around;
   align-items: center;
 
-  @apply h-[95dvh] justify-around xl:h-[90dvh];
+  @apply h-[95dvh] justify-around md:h-[90dvh] xl:h-[90dvh];
 }
 
 .cards-container {
   position: relative;
   display: flex;
   flex-direction: column;
-  @apply -mt-[100px] h-[386px] w-[323px] md:mt-0 md:h-1/2 md:w-full xl:-mt-[100px] xl:h-[416px] xl:w-[580px] 2xl:mt-0 2xl:h-[416px] 2xl:w-[580px];
+  @apply -mt-[100px] h-[347px] w-full md:mt-0 md:h-1/2 md:w-3/4 xl:-mt-[100px] xl:h-[416px] xl:w-[580px] 2xl:mt-0 2xl:h-[416px] 2xl:w-[580px];
 }
 
 .card {
