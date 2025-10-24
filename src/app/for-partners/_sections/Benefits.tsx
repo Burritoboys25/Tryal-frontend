@@ -7,7 +7,7 @@ export const BENEFITS = [
   {
     title: '14x Boost in Visibility',
     description: 'Reach thousands of new customers without paying for ads.',
-    image: '/landing_page_img_1.png',
+    image: '/boost_test.png',
   },
   {
     title: '40% More Seats Filled',
@@ -17,7 +17,7 @@ export const BENEFITS = [
   {
     title: 'Up to 30% More Revenue',
     description: 'Streamlined bookings and payments mean less admin, more income.',
-    image: '/landing_page_img_3.png',
+    image: '/30_revenue_test.png',
   },
   // {
   //   title: '23x Faster Growth',
@@ -28,7 +28,7 @@ export const BENEFITS = [
   {
     title: '0 Upfront Cost',
     description: 'Start earning from day one - No fees, no risk, no commitment.',
-    image: '/landing_page_img_4.png',
+    image: '/0_upfront_test.png',
   },
 ]
 

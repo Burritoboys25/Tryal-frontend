@@ -6,11 +6,11 @@ import Section from '@/shared/components/layout/Section'
 import { useGSAP, gsap, SplitText } from '@/shared/lib/gsap'
 
 type FaqSectionProps = {
-  audience: "user" | "partner";
-};
+  audience: 'user' | 'partner'
+}
 
 const FaqSection = ({ audience }: FaqSectionProps) => {
-  const faqData: Faq[] = audience === "user" ? faqUsers : faqPartners;
+  const faqData: Faq[] = audience === 'user' ? faqUsers : faqPartners
 
   const [openQuestions, setOpenQuestions] = useState<number[]>([])
   const scope = useRef<HTMLElement>(null)
@@ -82,7 +82,7 @@ const FaqSection = ({ audience }: FaqSectionProps) => {
               <div key={i} className="border-b border-black/20 pb-6 sm:pb-4">
                 <button
                   onClick={() => toggleQuestion(i)}
-                  className="text-sub2 flex w-full items-center gap-3 text-left text-[#09272E] transition-opacity hover:opacity-80 sm:gap-4 hover:cursor-pointer"
+                  className="text-sub2 flex w-full items-center gap-3 text-left text-[#09272E] transition-opacity hover:cursor-pointer hover:opacity-80 sm:gap-4"
                 >
                   <div
                     className={`flex-shrink-0 transition-transform duration-300 ${
