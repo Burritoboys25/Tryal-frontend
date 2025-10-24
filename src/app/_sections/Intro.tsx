@@ -25,57 +25,6 @@ const cards = [
   },
 ]
 
-/* 
-useGSAP(
-    () => {
-      const titleSplit = new SplitText('#intro-title', {
-        type: 'lines',
-        mask: 'lines',
-        linesClass: 'overflow-visible leading-[1.4]', // prevent line cuttoff
-      })
-      const itemSplit = new SplitText('[data-anim="split-reveal"]', {
-        type: 'lines',
-        mask: 'lines',
-      })
-
-      const icons = gsap.utils.toArray('[data-anim="fade-in"]') // Element[]
-
-      const tl = gsap.timeline({
-        defaults: { ease: 'power4.out' },
-        scrollTrigger: {
-          trigger: scope.current,
-          start: 'top 65%',
-          markers: true,
-        },
-      })
-
-      tl.add('start')
-        .from(titleSplit.lines, {
-          yPercent: 100,
-          duration: 1,
-          stagger: 0.12,
-        })
-        .from(
-          itemSplit.lines,
-          {
-            yPercent: 100,
-            duration: 1,
-            stagger: 0.06,
-          },
-          'start+=1',
-        )
-        .from(icons, { autoAlpha: 0, duration: 1, stagger: 0.06 }, 'start+=1')
-
-      return () => {
-        titleSplit.revert()
-        itemSplit.revert()
-      }
-    },
-    { scope: scope },
-  )
-
-*/
-
 const Intro = () => {
   const scope = useRef<HTMLElement>(null)
   useGSAP(

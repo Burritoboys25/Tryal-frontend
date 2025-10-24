@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Input } from '@/shared/components/ui/base/input'
 import { showToast } from '@/shared/components/ui/notifications/Toast'
-import { ArrowLeftIcon } from 'lucide-react'
 
 const InterestWaitlistForm = () => {
   const [email, setEmail] = useState('')
