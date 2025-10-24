@@ -18,7 +18,7 @@ export function useRevealSplit(scope: React.RefObject<HTMLElement>) {
           duration: 1,
           stagger: 0.1,
           ease: 'power4.out',
-          scrollTrigger: { trigger: el, start: 'top 65%', once: true, markers: true },
+          scrollTrigger: { trigger: el, start: 'top 65%', once: true },
           onComplete: () => split.revert(),
         })
       })

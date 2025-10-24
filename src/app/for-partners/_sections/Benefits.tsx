@@ -64,7 +64,6 @@ const Benefits = () => {
           end: 'bottom top',
           scrub: true,
           invalidateOnRefresh: true,
-          markers: true,
           onRefresh: initPath,
         },
       })

@@ -46,7 +46,6 @@ const Intro = () => {
         scrollTrigger: {
           trigger: scope.current,
           start: 'top 65%',
-          markers: true,
         },
       })
 
