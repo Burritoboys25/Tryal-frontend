@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Input } from '@/shared/components/ui/base/input'
 import { showToast } from '@/shared/components/ui/notifications/Toast'
+import { ArrowLeftIcon } from 'lucide-react'
 
 const InterestWaitlistForm = () => {
   const [email, setEmail] = useState('')
@@ -50,7 +51,12 @@ const InterestWaitlistForm = () => {
         className="flex-grow-0 sm:w-auto sm:flex-grow md:flex-grow-0 2xl:flex-grow"
         required
       />
-      <Button type="submit" disabled={isSubmitting} className="min-w-[130px] cursor-pointer">
+      <Button
+        type="submit"
+        variant="solid"
+        disabled={isSubmitting}
+        className="min-w-[130px] cursor-pointer"
+      >
         {isSubmitting ? 'Joining...' : 'Join Waitlist'}
       </Button>
     </form>
