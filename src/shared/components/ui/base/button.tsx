@@ -8,8 +8,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         solid: 'bg-primary text-primary-foreground hover:bg-primary-hover disabled:bg-primary-disabled',
-        outline: 'border-2 border-primary text-primary bg-white hover:bg-surface-light-orange disabled:border-primary-disabled disabled:bg-white ',
-        text: 'bg-transparent text-primary hover:bg-surface-light-orange disabled: bg-transparent',
+        outline: 'border-2 border-primary text-primary bg-transparent hover:bg-surface-light-orange disabled:border-primary-disabled disabled:bg-white ',
+        text: 'bg-transparent text-primary hover:bg-surface-light-orange disabled:bg-transparent',
         secondary: 'bg-surface-dark text-primary-foreground hover:bg-[#1C7589] disabled:bg-primary-disabled',
         link: 'text-link text-[#1C8BF9] hover:underline hover:opacity-80',
         filter:

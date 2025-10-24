@@ -142,7 +142,7 @@ const Hero = () => {
           return tween
         },
       })
-      
+
       tl.from('.cta-form', { yPercent: 100, opacity: 0, duration: 1.2 }, 'start+=1.4')
     },
     { scope: scope },
@@ -165,7 +165,7 @@ const Hero = () => {
             <br />
             Repeat.
           </h1>
-          <p className="text-body2 xl:text-2xl sub-text mt-2 mb-4 text-[#09272E] md:max-w-xl">
+          <p className="text-sm lg:text-2xl sub-text mt-2 mb-4 text-[#09272E] md:max-w-xl">
             From hidden gems to thrilling adventures—find and book unforgettable experiences all in one place.
           </p>
         </div>
