@@ -92,7 +92,7 @@ const Hero = () => {
       background="light-teal"
     >
       {/* Left Side */}
-      <div className="row-start-2 self-start px-4 md:col-span-6 md:row-start-1 md:self-center md:px-0">
+      <div className="row-start-2 self-start px-0.5 md:col-span-6 md:row-start-1 md:self-center md:px-4">
         <div data-reveal-split>
           <h1 className="hero-text title text-[#09272E]">
             Discover.
@@ -101,8 +101,8 @@ const Hero = () => {
             <br />
             Repeat.
           </h1>
-          <p className="text-sub2 sub-text mt-2 mb-4 text-[#09272E] md:max-w-xl">
-            From hidden gems to thrilling adventures—find and book unforgettable experiences{' '}
+          <p className="text-body2 xl:text-2xl sub-text mt-2 mb-4 text-[#09272E] md:max-w-xl">
+            From hidden gems to thrilling adventures—find and book unforgettable experiences all in one place.
           </p>
         </div>
         <div className="overflow-hidden">
