@@ -13,7 +13,7 @@ export const USER_SLIDES: Slide[] = [
     tab: 'Events',
     title: 'Stay in the know\nwith live events.',
     body: 'Discover workshops, pop-ups, and unique local experiences happening near you. From weekend classes to special events across town, Tryal keeps you in the loop so you can plan, book, and go—all in one place.',
-    image: '/events_test.png',
+    image: '/events.png',
     accent: 'bg-[#ABE7F4]',
   },
   {
@@ -21,7 +21,7 @@ export const USER_SLIDES: Slide[] = [
     tab: 'Community',
     title: 'Connect with Like-Minded Explorers',
     body: 'Join a community of curious adventurers who love trying new things. Meet others who share your passions, exchange tips, and find inspiration through shared experiences.',
-    image: '/community_test_2.png',
+    image: '/community.png',
     accent: 'bg-[#F4BCAB]',
   },
   {

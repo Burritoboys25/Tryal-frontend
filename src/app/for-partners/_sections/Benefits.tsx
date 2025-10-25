@@ -7,7 +7,7 @@ export const BENEFITS = [
   {
     title: '14x Boost in Visibility',
     description: 'Reach thousands of new customers without paying for ads.',
-    image: '/boost_test.png',
+    image: '/boost.png',
   },
   {
     title: '40% More Seats Filled',
