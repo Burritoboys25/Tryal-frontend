@@ -20,7 +20,7 @@ export default async function ThankYouPage({
             <ReferralForm email={email} />
           </div>
           <div className="relative flex-3/5 self-stretch overflow-hidden rounded-2xl bg-[#D9D9D9] 2xl:flex-1/2">
-            <Image src="/thankyou-test.png" alt="Thank you" fill className="object-cover" />
+            <Image src="/thank_you_test.png" alt="Thank you" fill className="object-cover" />
           </div>
         </section>
       </Suspense>

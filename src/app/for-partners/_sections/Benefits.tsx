@@ -12,12 +12,12 @@ export const BENEFITS = [
   {
     title: '40% More Seats Filled',
     description: 'Fill last-minute spots and keep your classes fully booked.',
-    image: '/40_test.png',
+    image: '/40_booking.png',
   },
   {
     title: 'Up to 30% More Revenue',
     description: 'Streamlined bookings and payments mean less admin, more income.',
-    image: '/30_revenue_test.png',
+    image: '/30_revenue.png',
   },
   // {
   //   title: '23x Faster Growth',
@@ -28,7 +28,7 @@ export const BENEFITS = [
   {
     title: '0 Upfront Cost',
     description: 'Start earning from day one - No fees, no risk, no commitment.',
-    image: '/0_upfront_test.png',
+    image: '/0_upfront.png',
   },
 ]
 
