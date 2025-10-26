@@ -125,7 +125,7 @@ const Benefits = () => {
               </h3>
               <p className="text-sub2">{benefit.description}</p>
             </div>
-            <div className="relative max-w-xl flex-1 overflow-hidden rounded-2xl lg:h-[389px]">
+            <div className="relative max-w-2xl flex-1 overflow-hidden rounded-2xl lg:h-[500px]">
               <Image src={benefit.image} alt={benefit.title} className="object-cover" fill />
             </div>
           </div>
