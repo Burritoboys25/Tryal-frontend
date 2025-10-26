@@ -8,20 +8,22 @@ import { gsap, useGSAP, SplitText } from '@/shared/lib/gsap'
 
 const cards = [
   {
-    title: 'Seamless booking',
+    title: 'Seamless Booking',
     icon: BookingIcon,
-    description: 'Book your favorite activities in just a few taps. Simple, fast, and stress-free.',
+    description:
+      'Find and reserve your next experience in just a few taps — quick, simple, and hassle-free.',
   },
   {
-    title: 'Support local & small businesses',
+    title: 'Support Local & Small Businesses',
     icon: PottedPlantIcon,
     description:
-      'Every booking helps local instructors, artists, and entrepreneurs grow their passion.',
+      'Every booking empowers local instructors, artists, and small businesses to share their passion and thrive.',
   },
   {
-    title: 'Unleash your inner explorer',
+    title: 'Unleash Your Inner Explorer',
     icon: HikingIcon,
-    description: 'Break away from the usual and dive into new hobbies and experiences.',
+    description:
+      'Step outside your routine and discover new passions, hobbies, and unforgettable experiences.',
   },
 ]
 
@@ -82,23 +84,30 @@ const Intro = () => {
       background="none"
     >
       <div className="grid grid-cols-1 gap-y-8 md:grid-cols-3 md:gap-y-24">
-        <h3
-          id="intro-title"
-          className="overflow-visible text-xl md:col-span-3 md:max-w-3/4 md:text-2xl md:font-semibold 2xl:max-w-1/2 2xl:text-4xl"
-        >
-          Welcome to Tryal — the easiest way to discover and book experiences near you or halfway
-          across the world. Whether you’re seeking adventure, relaxation, or something completely
-          new, our platform curates activities to fit every mood and moment. With trusted hosts,
-          flexible booking, and unique options you won’t find anywhere else, Tryal makes it simple
-          to explore more and create lasting memories.
-        </h3>
+        <div className="md:col-span-3">
+          <h3
+            id="intro-title"
+            className="overflow-visible text-xl font-semibold md:text-2xl md:font-bold 2xl:text-4xl"
+          >
+            Welcome to Tryal (pronounced <em>&ldquo;trial&rdquo;</em> &mdash; because life&apos;s
+            better when you try it all).
+          </h3>
+          <br />
+          <p className="overflow-visible text-xl md:max-w-3/4 md:text-2xl md:font-semibold 2xl:max-w-1/2 2xl:text-4xl">
+            The easiest way to discover and book unforgettable experiences &mdash; from local
+            workshops and pop-ups to adventures across the world. Whether you&apos;re looking to
+            learn something new, unwind, or simply explore more, Tryal curates experiences to match
+            every mood and moment. With trusted hosts, flexible booking, and one-of-a-kind options,
+            discovering new things has never been this effortless.
+          </p>
+        </div>
         <div
           id="intro-grid"
           className="col-span-full grid grid-cols-subgrid space-y-8 md:space-y-16"
         >
           {cards.slice(0, 3).map(({ title, icon: Icon, description }) => (
             <div key={title} className="col-span-1 flex gap-3 md:max-w-4/5">
-              <Icon className="size-11" aria-hidden="true" data-anim="fade-in" />
+              <Icon className="size-20" aria-hidden="true" data-anim="fade-in" />
               <div>
                 <h4 className="text-sub1" data-anim="split-reveal">
                   {title}
