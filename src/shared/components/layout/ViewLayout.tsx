@@ -15,7 +15,7 @@ type ViewLayoutProps = {
 const ViewLayout = ({ type, children, header, footer }: ViewLayoutProps) => {
   let defaultNavbar: React.ReactNode = null
   let defaultFooter: React.ReactNode = null
-  let mainStyles = 'mt-[4.3125rem]'
+  const mainStyles = 'mt-[4.3125rem]'
   switch (type) {
     case 'landing':
       defaultNavbar = <LandingNavbar />
