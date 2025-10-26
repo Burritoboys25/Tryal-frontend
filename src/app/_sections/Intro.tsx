@@ -71,7 +71,6 @@ const Intro = () => {
             stagger: 0.06,
             ease: 'power4.out',
             paused: true,
-            // onComplete: () => self.revert()
           })
           tl.add(tween.play(), 'start+=1')
           return tween
