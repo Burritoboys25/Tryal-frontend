@@ -53,31 +53,36 @@ const Benefits = () => {
 
   useGSAP(
     () => {
-      if (!sectionRef.current || !svgRef.current) return
-      const svg = svgRef.current
-      const path = svg.querySelector('path') as SVGPathElement | null
-      if (!path) return
+      if (!sectionRef.current) return
 
-      const initPath = () => {
-        const length = path.getTotalLength()
-        gsap.set(path, { strokeDasharray: length, strokeDashoffset: -length })
+      // SVG path animation (only on large screens)
+      if (svgRef.current) {
+        const svg = svgRef.current
+        const path = svg.querySelector('path') as SVGPathElement | null
+        if (path) {
+          const initPath = () => {
+            const length = path.getTotalLength()
+            gsap.set(path, { strokeDasharray: length, strokeDashoffset: -length })
+          }
+
+          initPath()
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top bottom-=400',
+              end: 'bottom top',
+              scrub: true,
+              invalidateOnRefresh: true,
+              onRefresh: initPath,
+            },
+          })
+        }
       }
 
-      initPath()
-
-      gsap.to(path, {
-        strokeDashoffset: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top bottom-=400',
-          end: 'bottom top',
-          scrub: true,
-          invalidateOnRefresh: true,
-          onRefresh: initPath,
-        },
-      })
-
+      // Benefit animations (always run)
       benefitRefs.current.forEach(benefit => {
         if (!benefit) return
 
@@ -98,7 +103,7 @@ const Benefits = () => {
         )
       })
     },
-    { scope: sectionRef },
+    { scope: sectionRef, dependencies: [isLargeScreen] },
   )
 
   return (
@@ -115,7 +120,7 @@ const Benefits = () => {
         </p>
       </div>
 
-      <section ref={sectionRef} className="relative h-auto lg:h-[200dvh]">
+      <section ref={sectionRef} className="relative h-auto pb-12 md:pb-16 lg:h-[200dvh] lg:pb-0">
         {isLargeScreen && (
           <svg
             viewBox="0 0 1440 2165"
