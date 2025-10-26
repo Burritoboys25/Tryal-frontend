@@ -27,26 +27,30 @@ const CheckboxField = ({
   const errorId = `${id}-error`
 
   return (
-    <div className="flex items-center gap-2">
-      <Checkbox
-        id={id}
-        checked={checked}
-        required={required}
-        onCheckedChange={checked => onChange(!!checked, value)}
-        disabled={disabled}
-        className="border-border border-2"
-      />
-      <Label className='font-normal'>{label}</Label>
-      <p
-        id={errorId}
-        className={cn(
-          'text-destructive absolute left-3 text-xs',
-          'transition-opacity duration-300 ease-in-out',
-          error ? 'opacity-100' : 'pointer-events-none opacity-0',
-        )}
-      >
-        {error}
-      </p>
+    <div className="flex flex-col">
+      <div className='flex flex-row gap-2'>
+        <Checkbox
+          id={id}
+          checked={checked}
+          required={required}
+          onCheckedChange={checked => onChange(!!checked, value)}
+          disabled={disabled}
+          className="border-border border-2 mt-1"
+        />
+        <Label>{label}</Label>
+      </div>
+      <div>
+        <p
+          id={errorId}
+          className={cn(
+            'text-destructive mt-1 text-xs',
+            'transition-opacity duration-300 ease-in-out',
+            error ? 'opacity-100' : 'pointer-events-none opacity-0',
+          )}
+        >
+          {error}
+        </p>
+      </div>
     </div>
   )
 }

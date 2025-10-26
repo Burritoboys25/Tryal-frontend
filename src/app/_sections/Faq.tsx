@@ -1,11 +1,17 @@
 'use client'
 import { useRef, useState } from 'react'
 import { Plus, Minus } from 'lucide-react'
-import { faqItems } from './faqdata'
+import { faqUsers, faqPartners, Faq } from './faqdata'
 import Section from '@/shared/components/layout/Section'
 import { useGSAP, gsap, SplitText } from '@/shared/lib/gsap'
 
-const FaqSection = () => {
+type FaqSectionProps = {
+  audience: "user" | "partner";
+};
+
+const FaqSection = ({ audience }: FaqSectionProps) => {
+  const faqData: Faq[] = audience === "user" ? faqUsers : faqPartners;
+
   const [openQuestions, setOpenQuestions] = useState<number[]>([])
   const scope = useRef<HTMLElement>(null)
 
@@ -67,13 +73,13 @@ const FaqSection = () => {
         </div>
 
         <div className="space-y-6 sm:space-y-8 md:space-y-8 lg:col-start-2">
-          {faqItems.map((item, i) => {
+          {faqData.map((item, i) => {
             const isOpen = openQuestions.includes(i)
             return (
               <div key={i} className="border-b border-black/[.2] pb-6 sm:pb-4">
                 <button
                   onClick={() => toggleQuestion(i)}
-                  className="flex w-full items-start text-left text-sm font-semibold text-[#09272E] transition-opacity hover:opacity-80 sm:text-base md:text-lg"
+                  className="flex w-full items-start text-left text-sm font-semibold text-[#09272E] transition-opacity hover:opacity-80 sm:text-base md:text-lg hover:cursor-pointer"
                 >
                   <div
                     className={`mt-0.5 mr-3 flex-shrink-0 transition-transform duration-300 sm:mt-1 sm:mr-4 ${
