@@ -29,23 +29,23 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
 
   const handleClick = () => setIsOpen(!isOpen)
 
-  const activeLinkClass = 'font-bold border-b-2 border-b-white'
+  const activeLinkClass = 'font-bold border-b-2 border-b-white font-bold xl:text-[1rem]'
 
   return (
     <>
       <nav
-        className={`glass-element fixed top-10 right-0 left-0 z-50 mx-auto min-h-[4.3125rem] w-[70%] px-4 transition-shadow duration-300 2xl:max-w-3xl 2xl:px-8 ${scrolled ? 'shadow-sm' : ''}`}
+        className={`flex items-center glass-element fixed top-10 right-0 left-0 z-50 mx-auto h-[2.5rem] md:h-[3.5rem] xl:h-[4.5rem] w-[85%] xl:w-[75%] px-6 transition-shadow duration-300 2xl:max-w-3xl 2xl:px-8 ${scrolled ? 'shadow-sm' : ''}`}
       >
-        <div className="flex w-full items-center justify-between py-[1rem]">
+        <div className="flex w-full items-center justify-between ">
           {/* Logo */}
           <div className="w-[9.375rem]">
-            <Link href="/" className="font-logo text-[2rem] font-medium">
+            <Link href="/" className="font-logo text-[1.25rem] md:text-[2rem] font-medium ">
               Tryal
             </Link>
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden justify-center gap-[2rem] text-[1rem] text-white md:flex">
+          <div className="hidden justify-center gap-[1.25rem] xl:gap-[2.5rem] text-[.875rem] xl:text-[1rem] font-medium xl:font-normal text-white md:flex">
             <Link href="/" className={isActive('/') ? activeLinkClass : ''}>
               For Explorers
             </Link>
