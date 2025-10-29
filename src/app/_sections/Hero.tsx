@@ -39,23 +39,12 @@ const Hero = () => {
   const scope = useRef<HTMLElement>(null)
   useGSAP(
     () => {
-      const heroSplit = new SplitText('.title', {
-        type: 'lines',
-        mask: 'lines',
-      })
-      const subSplit = new SplitText('.sub-text', {
-        type: 'lines',
-        mask: 'lines',
-      })
-
       const tl = gsap.timeline({
         defaults: { ease: 'power4.out' },
       })
-
       tl.add('start') // label to align cleanly
         .from('#gallery-1', { yPercent: 100, duration: 3, opacity: 0 }, 'start')
         .from('#gallery-2', { yPercent: -100, duration: 3, opacity: 0 }, 'start')
-
         .fromTo(
           '.tile__reveal',
           { clipPath: 'inset(50% 0% 50% 0% round 0.75rem)' }, // start: 0-height slice
@@ -67,19 +56,44 @@ const Hero = () => {
           },
           'start+=0.5',
         )
+      
+      SplitText.create('.title', {
+        type: 'lines',
+        mask: 'lines',
+        autoSplit: true,
+        onSplit(self) {
+          const tween = gsap.from(self.lines, {
+            yPercent: 100,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.12,
+            ease: 'power4.out',
+            paused: true,
+          })
+          tl.add(tween.play(), 'start+=0.6')
+          return tween
+        },
+      })
+      
+      SplitText.create('.sub-text', {
+        type: 'lines',
+        mask: 'lines',
+        autoSplit: true,
+        onSplit(self) {
+          const tween = gsap.from(self.lines, {
+            yPercent: 100,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.12,
+            ease: 'power4.out',
+            paused: true,
+          })
+          tl.add(tween.play(), 'start+=1.2')
+          return tween
+        },
+      })
 
-        .from(
-          heroSplit.lines,
-          { yPercent: 100, opacity: 0, duration: 1.2, stagger: 0.12 },
-          'start+=0.6',
-        )
-        .from(subSplit.lines, { yPercent: 100, opacity: 0, duration: 1.2 }, 'start+=1.2')
-        .from('.cta-form', { yPercent: 100, opacity: 0, duration: 1.2 }, 'start+=1.4')
-
-      return () => {
-        heroSplit.revert()
-        subSplit.revert()
-      }
+      tl.from('.cta-form', { yPercent: 100, opacity: 0, duration: 1.2 }, 'start+=1.4')
     },
     { scope: scope },
   )
@@ -92,7 +106,7 @@ const Hero = () => {
       background="light-teal"
     >
       {/* Left Side */}
-      <div className="row-start-2 self-start px-4 md:col-span-6 md:row-start-1 md:self-center md:px-0">
+      <div className="row-start-2 self-start md:col-span-6 md:row-start-1 md:self-center md:px-4">
         <div data-reveal-split>
           <h1 className="hero-text title text-[#09272E]">
             Discover.
@@ -101,8 +115,8 @@ const Hero = () => {
             <br />
             Repeat.
           </h1>
-          <p className="text-sub2 sub-text mt-2 mb-4 text-[#09272E] md:max-w-xl">
-            From hidden gems to thrilling adventures—find and book unforgettable experiences{' '}
+          <p className="text-sm lg:text-2xl sub-text mt-2 mb-4 text-[#09272E] md:max-w-xl">
+            From hidden gems to thrilling adventures—find and book unforgettable experiences all in one place.
           </p>
         </div>
         <div className="overflow-hidden">
