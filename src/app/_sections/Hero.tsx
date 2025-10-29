@@ -121,7 +121,7 @@ const Hero = () => {
         </div>
         <div className="overflow-hidden">
           <div className="cta-form">
-            <InterestWaitlistForm />
+            <InterestWaitlistForm inputStyles='text-foreground-teal opacity-100 bg-white/20' />
           </div>
         </div>
       </div>

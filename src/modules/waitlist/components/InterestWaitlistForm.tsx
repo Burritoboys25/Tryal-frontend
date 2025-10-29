@@ -5,7 +5,11 @@ import { useRouter } from 'next/navigation'
 import { Input } from '@/shared/components/ui/base/input'
 import { showToast } from '@/shared/components/ui/notifications/Toast'
 
-const InterestWaitlistForm = () => {
+interface WaitlistProps {
+  inputStyles?: string
+}
+
+const InterestWaitlistForm = ({ inputStyles }: WaitlistProps) => {
   const [email, setEmail] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -48,6 +52,7 @@ const InterestWaitlistForm = () => {
         value={email}
         onChange={e => setEmail(e.target.value)}
         className="flex-grow-0 sm:w-auto sm:flex-grow md:flex-grow-0 2xl:flex-grow"
+        inputStyles={inputStyles}
         required
       />
       <Button
