@@ -50,7 +50,12 @@ const InterestWaitlistForm = () => {
         className="flex-grow-0 sm:w-auto sm:flex-grow md:flex-grow-0 2xl:flex-grow"
         required
       />
-      <Button type="submit" disabled={isSubmitting} className="min-w-[130px] cursor-pointer">
+      <Button
+        type="submit"
+        variant="solid"
+        disabled={isSubmitting}
+        className="min-w-[130px] cursor-pointer"
+      >
         {isSubmitting ? 'Joining...' : 'Join Waitlist'}
       </Button>
     </form>
