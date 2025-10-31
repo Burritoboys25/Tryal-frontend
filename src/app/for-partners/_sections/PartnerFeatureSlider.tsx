@@ -42,7 +42,6 @@ const SLIDES: Slide[] = [
     image: '/demos/calendar.gif',
     accent: 'bg-[#ABE7F4]',
     imageClassName: 'scale-100 2xl:scale-120 2xl:py-14',
-    // imageClassName: 'scale-100 2xl:scale-120 2xl:py-14',
   },
 ]
 
