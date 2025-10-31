@@ -30,10 +30,10 @@ const FormField = ({
 
   return (
     <div className="space-y-1.5">
-      <Label htmlFor={inputId} className="text-label">
+      <Label htmlFor={inputId} className="text-label text-[#2e2e2e]">
         {label}
       </Label>
-      <div className="relative">
+      <div className="flex flex-col">
         <Input
           id={inputId}
           name={name}
@@ -50,7 +50,7 @@ const FormField = ({
         <p
           id={errorId}
           className={cn(
-            'text-destructive absolute left-3 text-xs',
+            'mt-1 text-destructive text-xs',
             'transition-opacity duration-300 ease-in-out',
             error ? 'opacity-100' : 'pointer-events-none opacity-0',
           )}

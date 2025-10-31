@@ -27,7 +27,7 @@ const ForPartnersPage = () => {
           <PartnerFeatureSlider />
           <PartnerSteps />
           <div className="pb-12">
-            <Faq />
+            <Faq audience={'partner'} />
           </div>
         </div>
         <MainFooter />

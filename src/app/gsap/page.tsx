@@ -26,7 +26,7 @@ export default function GSAPPage() {
           <Stats />
           <StickySteps />
           <FeatureSlider />
-          <Faq />
+          <Faq audience={'user'} />
           <PathScrollSteps />
         </div>
         <MainFooter />

@@ -10,17 +10,7 @@ const Stats = () => {
   useGSAP(
     () => {
       if (!containerRef.current) return
-      const revealTargets = containerRef.current.querySelectorAll('[data-anim="split-reveal"]')
-
-      const splits: SplitText[] = []
-      const allLines: Element[] = []
-
-      revealTargets.forEach(target => {
-        const split = new SplitText(target, { type: 'lines', mask: 'lines' })
-        splits.push(split)
-        allLines.push(...split.lines)
-      })
-
+      
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -29,16 +19,25 @@ const Stats = () => {
         },
       })
 
-      tl.from(allLines, {
-        opacity: 0,
-        y: 100,
-        duration: 1,
-        ease: 'power4.out',
+      tl.add('start')
+
+      SplitText.create('[data-anim="split-reveal"]', {
+        type: 'lines',
+        mask: 'lines',
+        autoSplit: true,
+        onSplit(self) {
+          const tween = gsap.from(self.lines, {
+            yPercent: 100,
+            duration: 1,
+            ease: 'power4.out',
+            paused: true,
+            onComplete: () => self.revert()
+          })
+          tl.add(tween.play(), 'start')
+          return tween
+        },
       })
 
-      return () => {
-        splits.forEach(split => split.revert())
-      }
     },
     { scope: containerRef },
   )

@@ -29,16 +29,6 @@ const Intro = () => {
   const scope = useRef<HTMLElement>(null)
   useGSAP(
     () => {
-      const titleSplit = new SplitText('#intro-title', {
-        type: 'lines',
-        mask: 'lines',
-        linesClass: 'overflow-visible leading-[1.4]', // prevent line cuttoff
-      })
-      const itemSplit = new SplitText('[data-anim="split-reveal"]', {
-        type: 'lines',
-        mask: 'lines',
-      })
-
       const icons = gsap.utils.toArray('[data-anim="fade-in"]') // Element[]
 
       const tl = gsap.timeline({
@@ -46,31 +36,48 @@ const Intro = () => {
         scrollTrigger: {
           trigger: scope.current,
           start: 'top 65%',
-          markers: true,
         },
       })
 
       tl.add('start')
-        .from(titleSplit.lines, {
-          yPercent: 100,
-          duration: 1,
-          stagger: 0.12,
-        })
-        .from(
-          itemSplit.lines,
-          {
+
+      SplitText.create('#intro-title', {
+        type: 'lines',
+        mask: 'lines',
+        autoSplit: true,
+        linesClass: 'overflow-visible leading-[1.4]',
+        onSplit(self) {
+          const tween = gsap.from(self.lines, {
+            yPercent: 100,
+            duration: 1,
+            stagger: 0.12,
+            ease: 'power4.out',
+            paused: true,
+          })
+
+          tl.add(tween.play(), 'start')
+          return tween
+        },
+      })
+
+      SplitText.create('[data-anim="split-reveal"]', {
+        type: 'lines',
+        mask: 'lines',
+        autoSplit: true,
+        onSplit(self) {
+          const tween = gsap.from(self.lines, {
             yPercent: 100,
             duration: 1,
             stagger: 0.06,
-          },
-          'start+=1',
-        )
-        .from(icons, { autoAlpha: 0, duration: 1, stagger: 0.06 }, 'start+=1')
+            ease: 'power4.out',
+            paused: true,
+          })
+          tl.add(tween.play(), 'start+=1')
+          return tween
+        },
+      })
 
-      return () => {
-        titleSplit.revert()
-        itemSplit.revert()
-      }
+      tl.from(icons, { autoAlpha: 0, duration: 1, stagger: 0.06 }, 'start+=1')
     },
     { scope: scope },
   )
@@ -100,11 +107,11 @@ const Intro = () => {
           {cards.slice(0, 3).map(({ title, icon: Icon, description }) => (
             <div key={title} className="col-span-1 flex gap-3 md:max-w-4/5">
               <Icon className="size-11" aria-hidden="true" data-anim="fade-in" />
-              <div>
+              <div className='flex-1' data-anim="split-reveal">
                 <h4 className="text-sub1" data-anim="split-reveal">
                   {title}
                 </h4>
-                <p className="text-sub4 w-full" data-anim="split-reveal">
+                <p className="text-body2 md:text-sub4 w-full" data-anim="split-reveal">
                   {description}
                 </p>
               </div>

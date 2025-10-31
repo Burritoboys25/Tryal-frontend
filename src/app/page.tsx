@@ -25,7 +25,7 @@ export default function Home() {
           <StickySteps />
           {/* Laptop GIF component goes here */}
           <div className="py-12">
-            <Faq />
+            <Faq audience={'user'} />
           </div>
         </div>
         <MainFooter />

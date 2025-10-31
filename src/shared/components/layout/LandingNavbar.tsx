@@ -49,12 +49,12 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
             <Link href="/" className={isActive('/') ? activeLinkClass : ''}>
               For Explorers
             </Link>
-            <Link href="/for-partners" className={isActive('/for-partners') ? activeLinkClass : ''}>For Businesses</Link>
+            <Link href="/for-partners" className={isActive('/for-partners') ? activeLinkClass : ''}>For Partners</Link>
             <Link href="/about" className={isActive('/about') ? activeLinkClass : ''}>About us</Link>
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden w-[9.375rem] md:flex">
+          <div className="hidden md:flex">
             <Button variant="solid" className={disablePartner ? 'invisible' : ''}>
               <Link
                 href={{
