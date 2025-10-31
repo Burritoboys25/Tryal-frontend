@@ -69,7 +69,6 @@ const PartnerStepsDesktop = () => {
           end: 'bottom top+=300',
           scrub: true,
           invalidateOnRefresh: true,
-          markers: true,
           onRefresh: initPath,
         },
       })
