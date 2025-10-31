@@ -1,6 +1,6 @@
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import {jwtDecode} from 'jwt-decode'
+// import { jwtDecode } from 'jwt-decode'
 import { JwtUser } from '../types/authTypes'
 
 export const authOptions: NextAuthOptions = {
@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
 
           const remember = credentials?.remember === 'true'
 
-          const res = await fetch(`${process.env.NEXTAUTH_URL}/api/users/login`, {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/users/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -36,10 +36,11 @@ export const authOptions: NextAuthOptions = {
 
           const token = await res.json()
 
-          const decodedToken = jwtDecode<{ sub: string }>(token.data.accessToken)
+          // Remove if we decide not to store anything else in the jwt
+          // const decodedToken = jwtDecode<{ sub: string }>(token.data.accessToken)
 
           return {
-            id: decodedToken.sub,
+            id: token.data.userId,
             accessToken: token.data.accessToken,
             refreshToken: token.data.refreshToken,
           } as JwtUser
@@ -69,9 +70,7 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
       if (token) {
-        session.user = {
-          userId: token.userId ?? '',
-        }
+        session.userId = token.userId ?? ''
         session.accessToken = token.accessToken
         session.refreshToken = token.refreshToken
       }

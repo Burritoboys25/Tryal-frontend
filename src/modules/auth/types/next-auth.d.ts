@@ -1,9 +1,7 @@
 import { DefaultSession } from 'next-auth'
 declare module 'next-auth' {
   interface Session extends DefaultSession {
-    user: {
-      userId: string
-    }
+    userId: string
     accessToken: string
     refreshToken: string
   }
