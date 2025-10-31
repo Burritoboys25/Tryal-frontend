@@ -197,7 +197,7 @@ function SlideCard({ slide }: { slide: Slide }) {
       </div>
 
       {/* Media Panel */}
-      <div className="relative mx-auto h-full w-full overflow-hidden rounded-3xl bg-[#fdfdfd] shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
+      <div className="bg-surface-light relative mx-auto aspect-[16/8] h-full w-full overflow-hidden rounded-[.75rem] shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)] 2xl:aspect-[16/7]">
         <div className="flex h-full w-full items-center justify-center bg-[#fdfdfd]">
           {isVideo ? (
             <video
