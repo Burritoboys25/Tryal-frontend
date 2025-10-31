@@ -22,7 +22,7 @@ const SLIDES: Slide[] = [
     id: 'pricing',
     tab: 'Smart Pricing & Optimization',
     title: 'Smarter Pricing, Bigger Impact',
-    body: 'Let AI help you fine-tune prices based on real demand, seasonality, and class popularity — not just raise them. Adjust class sizes or offer special rates to fill slow days, while insights guide you toward the best times and price points to increase bookings and overall revenue.',
+    body: 'Automatically adjust your prices based on demand. Raise prices during peak times to maximize revenue, or lower them during slow periods to encourage bookings.',
     image: '/demos/peaktimes.gif',
     accent: 'bg-[#F4BCAB]',
   },
@@ -38,10 +38,11 @@ const SLIDES: Slide[] = [
     id: 'booking',
     tab: 'Real-Time Flexibility',
     title: 'Reschedule Without the Stress',
-    body: 'Stay adaptable when plans change. Update class times, adjust capacity, or reschedule experiences in just a few clicks — no hassle, no lost opportunities.',
+    body: 'Weather, cancellations, or shifting schedules? No problem. Easily edit or reschedule your experiences in just a few clicks, keeping your business running smoothly.',
     image: '/demos/calendar.gif',
     accent: 'bg-[#ABE7F4]',
     imageClassName: 'scale-100 2xl:scale-120 2xl:py-14',
+    // imageClassName: 'scale-100 2xl:scale-120 2xl:py-14',
   },
 ]
 
@@ -53,10 +54,34 @@ const PartnerFeatureSlider = () => {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
   const isMobile = useMediaQuery('(max-width: 1023px)')
 
+  const isSuperSmall = useMediaQuery('(max-width: 767px)')
+  const tabListRef = useRef<HTMLDivElement | null>(null)
+  const tabButtonsRef = useRef<HTMLButtonElement[]>([])
+
   const goTo = (i: number) => {
     const el = itemRefs.current[i]
     el?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' })
   }
+
+  const scrollToActiveTab = (i: number) => {
+    const wrap = tabListRef.current
+    const btn = tabButtonsRef.current[i]
+    if (!wrap || !btn) return
+
+    const offset = Math.round(wrap.clientWidth * 0.14)
+    const desiredLeft = i === 0 ? 0 : Math.max(0, btn.offsetLeft - offset)
+    const maxLeft = wrap.scrollWidth - wrap.clientWidth
+    wrap.scrollTo({
+      left: Math.min(desiredLeft, Math.max(0, maxLeft)),
+      behavior: 'smooth',
+    })
+  }
+
+  useEffect(() => {
+    if (isSuperSmall) {
+      scrollToActiveTab(index)
+    }
+  }, [index, isSuperSmall])
 
   useEffect(() => {
     const track = trackRef.current
@@ -91,12 +116,6 @@ const PartnerFeatureSlider = () => {
       full
       className="w-full snap-center flex-col justify-center px-4 md:px-9"
     >
-      {/* <div className="mr-auto w-full max-w-[789px]">
-        <h2 className="text-h2 mb-2 pb-8 text-3xl font-bold">
-          Running a local business is hard enough without spending hours on marketing, managing
-          bookings, and filling seats.
-        </h2>
-      </div> */}
       <div
         className="relative h-full w-full text-white"
         aria-label="Fa Feature slider"
@@ -107,11 +126,14 @@ const PartnerFeatureSlider = () => {
         tabIndex={0}
       >
         {/* Tabs */}
-        <div className="mb-4 flex flex-nowrap gap-3 overflow-hidden">
+        <div className="mb-2 flex flex-nowrap gap-3 overflow-hidden" ref={tabListRef}>
           {SLIDES.map((s, i) => (
             <Button
               key={s.id}
               onClick={() => goTo(i)}
+              ref={(el: HTMLButtonElement) => {
+                tabButtonsRef.current[i] = el
+              }}
               className={[
                 'hover:bg-surface-teal/80 rounded-full px-4 py-2 text-sm whitespace-nowrap transition',
                 'bg-[#124E5B]',
@@ -154,9 +176,9 @@ const PartnerFeatureSlider = () => {
 function MobileSlideCard({ slide }: { slide: Slide }) {
   return (
     <div
-      className={`flex h-[600px] flex-col space-y-5 rounded-2xl p-4 ${slide.accent ? slide.accent : 'bg-amber-200'}`}
+      className={`flex h-[434px] flex-col space-y-5 rounded-[.75rem] p-4 ${slide.accent ? slide.accent : 'bg-amber-200'}`}
     >
-      <div className="bg-surface-light relative mx-auto w-full overflow-hidden rounded-3xl shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
+      <div className="bg-surface-light relative mx-auto w-full overflow-hidden rounded-[.75rem] shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
         {slide.image.includes('.gif') ? (
           <img
             src={slide.image}
@@ -177,7 +199,7 @@ function MobileSlideCard({ slide }: { slide: Slide }) {
         <h2 className="text-foreground-teal text-xl leading-tight font-semibold tracking-tight whitespace-pre-line">
           {slide.title}
         </h2>
-        <p className="text-foreground-teal text-body2 mt-auto">{slide.body}</p>
+        <p className="text-foreground-teal mt-auto text-sm">{slide.body}</p>
       </div>
     </div>
   )
@@ -185,27 +207,25 @@ function MobileSlideCard({ slide }: { slide: Slide }) {
 
 function SlideCard({ slide }: { slide: Slide }) {
   return (
-    <div className="grid grid-cols-1 gap-4 xl:max-h-[569px] xl:grid-cols-[454px_1fr] 2xl:max-h-[700px] 2xl:grid-cols-[1fr_3fr]">
+    <div className="grid grid-cols-[249px_1fr] gap-4 xl:grid-cols-[1fr_3fr]">
       {/* Left panel */}
       <div
         className={[
-          'rounded-2xl p-6 sm:p-8 lg:col-span-1 lg:p-10',
+          'rounded-[.75rem] p-6 sm:p-8 lg:col-span-1 xl:min-w-[393px]',
           slide.accent ?? 'bg-amber-200',
           'text-[#2E1109]',
         ].join(' ')}
       >
         <div className="flex h-full flex-col justify-between">
-          <h2 className="text-background text-h2 mt-4 leading-tight font-semibold tracking-tight whitespace-pre-line">
-            {slide.title}
-          </h2>
-          <p className="text-sub4 text-background w-full">{slide.body}</p>
+          <h2 className="text-background text-[2.5rem] leading-tight font-bold">{slide.title}</h2>
+          <p className="text-background w-full text-base">{slide.body}</p>
         </div>
       </div>
 
       {/* Right panel: device frame */}
-      <div className="bg-surface-light relative mx-auto h-full w-full overflow-hidden rounded-3xl shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
+      <div className="bg-surface-light relative mx-auto aspect-[16/8] h-full w-full overflow-hidden rounded-[.75rem] shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)] 2xl:aspect-[16/7]">
         {slide.image.includes('.gif') ? (
-          <div className="flex h-full w-full items-center justify-center bg-[#fdfdfd] p-4">
+          <div className="flex h-full w-full items-center justify-center bg-[#fdfdfd]">
             <img
               src={slide.image}
               className={`max-h-full max-w-full object-contain ${slide.imageClassName ? slide.imageClassName : ''}`}
