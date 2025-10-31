@@ -7,25 +7,25 @@ export const BENEFITS = [
   {
     metric: '14x',
     metricLabel: 'Boost in Visibility',
-    description: 'Reach thousands of new customers without paying for ads.',
+    description: 'Reach thousands of new local customers every month — all without spending a cent on ads.',
     image: '/boost.png',
   },
   {
     metric: '40%',
     metricLabel: 'More Seats Filled',
-    description: 'Fill last-minute spots and keep your classes fully booked.',
+    description: 'Keep your classes full, even at the last minute. Every empty seat becomes an opportunity to grow.',
     image: '/40_booking.png',
   },
   {
     metric: '30%',
     metricLabel: 'More Revenue',
-    description: 'Streamlined bookings and payments mean less admin, more income.',
+    description: 'Cut the busywork and watch profits grow. Spend more time creating, not chasing invoices.',
     image: '/30_revenue.png',
   },
   {
     metric: '0',
     metricLabel: 'Upfront Cost',
-    description: 'Start earning from day one - No fees, no risk, no commitment.',
+    description: 'Get started for free — no fees, no setup costs, and no risk. Just more ways to earn.',
     image: '/0_upfront.png',
   },
 ]
