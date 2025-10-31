@@ -155,14 +155,16 @@ function MobileSlideCard({ slide }: { slide: Slide }) {
             aria-label={slide.title}
           />
         ) : (
-          <Image
-            src={slide.image}
-            alt={slide.title}
-            fill
-            className="object-cover"
-            priority={false}
-            aria-label={slide.title}
-          />
+          <div className="relative aspect-[16/9] h-full w-full">
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-cover"
+              priority={false}
+              aria-label={slide.title}
+            />
+          </div>
         )}
       </div>
 
