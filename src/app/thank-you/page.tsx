@@ -2,6 +2,7 @@ import ReferralForm from '@/modules/waitlist/components/ReferralForm'
 import MainFooter from '@/shared/components/layout/MainFooter'
 import Section from '@/shared/components/layout/Section'
 import { Suspense } from 'react'
+import Image from 'next/image'
 
 export default async function ThankYouPage({
   searchParams,
@@ -20,7 +21,9 @@ export default async function ThankYouPage({
           <div className="flex items-center xl:flex-1 2xl:justify-center">
             <ReferralForm email={email} />
           </div>
-          <div className="h-[22.688rem] w-[18.75rem] rounded-2xl bg-[#D9D9D9] max-sm:mb-5 md:h-[29rem] md:w-[23.438rem] xl:my-2 xl:h-[55.5rem] xl:min-w-[46rem] xl:flex-1 2xl:h-[58.125rem] 2xl:max-w-[48.188rem]"></div>
+          <div className="relative overflow-hidden h-[22.688rem] w-[18.75rem] rounded-2xl max-sm:mb-5 md:h-[29rem] md:w-[23.438rem] xl:my-2 xl:h-[55.5rem] xl:min-w-[46rem] xl:flex-1 2xl:h-[58.125rem] 2xl:max-w-[48.188rem]">
+            <Image src="/thank_you.png" alt="Thank you" fill className="object-cover" />
+          </div>
         </Section>
       </Suspense>
       <MainFooter />

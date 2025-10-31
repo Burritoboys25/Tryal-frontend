@@ -4,14 +4,14 @@ import Hero from '../_sections/Hero'
 
 import Intro from '../_sections/Intro'
 import StickySteps from '../_sections/StickySteps'
-import Faq from '../_sections/Faq'
+import Faq from '../../shared/components/ui/faq/Faq'
 import MainFooter from '@/shared/components/layout/MainFooter'
 import FunMarquee from '../_sections/ExploreMarquee'
 import ExploreMore from '../for-partners/_sections/ExploreMore'
 import Stats from '../_sections/Stats'
 import PathScrollSteps from '../for-partners/_sections/PartnerSteps'
 import Benefits from '../for-partners/_sections/Benefits'
-import FeatureSlider from '../_sections/UserFeatureSlider'
+import FeatureSlider from '@/shared/components/ui/feature-slider/FeatureSlider'
 
 export default function GSAPPage() {
   return (
@@ -25,7 +25,7 @@ export default function GSAPPage() {
           <ExploreMore />
           <Stats />
           <StickySteps />
-          <FeatureSlider />
+          <FeatureSlider audience={'user'} />
           <Faq audience={'user'} />
           <PathScrollSteps />
         </div>
