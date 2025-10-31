@@ -142,7 +142,6 @@ const PartnerSteps = () => {
           end: 'bottom top',
           scrub: true,
           invalidateOnRefresh: true,
-          markers: true,
           onRefresh: initPath,
         },
       })
