@@ -84,7 +84,7 @@ const FPHero = () => {
     <Section
       id="fphero"
       ref={scope}
-      className="grid min-h-screen grid-cols-1 md:grid-cols-12 2xl:px-24"
+      className="grid min-h-screen grid-cols-1 overflow-x-hidden md:grid-cols-12 2xl:px-24"
       background="light-teal"
     >
       {/* Left Side */}

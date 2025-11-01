@@ -84,17 +84,17 @@ export default function FeatureSlider({ audience }: FeatureSliderProps) {
     <Section
       id={sectionId}
       full
-      className="w-full snap-center flex-col justify-center px-4 md:px-9"
+      className="w-full max-w-full snap-center flex-col justify-center overflow-x-hidden px-4 md:px-9"
       background="none"
     >
       <div
-        className="relative h-full w-full text-white"
+        className="relative h-full w-full max-w-full text-white"
         aria-label="Feature slider"
         onKeyDown={handleKeyDown}
         tabIndex={0}
       >
         {/* Navigation Tabs */}
-        <div className="mb-2 flex flex-nowrap gap-3 overflow-hidden" ref={tabListRef}>
+        <div className="mb-2 flex flex-nowrap gap-3 overflow-x-hidden" ref={tabListRef}>
           {slides.map((s, i) => (
             <Button
               key={s.id}
@@ -120,7 +120,7 @@ export default function FeatureSlider({ audience }: FeatureSliderProps) {
           ref={trackRef}
           className="noScrollbar relative h-full snap-x snap-mandatory overflow-x-auto scroll-smooth"
         >
-          <div className="flex h-full max-w-full gap-6 sm:max-w-full lg:max-w-full">
+          <div className="flex h-full w-full max-w-full gap-6">
             {slides.map((s, i) => (
               <div
                 key={s.id}

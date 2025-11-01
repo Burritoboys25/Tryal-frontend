@@ -61,7 +61,12 @@ const ExploreMarquee = () => {
     { scope: scope },
   )
   return (
-    <Section id="marquee" ref={scope} full className="flex items-center">
+    <Section
+      id="marquee"
+      ref={scope}
+      full
+      className="flex w-full max-w-full items-center overflow-x-hidden"
+    >
       <div
         className="text-foreground-dark ml-3 flex h-[6rem] w-[6.8rem] items-center justify-center rounded-2xl bg-[#124E5B] px-5 text-xl font-semibold md:ml-8 md:h-[6rem] md:w-[9.4rem] xl:h-[12.25rem] xl:w-[20rem] xl:text-4xl"
         data-anim="split-reveal"
