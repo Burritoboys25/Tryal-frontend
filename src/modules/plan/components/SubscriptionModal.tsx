@@ -62,10 +62,10 @@ const SubscriptionModal = ({ hasActiveSubscription }: SubscriptionModalProps) =>
         </DialogHeader>
 
         <div className="mt-4 flex justify-end gap-3">
-          <Button variant="outline" onClick={handleGoToProfile} className="">
+          <Button variant="outline" onClick={handleGoToProfile} className="cursor-pointer">
             Go to Profile
           </Button>
-          <Button onClick={handleChoosePlan} className="">
+          <Button onClick={handleChoosePlan} className="cursor-pointer">
             Choose Plan
           </Button>
         </div>

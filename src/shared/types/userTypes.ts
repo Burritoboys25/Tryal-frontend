@@ -5,6 +5,7 @@ export interface User {
   lastName: string
   remember?: boolean
   activeSubscription?: UserSubscription
+  createdAtYear?: number
 }
 
 export interface UserBookmarks {

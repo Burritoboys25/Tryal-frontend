@@ -8,6 +8,7 @@ import {
   ProfileFormData,
 } from '@/modules/profile/validations/profile-form.schema'
 import { showToast } from '@/shared/components/ui/notifications/Toast'
+import { useUser } from '@/shared/hooks/useUser'
 
 type ProfileProp = {
   userId: string
@@ -23,6 +24,7 @@ type ProfileProp = {
 }
 
 const ProfilePage = ({ ...UserData }: ProfileProp) => {
+  const { refetchUserData } = useUser()
   const [formData, setFormData] = useState<ProfileFormData>({
     firstName: UserData.firstName || '',
     lastName: UserData.lastName || '',
@@ -72,6 +74,8 @@ const ProfilePage = ({ ...UserData }: ProfileProp) => {
 
       if (res.ok) {
         showToast({ type: 'success', description: 'Profile updated successfully!' })
+        // Refetch user data to update localStorage and all components
+        await refetchUserData()
       } else {
         showToast({ type: 'error' })
         const data = await res.json()
