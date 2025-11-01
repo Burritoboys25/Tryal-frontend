@@ -88,7 +88,6 @@ const PartnerStepsDesktop = () => {
               start: 'top 60%',
               end: 'bottom 100%',
               toggleActions: 'play none none reverse',
-              markers: true,
             },
           },
         )
@@ -150,7 +149,6 @@ const MobilePartnerSteps = () => {
         scrollTrigger: {
           trigger: scope.current,
           pinSpacing: true,
-          markers: true,
           start: 'top top+=30',
           end: '+=1500',
           pin: true,
