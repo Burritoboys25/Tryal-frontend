@@ -88,7 +88,6 @@ const PartnerStepsDesktop = () => {
               start: 'top 60%',
               end: 'bottom 100%',
               toggleActions: 'play none none reverse',
-              markers: true,
             },
           },
         )
