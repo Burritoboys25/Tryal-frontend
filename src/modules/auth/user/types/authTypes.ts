@@ -1,10 +1,10 @@
-export interface LoginPayload {
+export interface UserLoginPayload {
   email: string
   password: string
   remember: boolean
 }
 
-export interface SignupPayload {
+export interface UserSignupPayload {
   firstName: string
   lastName: string
   email: string

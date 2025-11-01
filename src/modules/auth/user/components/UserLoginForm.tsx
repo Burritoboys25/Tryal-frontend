@@ -7,7 +7,7 @@ import { Button } from '@/shared/components/ui/base/button'
 import FormField from '@/shared/components/ui/forms/FormField'
 import CheckboxField from '@/shared/components/ui/forms/CheckboxField'
 import { useState } from 'react'
-import { LoginFormData, loginFormSchema } from '../validations/login.schema'
+import { UserLoginFormData, userLoginFormSchema } from '../validations/userLogin.schema'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { cn } from '@/shared/lib/utils'
 import LogoutButton from './LogoutButton'
@@ -17,7 +17,7 @@ const LoginForm = () => {
   const router = useRouter()
   const { data: session } = useSession()
 
-  const [form, setForm] = useState<LoginFormData>({
+  const [form, setForm] = useState<UserLoginFormData>({
     email: '',
     password: '',
   })
@@ -47,19 +47,23 @@ const LoginForm = () => {
     setFieldErrors({})
 
     try {
-      const result = loginFormSchema.safeParse(form)
+      const result = userLoginFormSchema.safeParse(form)
 
       if (!result.success) {
         setFieldErrors(result.error.flatten().fieldErrors)
         return
       }
 
-      const authenticateLogin = await signIn('credentials', {
-        email: form.email,
-        password: form.password,
-        redirect: false,
-        remember,
-      })
+      const authenticateLogin = await signIn(
+        'credentials',
+        {
+          email: form.email,
+          password: form.password,
+          redirect: false,
+          remember,
+        },
+        { basePath: '/api/auth/user' },
+      )
 
       if (authenticateLogin?.error) {
         setFieldErrors({

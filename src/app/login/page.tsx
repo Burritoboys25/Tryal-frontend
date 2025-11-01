@@ -1,12 +1,12 @@
 import React from 'react'
-import LoginForm from '@/modules/auth/components/LoginForm'
+import UserLoginForm from '@/modules/auth/user/components/UserLoginForm'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
-import AuthHeader from '@/modules/auth/components/AuthHeader'
+import AuthHeader from '@/modules/auth/user/components/AuthHeader'
 
 const LoginPage = () => {
   return (
     <ViewLayout header={<AuthHeader />}>
-      <LoginForm />
+      <UserLoginForm />
     </ViewLayout>
   )
 }
