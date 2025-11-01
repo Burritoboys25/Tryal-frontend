@@ -1,21 +1,25 @@
 'use client'
 import React from 'react'
-import BusinessInfoStep from './BusinessInfoStep'
 import AddExperiencesStep from './AddExperiencesStep'
-import ReviewSubmitStep from './ReviewSubmitStep'
+import ReviewStep from './ReviewStep'
+import AwaitingApprovalStep from './AwaitingApprovalStep'
 import { useOnboardingContext } from './OnboardingContextProvider'
+import { CurrentOnboardingStep } from '@/modules/business-temp/types/OnboardingTypes'
+import AddBusinessInfoStep from './AddBusinessInfoStep'
 
 export default function OnboardingSteps() {
   const { currentStep } = useOnboardingContext()
 
-  switch (currentStep) {
+  switch (currentStep as CurrentOnboardingStep) {
     case 'BUSINESS_INFO':
-      return <BusinessInfoStep />
+      return <AddBusinessInfoStep />
     case 'EXPERIENCES':
       return <AddExperiencesStep />
     case 'REVIEW':
-      return <ReviewSubmitStep />
+      return <ReviewStep />
+    case 'AWAITING_APPROVAL':
+      return <AwaitingApprovalStep />
     default:
-      return <BusinessInfoStep />
+      return null
   }
 }
