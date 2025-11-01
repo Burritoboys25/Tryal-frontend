@@ -106,7 +106,7 @@ const FaqSection = ({ audience }: FaqSectionProps) => {
                 </button>
 
                 <div
-                  className={`ml-9 overflow-hidden text-xs transition-all duration-300 md:text-sm lg:text-base ${
+                  className={`ml-9 overflow-hidden text-xs text-[#09272E]/85 transition-all duration-300 md:text-sm lg:text-base ${
                     isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
