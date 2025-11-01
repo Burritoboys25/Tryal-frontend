@@ -2,7 +2,7 @@ import React from 'react'
 import Container from '@/shared/components/layout/Container'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
 import { Button } from '@/shared/components/ui/base/button'
-import AuthHeader from '@/modules/auth/components/AuthHeader'
+import AuthHeader from '@/modules/auth/user/components/AuthHeader'
 
 const SignupConfirmPage = () => {
   return (
