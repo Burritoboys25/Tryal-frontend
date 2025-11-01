@@ -65,21 +65,20 @@ const BusinessSignupForm = ({ businessId }: BusinessSignupFormProps) => {
         password: result.data.password,
       }
 
-      //TODO: create new api
       //TODO: add role to business and users
-      const res = await fetch('/api/users/signup', {
+      const signupRes = await fetch('/api/business-temp/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(signupPayload),
       })
 
-      const data = await res.json()
+      const signupData = await signupRes.json()
 
-      if (!res.ok) {
-        if (data.fieldErrors) {
-          setFieldErrors(data.fieldErrors)
+      if (!signupRes.ok) {
+        if (signupData.fieldErrors) {
+          setFieldErrors(signupData.fieldErrors)
         } else {
-          setFieldErrors({ backend: [data.error || 'Signup failed'] })
+          setFieldErrors({ backend: [signupData.error || 'Signup failed'] })
         }
         return
       }
@@ -93,6 +92,23 @@ const BusinessSignupForm = ({ businessId }: BusinessSignupFormProps) => {
         },
         { basePath: '/api/auth/business' },
       )
+
+      const onboardRes = await fetch(`/api/businesses/${businessId}/onboarding`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: 'ACCOUNT_CREATED' }),
+      })
+
+      if (!onboardRes.ok) {
+        const errorData = await onboardRes.json().catch(() => ({}))
+        console.error('Failed to update onboarding status:', errorData)
+
+        setFieldErrors({
+          backend: ['Something went wrong while setting up your account. Please try again.'],
+        })
+
+        return
+      }
 
       setSuccess(true)
       router.push('/business-temp/onboard')
