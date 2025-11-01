@@ -11,9 +11,8 @@
 ----------------------------------------- */
 :root {
   /* Additional Colors */
-  --primary-hover: oklch(0.71 0.1756 35.44); /* #e47d4d */
-  --primary-hover: oklch(0.71 0.1756 35.44); /* #e47d4d */
-  --primary-disabled: #d1d5db; /* soft gray for disabled */
+  --primary-hover: oklch(69.716% 0.14659 37.212); /* #E97958 */
+  --primary-disabled: oklch(87.302% 0.0001 271.152); /* #D5D5D5 soft gray for disabled */
   --primary-foreground: oklch(0 0 0); /* #000000 */
   /* --outline-hover: #feeae3; */
 
@@ -39,7 +38,7 @@
   --card-foreground: oklch(0 0 0); /* #000000 */
   --popover: oklch(0.99 0 0); /* #f9f9f9 */
   --popover-foreground: oklch(0 0 0); /* #000000 */
-  --primary: oklch(0.65 0.22 35.34); /* #e46a2e */
+  --primary: oklch(63.721% 0.18383 36.463); /* #E4572E */
   --primary-foreground: oklch(1 0 0); /* #ffffff */
   --secondary: oklch(0.94 0 0); /* #f0f0f0 */
   --secondary-foreground: oklch(0 0 0); /* #000000 */

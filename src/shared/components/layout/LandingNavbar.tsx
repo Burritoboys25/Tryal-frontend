@@ -54,7 +54,7 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden w-[9.375rem] md:flex">
+          <div className="hidden md:flex">
             <Button variant="solid" className={disablePartner ? 'invisible' : ''}>
               <Link
                 href={{

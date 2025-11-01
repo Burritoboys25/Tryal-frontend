@@ -10,17 +10,7 @@ const Stats = () => {
   useGSAP(
     () => {
       if (!containerRef.current) return
-      const revealTargets = containerRef.current.querySelectorAll('[data-anim="split-reveal"]')
-
-      const splits: SplitText[] = []
-      const allLines: Element[] = []
-
-      revealTargets.forEach(target => {
-        const split = new SplitText(target, { type: 'lines', mask: 'lines' })
-        splits.push(split)
-        allLines.push(...split.lines)
-      })
-
+      
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -29,16 +19,25 @@ const Stats = () => {
         },
       })
 
-      tl.from(allLines, {
-        opacity: 0,
-        y: 100,
-        duration: 1,
-        ease: 'power4.out',
+      tl.add('start')
+
+      SplitText.create('[data-anim="split-reveal"]', {
+        type: 'lines',
+        mask: 'lines',
+        autoSplit: true,
+        onSplit(self) {
+          const tween = gsap.from(self.lines, {
+            yPercent: 100,
+            duration: 1,
+            ease: 'power4.out',
+            paused: true,
+            onComplete: () => self.revert()
+          })
+          tl.add(tween.play(), 'start')
+          return tween
+        },
       })
 
-      return () => {
-        splits.forEach(split => split.revert())
-      }
     },
     { scope: containerRef },
   )
@@ -51,7 +50,7 @@ const Stats = () => {
             <AnimateNumberTo start={0} end={1} suffix="" /> in{' '}
             <AnimateNumberTo start={0} end={4} suffix="" />
           </h3>
-          <p className="text-[1rem] md:text-[1.5rem]" data-anim="split-reveal">
+          <p className="text-h3" data-anim="split-reveal">
             Americans say their life feels boring or stuck in a routine.
           </p>
         </div>
@@ -59,7 +58,7 @@ const Stats = () => {
           <h3 className="mb-2 text-6xl font-medium md:mb-4 md:text-8xl" data-anim="from-to">
             <AnimateNumberTo start={0} end={76} suffix="%" />
           </h3>
-          <p className="text-[1rem] md:text-[1.5rem]" data-anim="split-reveal">
+          <p className="text-h3" data-anim="split-reveal">
             of people would rather spend money on experiences than material things.
           </p>
         </div>
