@@ -64,25 +64,27 @@ const FaqSection = ({ audience }: FaqSectionProps) => {
       background="light-teal"
       id="faq"
       full
-      className="mx-8 rounded-3xl py-12 md:py-24"
+      className="mx-4 rounded-[0.9375rem] py-6 md:py-7 xl:py-18"
       ref={scope}
     >
-      <div className="relative grid grid-cols-1 gap-8 px-20 lg:grid-cols-2">
-        <div className="text-center lg:sticky lg:top-[96px] lg:col-span-full lg:text-left">
-          <h2 className="text-display text-[#09272E]" data-anim="split-reveal">
-            Frequently Asked <br className="hidden sm:block" />
-            Questions
+      <div className="relative grid grid-cols-1 gap-[1.88rem] px-4 md:gap-[2.75rem] md:px-8 lg:grid-cols-2 lg:gap-0">
+        <div className="text-left md:text-center lg:sticky lg:top-[96px] lg:col-span-full lg:text-left">
+          <h2
+            className="mx-auto max-w-[18rem] text-[2rem] font-semibold text-[#09272E] lg:mx-0 lg:max-w-[550px] lg:text-[3.5rem] lg:font-extrabold"
+            data-anim="split-reveal"
+          >
+            Frequently Asked Questions
           </h2>
         </div>
 
-        <div className="space-y-6 sm:space-y-8 md:space-y-8 lg:col-start-2">
+        <div className="space-y-6 md:space-y-4 lg:col-start-2 lg:-translate-y-8 lg:space-y-3">
           {faqData.map((item, i) => {
             const isOpen = openQuestions.includes(i)
             return (
-              <div key={i} className="border-b border-black/20 pb-6 sm:pb-4">
+              <div key={i} className="border-b border-black/20 pb-6 md:pb-3">
                 <button
                   onClick={() => toggleQuestion(i)}
-                  className="text-sub2 flex w-full items-center gap-3 text-left text-[#09272E] transition-opacity hover:cursor-pointer hover:opacity-80 sm:gap-4"
+                  className="flex w-full items-center gap-3 text-left text-[#09272E] transition-opacity hover:cursor-pointer hover:opacity-80 sm:gap-4"
                 >
                   <div
                     className={`flex-shrink-0 transition-transform duration-300 ${
@@ -90,19 +92,22 @@ const FaqSection = ({ audience }: FaqSectionProps) => {
                     }`}
                   >
                     {isOpen ? (
-                      <Minus size={16} className="sm:h-5 sm:w-5" />
+                      <Minus size={24} className="sm:h-5 sm:w-5" />
                     ) : (
-                      <Plus size={16} className="sm:h-5 sm:w-5" />
+                      <Plus size={24} className="sm:h-5 sm:w-5" />
                     )}
                   </div>
-                  <span className="flex-1 leading-relaxed" data-anim="split-reveal">
+                  <span
+                    className="flex-1 text-sm md:text-base lg:text-lg xl:text-xl"
+                    data-anim="split-reveal"
+                  >
                     {item.question}
                   </span>
                 </button>
 
                 <div
-                  className={`ml-6 overflow-hidden text-sm leading-relaxed transition-all duration-300 sm:ml-8 sm:text-base md:ml-10 ${
-                    isOpen ? 'mt-3 max-h-96 opacity-100 sm:mt-1' : 'max-h-0 opacity-0'
+                  className={`ml-9 overflow-hidden text-xs transition-all duration-300 md:text-sm lg:text-base ${
+                    isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
                   {item.answer}
