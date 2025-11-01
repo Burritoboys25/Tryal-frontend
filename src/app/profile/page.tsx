@@ -1,11 +1,20 @@
 import ProfilePage from '@/modules/profile/components/ProfilePage'
 import API_BASE_URL from '@/shared/lib/apiBaseUrl'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/modules/auth/lib/authOptions'
+import { redirect } from 'next/navigation'
 
 export const dynamic = 'force-dynamic' // Render this page on every request
 
 export default async function Profile() {
-  // TODO: Replace with session-based userId
-  const userId = '272d2788-ee1e-4056-ae09-4829aff17909'
+  const session = await getServerSession(authOptions)
+
+  // Redirect to login if not authenticated
+  if (!session?.userId) {
+    redirect('/login')
+  }
+
+  const userId = session.userId
   let profileData = null
 
   try {

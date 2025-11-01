@@ -12,13 +12,14 @@ export default function ChangePlan() {
   const [activePlans, setActivePlans] = useState<Plan[]>([])
   const [currentPlanId, setCurrentPlanId] = useState<string>('')
 
+  const hasActiveSubscription = !!userData?.activeSubscription
+
   useEffect(() => {
     if (userData?.activeSubscription?.planId) {
       setCurrentPlanId(userData.activeSubscription.planId)
     }
 
     console.log(userData)
-
   }, [userData])
 
   useEffect(() => {
@@ -41,9 +42,13 @@ export default function ChangePlan() {
     <ViewLayout type="default">
       <Container className="h-[calc(100vh-69px)] max-w-full py-[3rem]">
         <div className="mx-[12rem]">
-          <h3 className="mb-2 text-3xl font-bold">Change Plan</h3>
+          <h3 className="mb-2 text-3xl font-bold">
+            {hasActiveSubscription ? 'Change Plan' : 'Choose a Plan'}
+          </h3>
           <p className="text-muted-foreground mb-6">
-            Switch to a different plan that best fits your needs.
+            {hasActiveSubscription
+              ? 'Switch to a different plan that best fits your needs. '
+              : 'Choose a subscription plan to start booking amazing experiences.'}
           </p>
         </div>
         <div>
