@@ -19,7 +19,7 @@ export default function FeatureSlider({ audience }: FeatureSliderProps) {
   const trackRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
 
-  const isMobile = useMediaQuery('(max-width: 1023px)')
+  const isMobile = useMediaQuery('(max-width: 767px)')
   const isSuperSmall = useMediaQuery('(max-width: 767px)')
   const tabListRef = useRef<HTMLDivElement | null>(null)
   const tabButtonsRef = useRef<HTMLButtonElement[]>([])
@@ -145,13 +145,13 @@ function MobileSlideCard({ slide }: { slide: Slide }) {
     <div
       className={`flex h-[434px] flex-col space-y-5 rounded-[.75rem] p-4 ${slide.accent ? slide.accent : 'bg-amber-200'}`}
     >
-      <div className="bg-surface-light relative mx-auto w-full overflow-hidden rounded-[.75rem] shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)]">
+      <div className="bg-surface-light relative mx-auto h-[182px] w-full overflow-hidden rounded-[.75rem] shadow-[0_2px_0_#111_inset,0_0_0_1px_rgba(255,255,255,0.08)] md:h-[300px]">
         {slide.image.includes('.gif') ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={slide.image}
             alt={slide.title}
-            className={`max-h-full max-w-full object-contain ${slide.imageClassName ? slide.imageClassName : ''}`}
+            className={`h-auto w-full object-center ${slide.imageClassName ? slide.imageClassName : ''}`}
             aria-label={slide.title}
           />
         ) : (
@@ -183,18 +183,20 @@ function SlideCard({ slide }: { slide: Slide }) {
   const isGif = slide.image.endsWith('.gif')
 
   return (
-    <div className="grid grid-cols-[249px_1fr] gap-4 xl:grid-cols-[1fr_3fr]">
+    <div className="lg: grid grid-cols-[249px_1fr] gap-4 md:h-[400px] lg:h-[460px] xl:h-[508px] xl:grid-cols-[1fr_3fr] 2xl:h-[600px]">
       {/* Content Panel */}
       <div
         className={[
-          'rounded-[.75rem] p-6 sm:p-8 lg:col-span-1 xl:min-w-[393px]',
+          'rounded-[.75rem] md:p-4 lg:col-span-1 lg:p-8 xl:min-w-[393px]',
           slide.accent ?? 'bg-amber-200',
           'text-[#2E1109]',
         ].join(' ')}
       >
         <div className="flex h-full flex-col justify-between">
-          <h2 className="text-background text-[2.5rem] leading-tight font-bold">{slide.title}</h2>
-          <p className="text-background w-full text-base">{slide.body}</p>
+          <h2 className="text-background text-xl leading-tight font-bold xl:text-[2.5rem]">
+            {slide.title}
+          </h2>
+          <p className="text-background w-full md:text-sm xl:text-base">{slide.body}</p>
         </div>
       </div>
 
@@ -209,7 +211,7 @@ function SlideCard({ slide }: { slide: Slide }) {
               muted
               playsInline
               aria-label={slide.title}
-              className="max-h-full max-w-full object-contain"
+              className="h-full w-auto object-contain"
             />
           ) : isGif ? (
             // eslint-disable-next-line @next/next/no-img-element
