@@ -73,7 +73,7 @@ export default function FeatureSlider({ audience }: FeatureSliderProps) {
             <Button
               key={slide.id}
               onClick={() => goTo(i)}
-              className={`text-foreground-dark hover:bg-surface-teal/80 hidden rounded-full bg-[#124E5B] px-4 py-2 transition md:block ${
+              className={`text-foreground-dark hover:bg-surface-teal/80 hidden rounded-full bg-[#124E5B]  transition md:block ${
                 i === index ? 'bg-primary hover:bg-primary/90 ring-1 ring-white/10' : ''
               }`}
               aria-pressed={i === index}
