@@ -109,7 +109,7 @@ const SignupForm = () => {
             <FormField
               label="First name"
               name="firstName"
-              placeholder=""
+              placeholder="Enter first name"
               required
               error={fieldErrors.firstName?.[0]}
               value={form.firstName}
@@ -118,7 +118,7 @@ const SignupForm = () => {
             <FormField
               label="Last name"
               name="lastName"
-              placeholder=""
+              placeholder="Enter last name"
               required
               error={fieldErrors.lastName?.[0]}
               value={form.lastName}
@@ -128,7 +128,7 @@ const SignupForm = () => {
               label="Email address"
               name="email"
               type="email"
-              placeholder=""
+              placeholder="Enter email address"
               required
               error={fieldErrors.email?.[0]}
               value={form.email}
@@ -138,7 +138,7 @@ const SignupForm = () => {
               label="Password"
               name="password"
               type="password"
-              placeholder=""
+              placeholder="Enter password"
               required
               error={fieldErrors.password?.[0]}
               value={form.password}
@@ -148,7 +148,7 @@ const SignupForm = () => {
               label="Re-enter password"
               name="confirmPassword"
               type="password"
-              placeholder=""
+              placeholder="Re-enter password"
               required
               error={fieldErrors.confirmPassword?.[0]}
               value={form.confirmPassword}

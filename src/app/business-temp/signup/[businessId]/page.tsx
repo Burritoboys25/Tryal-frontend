@@ -1,5 +1,5 @@
 import React from 'react'
-import SimpleHeader from '@/shared/components/layout/SimpleHeader'
+import BusinessAuthHeader from '@/modules/auth/business/components/BusinessAuthHeader'
 import BusinessSignupForm from '@/modules/auth/business/components/BusinessSignupForm'
 
 export default async function BusinessSignupPage(props: {
@@ -9,7 +9,7 @@ export default async function BusinessSignupPage(props: {
 
   return (
     <>
-      <SimpleHeader />
+      <BusinessAuthHeader />
       <BusinessSignupForm businessId={businessId} />
     </>
   )
