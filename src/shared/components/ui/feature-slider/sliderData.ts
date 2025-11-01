@@ -5,6 +5,7 @@ export type Slide = {
   body: string
   image: string
   accent?: string
+  imageClassName?: string
 }
 
 export const USER_SLIDES: Slide[] = [
@@ -39,7 +40,7 @@ export const PARTNER_SLIDES: Slide[] = [
     id: 'pricing',
     tab: 'Smart Pricing & Optimization',
     title: 'Smarter Pricing, Bigger Impact',
-    body: 'Let AI help you fine-tune prices based on real demand, seasonality, and class popularity — not just raise them. Adjust class sizes or offer special rates to fill slow days, while insights guide you toward the best times and price points to increase bookings and overall revenue.',
+    body: 'Automatically adjust your prices based on demand. Raise prices during peak times to maximize revenue, or lower them during slow periods to encourage bookings.',
     image: '/demos/peaktimes.gif',
     accent: 'bg-[#F4BCAB]',
   },
@@ -55,8 +56,9 @@ export const PARTNER_SLIDES: Slide[] = [
     id: 'booking',
     tab: 'Real-Time Flexibility',
     title: 'Reschedule Without the Stress',
-    body: 'Stay adaptable when plans change. Update class times, adjust capacity, or reschedule experiences in just a few clicks — no hassle, no lost opportunities.',
+    body: 'Weather, cancellations, or shifting schedules? No problem. Easily edit or reschedule your experiences in just a few clicks, keeping your business running smoothly.',
     image: '/demos/calendar.gif',
     accent: 'bg-[#ABE7F4]',
+    imageClassName: 'scale-100 2xl:scale-120 2xl:py-14',
   },
 ]
