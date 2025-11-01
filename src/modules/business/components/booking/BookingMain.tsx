@@ -61,7 +61,6 @@ const BookingMain = ({ experiences }: { experiences: Experience[] }) => {
       >
         <Button
           variant="solid"
-          size="lg"
           className="bg-primary w-full cursor-pointer rounded-full text-white"
           disabled={!selectedTimeslot}
         >

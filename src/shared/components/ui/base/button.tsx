@@ -19,7 +19,7 @@ const buttonVariants = cva(
       },
       size: {
         default: 'px-[1.5rem] py-[0.5rem]',
-        // icon: 'p-[0.5rem]',
+        icon: 'p-[0.5rem]',
       },
     },
     defaultVariants: {

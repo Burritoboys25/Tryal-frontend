@@ -84,7 +84,6 @@ const BookingReview: React.FC<BookingReviewProps> = ({ bookingDetail, businessNa
 
       <Button
         variant="solid"
-        size="lg"
         className="bg-primary w-full cursor-pointer rounded-full text-white"
       >
         Confirm booking
