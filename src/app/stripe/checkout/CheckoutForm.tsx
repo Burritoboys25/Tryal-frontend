@@ -30,7 +30,7 @@ const CheckoutForm = () => {
 
     return {
       fetchClientSecret: () =>
-        fetch(`${process.env.BACKEND_URL}/api/stripe/session`, {
+        fetch('/api/stripe/session', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -40,7 +40,12 @@ const CheckoutForm = () => {
           }),
         })
           .then(res => res.json())
-          .then(({ data }) => data.clientSecret),
+          .then(data => {
+            if (!data.clientSecret) {
+              throw new Error('No clientSecret returned from backend')
+            }
+            return data.clientSecret
+          }),
     }
   }, [user, planId])
 
