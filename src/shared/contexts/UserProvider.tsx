@@ -7,7 +7,6 @@ import { User } from '@/shared/types/userTypes'
 interface UserContextType {
   userData: User | null
   setUserData: React.Dispatch<React.SetStateAction<User | null>>
-  refetchUserData: () => Promise<void>
 }
 
 export const UserContext = createContext<UserContextType | undefined>(undefined)
@@ -24,8 +23,9 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
     return null
   })
 
-  useEffect(() => {
-    if (!session?.user.id) {
+  const fetchUser = useCallback(async () => {
+    if (!session?.user?.id) {
+      console.log('No session userId found, clearing userData')
       setUserData(null)
       if (typeof window !== 'undefined') {
         localStorage.removeItem(USER_DATA_KEY)
@@ -33,12 +33,16 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
       return
     }
 
-    const fetchUser = async () => {
-      try {
-        const [userRes, subRes] = await Promise.all([
-          fetch(`/api/users/${session.user.id}`, { credentials: 'include' }),
-          fetch(`/api/users/${session.user.id}/subscriptions?active=true`),
-        ])
+    try {
+      console.log('Fetching user data for userId:', session.user.id)
+
+      const [userRes, subRes] = await Promise.all([
+        fetch(`/api/users/${session.user.id}`, { credentials: 'include' }),
+        fetch(`/api/users/${session.user.id}/subscriptions?active=true`),
+      ])
+
+      console.log('User Response:', session.user.id)
+      console.log('userRes.ok:', userRes.ok, 'subRes.ok:', subRes.ok)
 
       if (!userRes.ok || !subRes.ok) throw new Error('Failed to fetch data')
 
@@ -56,11 +60,8 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
         createdAtYear: data.createdAtYear,
       }
 
+      console.log('Setting user data:', user)
       setUserData(user)
-
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(USER_DATA_KEY, JSON.stringify(user))
-      }
     } catch (err) {
       if (process.env.NODE_ENV !== 'production') {
         console.error('Failed to fetch user data:', err)
@@ -70,21 +71,21 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
         localStorage.removeItem(USER_DATA_KEY)
       }
     }
-  }, [session?.userId])
+  }, [session?.user?.id])
 
   useEffect(() => {
+    console.log('UserProvider session:', session)
     fetchUser()
-  }, [fetchUser])
+  }, [session, fetchUser])
 
-  const refetchUserData = useCallback(async () => {
-    await fetchUser()
-  }, [fetchUser])
+  // Sync userData to localStorage whenever it changes
+  useEffect(() => {
+    if (userData) {
+      localStorage.setItem(USER_DATA_KEY, JSON.stringify(userData))
+    }
+  }, [userData])
 
-  return (
-    <UserContext.Provider value={{ userData, setUserData, refetchUserData }}>
-      {children}
-    </UserContext.Provider>
-  )
+  return <UserContext.Provider value={{ userData, setUserData }}>{children}</UserContext.Provider>
 }
 
 export default UserProvider

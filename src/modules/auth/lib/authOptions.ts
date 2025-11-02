@@ -46,8 +46,11 @@ export const authOptions: NextAuthOptions = {
             token.data.accessToken,
           )
 
+          console.log('Login successful for userId:', token)
+          console.log('Decoded Token:', decodedToken)
+
           return {
-            id: token.data.userId,
+            id: decodedToken.sub,
             accessToken: token.data.accessToken,
             refreshToken: token.data.refreshToken,
             accountType: decodedToken.accountType,

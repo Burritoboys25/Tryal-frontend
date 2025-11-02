@@ -10,11 +10,11 @@ export default async function Profile() {
   const session = await getServerSession(authOptions)
 
   // Redirect to login if not authenticated
-  if (!session?.userId) {
+  if (!session?.user?.id) {
     redirect('/login')
   }
 
-  const userId = session.userId
+  const userId = session.user.id
   let profileData = null
 
   try {
