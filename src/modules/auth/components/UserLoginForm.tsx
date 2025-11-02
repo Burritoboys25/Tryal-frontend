@@ -54,16 +54,12 @@ const LoginForm = () => {
         return
       }
 
-      const authenticateLogin = await signIn(
-        'credentials',
-        {
-          email: form.email,
-          password: form.password,
-          redirect: false,
-          remember,
-        },
-        { basePath: '/api/auth/user' },
-      )
+      const authenticateLogin = await signIn('credentials', {
+        email: result.data.email,
+        password: result.data.password,
+        type: 'user',
+        callbackUrl: '/explore',
+      })
 
       if (authenticateLogin?.error) {
         setFieldErrors({

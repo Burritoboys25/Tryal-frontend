@@ -70,9 +70,9 @@ const SignupForm = () => {
         {
           email: result.data.email,
           password: result.data.password,
-          redirect: false,
-        },
-        { basePath: '/api/auth/user' },
+          type: 'user',
+          callbackUrl: '/explore',
+        }
       )
 
       setSuccess(true)

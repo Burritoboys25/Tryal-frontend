@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import BusinessAuthHeader from '@/modules/auth/business/components/BusinessAuthHeader'
+import BusinessAuthHeader from '@/modules/auth/components/BusinessAuthHeader'
 import { OnboardingContextProvider } from '@/modules/business-temp/components/OnboardingContextProvider'
 import OnboardingSteps from '@/modules/business-temp/components/OnboardingSteps'
 import { OnboardingStatus } from '@/modules/business-temp/types/OnboardingTypes'

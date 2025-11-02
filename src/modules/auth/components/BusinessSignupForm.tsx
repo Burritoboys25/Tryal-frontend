@@ -88,9 +88,9 @@ const BusinessSignupForm = ({ businessId }: BusinessSignupFormProps) => {
         {
           email: result.data.email,
           password: result.data.password,
-          redirect: false,
-        },
-        { basePath: '/api/auth/business' },
+          type: 'business',
+          callbackUrl: '/business-temp/onboard',
+        }
       )
 
       const onboardRes = await fetch(`/api/businesses/${businessId}/onboarding`, {
