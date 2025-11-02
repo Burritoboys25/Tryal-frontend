@@ -32,10 +32,10 @@ export default function BusinessOnboardPage() {
 
   useEffect(() => {
     const fetchStatus = async () => {
-      if (!session?.businessId) return
+      if (!session?.user.id) return
 
       try {
-        const res = await fetch(`/api/businesses/${session.businessId}`)
+        const res = await fetch(`/api/businesses/${session.user.id}`)
         if (!res.ok) throw new Error('Failed to fetch business info')
 
         const business = await res.json()
@@ -68,7 +68,7 @@ export default function BusinessOnboardPage() {
 
   return (
     <>
-      <OnboardingContextProvider initialStatus={onboardingStatus} businessId={session.businessId}>
+      <OnboardingContextProvider initialStatus={onboardingStatus} businessId={session.user.id}>
         <BusinessAuthHeader />
         <OnboardingSteps />
       </OnboardingContextProvider>
