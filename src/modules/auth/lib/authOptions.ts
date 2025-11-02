@@ -2,6 +2,7 @@ import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { jwtDecode } from 'jwt-decode'
 import { JwtBase } from '../types/authTypes'
+import API_BASE_URL from '@/shared/lib/apiBaseUrl'
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -21,8 +22,8 @@ export const authOptions: NextAuthOptions = {
 
           const endpoint =
             credentials.accountType === 'BUSINESS'
-              ? `${process.env.NEXTAUTH_URL}/api/business-temp/login`
-              : `${process.env.NEXTAUTH_URL}/api/users/login`
+              ? `${API_BASE_URL}/api/business-temp/login`
+              : `${API_BASE_URL}/api/users/login`
 
           const remember = credentials?.remember === 'true'
 
@@ -41,7 +42,9 @@ export const authOptions: NextAuthOptions = {
           }
 
           const token = await res.json()
-          const decodedToken = jwtDecode<{ sub: string, accountType: string }>(token.data.accessToken)
+          const decodedToken = jwtDecode<{ sub: string; accountType: string }>(
+            token.data.accessToken,
+          )
 
           return {
             id: decodedToken.sub,

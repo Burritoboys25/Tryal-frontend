@@ -2,14 +2,15 @@ import { Suspense } from 'react'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
 import Container from '@/shared/components/layout/Container'
 import ExploreMain from '@/modules/explore/components/ExploreMain'
+import API_BASE_URL from '@/shared/lib/apiBaseUrl'
 
 export default async function ExplorePage() {
   const userId = '272d2788-ee1e-4056-ae09-4829aff17909'
 
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/users/${userId}/bookmarks`, {
+  const res = await fetch(`${API_BASE_URL}/api/users/${userId}/bookmarks`, {
     cache: 'no-store',
   })
-  const data = await res.json();
+  const data = await res.json()
 
   const bookmarks = data.data.map((item: { businessId: string }) => item.businessId)
 
