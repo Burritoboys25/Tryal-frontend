@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET(req: NextRequest, props: { params: Promise<{ id: string }> }) {
+export async function GET(req: NextRequest, props: { params: Promise<{ businessId: string }> }) {
   const params = await props.params
 
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/api/businesses/${params.id}/categories`, {
+    const res = await fetch(`${process.env.BACKEND_URL}/api/businesses/${params.businessId}/categories`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })

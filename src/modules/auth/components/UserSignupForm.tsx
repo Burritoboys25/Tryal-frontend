@@ -5,16 +5,16 @@ import Link from 'next/link'
 import { Button } from '@/shared/components/ui/base/button'
 import FormField from '@/shared/components/ui/forms/FormField'
 import { useState } from 'react'
-import { SignupFormData, signupFormSchema } from '../validations/signup.schema'
+import { UserSignupFormData, userSignupFormSchema } from '../validations/userSignup.schema'
 import CheckboxField from '@/shared/components/ui/forms/CheckboxField'
 import { signIn } from 'next-auth/react'
 import { APIFieldError } from '../lib/errors'
 import { useRouter } from 'next/navigation'
-import { SignupPayload } from '../types/authTypes'
+import { UserSignupPayload } from '../types/authTypes'
 
 const SignupForm = () => {
   const router = useRouter()
-  const [form, setForm] = useState<SignupFormData>({
+  const [form, setForm] = useState<UserSignupFormData>({
     firstName: '',
     lastName: '',
     email: '',
@@ -34,14 +34,14 @@ const SignupForm = () => {
     setFieldErrors({})
 
     try {
-      const result = signupFormSchema.safeParse(form)
+      const result = userSignupFormSchema.safeParse(form)
 
       if (!result.success) {
         setFieldErrors(result.error.flatten().fieldErrors)
         return
       }
 
-      const signupPayload: SignupPayload = {
+      const signupPayload: UserSignupPayload = {
         firstName: result.data.firstName,
         lastName: result.data.lastName,
         email: result.data.email,
@@ -65,11 +65,15 @@ const SignupForm = () => {
         return
       }
 
-      await signIn('credentials', {
-        email: result.data.email,
-        password: result.data.password,
-        redirect: false,
-      })
+      await signIn(
+        'credentials',
+        {
+          email: result.data.email,
+          password: result.data.password,
+          accountType: 'USER',
+          callbackUrl: '/explore',
+        }
+      )
 
       setSuccess(true)
       router.push('/explore')
@@ -105,7 +109,7 @@ const SignupForm = () => {
             <FormField
               label="First name"
               name="firstName"
-              placeholder=""
+              placeholder="Enter first name"
               required
               error={fieldErrors.firstName?.[0]}
               value={form.firstName}
@@ -114,7 +118,7 @@ const SignupForm = () => {
             <FormField
               label="Last name"
               name="lastName"
-              placeholder=""
+              placeholder="Enter last name"
               required
               error={fieldErrors.lastName?.[0]}
               value={form.lastName}
@@ -124,7 +128,7 @@ const SignupForm = () => {
               label="Email address"
               name="email"
               type="email"
-              placeholder=""
+              placeholder="Enter email address"
               required
               error={fieldErrors.email?.[0]}
               value={form.email}
@@ -134,7 +138,7 @@ const SignupForm = () => {
               label="Password"
               name="password"
               type="password"
-              placeholder=""
+              placeholder="Enter password"
               required
               error={fieldErrors.password?.[0]}
               value={form.password}
@@ -144,7 +148,7 @@ const SignupForm = () => {
               label="Re-enter password"
               name="confirmPassword"
               type="password"
-              placeholder=""
+              placeholder="Re-enter password"
               required
               error={fieldErrors.confirmPassword?.[0]}
               value={form.confirmPassword}

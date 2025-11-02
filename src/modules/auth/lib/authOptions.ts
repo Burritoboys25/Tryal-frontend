@@ -1,7 +1,8 @@
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-// import { jwtDecode } from 'jwt-decode'
-import { JwtUser } from '../types/authTypes'
+import { jwtDecode } from 'jwt-decode'
+import { JwtBase } from '../types/authTypes'
+import API_BASE_URL from '@/shared/lib/apiBaseUrl'
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -11,16 +12,22 @@ export const authOptions: NextAuthOptions = {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
         remember: { label: 'Remember me', type: 'checkbox' },
+        accountType: { label: 'Type', type: 'text' },
       },
       async authorize(credentials) {
         try {
-          if (!credentials?.email || !credentials?.password) {
-            throw new Error('Email and password are required.')
+          if (!credentials?.email || !credentials?.password || !credentials?.accountType) {
+            throw new Error('Missing credentials')
           }
+
+          const endpoint =
+            credentials.accountType === 'BUSINESS'
+              ? `${API_BASE_URL}/api/business-temp/login`
+              : `${API_BASE_URL}/api/users/login`
 
           const remember = credentials?.remember === 'true'
 
-          const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/users/login`, {
+          const res = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -35,15 +42,16 @@ export const authOptions: NextAuthOptions = {
           }
 
           const token = await res.json()
-
-          // Remove if we decide not to store anything else in the jwt
-          // const decodedToken = jwtDecode<{ sub: string }>(token.data.accessToken)
+          const decodedToken = jwtDecode<{ sub: string; accountType: string }>(
+            token.data.accessToken,
+          )
 
           return {
             id: token.data.userId,
             accessToken: token.data.accessToken,
             refreshToken: token.data.refreshToken,
-          } as JwtUser
+            accountType: decodedToken.accountType,
+          } as JwtBase
         } catch (error) {
           console.error('Login error:', error)
           return null
@@ -61,16 +69,21 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        const u = user as JwtUser
-        token.userId = u.id || ''
+        const u = user as JwtBase
+        token.id = u.id || ''
         token.accessToken = u.accessToken || ''
         token.refreshToken = u.refreshToken || ''
+        token.accountType = u.accountType || ''
       }
       return token
     },
     async session({ session, token }) {
       if (token) {
-        session.userId = token.userId ?? ''
+        session.user = {
+          ...session.user,
+          id: token.id,
+          accountType: token.accountType,
+        }
         session.accessToken = token.accessToken
         session.refreshToken = token.refreshToken
       }

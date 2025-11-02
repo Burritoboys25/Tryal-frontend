@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const signupFormSchema = z
+export const userSignupFormSchema = z
   .object({
     firstName: z
       .string()
@@ -29,4 +29,4 @@ export const signupFormSchema = z
     path: ['confirmPassword'],
   })
 
-export type SignupFormData = z.infer<typeof signupFormSchema>
+export type UserSignupFormData = z.infer<typeof userSignupFormSchema>
