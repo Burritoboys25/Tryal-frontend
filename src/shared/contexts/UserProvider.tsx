@@ -26,7 +26,6 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   const fetchUser = useCallback(async () => {
     if (!session?.userId) {
-      console.log('No session userId found, clearing userData')
       setUserData(null)
       if (typeof window !== 'undefined') {
         localStorage.removeItem(USER_DATA_KEY)
@@ -35,15 +34,10 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     try {
-      console.log('Fetching user data for userId:', session.userId)
-
       const [userRes, subRes] = await Promise.all([
         fetch(`/api/users/${session.userId}`, { credentials: 'include' }),
         fetch(`/api/users/${session.userId}/subscriptions?active=true`),
       ])
-
-      console.log('User Response:', session.userId)
-      console.log('userRes.ok:', userRes.ok, 'subRes.ok:', subRes.ok)
 
       if (!userRes.ok || !subRes.ok) throw new Error('Failed to fetch data')
 
@@ -61,12 +55,10 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
         createdAtYear: data.createdAtYear,
       }
 
-      console.log('Setting user data:', user)
       setUserData(user)
 
       if (typeof window !== 'undefined') {
         localStorage.setItem(USER_DATA_KEY, JSON.stringify(user))
-        console.log('Saved to localStorage with key:', USER_DATA_KEY)
       }
     } catch (err) {
       if (process.env.NODE_ENV !== 'production') {
@@ -80,9 +72,8 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
   }, [session?.userId])
 
   useEffect(() => {
-    console.log('UserProvider session:', session)
     fetchUser()
-  }, [session, fetchUser])
+  }, [fetchUser])
 
   const refetchUserData = useCallback(async () => {
     await fetchUser()

@@ -33,7 +33,7 @@ const SubscriptionModal = ({ hasActiveSubscription }: SubscriptionModalProps) =>
   }
 
   const handleChoosePlan = () => {
-    router.push('/change-plan')
+    router.push('/select-plan')
     handleClose()
   }
 
