@@ -57,7 +57,7 @@ const LoginForm = () => {
       const authenticateLogin = await signIn('credentials', {
         email: result.data.email,
         password: result.data.password,
-        type: 'user',
+        accountType: 'USER',
         callbackUrl: '/explore',
       })
 

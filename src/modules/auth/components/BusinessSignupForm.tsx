@@ -88,7 +88,7 @@ const BusinessSignupForm = ({ businessId }: BusinessSignupFormProps) => {
         {
           email: result.data.email,
           password: result.data.password,
-          type: 'business',
+          accountType: 'BUSINESS',
           callbackUrl: '/business-temp/onboard',
         }
       )

@@ -26,4 +26,5 @@ export interface JwtBase {
   id: string
   accessToken: string
   refreshToken: string
+  accountType: 'BUSINESS' | 'USER'
 }

@@ -16,6 +16,9 @@ export async function POST(req: NextRequest) {
 
     const data = await res.json()
 
+    console.log("this is login:")
+    console.log(data);
+
     if (!res.ok) {
       return NextResponse.json({ error: data.message || 'Login failed' }, { status: res.status })
     }

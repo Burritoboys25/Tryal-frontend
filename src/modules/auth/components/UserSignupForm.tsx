@@ -70,7 +70,7 @@ const SignupForm = () => {
         {
           email: result.data.email,
           password: result.data.password,
-          type: 'user',
+          accountType: 'USER',
           callbackUrl: '/explore',
         }
       )

@@ -24,7 +24,7 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
   })
 
   useEffect(() => {
-    if (!session?.userId) {
+    if (!session?.user.id) {
       setUserData(null)
       if (typeof window !== 'undefined') {
         localStorage.removeItem(USER_DATA_KEY)
@@ -35,8 +35,8 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
     const fetchUser = async () => {
       try {
         const [userRes, subRes] = await Promise.all([
-          fetch(`/api/users/${session.userId}`, { credentials: 'include' }),
-          fetch(`/api/users/${session.userId}/subscriptions?active=true`),
+          fetch(`/api/users/${session.user.id}`, { credentials: 'include' }),
+          fetch(`/api/users/${session.user.id}/subscriptions?active=true`),
         ])
 
         if (!userRes.ok || !subRes.ok) throw new Error('Failed to fetch data')

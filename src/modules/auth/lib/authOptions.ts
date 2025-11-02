@@ -1,6 +1,6 @@
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import {jwtDecode} from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode'
 import { JwtBase } from '../types/authTypes'
 
 export const authOptions: NextAuthOptions = {
@@ -11,17 +11,18 @@ export const authOptions: NextAuthOptions = {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
         remember: { label: 'Remember me', type: 'checkbox' },
-        type: { label: 'Type', type: 'text'}
+        accountType: { label: 'Type', type: 'text' },
       },
       async authorize(credentials) {
         try {
-          if (!credentials?.email || !credentials?.password || !credentials?.type){
+          if (!credentials?.email || !credentials?.password || !credentials?.accountType) {
             throw new Error('Missing credentials')
           }
-          
-          const endpoint = credentials.type === 'business'
-            ? `${process.env.NEXTAUTH_URL}/api/business-temp/login`
-            : `${process.env.NEXTAUTH_URL}/api/users/login`
+
+          const endpoint =
+            credentials.accountType === 'BUSINESS'
+              ? `${process.env.NEXTAUTH_URL}/api/business-temp/login`
+              : `${process.env.NEXTAUTH_URL}/api/users/login`
 
           const remember = credentials?.remember === 'true'
 
@@ -40,13 +41,13 @@ export const authOptions: NextAuthOptions = {
           }
 
           const token = await res.json()
-          const decodedToken = jwtDecode<{ sub: string }>(token.data.accessToken)
+          const decodedToken = jwtDecode<{ sub: string, accountType: string }>(token.data.accessToken)
 
           return {
             id: decodedToken.sub,
             accessToken: token.data.accessToken,
             refreshToken: token.data.refreshToken,
-            type: credentials.type,
+            accountType: decodedToken.accountType,
           } as JwtBase
         } catch (error) {
           console.error('Login error:', error)
@@ -69,12 +70,17 @@ export const authOptions: NextAuthOptions = {
         token.id = u.id || ''
         token.accessToken = u.accessToken || ''
         token.refreshToken = u.refreshToken || ''
+        token.accountType = u.accountType || ''
       }
       return token
     },
     async session({ session, token }) {
       if (token) {
-        session.id = token.id
+        session.user = {
+          ...session.user,
+          id: token.id,
+          accountType: token.accountType,
+        }
         session.accessToken = token.accessToken
         session.refreshToken = token.refreshToken
       }
