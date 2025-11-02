@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from '@/shared/components/ui/base/button'
 import { useRouter } from 'next/navigation'
+import API_BASE_URL from '@/shared/lib/apiBaseUrl'
 
 type Plan = {
   planId: string
@@ -22,7 +23,7 @@ const SubscriptionPage = () => {
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/plans`)
+        const res = await fetch(`${API_BASE_URL}/api/plans`)
         const { data } = await res.json()
 
         setPlans(data)

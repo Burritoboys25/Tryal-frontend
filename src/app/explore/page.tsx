@@ -10,7 +10,7 @@ export default async function ExplorePage() {
   const res = await fetch(`${API_BASE_URL}/api/users/${userId}/bookmarks`, {
     cache: 'no-store',
   })
-  const data = await res.json();
+  const data = await res.json()
 
   const bookmarks = data.data.map((item: { businessId: string }) => item.businessId)
 
