@@ -20,3 +20,37 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Failed to create Stripe session' }, { status: 500 })
   }
 }
+
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url)
+    const sessionId = searchParams.get('session_id')
+
+    if (!sessionId) {
+      return NextResponse.json({ error: 'Missing session_id' }, { status: 400 })
+    }
+
+    const response = await fetch(
+      `${process.env.BACKEND_URL}/api/stripe/session?session_id=${sessionId}`,
+      {
+        method: 'GET',
+      }
+    )
+
+    if (!response.ok) {
+      return NextResponse.json(
+        { error: 'Failed to retrieve session from backend' },
+        { status: response.status }
+      )
+    }
+
+    const data = await response.json()
+    return NextResponse.json(data)
+  } catch (error) {
+    console.error('Error retrieving Stripe session:', error)
+    return NextResponse.json(
+      { error: 'Failed to retrieve Stripe session' },
+      { status: 500 }
+    )
+  }
+}
