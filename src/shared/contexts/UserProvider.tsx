@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState, useCallback } from 'react'
 import { useSession } from 'next-auth/react'
 import { User } from '@/shared/types/userTypes'
 
@@ -23,8 +23,9 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
     return null
   })
 
-  useEffect(() => {
-    if (!session?.user.id) {
+  const fetchUser = useCallback(async () => {
+    if (!session?.user?.id) {
+      console.log('No session userId found, clearing userData')
       setUserData(null)
       if (typeof window !== 'undefined') {
         localStorage.removeItem(USER_DATA_KEY)
@@ -32,46 +33,57 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
       return
     }
 
-    const fetchUser = async () => {
-      try {
-        const [userRes, subRes] = await Promise.all([
-          fetch(`/api/users/${session.user.id}`, { credentials: 'include' }),
-          fetch(`/api/users/${session.user.id}/subscriptions?active=true`),
-        ])
+    try {
+      console.log('Fetching user data for userId:', session.user.id)
 
-        if (!userRes.ok || !subRes.ok) throw new Error('Failed to fetch data')
+      const [userRes, subRes] = await Promise.all([
+        fetch(`/api/users/${session.user.id}`, { credentials: 'include' }),
+        fetch(`/api/users/${session.user.id}/subscriptions?active=true`),
+      ])
 
-        const { data } = await userRes.json()
+      console.log('User Response:', session.user.id)
+      console.log('userRes.ok:', userRes.ok, 'subRes.ok:', subRes.ok)
 
-        const subscriptionData = await subRes.json()
-        const activeSubscription = subscriptionData.data[0]
+      if (!userRes.ok || !subRes.ok) throw new Error('Failed to fetch data')
 
-        const user: User = {
-          userId: data.userId,
-          email: data.email,
-          firstName: data.firstName,
-          lastName: data.lastName,
-          activeSubscription,
-        }
+      const { data } = await userRes.json()
 
-        setUserData({ ...user, activeSubscription })
+      const subscriptionData = await subRes.json()
+      const activeSubscription = subscriptionData.data[0] || null
 
-        if (typeof window !== 'undefined') {
-          localStorage.setItem(USER_DATA_KEY, JSON.stringify({ ...user, activeSubscription }))
-        }
-      } catch (err) {
-        if (process.env.NODE_ENV !== 'production') {
-          console.error('Failed to fetch user data:', err)
-        }
-        setUserData(null)
-        if (typeof window !== 'undefined') {
-          localStorage.removeItem(USER_DATA_KEY)
-        }
+      const user: User = {
+        userId: data.userId,
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        activeSubscription,
+        createdAtYear: data.createdAtYear,
+      }
+
+      console.log('Setting user data:', user)
+      setUserData(user)
+    } catch (err) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Failed to fetch user data:', err)
+      }
+      setUserData(null)
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem(USER_DATA_KEY)
       }
     }
+  }, [session?.user?.id])
 
+  useEffect(() => {
+    console.log('UserProvider session:', session)
     fetchUser()
-  }, [session])
+  }, [session, fetchUser])
+
+  // Sync userData to localStorage whenever it changes
+  useEffect(() => {
+    if (userData) {
+      localStorage.setItem(USER_DATA_KEY, JSON.stringify(userData))
+    }
+  }, [userData])
 
   return <UserContext.Provider value={{ userData, setUserData }}>{children}</UserContext.Provider>
 }

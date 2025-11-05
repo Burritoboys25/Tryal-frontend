@@ -3,6 +3,7 @@ import { Plan } from '@/shared/types/planTypes'
 import CreditIcon from '@/shared/assets/icons/credit.svg'
 import React, { useState } from 'react'
 import { Button } from '@/shared/components/ui/base/button'
+import { useRouter } from 'next/navigation'
 
 interface PlanCardsProps {
   plans: Plan[]
@@ -11,9 +12,13 @@ interface PlanCardsProps {
 
 const PlanCards = ({ plans, currentPlanId }: PlanCardsProps) => {
   const [selectedId, setSelectedId] = useState<string | null>(null)
+  const router = useRouter()
   const middleIndex = Math.floor(plans.length / 2)
 
-  //TODO: Selecting a changed plan card should route to /api/stripe/update in backend
+  const handleSelectPlan = (planId: string) => {
+    setSelectedId(planId)
+    router.push(`/stripe/checkout?planId=${planId}`)
+  }
 
   return (
     <section>
@@ -60,7 +65,7 @@ const PlanCards = ({ plans, currentPlanId }: PlanCardsProps) => {
                     type="button"
                     className={`mx-auto mt-4 h-[2.5rem] w-[8.3125rem] rounded-full ${!isCurrent ? 'cursor-pointer' : ''}`}
                     disabled={isCurrent}
-                    onClick={() => !isCurrent && setSelectedId(plan.planId)}
+                    onClick={() => !isCurrent && handleSelectPlan(plan.planId)}
                   >
                     {isCurrent ? 'Current Plan' : 'Choose Plan'}
                   </Button>

@@ -7,25 +7,29 @@ export const BENEFITS = [
   {
     metric: '14x',
     metricLabel: 'Boost in Visibility',
-    description: 'Reach thousands of new local customers every month — all without spending a cent on ads.',
+    description:
+      'Reach thousands of new local customers every month — all without spending a cent on ads.',
     image: '/boost.png',
   },
   {
     metric: '40%',
     metricLabel: 'More Seats Filled',
-    description: 'Keep your classes full, even at the last minute. Every empty seat becomes an opportunity to grow.',
+    description:
+      'Keep your classes full, even at the last minute. Every empty seat becomes an opportunity to grow.',
     image: '/40_booking.png',
   },
   {
     metric: '30%',
     metricLabel: 'More Revenue',
-    description: 'Cut the busywork and watch profits grow. Spend more time creating, not chasing invoices.',
+    description:
+      'Cut the busywork and watch profits grow. Spend more time creating, not chasing invoices.',
     image: '/30_revenue.png',
   },
   {
     metric: '0',
     metricLabel: 'Upfront Cost',
-    description: 'Get started for free — no fees, no setup costs, and no risk. Just more ways to earn.',
+    description:
+      'Get started for free — no fees, no setup costs, and no risk. Just more ways to earn.',
     image: '/0_upfront.png',
   },
 ]
@@ -144,10 +148,10 @@ const Benefits = () => {
           {BENEFITS.map((benefit, index) => (
             <div
               key={benefit.metricLabel}
-              className={`flex h-auto flex-col items-center justify-between gap-6 md:h-auto md:flex-row md:items-start md:gap-8 lg:h-[50vh] lg:items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} lg:gap-64`}
+              className={`flex h-auto flex-col items-center justify-between gap-6 md:h-auto md:flex-row md:items-start md:gap-8 lg:h-[50vh] lg:items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} lg:gap-16 xl:gap-24 2xl:gap-64`}
               ref={el => setBenefitRef(el, index)}
             >
-              <div className="relative h-[250px] w-full overflow-hidden rounded-2xl md:h-[173px] md:w-[340.5px] md:flex-none lg:h-[500px] lg:max-w-2xl lg:flex-1">
+              <div className="relative h-[250px] w-full overflow-hidden rounded-2xl md:h-[173px] md:w-[340.5px] md:flex-none lg:h-[400px] lg:flex-1 xl:h-[450px] 2xl:h-[500px] 2xl:flex-1">
                 <Image
                   src={benefit.image}
                   alt={benefit.metricLabel}
@@ -155,14 +159,18 @@ const Benefits = () => {
                   fill
                 />
               </div>
-              <div className="flex max-w-2xl flex-col gap-2 md:gap-[2rem]">
+              <div className="flex max-w-2xl flex-col gap-2 md:gap-[2rem] lg:max-w-md lg:flex-1 xl:max-w-lg 2xl:max-w-2xl">
                 <div className="flex flex-row items-center gap-3">
-                  <h2 className="text-4xl font-semibold md:text-8xl 2xl:text-[10rem]">
+                  <h2 className="text-4xl font-semibold md:text-8xl lg:text-7xl xl:text-8xl 2xl:text-[10rem]">
                     {benefit.metric}
                   </h2>
-                  <h3 className="text-h3">{benefit.metricLabel}</h3>
+                  <h3 className="text-h3 2xl:text-h3 lg:text-2xl xl:text-3xl">
+                    {benefit.metricLabel}
+                  </h3>
                 </div>
-                <p className="text-sub4">{benefit.description}</p>
+                <p className="text-sub4 2xl:text-sub4 lg:text-lg xl:text-xl">
+                  {benefit.description}
+                </p>
               </div>
             </div>
           ))}
