@@ -34,6 +34,8 @@ const LoginForm = () => {
     }
   }, [])
 
+  console.log('Session data in LoginForm:', session)
+
   const handleRememberChange = () => {
     setRemember(prev => {
       const newVal = !prev

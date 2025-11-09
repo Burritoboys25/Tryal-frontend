@@ -1,22 +1,41 @@
-import { Suspense } from 'react'
+'use client'
+
+import { Suspense, useEffect, useState } from 'react'
 import ViewLayout from '@/shared/components/layout/ViewLayout'
 import Container from '@/shared/components/layout/Container'
 import ExploreMain from '@/modules/explore/components/ExploreMain'
 import API_BASE_URL from '@/shared/lib/apiBaseUrl'
+import { useUser } from '@/shared/hooks/useUser'
+import SubscriptionModal from '@/modules/plan/components/SubscriptionModal'
 
-export default async function ExplorePage() {
-  const userId = '272d2788-ee1e-4056-ae09-4829aff17909'
+export default function ExplorePage() {
+  const { userData } = useUser()
+  const [bookmarks, setBookmarks] = useState<string[]>([])
 
-  const res = await fetch(`${API_BASE_URL}/api/users/${userId}/bookmarks`, {
-    cache: 'no-store',
-  })
-  const data = await res.json()
+  useEffect(() => {
+    const fetchBookmarks = async () => {
+      if (!userData?.userId) return
 
-  const bookmarks = data.data.map((item: { businessId: string }) => item.businessId)
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/users/${userData.userId}/bookmarks`, {
+          cache: 'no-store',
+        })
+        const data = await res.json()
+        const bookmarkIds = data.data.map((item: { businessId: string }) => item.businessId)
+        setBookmarks(bookmarkIds)
+      } catch (err) {
+        console.error('Failed to fetch bookmarks:', err)
+        setBookmarks([])
+      }
+    }
+
+    fetchBookmarks()
+  }, [userData?.userId])
 
   return (
     <ViewLayout type="explore">
       <Container>
+        <SubscriptionModal hasActiveSubscription={!!userData?.activeSubscription} />
         <Suspense fallback={<p className="py-[5rem] text-center">Loading...</p>}>
           <ExploreMain bookmarks={bookmarks} />
         </Suspense>
