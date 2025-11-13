@@ -42,16 +42,17 @@ export const authOptions: NextAuthOptions = {
           }
 
           const token = await res.json()
-          const decodedToken = jwtDecode<{ sub: string; accountType: string }>(
+          const decodedToken = jwtDecode<{ sub: string; accountType: string; exp: number; username: string }>(
             token.data.accessToken,
           )
 
-          console.log('Login successful for userId:', token)
+          console.log('Login successful for user:', decodedToken.username)
           console.log('Decoded Token:', decodedToken)
 
           return {
             id: decodedToken.sub,
             accessToken: token.data.accessToken,
+            accessTokenExpires: decodedToken.exp * 1000,
             refreshToken: token.data.refreshToken,
             accountType: decodedToken.accountType,
           } as JwtBase
@@ -71,14 +72,53 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
+      // On login, perist tokens
       if (user) {
-        const u = user as JwtBase
-        token.id = u.id || ''
-        token.accessToken = u.accessToken || ''
-        token.refreshToken = u.refreshToken || ''
-        token.accountType = u.accountType || ''
+        const u = user as JwtBase;
+        return {
+          ...token,
+          id: u.id || '',
+          accessToken: u.accessToken || '',
+          accessTokenExpires: u.accessTokenExpires || 0,
+          refreshToken: u.refreshToken || '',
+          accountType: u.accountType || ''
+        }
       }
-      return token
+      // If access token has not expired
+      else if (Date.now() < (token.accessTokenExpires as number)) {
+        return token
+      } else {
+        // Subsequent logins, but the `access_token` has expired, try to refresh it
+        if (!token.refreshToken) throw new TypeError("Missing refresh token")
+
+        // If token expired, refresh token via API using refresh cookie
+        try {
+          const refreshed = await fetch(`${process.env.BACKEND_URL}/api/auth/refresh`, {
+            method: 'POST',
+            body: JSON.stringify({
+              refreshToken: token.refreshToken!,
+            }),
+          })
+
+          if (!refreshed.ok) throw refreshed
+
+          const refreshedTokens = await refreshed.json()
+          const decodedToken = jwtDecode<{ sub: string; accountType: string; exp: number }>(
+            refreshedTokens.data.accessToken,
+          )
+          console.log('Access token refreshed for userId:', decodedToken.sub)
+          return {
+            ...token,
+            accessToken: refreshedTokens.data.accessToken,  
+            accessTokenExpires: decodedToken.exp * 1000,
+            refreshToken: refreshedTokens.data.refreshToken,
+          }
+          
+        } catch (error) {
+          console.error('Error refreshing access token:', error)
+          return token
+        }
+      }
     },
     async session({ session, token }) {
       if (token) {
@@ -88,10 +128,25 @@ export const authOptions: NextAuthOptions = {
           accountType: token.accountType,
         }
         session.accessToken = token.accessToken
-        session.refreshToken = token.refreshToken
+        session.accessTokenExpires = token.accessTokenExpires
       }
       return session
     },
+  },
+  events: {
+    async signOut({token}) {
+      try {
+        await fetch(`${process.env.BACKEND_URL}/api/auth/logout`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            refreshToken: token.refreshToken,
+          }),
+        })
+      } catch (error) {
+        console.error('Error during logout:', error)
+      }
+    }
   },
   secret: process.env.NEXTAUTH_SECRET,
 }

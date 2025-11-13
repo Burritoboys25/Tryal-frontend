@@ -25,6 +25,7 @@ export interface BusinessSignupPayload {
 export interface JwtBase {
   id: string
   accessToken: string
+  accessTokenExpires: number
   refreshToken: string
   accountType: 'BUSINESS' | 'USER'
 }

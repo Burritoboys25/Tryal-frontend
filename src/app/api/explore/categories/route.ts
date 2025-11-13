@@ -1,9 +1,10 @@
 // app/api/categories/route.ts
 import { NextResponse } from 'next/server'
+import { backendFetch } from '@/shared/lib/backendFetch'
 
 export async function GET() {
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/api/categories`, {
+    const res = await backendFetch(`/api/categories`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

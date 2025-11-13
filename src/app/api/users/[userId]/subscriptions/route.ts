@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { backendFetch } from '@/shared/lib/backendFetch'
 
 // GET /api/subscriptions/user/${userId}?active=true|false
 // User's active/non-active subscriptions
@@ -8,13 +9,13 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ user
   const active = searchParams.get('active')
 
   try {
-    let url = `${process.env.BACKEND_URL}/api/subscriptions/user/${userId}`
+    let url = `/api/subscriptions/user/${userId}`
 
     if (active !== null) {
       url += `?active=${active}`
     }
 
-    const result = await fetch(url)
+    const result = await backendFetch(url)
     const data = await result.json()
 
     return NextResponse.json(data)

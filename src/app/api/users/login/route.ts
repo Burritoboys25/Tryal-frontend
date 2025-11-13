@@ -8,6 +8,7 @@ export async function POST(req: NextRequest) {
 
     const res = await fetch(`${BACKEND_URL}/api/auth/login`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },

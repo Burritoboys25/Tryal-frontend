@@ -119,7 +119,7 @@ const BusinessCards: React.FC<{
   onToggleBookmark,
 }) => (
   <div className="px-[0.5rem]">
-    {items.map(item => (
+    {items?.map(item => (
       <ExploreCard
         key={item.businessId}
         {...item}

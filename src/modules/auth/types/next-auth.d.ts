@@ -7,7 +7,7 @@ declare module 'next-auth' {
       accountType: 'USER' | 'BUSINESS'
     } & DefaultSession['user']
     accessToken: string
-    refreshToken: string
+    accessTokenExpires: number
   }
 }
 
@@ -16,6 +16,7 @@ declare module 'next-auth/jwt' {
     id: string
     accountType: 'USER' | 'BUSINESS'
     accessToken: string
-    refreshToken: string
+    accessTokenExpires: number
+    refreshToken?: string
   }
 }

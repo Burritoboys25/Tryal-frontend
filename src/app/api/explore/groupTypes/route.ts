@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server'
+import { backendFetch } from '@/shared/lib/backendFetch'
 
 export async function GET() {
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/api/groupTypes`, {
+    const res = await backendFetch(`/api/groupTypes`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

@@ -3,6 +3,7 @@ import API_BASE_URL from '@/shared/lib/apiBaseUrl'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/modules/auth/lib/authOptions'
 import { redirect } from 'next/navigation'
+import { backendFetch } from '@/shared/lib/backendFetch'
 
 export const dynamic = 'force-dynamic' // Render this page on every request
 
@@ -18,9 +19,7 @@ export default async function Profile() {
   let profileData = null
 
   try {
-    const res = await fetch(`${API_BASE_URL}/api/users/${userId}`, {
-      cache: 'no-store', // ensures fresh data every request
-    })
+    const res = await backendFetch(`/api/users/${userId}`)
     if (!res.ok) {
       throw new Error(`Failed to fetch profile: ${res.statusText}`)
     }

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { backendFetch } from '@/shared/lib/backendFetch'
 
 const BACKEND_URL = process.env.BACKEND_URL
 
@@ -6,9 +7,7 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ userId
   const { userId } = await params
 
   try {
-    const response = await fetch(`${BACKEND_URL}/api/user-bookmarks/${userId}`, {
-      credentials: 'include',
-    })
+    const response = await backendFetch(`/api/user-bookmarks/${userId}`)
 
     const data = await response.json()
 

@@ -1,5 +1,6 @@
 import { User } from '@/shared/types/userTypes'
 import { NextRequest, NextResponse } from 'next/server'
+import { backendFetch } from '@/shared/lib/backendFetch'
 
 const BACKEND_URL = process.env.BACKEND_URL
 
@@ -7,7 +8,7 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ userId
   const { userId } = await params
 
   try {
-    const res = await fetch(`${BACKEND_URL}/api/users/${userId}`, {
+    const res = await backendFetch(`/api/users/${userId}`, {
       credentials: 'include',
     })
 

@@ -52,7 +52,7 @@ export default function Map({ items, selectedId, hoveredId }: MapProps) {
     markersRef.current.forEach(marker => marker.remove())
     markersRef.current = []
 
-    items.forEach(item => {
+    items?.forEach(item => {
       const el = document.createElement('div')
       el.className = 'marker'
 
