@@ -157,6 +157,7 @@ const Benefits = () => {
                   alt={benefit.metricLabel}
                   className="object-cover"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 340px, 50vw"
                 />
               </div>
               <div className="flex max-w-2xl flex-col gap-2 md:gap-[2rem] lg:max-w-md lg:flex-1 xl:max-w-lg 2xl:max-w-2xl">

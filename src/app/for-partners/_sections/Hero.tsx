@@ -19,7 +19,7 @@ function Tiles({ items }: { items: StaticImageData[] }) {
     <>
       {items.map((src, i) => (
         <div key={i} className="tile relative aspect-3/4 shrink-0 overflow-hidden rounded-xl">
-          <div className="tile__reveal h-full w-full">
+          <div className="tile__reveal relative h-full w-full">
             <Image
               src={src}
               alt=""
