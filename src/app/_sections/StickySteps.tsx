@@ -194,7 +194,7 @@ const StickySteps = () => {
       id="sticky-steps"
       background="teal"
     >
-      <h3 className="text-semibold mx-auto text-center text-[1.25rem] xl:w-3/4 xl:text-[2rem]">
+      <h3 className="text-semibold mx-auto text-center text-[1.25rem] md:text-[1.75rem] xl:w-3/4 xl:text-[2rem]">
         Turn your curiosity into memories in just 4 steps. A quick and easy process to bring your
         next experience to life.
       </h3>
