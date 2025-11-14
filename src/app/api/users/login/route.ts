@@ -1,3 +1,4 @@
+import { handleBackendError } from '@/shared/lib/handleBackendError'
 import { NextRequest, NextResponse } from 'next/server'
 
 const BACKEND_URL = process.env.BACKEND_URL
@@ -24,6 +25,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(data)
   } catch (error) {
     console.error('Login error:', error)
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+    return handleBackendError(error)
   }
 }

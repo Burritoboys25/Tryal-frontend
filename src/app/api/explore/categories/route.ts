@@ -1,6 +1,7 @@
 // app/api/categories/route.ts
 import { NextResponse } from 'next/server'
 import { backendFetch } from '@/shared/lib/backendFetch'
+import { handleBackendError } from '@/shared/lib/handleBackendError'
 
 export async function GET() {
   try {
@@ -10,15 +11,11 @@ export async function GET() {
         'Content-Type': 'application/json',
       },
     })
-
-    if (!res.ok) {
-      throw new Error(`Backend returned ${res.status}`)
-    }
-
+    
     const data = await res.json()
     return NextResponse.json(data)
-  } catch (err) {
-    console.error('Failed to fetch categories from backend:', err)
-    return NextResponse.json({ error: 'Failed to fetch categories from backend' }, { status: 500 })
+  } catch (error) {
+    console.error('Failed to fetch categories from backend:', error)
+    return handleBackendError(error)
   }
 }

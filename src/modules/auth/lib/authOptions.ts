@@ -88,15 +88,18 @@ export const authOptions: NextAuthOptions = {
       else if (Date.now() < (token.accessTokenExpires as number)) {
         return token
       } else {
-        // Subsequent logins, but the `access_token` has expired, try to refresh it
-        if (!token.refreshToken) throw new TypeError("Missing refresh token")
 
-        // If token expired, refresh token via API using refresh cookie
+        if (!token.refreshToken) throw new TypeError("Missing refresh token")
+        
+        console.log("Is Access token expired: " + (Date.now() > (token.accessTokenExpires as number)))
+        console.log("Refresh token: " + token.refreshToken)
+        // If token expired request refresh token 
         try {
           const refreshed = await fetch(`${process.env.BACKEND_URL}/api/auth/refresh`, {
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              refreshToken: token.refreshToken!,
+              refreshToken: token.refreshToken,
             }),
           })
 

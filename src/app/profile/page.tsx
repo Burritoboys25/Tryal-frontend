@@ -4,6 +4,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/modules/auth/lib/authOptions'
 import { redirect } from 'next/navigation'
 import { backendFetch } from '@/shared/lib/backendFetch'
+import { handleBackendError } from '@/shared/lib/handleBackendError'
 
 export const dynamic = 'force-dynamic' // Render this page on every request
 
@@ -20,12 +21,12 @@ export default async function Profile() {
 
   try {
     const res = await backendFetch(`/api/users/${userId}`)
-    if (!res.ok) {
-      throw new Error(`Failed to fetch profile: ${res.statusText}`)
-    }
+    // if (!res.ok) {
+    //   throw new Error(`Failed to fetch profile: ${res.statusText}`)
+    // }
     profileData = await res.json()
   } catch (error) {
-    console.error('Error fetching profile data:', error)
+    return handleBackendError(error)
   }
 
   return (

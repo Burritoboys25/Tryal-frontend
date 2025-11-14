@@ -1,6 +1,7 @@
 import { User } from '@/shared/types/userTypes'
 import { NextRequest, NextResponse } from 'next/server'
 import { backendFetch } from '@/shared/lib/backendFetch'
+import { handleBackendError } from '@/shared/lib/handleBackendError'
 
 const BACKEND_URL = process.env.BACKEND_URL
 
@@ -30,21 +31,17 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ us
   try {
     const body: Partial<User> = await req.json()
 
-    const res = await fetch(`${BACKEND_URL}/api/users/${userId}`, {
+    const res = await backendFetch(`/api/users/${userId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify(body),
     })
 
-    if (!res.ok) {
-      return NextResponse.json({ error: 'Failed to update user' }, { status: res.status })
-    }
-
     const updatedUser = await res.json()
     return NextResponse.json(updatedUser)
   } catch (error) {
     console.error('Error updating user:', error)
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+    return handleBackendError(error)
   }
 }
