@@ -8,6 +8,7 @@ import {
   ProfileFormData,
 } from '@/modules/profile/validations/profile-form.schema'
 import { showToast } from '@/shared/components/ui/notifications/Toast'
+import { useUser } from '@/shared/hooks/useUser'
 
 type ProfileProp = {
   userId: string
@@ -23,6 +24,7 @@ type ProfileProp = {
 }
 
 const ProfilePage = ({ ...UserData }: ProfileProp) => {
+  const { setUserData, userData } = useUser()
   const [formData, setFormData] = useState<ProfileFormData>({
     firstName: UserData.firstName || '',
     lastName: UserData.lastName || '',
@@ -71,6 +73,19 @@ const ProfilePage = ({ ...UserData }: ProfileProp) => {
       })
 
       if (res.ok) {
+        const { data } = await res.json()
+        
+        // Update the context with the fresh data from the backend
+        if (userData && data) {
+          setUserData({
+            ...userData,
+            userId: data.userId,
+            email: data.email,
+            firstName: data.firstName,
+            lastName: data.lastName,
+          })
+        }
+        
         showToast({ type: 'success', description: 'Profile updated successfully!' })
       } else {
         showToast({ type: 'error' })

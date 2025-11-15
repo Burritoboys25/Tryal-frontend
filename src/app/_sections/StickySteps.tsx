@@ -82,7 +82,6 @@ const StickySteps = () => {
         scrollTrigger: {
           trigger: scope.current,
           pinSpacing: true,
-          markers: true,
           start: 'top top+=30',
           end: '+=2000',
           pin: true,

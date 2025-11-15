@@ -1,14 +1,15 @@
 'use client'
 
 import React from 'react'
+import { useUser } from '@/shared/hooks/useUser'
 
 const ProfileInfo = () => {
-  // const { data: session } = useSession()
-  // Generate user initials and profile image URL
-  // For now using mock data, but this will be replaced with session data when backend is ready
-  // const userFirstName = session?.user?.firstName || 'User'
-  // const userLastName = session?.user?.lastName || ''
-  // const userId = session?.user?.userId || ''
+  const { userData } = useUser()
+
+  const userFirstName = userData?.firstName || 'Loading...'
+  const userLastName = userData?.lastName || ''
+  const fullName = `${userFirstName} ${userLastName}`.trim()
+  const memberSince = userData?.createdAtYear ?? ''
 
   return (
     <div className="flex items-center gap-7">
@@ -16,9 +17,13 @@ const ProfileInfo = () => {
       <div className="h-[5.438rem] w-[5.438rem] rounded-full bg-gray-500"></div>
       {/* Header Text Container */}
       <div className="">
-        <h1 className="text-h3">Katherine Payton</h1>
+        <h1 className="text-h3" suppressHydrationWarning>
+          {fullName}
+        </h1>
         <p className="text-body2">Location</p>
-        <p className="text-body2">Member since 2025</p>
+        <p className="text-body2" suppressHydrationWarning>
+          {memberSince && `Member since ${memberSince}`}
+        </p>
       </div>
     </div>
   )
