@@ -92,7 +92,8 @@ export const authOptions: NextAuthOptions = {
         if (!token.refreshToken) throw new TypeError("Missing refresh token")
         
         console.log("Is Access token expired: " + (Date.now() > (token.accessTokenExpires as number)))
-        console.log("Refresh token: " + token.refreshToken)
+        console.log("Old Access token: " + token.accessToken)
+        console.log("Old Refresh token: " + token.refreshToken)
         // If token expired request refresh token 
         try {
           const refreshed = await fetch(`${process.env.BACKEND_URL}/api/auth/refresh`, {
@@ -109,7 +110,9 @@ export const authOptions: NextAuthOptions = {
           const decodedToken = jwtDecode<{ sub: string; accountType: string; exp: number }>(
             refreshedTokens.data.accessToken,
           )
-          console.log('Access token refreshed for userId:', decodedToken.sub)
+          console.log('Access token successfully refreshed')
+          console.log('New access Token:', refreshedTokens.data.accessToken)
+          console.log('New refresh Token:', refreshedTokens.data.refreshedToken)
           return {
             ...token,
             accessToken: refreshedTokens.data.accessToken,  
