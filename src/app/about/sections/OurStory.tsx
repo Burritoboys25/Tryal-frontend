@@ -8,7 +8,7 @@ const OurStory = () => {
       {/* Our Story */}
       <div className="mx-auto space-y-4 pt-10 text-left md:pt-15 md:text-center xl:w-[85%] xl:pt-20 2xl:pt-15">
         <h1 className="text-h1 text-center">Our Story</h1>
-        <div className="relative flex h-[20rem] items-center justify-center overflow-hidden rounded-[.75rem] xl:h-[23.5rem] 2xl:h-[28rem]">
+        <div className="relative flex h-[16rem] items-center justify-center overflow-hidden rounded-[.75rem] xl:h-[23.5rem] 2xl:h-[28rem]">
           <Image src="/about_us/team.png" alt="Team Photo" fill className="object-cover" />
         </div>
         <p className="text-sub4">
