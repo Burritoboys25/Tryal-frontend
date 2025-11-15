@@ -52,7 +52,7 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
               For Partners
             </Link>
             <Link href="/about" className={isActive('/about') ? activeLinkClass : ''}>
-              About us
+              About Us
             </Link>
           </div>
 
