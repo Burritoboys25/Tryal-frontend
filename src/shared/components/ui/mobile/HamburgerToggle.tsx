@@ -14,15 +14,15 @@ const HamburgerToggle = ({ isOpen, onClick, className = '' }: Props) => {
       className={`relative flex h-6 w-6 flex-col items-center justify-center gap-1 md:hidden ${className}`}
     >
       <span
-        className={`h-0.5 w-6 bg-black transition-all duration-300 ${
+        className={`h-0.5 w-6 bg-white transition-all duration-300 ${
           isOpen ? 'translate-y-1.5 rotate-45' : ''
         }`}
       />
       <span
-        className={`h-0.5 w-6 bg-black transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}
+        className={`h-0.5 w-6 bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}
       />
       <span
-        className={`h-0.5 w-6 bg-black transition-all duration-300 ${
+        className={`h-0.5 w-6 bg-white transition-all duration-300 ${
           isOpen ? '-translate-y-1.5 -rotate-45' : ''
         }`}
       />

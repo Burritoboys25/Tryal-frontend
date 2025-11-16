@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <LenisProvider>
         <LandingNavbar />
-        <div className="space-y-4 md:space-y-8">
+        <div className="w-full max-w-full space-y-4 overflow-x-hidden md:space-y-8">
           <Hero />
           <Intro />
           <FeatureSlider audience="user" />

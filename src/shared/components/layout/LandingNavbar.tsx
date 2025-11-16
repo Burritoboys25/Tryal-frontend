@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import HamburgerToggle from '@/shared/components/ui/mobile/HamburgerToggle'
-// import { SegmentedToggle } from '../ui/ThumbToggle'
 
 interface LandingNavbarProps {
   disablePartner?: boolean
@@ -34,23 +33,27 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
   return (
     <>
       <nav
-        className={`flex items-center glass-element fixed top-10 right-0 left-0 z-50 mx-auto h-[2.5rem] md:h-[3.5rem] xl:h-[4.5rem] w-[85%] xl:w-[75%] px-6 transition-shadow duration-300 2xl:max-w-3xl 2xl:px-8 ${scrolled ? 'shadow-sm' : ''}`}
+        className={`glass-element fixed top-10 right-0 left-0 z-50 mx-auto flex h-[2.5rem] w-[85%] items-center px-6 transition-shadow duration-300 md:h-[3.5rem] xl:h-[4.5rem] xl:w-[75%] 2xl:max-w-3xl 2xl:px-8 ${scrolled ? 'shadow-sm' : ''}`}
       >
-        <div className="flex w-full items-center justify-between ">
+        <div className="flex w-full items-center justify-between">
           {/* Logo */}
           <div className="w-[9.375rem]">
-            <Link href="/" className="font-logo text-[1.25rem] md:text-[2rem] font-medium ">
+            <Link href="/" className="font-logo text-[1.25rem] font-medium md:text-[2rem]">
               Tryal
             </Link>
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden justify-center gap-[1.25rem] xl:gap-[2.5rem] text-[.875rem] xl:text-[1rem] font-medium xl:font-normal text-white md:flex">
+          <div className="hidden justify-center gap-[1.25rem] text-[.875rem] font-medium text-white md:flex xl:gap-[2.5rem] xl:text-[1rem] xl:font-normal">
             <Link href="/" className={isActive('/') ? activeLinkClass : ''}>
               For Explorers
             </Link>
-            <Link href="/for-partners" className={isActive('/for-partners') ? activeLinkClass : ''}>For Partners</Link>
-            <Link href="/about" className={isActive('/about') ? activeLinkClass : ''}>About us</Link>
+            <Link href="/for-partners" className={isActive('/for-partners') ? activeLinkClass : ''}>
+              For Partners
+            </Link>
+            <Link href="/about" className={isActive('/about') ? activeLinkClass : ''}>
+              About Us
+            </Link>
           </div>
 
           {/* Desktop CTA */}
@@ -78,9 +81,31 @@ function LandingNavbar({ disablePartner = false }: LandingNavbarProps) {
       >
         <div className="flex h-full gap-[1rem] px-[1.5rem] pt-[4.3125rem] pb-[2rem]">
           <div className="flex w-full flex-col gap-[2.5rem] px-[1.5rem] py-[4rem]">
-            <ul className="space-y-[1rem]">
+            <ul className="text-foreground-teal space-y-[1rem]">
               <li>
-                <Link href="/about" onClick={handleClick} className="inline-block">
+                <Link
+                  href="/"
+                  onClick={handleClick}
+                  className={`inline-block ${isActive('/') ? activeLinkClass + ' underline' : ''}`}
+                >
+                  For Explorers
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/for-partners"
+                  onClick={handleClick}
+                  className={`inline-block ${isActive('/for-partners') ? activeLinkClass + ' underline' : ''}`}
+                >
+                  For Partners
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  onClick={handleClick}
+                  className={`inline-block ${isActive('/about') ? activeLinkClass + ' underline' : ''}`}
+                >
                   About us
                 </Link>
               </li>
