@@ -14,7 +14,7 @@ export default async function ThankYouPage({
     <>
       <Suspense fallback={<p className="py-[5rem] text-center">Loading...</p>}>
         <Section
-          className="m-6 flex h-[calc(100dvh-3rem)] flex-row items-center rounded-2xl p-4"
+          className="m-6 flex h-[calc(100dvh-3rem)] flex-col-reverse items-center gap-8 rounded-2xl p-4 lg:flex-row"
           background="white"
           full
         >
