@@ -9,15 +9,18 @@ import { useRouter } from 'next/navigation'
 import { showToast } from '@/shared/components/ui/notifications/Toast'
 
 const referralOptions = [
-  'Network / Friend',
-  'Email / Newsletter',
-  'Social Media',
+  'Friend / Word of Mouth',
+  'Instagram',
+  'TikTok',
+  'LinkedIn',
+  'Reddit',
   'Google / Search Engine',
+  'Partner / Instructor Recommendation',
+  'Product Hunt',
   'Other',
 ]
 
-
-const ReferralForm = ({email}: {email: string | null | undefined }) => {
+const ReferralForm = ({ email }: { email: string | null | undefined }) => {
   const [selectedReferrals, setSelectedReferrals] = useState<string[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
@@ -79,7 +82,7 @@ const ReferralForm = ({email}: {email: string | null | undefined }) => {
         </p>
         <p>Before you go, could you let us know how you heard about us? It really helps us out!</p>
       </div>
-      <div className='mt-8 flex flex-col gap-4'>
+      <div className="mt-8 flex flex-col gap-4">
         {referralOptions.map(option => (
           <CheckboxField
             key={option}
