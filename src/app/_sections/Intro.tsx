@@ -101,7 +101,10 @@ const Intro = () => {
             better when you try it all).
           </h3>
           <br />
-          <p className="overflow-visible text-xl md:max-w-3/4 md:text-2xl md:font-semibold 2xl:max-w-1/2 2xl:text-4xl">
+          <p
+            className="overflow-visible text-xl md:max-w-3/4 md:text-2xl md:font-semibold 2xl:max-w-1/2 2xl:text-4xl"
+            data-anim="split-reveal"
+          >
             The easiest way to discover and book unforgettable experiences &mdash; from local
             workshops and pop-ups to adventures across the world. Whether you&apos;re looking to
             learn something new, unwind, or simply explore more, Tryal curates experiences to match
@@ -116,7 +119,7 @@ const Intro = () => {
           {cards.slice(0, 3).map(({ title, icon: Icon, description }) => (
             <div key={title} className="col-span-1 flex gap-3 md:max-w-4/5">
               <Icon className="size-20" aria-hidden="true" data-anim="fade-in" />
-              <div className='flex-1' data-anim="split-reveal">
+              <div className="flex-1" data-anim="split-reveal">
                 <h4 className="text-sub1" data-anim="split-reveal">
                   {title}
                 </h4>

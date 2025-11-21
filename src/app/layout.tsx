@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${rubik.variable} teal`}>
-      <body className="w-full">
+    <html lang="en" className={`${manrope.variable} ${rubik.variable} teal overflow-x-hidden`}>
+      <body className="w-full overflow-x-hidden">
         <NextAuthSessionProvider>
           <UserProvider>
             <Toaster />

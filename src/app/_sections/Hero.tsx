@@ -18,7 +18,7 @@ function Tiles({ items }: { items: StaticImageData[] }) {
     <>
       {items.map((src, i) => (
         <div key={i} className="tile relative aspect-3/4 shrink-0 overflow-hidden rounded-xl">
-          <div className="tile__reveal h-full w-full">
+          <div className="tile__reveal relative h-full w-full">
             <Image
               src={src}
               alt=""
@@ -56,7 +56,7 @@ const Hero = () => {
           },
           'start+=0.5',
         )
-      
+
       SplitText.create('.title', {
         type: 'lines',
         mask: 'lines',
@@ -74,7 +74,7 @@ const Hero = () => {
           return tween
         },
       })
-      
+
       SplitText.create('.sub-text', {
         type: 'lines',
         mask: 'lines',
@@ -102,7 +102,7 @@ const Hero = () => {
     <Section
       id="hero"
       ref={scope}
-      className="grid min-h-screen grid-cols-1 md:grid-cols-12 2xl:px-24"
+      className="grid min-h-screen grid-cols-1 overflow-x-hidden md:grid-cols-12 2xl:px-24"
       background="light-teal"
     >
       {/* Left Side */}
@@ -115,13 +115,14 @@ const Hero = () => {
             <br />
             Repeat.
           </h1>
-          <p className="text-sm lg:text-2xl sub-text mt-2 mb-4 text-[#09272E] md:max-w-xl">
-            From hidden gems to thrilling adventures—find and book unforgettable experiences all in one place.
+          <p className="sub-text mt-2 mb-4 text-sm text-[#09272E] md:max-w-xl lg:text-2xl">
+            From hidden gems to thrilling adventures—find and book unforgettable experiences all in
+            one place.
           </p>
         </div>
         <div className="overflow-hidden">
           <div className="cta-form">
-            <InterestWaitlistForm inputStyles='text-foreground-teal opacity-100 bg-white/20' />
+            <InterestWaitlistForm inputStyles="text-foreground-teal opacity-100 bg-white/20" />
           </div>
         </div>
       </div>
