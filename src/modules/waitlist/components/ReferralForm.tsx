@@ -70,8 +70,8 @@ const ReferralForm = ({email}: {email: string | null | undefined }) => {
   }
 
   return (
-    <form className="max-w-sm" onSubmit={handleReferralSubmit}>
-      <h1 className="text-h1">Thank you for your interest!</h1>
+    <form className="md:w-[30.625rem] xl:w-[25.188rem] 2xl:w-[27.188rem]" onSubmit={handleReferralSubmit}>
+      <h1 className="text-h1 text-foreground-teal">Thank you for your interest!</h1>
       <div className="mt-5 flex flex-col gap-5 text-[0.875rem] leading-[1.25rem]">
         <p className="">
           We&apos;re excited to have you on board. We&apos;ll be sending you updates via email as we

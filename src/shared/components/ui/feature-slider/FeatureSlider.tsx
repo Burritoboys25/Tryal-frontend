@@ -103,7 +103,7 @@ export default function FeatureSlider({ audience }: FeatureSliderProps) {
                 tabButtonsRef.current[i] = el
               }}
               className={[
-                'hover:bg-surface-teal/80 rounded-full px-4 py-2 text-sm whitespace-nowrap transition',
+                'hover:bg-surface-teal/80 rounded-full text-sm whitespace-nowrap transition',
                 'bg-[#124E5B]',
                 'text-foreground-dark',
                 i === index ? 'bg-primary hover:bg-primary/90 ring-1 ring-white/10' : '',
