@@ -38,8 +38,8 @@ const PartnerWaitlistForm = ({
   error: string | null
 }) => {
   return (
-    <form onSubmit={handleSubmit} className="max-w-[27.2rem]">
-      <div className="flex flex-col">
+    <form onSubmit={handleSubmit} className="md:w-[30.625rem] xl:w-[25.188rem] 2xl:w-[27.188rem]">
+      <div className="flex flex-col mx-auto xl:text-pretty max-xl:min-w-full max-2xl:max-w-[23.563rem]">
         <h1 className="text-h1 text-foreground-teal">Get Discovered. Get Booked. Grow with Us!</h1>
         <p className="text-muted-foreground text-[0.875rem] leading-[1.25rem] mt-2">
           Ready to join our growing network? By partnering with us, you&apos;ll be exposed to more
@@ -138,7 +138,7 @@ const PartnerWaitlistForm = ({
           />
         </div>
 
-        <div className="flex items-start gap-2 text-center">
+        <div className="flex items-start gap-2 ">
           <Checkbox
             id="receiveNewsLetter"
             checked={form.receiveNewsLetter}
@@ -150,7 +150,7 @@ const PartnerWaitlistForm = ({
             }}
           />
 
-          <label className="text-[0.75rem] font-semibold text-black">
+          <label className="text-[0.75rem] font-semibold text-black xl:text-nowrap">
             I agree to receive marketing and other communications from Tryal. *
           </label>
         </div>

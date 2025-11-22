@@ -22,7 +22,6 @@ const BookingTimes = ({
             <Button
               key={time.timeslotId}
               variant={selectedTimeslot === time.timeslotId ? 'solid' : 'outline'}
-              size="lg"
               style={{
                 color: selectedTimeslot === time.timeslotId ? 'white' : 'oklch(0.65 0.22 35.34)',
               }}
